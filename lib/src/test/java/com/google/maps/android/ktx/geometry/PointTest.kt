@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2020 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,31 +12,34 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
  */
 
-buildscript {
-    ext.versions = [
-        'kotlin': '1.3.61',
-    ]
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
-        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.4'
-    }
-}
+package com.google.maps.android.ktx.geometry
 
-allprojects {
-    repositories {
-        google()
-        jcenter()
+import com.google.maps.android.geometry.Point
+import junit.framework.Assert.assertEquals
+import org.junit.Before
+import org.junit.Test
 
+class PointTest {
+
+    private lateinit var point: Point
+
+    @Before
+    fun setUp() {
+        point = Point(1.0, 2.0)
     }
-}
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+    @Test
+    fun `destructure x`() {
+        val (x, _) = point
+        assertEquals(1.0, x)
+    }
+
+    @Test
+    fun `destructure y`() {
+        val (_, y) = point
+        assertEquals(2.0, y)
+    }
 }

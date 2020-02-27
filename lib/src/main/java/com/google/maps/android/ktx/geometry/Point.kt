@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2020 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,31 +12,30 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
  */
 
-buildscript {
-    ext.versions = [
-        'kotlin': '1.3.61',
-    ]
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
-        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.4'
-    }
-}
+package com.google.maps.android.ktx.geometry
 
-allprojects {
-    repositories {
-        google()
-        jcenter()
+import com.google.maps.android.geometry.Point
 
-    }
-}
+/**
+ * Returns the x value of this Point.
+ *
+ * e.g.
+ *
+ * ```
+ * val (x, _) = point
+ * ```
+ */
+inline operator fun Point.component1() = this.x
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
+/**
+ * Returns the y value of this Point.
+ *
+ * e.g.
+ *
+ * ```
+ * val (_, y) = point
+ */
+inline operator fun Point.component2() = this.y

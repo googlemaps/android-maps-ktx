@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2020 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,31 +12,26 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
  */
 
-buildscript {
-    ext.versions = [
-        'kotlin': '1.3.61',
-    ]
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
-        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.4'
-    }
-}
+package com.google.maps.android.ktx.core
 
-allprojects {
-    repositories {
-        google()
-        jcenter()
+import android.graphics.Color
+import com.google.android.gms.maps.model.LatLng
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
+class PolygonOptionsTest {
+    @Test
+    fun testBuilder() {
+        val polygonOptions = buildPolygonOptions {
+            strokeWidth(1.0f)
+            strokeColor(Color.BLACK)
+            add(LatLng(0.0, 0.0))
+        }
+        assertEquals(1.0f, polygonOptions.strokeWidth)
+        assertEquals(Color.BLACK, polygonOptions.strokeColor)
+        assertEquals(listOf(LatLng(0.0, 0.0)), polygonOptions.points)
     }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
