@@ -1,0 +1,2 @@
+include ':app', ':lib'
+rootProject.name='android-maps-utils-ktx'
