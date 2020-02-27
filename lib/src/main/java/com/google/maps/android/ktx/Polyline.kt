@@ -26,7 +26,7 @@ import com.google.maps.android.SphericalUtil
  * Computes where the given [latLng] is contained on or near this Polyline within a specified
  * tolerance in meters.
  */
-inline fun Polyline.contains(latLng: LatLng, tolerance: Double = PolyUtil.DEFAULT_TOLERANCE): Boolean =
+inline fun Polyline.contains(latLng: LatLng, tolerance: Double = 0.1): Boolean =
     PolyUtil.isLocationOnPath(latLng, this.points, this.isGeodesic, tolerance)
 
 /**

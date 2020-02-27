@@ -43,7 +43,7 @@ inline fun Polygon.contains(latLng: LatLng): Boolean =
  *
  * @see PolyUtil.isLocationOnEdge
  */
-inline fun Polygon.isOnEdge(latLng: LatLng, tolerance: Double = PolyUtil.DEFAULT_TOLERANCE): Boolean =
+inline fun Polygon.isOnEdge(latLng: LatLng, tolerance: Double = 0.1): Boolean =
     PolyUtil.isLocationOnEdge(latLng, this.points, this.isGeodesic, tolerance)
 
 /**

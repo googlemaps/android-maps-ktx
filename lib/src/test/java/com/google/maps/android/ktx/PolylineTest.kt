@@ -19,8 +19,6 @@ package com.google.maps.android.ktx
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Polyline
-import com.google.maps.android.ktx.contains
-import com.google.maps.android.ktx.sphericalPathLength
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import org.junit.Assert.*
