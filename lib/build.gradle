@@ -17,6 +17,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'jacoco-android'
 
 android {
     compileSdkVersion 29
@@ -58,4 +59,13 @@ dependencies {
     testImplementation 'androidx.test:core:1.2.0'
     testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
     testImplementation 'org.mockito:mockito-core:3.0.0'
+}
+
+// Code coverage
+jacoco {
+    toolVersion = "0.8.4"
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
 }
