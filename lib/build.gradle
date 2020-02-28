@@ -63,6 +63,13 @@ dependencies {
 dokka {
     outputFormat = 'html'
     outputDirectory = "$buildDir/documentation"
+    configuration {
+        includeNonPublic = false
+        skipEmptyPackages = true
+        skipDeprecated = true
+        reportUndocumented = true
+        jdkVersion = 8
+    }
 }
 
 // Code coverage
