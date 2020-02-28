@@ -15,9 +15,10 @@
  */
 
 apply plugin: 'com.android.library'
+apply plugin: 'jacoco-android'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'jacoco-android'
+apply plugin: 'org.jetbrains.dokka'
 
 android {
     compileSdkVersion 29
@@ -44,21 +45,24 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
-    implementation 'com.google.maps.android:android-maps-utils:1.0.0'
-
-    // This may be removed
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2'
+    api deps.kotlin
+    implementation deps.androidMapsUtils
+    implementation deps.androidx.appcompat
+    implementation deps.playServicesMaps
+    implementation deps.kotlinxCoroutines
 
     // Tests
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'androidx.test.ext:junit:1.1.1'
-    testImplementation 'androidx.test:core:1.2.0'
-    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
-    testImplementation 'org.mockito:mockito-core:3.0.0'
+    testImplementation deps.androidx.test
+    testImplementation deps.androidx.junit
+    testImplementation deps.junit
+    testImplementation deps.mockito
+    testImplementation deps.mockitoKotlin
+}
+
+// Documentation
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/documentation"
 }
 
 // Code coverage
