@@ -9,12 +9,7 @@ This library contains a set of Kotlin extensions for the [Maps SDK for Android U
 
 ## Installation
 
-_TODO_:
-```groovy
-dependencies {
-    implementation 'com.google.maps.android:android-maps-utils-ktx:0.1.0'
-} 
-```
+_Coming soon_
 
 ## Example Usage
 
