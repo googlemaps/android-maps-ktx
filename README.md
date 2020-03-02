@@ -18,7 +18,7 @@ _Coming soon_
 
 With this KTX library, you should be able to take advantage of several Kotlin language features such as:
 
-> Extension functions
+#### Extension functions
 
 _Before_:
 ```java
@@ -34,11 +34,18 @@ val latlng: LatLng = // some latlng
 val result: Boolean = polygon.contains(latLng)
 ```
 
-> Named parameters and default arguments
+#### Named parameters and default arguments
 
 _Before_:
 ```java
-GeoJsonLayer layer = new GeoJsonLayer(map, geoJsonFile, null, polygonManager, null, groundOverlayManager);
+GeoJsonLayer layer = new GeoJsonLayer(
+    map, 
+    geoJsonFile, 
+    null, 
+    polygonManager, 
+    null, 
+    groundOverlayManager
+);
 ```
 
 _After_:
@@ -49,6 +56,21 @@ val layer = GeoJsonLayer(
     polygonManager = polygonManager,
     groundOverlayManager = groundOverlayManager
 )
+```
+
+#### Destructuring Declarations
+
+_Before_:
+```java
+Point point = new Point(1.0, 2.0);
+double x = point.x;
+double y = point.y;
+```
+
+_After_:
+```kotlin
+val point = Point(1.0, 2.0)
+val (x, y) = point
 ```
 
 ## Support
