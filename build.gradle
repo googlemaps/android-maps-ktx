@@ -16,9 +16,17 @@
 
 buildscript {
     ext.versions = [
+        'android'          : [
+            "buildTools": "29.0.3",
+            "compileSdk": 29,
+            "minSdk"    : 15,
+            "targetSdk" : 29
+        ],
         'androidMapsUtils' : '1.0.0',
         'androidx'         : [
             'appcompat': '1.1.0',
+            'coreKtx'  : '1.2.0',
+            'espresso' : '3.2.0',
             'test'     : '1.2.0',
             'junit'    : '1.1.1',
         ],
@@ -34,6 +42,8 @@ buildscript {
         'androidMapsUtils' : "com.google.maps.android:android-maps-utils:$versions.androidMapsUtils",
         'androidx'         : [
             'appcompat': "androidx.appcompat:appcompat:$versions.androidx.appcompat",
+            'coreKtx'  : "androidx.core:core-ktx:$versions.androidx.coreKtx",
+            'espresso' : "androidx.test.espresso:espresso-core:$versions.androidx.espresso",
             'test'     : "androidx.test:core:$versions.androidx.test",
             'junit'    : "androidx.test.ext:junit:$versions.androidx.junit"
         ],
@@ -57,11 +67,91 @@ buildscript {
     }
 }
 
+ext.projectArtifactId = { project ->
+    if (project.name == 'maps-utils-ktx') {
+        return project.name
+    } else {
+        return null
+    }
+}
+
+/**
+ * Shared configs across subprojects
+ */
 allprojects {
+    group = 'com.google.maps.android'
+    project.ext.artifactId = rootProject.ext.projectArtifactId(project)
+    version = '0.1'
+
     repositories {
         google()
         jcenter()
+    }
+}
 
+/**
+ * Publishing and signing info
+ */
+subprojects { project ->
+    if (project.ext.artifactId == null) return
+
+    apply plugin: 'maven-publish'
+    apply plugin: 'signing'
+
+    publishing {
+        publications {
+            aar(MavenPublication) {
+                groupId project.group
+                artifactId project.ext.artifactId
+                version project.version
+
+                pom {
+                    scm {
+                        connection = 'scm:git@github.com:googlemaps/android-maps-ktx.git'
+                        developerConnection = 'scm:git@github.com:googlemaps/android-maps-ktx.git'
+                        url = 'https://github.com/googlemaps/android-maps-ktx'
+                    }
+
+                    licenses {
+                        license {
+                            name = 'The Apache Software License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                            distribution = 'repo'
+                        }
+                    }
+
+                    organization {
+                        name = 'Google Inc'
+                        url = 'http://developers.google.com/maps'
+                    }
+
+                    developers {
+                        developer {
+                            name = 'Google Inc.'
+                        }
+                    }
+                }
+
+                afterEvaluate {
+                    artifact "$buildDir/outputs/aar/$project.name-release.aar"
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = "mavencentral"
+            url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+            credentials {
+                username sonatypeUsername
+                password sonatypePassword
+            }
+        }
+    }
+
+    signing {
+        sign publishing.publications.aar
     }
 }
 

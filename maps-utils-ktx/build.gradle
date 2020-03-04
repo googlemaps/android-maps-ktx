@@ -21,16 +21,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'org.jetbrains.dokka'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
-
+    compileSdkVersion versions.android.compileSdk
+    buildToolsVersion versions.android.buildTools
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 29
+        minSdkVersion versions.android.minSdk
+        targetSdkVersion versions.android.targetSdk
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
