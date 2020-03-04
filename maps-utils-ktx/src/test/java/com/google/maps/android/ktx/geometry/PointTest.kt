@@ -18,7 +18,7 @@
 package com.google.maps.android.ktx.geometry
 
 import com.google.maps.android.geometry.Point
-import junit.framework.Assert.assertEquals
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 
@@ -34,12 +34,12 @@ class PointTest {
     @Test
     fun `destructure x`() {
         val (x, _) = point
-        assertEquals(1.0, x)
+        assertEquals(1.0, x, 1e-6)
     }
 
     @Test
     fun `destructure y`() {
         val (_, y) = point
-        assertEquals(2.0, y)
+        assertEquals(2.0, y, 1e-6)
     }
 }
