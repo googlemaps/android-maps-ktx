@@ -4,28 +4,28 @@ language: bash
 dist: bionic
 
 stages:
-  - install
-  - test
-  - cache
+- install
+- test
+- cache
 
 env:
   global:
-    - BUILD_TOOLS=29.0.3
-    - COMPILE_SDK_VERSION=29
-    - ADB_INSTALL_TIMEOUT=8
-    - ANDROID_HOME=${HOME}/android-sdk
-    - ANDROID_TOOLS_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
-    - GRAVIS="https://raw.githubusercontent.com/DanySK/Gravis-CI/master/"
-    - JDK="1.8"
-    - TOOLS=${ANDROID_HOME}/tools
-    # PATH order is incredibly important. e.g. the 'emulator' script exists in more than one place!
-    - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
-    - secure: SFTu/DgXWRSiMxv7JMRdI6ZiOX3jcfY/49GxJWEvygCTWHOxn97iPrOXJUmXV/wnGtUeQpVk1oXVTLx/swrAIrT0C40dxVUi7qE/7wf+kd4RJVaX31KfXhJNt/4L5t4EeBz9cdLBuq1AmhHspWlThOsbtnaL2Y+6UJo5y7FnZFs=
-    - secure: ZDWMOQXwo0HIl06SkV24+I51UjpXDbXJz00BEJINUMiibCSmRQrhfT1gTQE5/2tC/TV+Q2A39d9kEmjdvSIL3CFMOCCF+ulWNTGWbxWNZSO/wcOWEPRxZ5OMfwS7R8V6nNxe9r0noSVcB4ECQHWF7aXzmDD6fSiWthNltfZtp/g=
-    - secure: Z8ZElXll1fYMvuxMFH5t7SXj2j7duNHsAcEI2lsCC/Ou69M/iGI0txz/Fq3cuvSi2+IMgs8tZw/xH/GVo0IZw8bGoZZiCs5oIfjnlHSGpgM9FMBGf/cBD5zGW+ynnT2GnW7xRwRR5r4QrB5JrwMlsn+1IFCEm6JluKMHkdNbJ94=
-    - secure: Kw1NwOVOUr6pjxXzSZ0U5Pei86wmbmWrfjiDQKalmMIh0dDi8Qz0OgsQcZPe7+elbJQVO4lx+9OErhNfjPUlGarh/lv2hMQ9sP0kLqWXIxBObipr3Se7jNSdqfflAqfBGVyNC4cJ5j+spNPxc6egHtOdt5tXDlaNmdSElFtzWK4=
+  - BUILD_TOOLS=29.0.3
+  - COMPILE_SDK_VERSION=29
+  - ADB_INSTALL_TIMEOUT=8
+  - ANDROID_HOME=${HOME}/android-sdk
+  - ANDROID_TOOLS_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip"
+  - GRAVIS="https://raw.githubusercontent.com/DanySK/Gravis-CI/master/"
+  - JDK="1.8"
+  - TOOLS=${ANDROID_HOME}/tools
+  # PATH order is incredibly important. e.g. the 'emulator' script exists in more than one place!
+  - PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
+  - secure: ZRxYXXJpQs365ZvWXMUrTYQ0wpS1X8TxKVGA7em0MO+RtThynpEh97VLR2Q2VC9moyPw+hWVvmmR0QPnBJ8kHpD1W3H8SzcvTToNW0oES1cmBy8xCpzUAJDy4is9oWRpTzrUC/nxdcQUs8nTuJanKwJoQsxnri86VsGahRxV+gIhLGWSmiACn4qBj0vVtI0rZHNQ5/3d7OCVkh0t5XFebQeX9PD4vm2h6mAl1e+QrpIzKjeSgz/Yf6zuDre9yPiLmDQ3/lDAGfnJ8endogdLjpMrq4kCgRDjiz8ZaWz84R7nyyp6gm8DVAXab6iqGUVpzM9gBr2IKH89vzIymUq7eIJsz4X2lDTld15R7B+NY82l/Pt6Dh1Xr+lUjOBd0sLhjFl7JQxC7A/Kc3UJk+WMjcScf5tTxl7BuBauuhDPz1/tLBhLey2JcJjzSx9X2zeqCGR9TLNX7neK1WWZal+bInMFLQlICbYDkryGbH+ifwrIOd/lFyEdzKNZRISd82u9J4ZTWEb2aDm28/Cj0KczKZn3ActyDqXdmS4L2ZAVviPySs66rwSp9x9HsFavlpUCw+eYPdTMr0OUfrS1lkbGph6m4rHH9dJpNB7NgllJmqO7uW0F3Rbi+MErWG94dKIrieliOKTaGVFdgefIVNisNon5KL6D+j3sRT2GCPwmQSI=
+  - secure: l/TQI0XFNbm8fPSdnIbRXyKh9F36G5T1JCAqcQ7DKGxjHq/Gv5bGWOgE7uE6Emxo+YgyRZUYiCyi+hEXHBd2WT09LZ9u9w8nvtA1vw6BxVE6XmSmU4QCxPvKVyyEfFMUJavQoHj1Yw+PgRa0xSvEoeK8QtPF8vfc1LjmqIszG7+pPVJRsEypNa6rpeRv+m0fmT0rnZvmOt0rxnjTLpq7tLqmICObjhsu8ClQTApG36xJpCg/Z5iRb1pauPN8QTnyQSlvekTmGV2h3Cy5sLP3MWMOOmGEA8FZD2aU0BGOkCCZqjV+Pf5io311uWtawwlR4StJs+/IQffvAmN2eiytIHWruIbDyYQtn1f5uzXylIkY0EFXP15rAw53wz/a3kNiiR/uWcbcGB/yo4aLnZh9Nn4dq8GsEEG7eABYA5fRxlbRp6H1Vsap23vfSPUXUnEP9EroF8kwbobPiXDCFzCLFuLsl4MidEZpMypsDQIuGVJbseuwGZwgm+vYYiztF/qQtPAFULLHChDvfaIpi7cmpZDYqyGkT6wBRcoiyLmtu7qR/sXlll+90lIK1gUgIg1ELOfxzxuu0LoBWcw9/fPkS/binNTLMMqx78Xw0FP/fDyho6mGLEJqfS8W+zLucMOcwJZ/rJbiH/3FCbWIU73hPBfZTk2mTC2va4VfH4jT9Nw=
+  - secure: e2R0VOOAtof7asMVO67M5nMOZQ8qh9vk3f+9JNZPWMV1IjzyvCwqzxJSWjBzIBh7huL2ORbGX5zkbm2PExiX5T1/lRbFG0C/LNlFDJSFGiFnm4ITc7+c9aFT/KpV5RBFkdWKi8uII9lPNNMs+TOZtgyujsDacG2ZAb+27HpbYwiR0jLqVoLnjLnJYi72Qu1XXo1XTBTbnk0S3rCuAmj65gKg3syCvbJ1tFPdOn4Y94e32izT5R5BDCH0fjxhY3TG9wC7QsJoMNQIu+hbNwu2dUGnfmgdWGKVAwgoGdQnCyCZksrJ0nGslPvd8uA2QQct7QSiDsDs/L7bfH/nJZ7YcPTAAyUD+zl+mfmb/+iZxRriqS69wfJYTQ81gMn0ITNo9L43Tar+1/BMgFusfYzuFU1D+X7HlCmUQIBHZr2qM1GKlKWM24s17oXp/ybOYGlqJSwC0jeh++/hwBRavkojWyQAZx5irUlIT2vfcrIh4b7TAuWSDGoVx34Xkh6Yt8O8DgDuEA2dXNSWwUhRScp9kq/XZyyqjgkHNnmB/6R8XiNz66SfdY2JwzUpH3EY+tl0XSsGGJ6Et/cyMnw2uFsyo4ORqxlcdpNT4VKn0gOPhFZEQCv1Co8Ew+1ZXHVyzN60cPXuUy9kZVfvIY/0RKm+EJPBEFMt2r+qqLGs8C1m/Uc=
+  - secure: N6kGydjly1fXbc2AXGXaMYHoiALh405AL7wv6RQS7C+4i8Ul0cRVF+fP7FVKoq9R99wUivwzwwT+vhEKRska78+4Cd3eFo33spzZg7aEqFsG78+70sarGwQmxQH8bSvsrfIZlOq/ea1Ug33dgJT7/1asuofH96p8aAQCyn2+uvhjddkK4pNlY6eYLjfjKfXml6cDh6N9qpDR9jrBJKt96G4ASTROAvy/cWGEzISoTlO8I/Z5qeTSMZn0lfEt/dE1Vetjpz5p4x5romJ7JfWCuRyiljlVKPwzQDJ0bLcOLhoL284rw2BFIVyyRkbkY9fVlZVEdN+OovBmrqcwFaDORPh42Se9sl6feTDIXRJCJdGoVn/zDrcLH3C2R4nwgXcSpM7I2R1Kil1hsPXDQkUQ5Mje5I2AN0OEcnucwGxBkEXl7iGftLr15mXhD7pvL49l7foQ0RGpBQjFGac9FoWXbpXQKiln4bi5NFwqS/91ok84P3RuewuVTDFafm6zST1GxyJ2bG30jdP/KC/EsgfzmW4P1REYbBVCl26bGvJ+egsMDyq6qllC2t9NAlgS6K3rqGP2/GHLKNZcfT6FIxvsFGnOVoLDYGIuh7o/1cvGvMOHTCB9/nd27NQSd9TfIGX5Piv35oN0+iQBbNM+61wG2nkAlkJtSHzZMLMMn1QlxWk=
   matrix:
-    - API=29 ABI=x86_64
+  - API=29 ABI=x86_64
 
 before_install:
   # This section may run on all platforms, and may run for unit tests or for coverage finalization
@@ -41,24 +41,25 @@ before_install:
   - wget -q "${ANDROID_TOOLS_URL}" -O android-sdk-tools.zip
   - unzip -q android-sdk-tools.zip -d ${ANDROID_HOME}
   - rm android-sdk-tools.zip
-  - mkdir ~/.android # avoid harmless sdkmanager warning
-  - echo 'count=0' > ~/.android/repositories.cfg # avoid harmless sdkmanager warning
-  - yes | sdkmanager --licenses >/dev/null # accept all sdkmanager warnings
+  - mkdir ~/.android
+  - echo 'count=0' > ~/.android/repositories.cfg
+  - yes | sdkmanager --licenses >/dev/null
   - echo y | sdkmanager --no_https "platform-tools" >/dev/null
-  - echo y | sdkmanager --no_https "tools" >/dev/null # A second time per Travis docs, gets latest versions
-  - echo y | sdkmanager --no_https "build-tools;$BUILD_TOOLS" >/dev/null # Implicit gradle dependency - gradle drives changes
-  - echo y | sdkmanager --no_https "platforms;android-$COMPILE_SDK_VERSION" >/dev/null # We need the API of the current compileSdkVersion from gradle.properties
+  - echo y | sdkmanager --no_https "tools" >/dev/null
+  - echo y | sdkmanager --no_https "build-tools;$BUILD_TOOLS" >/dev/null
+  - echo y | sdkmanager --no_https "platforms;android-$COMPILE_SDK_VERSION" >/dev/null
 
 install:
   # In our setup, install only runs on matrix entries we want full emulator tests on
   # That only happens currently on linux, so this section can assume linux + emulator is desired
   # Download required emulator tools
-  - echo y | sdkmanager --no_https "platforms;android-$API" >/dev/null # We need the API of the emulator we will run
+  - echo y | sdkmanager --no_https "platforms;android-$API" >/dev/null
   - JDK="${TARGET_JDK}"
   - source ~/.install-jdk-travis.sh
 
 script:
-  - if [ "$API" != "NONE" ]; then ./gradlew check test jacocoTestReport -x lint --stacktrace; fi
+  - if [ "$API" != "NONE" ]; then ./gradlew check test jacocoTestReport -x lint --stacktrace;
+    fi
 
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -68,7 +69,7 @@ before_cache:
 deploy:
   provider: script
   script:
-  - openssl aes-256-cbc -K $encrypted_fa6e05112033_key -iv $encrypted_fa6e05112033_iv
+  - openssl aes-256-cbc -K $encrypted_96a824601a6d_key -iv $encrypted_96a824601a6d_iv
     -in .travis.gpg.enc -out .travis.gpg -d && ./gradlew publish -PsonatypeUsername=${SONATYPE_USERNAME}
     -PsonatypePassword=${SONATYPE_PASSWORD} -Psigning.keyId=${GPG_KEY_ID} -Psigning.password=${GPG_KEY_PASSPHRASE}
     -Psigning.secretKeyRingFile=../.travis.gpg
@@ -77,8 +78,8 @@ deploy:
 
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
