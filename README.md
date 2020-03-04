@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/googlemaps/android-maps-kts.svg?branch=master)](https://travis-ci.org/googlemaps/android-maps-ktx)
+[![Build Status](https://travis-ci.org/googlemaps/android-maps-ktx.svg?branch=master)](https://travis-ci.org/googlemaps/android-maps-ktx)
 [![Discord](https://img.shields.io/discord/676948200904589322)](https://discord.gg/hYsWbmk)
 ![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)
 
