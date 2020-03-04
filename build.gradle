@@ -106,6 +106,9 @@ subprojects { project ->
                 version project.version
 
                 pom {
+                    name = project.name
+                    description ="Kotlin extensions (KTX) for Google Maps SDK"
+                    url = "https://github.com/googlemaps/android-maps-ktx"
                     scm {
                         connection = 'scm:git@github.com:googlemaps/android-maps-ktx.git'
                         developerConnection = 'scm:git@github.com:googlemaps/android-maps-ktx.git'
