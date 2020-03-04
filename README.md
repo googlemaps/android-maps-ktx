@@ -90,8 +90,8 @@ You can also reach us on our [Discord channel].
 For more information, check out the detailed guide on the
 [Google Developers site][devsite-guide]. 
 
-[file an issue]: https://github.com/googlemaps/android-maps-utils-ktx/issues/new/choose
-[pull request]: https://github.com/googlemaps/android-maps-utils-ktx/compare
+[file an issue]: https://github.com/googlemaps/android-maps-ktx/issues/new/choose
+[pull request]: https://github.com/googlemaps/android-maps-ktx/compare
 [code of conduct]: CODE_OF_CONDUCT.md
 [Discord channel]: https://discord.gg/hYsWbmk
 [devsite-guide]: https://developers.google.com/maps/documentation/android-api/utility/
