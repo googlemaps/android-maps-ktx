@@ -78,3 +78,13 @@ jacoco {
 tasks.withType(Test) {
     jacoco.includeNoLocationClasses = true
 }
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.source
+    archiveClassifier = "sources"
+}
+
+task dokkaJar(type: Jar, dependsOn: dokka) {
+    from dokka.outputDirectory
+    archiveClassifier = "javadoc"
+}

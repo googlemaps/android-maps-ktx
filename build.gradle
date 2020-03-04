@@ -134,6 +134,8 @@ subprojects { project ->
 
                 afterEvaluate {
                     artifact "$buildDir/outputs/aar/$project.name-release.aar"
+                    artifact dokkaJar
+                    artifact sourcesJar
                 }
             }
         }
