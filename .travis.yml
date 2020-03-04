@@ -70,7 +70,7 @@ deploy:
   provider: script
   script:
   - openssl aes-256-cbc -K $encrypted_96a824601a6d_key -iv $encrypted_96a824601a6d_iv
-    -in .travis.gpg.enc -out .travis.gpg -d && ./gradlew publish -PsonatypeUsername=${SONATYPE_USERNAME}
+    -in .travis.gpg.enc -out .travis.gpg -d && ./gradlew dokka publish -PsonatypeUsername=${SONATYPE_USERNAME}
     -PsonatypePassword=${SONATYPE_PASSWORD} -Psigning.keyId=${GPG_KEY_ID} -Psigning.password=${GPG_KEY_PASSPHRASE}
     -Psigning.secretKeyRingFile=../.travis.gpg
   on:
