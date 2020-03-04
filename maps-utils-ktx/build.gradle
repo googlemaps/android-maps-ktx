@@ -45,7 +45,6 @@ android {
 dependencies {
     api deps.kotlin
     implementation deps.androidMapsUtils
-    implementation deps.androidx.appcompat
     implementation deps.playServicesMaps
     implementation deps.kotlinxCoroutines
 
