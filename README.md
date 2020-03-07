@@ -78,6 +78,8 @@ val point = Point(1.0, 2.0)
 val (x, y) = point
 ```
 
+You can learn more by reading the [Javadoc].
+
 ## Support
 
 Encounter an issue while using this library?
@@ -96,3 +98,4 @@ For more information, check out the detailed guide on the
 [Discord channel]: https://discord.gg/hYsWbmk
 [devsite-guide]: https://developers.google.com/maps/documentation/android-api/utility/
 [amu]: https://github.com/googlemaps/android-maps-utils
+[Javadoc]: https://googlemaps.github.io/android-maps-ktx/maps-utils-ktx/
