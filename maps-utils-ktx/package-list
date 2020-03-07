@@ -1,0 +1,30 @@
+$dokka.format:html
+$dokka.linkExtension:html
+$dokka.location:com.google.maps.android.ktx$area#com.google.android.gms.maps.model.Polygoncom.google.maps.android.ktx/com.google.android.gms.maps.model.-polygon/area.html
+$dokka.location:com.google.maps.android.ktx$computeSphericalOffsetOrigin(com.google.android.gms.maps.model.LatLng, kotlin.Double, kotlin.Double)com.google.maps.android.ktx/com.google.android.gms.maps.model.-lat-lng/compute-spherical-offset-origin.html
+$dokka.location:com.google.maps.android.ktx$contains(com.google.android.gms.maps.model.Polygon, com.google.android.gms.maps.model.LatLng)com.google.maps.android.ktx/com.google.android.gms.maps.model.-polygon/contains.html
+$dokka.location:com.google.maps.android.ktx$contains(com.google.android.gms.maps.model.Polyline, com.google.android.gms.maps.model.LatLng, kotlin.Double)com.google.maps.android.ktx/com.google.android.gms.maps.model.-polyline/contains.html
+$dokka.location:com.google.maps.android.ktx$isClosedPolygon(kotlin.collections.List((com.google.android.gms.maps.model.LatLng)))com.google.maps.android.ktx/kotlin.collections.-list/is-closed-polygon.html
+$dokka.location:com.google.maps.android.ktx$isOnEdge(com.google.android.gms.maps.model.Polygon, com.google.android.gms.maps.model.LatLng, kotlin.Double)com.google.maps.android.ktx/com.google.android.gms.maps.model.-polygon/is-on-edge.html
+$dokka.location:com.google.maps.android.ktx$latLngListEncode(kotlin.collections.List((com.google.android.gms.maps.model.LatLng)))com.google.maps.android.ktx/kotlin.collections.-list/lat-lng-list-encode.html
+$dokka.location:com.google.maps.android.ktx$signedArea#com.google.android.gms.maps.model.Polygoncom.google.maps.android.ktx/com.google.android.gms.maps.model.-polygon/signed-area.html
+$dokka.location:com.google.maps.android.ktx$simplify(kotlin.collections.List((com.google.android.gms.maps.model.LatLng)), kotlin.Double)com.google.maps.android.ktx/kotlin.collections.-list/simplify.html
+$dokka.location:com.google.maps.android.ktx$sphericalDistance(com.google.android.gms.maps.model.LatLng, com.google.android.gms.maps.model.LatLng)com.google.maps.android.ktx/com.google.android.gms.maps.model.-lat-lng/spherical-distance.html
+$dokka.location:com.google.maps.android.ktx$sphericalHeading(com.google.android.gms.maps.model.LatLng, com.google.android.gms.maps.model.LatLng)com.google.maps.android.ktx/com.google.android.gms.maps.model.-lat-lng/spherical-heading.html
+$dokka.location:com.google.maps.android.ktx$sphericalPathLength#com.google.android.gms.maps.model.Polylinecom.google.maps.android.ktx/com.google.android.gms.maps.model.-polyline/spherical-path-length.html
+$dokka.location:com.google.maps.android.ktx$sphericalPathLength(kotlin.collections.List((com.google.android.gms.maps.model.LatLng)))com.google.maps.android.ktx/kotlin.collections.-list/spherical-path-length.html
+$dokka.location:com.google.maps.android.ktx$sphericalPolygonArea(kotlin.collections.List((com.google.android.gms.maps.model.LatLng)))com.google.maps.android.ktx/kotlin.collections.-list/spherical-polygon-area.html
+$dokka.location:com.google.maps.android.ktx$sphericalPolygonSignedArea(kotlin.collections.List((com.google.android.gms.maps.model.LatLng)))com.google.maps.android.ktx/kotlin.collections.-list/spherical-polygon-signed-area.html
+$dokka.location:com.google.maps.android.ktx$toLatLngList(kotlin.String)com.google.maps.android.ktx/kotlin.-string/to-lat-lng-list.html
+$dokka.location:com.google.maps.android.ktx$withSphericalLinearInterpolation(com.google.android.gms.maps.model.LatLng, com.google.android.gms.maps.model.LatLng, kotlin.Double)com.google.maps.android.ktx/com.google.android.gms.maps.model.-lat-lng/with-spherical-linear-interpolation.html
+$dokka.location:com.google.maps.android.ktx$withSphericalOffset(com.google.android.gms.maps.model.LatLng, kotlin.Double, kotlin.Double)com.google.maps.android.ktx/com.google.android.gms.maps.model.-lat-lng/with-spherical-offset.html
+$dokka.location:com.google.maps.android.ktx.core$awaitMap(com.google.android.gms.maps.SupportMapFragment)com.google.maps.android.ktx.core/com.google.android.gms.maps.-support-map-fragment/await-map.html
+$dokka.location:com.google.maps.android.ktx.geometry$component1(com.google.maps.android.geometry.Point)com.google.maps.android.ktx.geometry/com.google.maps.android.geometry.-point/component1.html
+$dokka.location:com.google.maps.android.ktx.geometry$component2(com.google.maps.android.geometry.Point)com.google.maps.android.ktx.geometry/com.google.maps.android.geometry.-point/component2.html
+$dokka.location:com.google.maps.android.ktx.heatmaps$toWeightedLatLng(com.google.android.gms.maps.model.LatLng, kotlin.Double)com.google.maps.android.ktx.heatmaps/com.google.android.gms.maps.model.-lat-lng/to-weighted-lat-lng.html
+com.google.maps.android.ktx
+com.google.maps.android.ktx.core
+com.google.maps.android.ktx.geojson
+com.google.maps.android.ktx.geometry
+com.google.maps.android.ktx.heatmaps
+com.google.maps.android.ktx.kml
