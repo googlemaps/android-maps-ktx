@@ -1,7 +1,15 @@
 Change Log
 ==========
 
-## [Unreleased](https://github.com/googlemaps/android-maps-ktx/compare/0.1.1...HEAD)
+## [Unreleased](https://github.com/googlemaps/android-maps-ktx/compare/0.1.2...HEAD)
+
+## [0.1.2](https://github.com/googlemaps/android-maps-ktx/compare/0.1.1...0.1.2)
+
+>  March 16, 2020
+
+### Bug Fixes
+
+* Add dependencies of maps-utils-ktx in pom. ([#14](https://github.com/googlemaps/android-maps-ktx/issues/14)) ([d2f14e4](https://github.com/googlemaps/android-maps-ktx/commit/d2f14e44e62ddca7420f715903a3b096df2ecb0a))
 
 ## [0.1.1](https://github.com/googlemaps/android-maps-ktx/compare/0.1...0.1.1)
 
