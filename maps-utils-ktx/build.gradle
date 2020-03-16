@@ -40,6 +40,9 @@ android {
         }
     }
 
+    libraryVariants.all {
+        it.generateBuildConfig.enabled = false
+    }
 }
 
 dependencies {
