@@ -57,7 +57,7 @@ inline fun List<LatLng>.isOnEdge(
 ): Boolean = PolyUtil.isLocationOnEdge(latLng, this, geodesic, tolerance)
 
 /**
- * Computes whether the [latLng] lies inside [this].
+ * Computes whether the [latLng] lies inside this.
  *
  * The polygon is always considered closed, regardless of whether the last point equals
  * the first or not.
