@@ -23,8 +23,8 @@ import com.google.maps.android.PolyUtil
 import com.google.maps.android.SphericalUtil
 
 /**
- * Computes where the given [latLng] is contained on or near this Polyline within a specified
- * tolerance in meters.
+ * Computes whether the given [latLng] lies on or is near this polyline within [tolerance] (in
+ * meters).
  *
  * @param latLng the LatLng to inspect
  * @param geodesic if this polyline is geodesic or not
@@ -40,8 +40,8 @@ inline fun List<LatLng>.isLocationOnPath(
 ): Boolean = PolyUtil.isLocationOnPath(latLng, this, geodesic, tolerance)
 
 /**
- * Checks whether or not [latLng] lies on or is near the edge of this polygon within a tolerance
- * (in meters) of [tolerance]. The default value is [PolyUtil.DEFAULT_TOLERANCE].
+ * Checks whether or not [latLng] lies on or is near the edge of this polygon within the [tolerance]
+ * (in meters). The default value is [PolyUtil.DEFAULT_TOLERANCE].
  *
  * @param latLng the LatLng to inspect
  * @param geodesic if this polygon is geodesic or not
@@ -57,7 +57,7 @@ inline fun List<LatLng>.isOnEdge(
 ): Boolean = PolyUtil.isLocationOnEdge(latLng, this, geodesic, tolerance)
 
 /**
- * Computes whether the given point lies inside the specified polygon.
+ * Computes whether the [latLng] lies inside [this].
  *
  * The polygon is always considered closed, regardless of whether the last point equals
  * the first or not.
