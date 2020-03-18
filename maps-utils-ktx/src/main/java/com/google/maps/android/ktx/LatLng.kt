@@ -15,11 +15,64 @@
  *
  */
 @file:Suppress("NOTHING_TO_INLINE")
+
 package com.google.maps.android.ktx
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.PolyUtil
 import com.google.maps.android.SphericalUtil
+
+/**
+ * Computes where the given [latLng] is contained on or near this Polyline within a specified
+ * tolerance in meters.
+ *
+ * @param latLng the LatLng to inspect
+ * @param geodesic if this polyline is geodesic or not
+ * @param tolerance the tolerance in meters
+ * @return true if [latLng] is on this path, otherwise, false
+ *
+ * @see PolyUtil.isLocationOnPath
+ */
+inline fun List<LatLng>.isLocationOnPath(
+    latLng: LatLng,
+    geodesic: Boolean,
+    tolerance: Double = 0.1
+): Boolean = PolyUtil.isLocationOnPath(latLng, this, geodesic, tolerance)
+
+/**
+ * Checks whether or not [latLng] lies on or is near the edge of this polygon within a tolerance
+ * (in meters) of [tolerance]. The default value is [PolyUtil.DEFAULT_TOLERANCE].
+ *
+ * @param latLng the LatLng to inspect
+ * @param geodesic if this polygon is geodesic or not
+ * @param tolerance the tolerance in meters
+ * @return true if [latLng] lies on or is near the edge of this Polygon, otherwise, false
+ *
+ * @see PolyUtil.isLocationOnEdge
+ */
+inline fun List<LatLng>.isOnEdge(
+    latLng: LatLng,
+    geodesic: Boolean,
+    tolerance: Double = 0.1
+): Boolean = PolyUtil.isLocationOnEdge(latLng, this, geodesic, tolerance)
+
+/**
+ * Computes whether the given point lies inside the specified polygon.
+ *
+ * The polygon is always considered closed, regardless of whether the last point equals
+ * the first or not.
+ *
+ * Inside is defined as not containing the South Pole -- the South Pole is always outside.
+ * The polygon is formed of great circle segments if [geodesic] is true, and of rhumb
+ * (loxodromic) segments otherwise.
+ *
+ * @param latLng the LatLng to check if it is contained within this polygon
+ * @param geodesic if this Polygon is geodesic or not
+ *
+ * @see PolyUtil.containsLocation
+ */
+inline fun List<LatLng>.containsLocation(latLng: LatLng, geodesic: Boolean): Boolean =
+    PolyUtil.containsLocation(latLng, this, geodesic)
 
 /**
  * Simplifies this list of LatLng using the Douglas-Peucker decimation. Increasing the value of
@@ -30,7 +83,8 @@ import com.google.maps.android.SphericalUtil
  *
  * @see PolyUtil.simplify
  */
-inline fun List<LatLng>.simplify(tolerance: Double): List<LatLng> = PolyUtil.simplify(this, tolerance)
+inline fun List<LatLng>.simplify(tolerance: Double): List<LatLng> =
+    PolyUtil.simplify(this, tolerance)
 
 /**
  * Decodes this encoded string into a [LatLng] list.
@@ -48,7 +102,6 @@ inline fun String.toLatLngList(): List<LatLng> = PolyUtil.decode(this)
  * @return the encoded String
  *
  * @see [Polyline Algorithm Format](https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
- *
  */
 inline fun List<LatLng>.latLngListEncode(): String = PolyUtil.encode(this)
 
@@ -74,7 +127,6 @@ inline fun List<LatLng>.sphericalPathLength(): Double = SphericalUtil.computeLen
  * @return the area in square meters
  */
 inline fun List<LatLng>.sphericalPolygonArea(): Double = SphericalUtil.computeArea(this)
-
 
 /**
  * Computes the signed area under a closed path on Earth. The sign of the area may be used to
