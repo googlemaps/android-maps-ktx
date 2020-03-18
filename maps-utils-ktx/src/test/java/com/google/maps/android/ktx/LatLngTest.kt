@@ -144,4 +144,40 @@ class LatLngTest {
             1e-6
         )
     }
+
+    @Test
+    fun `contains location evaluates to true`() {
+        val latLngList = listOf(LatLng(0.0, 0.0), LatLng(0.0, 90.0), LatLng(-90.0, 45.0))
+        assertTrue(latLngList.containsLocation(LatLng(30.0, 45.0), geodesic = true))
+    }
+
+    @Test
+    fun `contains location evaluates to false`() {
+        val latLngList = listOf(LatLng(0.0, 0.0), LatLng(0.0, 90.0), LatLng(-90.0, 45.0))
+        assertFalse(latLngList.containsLocation(LatLng(-30.0, 45.0), geodesic = true))
+    }
+
+    @Test
+    fun `isOnEdge location evaluates to true`() {
+        val latLngList = listOf(LatLng(0.0, 0.0), LatLng(0.0, 90.0), LatLng(-90.0, 45.0))
+        assertTrue(latLngList.isOnEdge(LatLng(0.0, 45.0), geodesic = true))
+    }
+
+    @Test
+    fun `isOnEdge location evaluates to false`() {
+        val latLngList = listOf(LatLng(0.0, 0.0), LatLng(0.0, 90.0), LatLng(-90.0, 45.0))
+        assertFalse(latLngList.isOnEdge(LatLng(0.0, -45.0), geodesic = true))
+    }
+
+    @Test
+    fun `isLocationOnPath location evaluates to true`() {
+        val latLngList = listOf(LatLng(0.0, 0.0), LatLng(0.0, 90.0), LatLng(0.0, 180.0))
+        assertTrue(latLngList.isLocationOnPath(LatLng(0.0, 45.0), geodesic = true))
+    }
+
+    @Test
+    fun `isLocationOnPath location evaluates to false`() {
+        val latLngList = listOf(LatLng(0.0, 0.0), LatLng(0.0, 90.0), LatLng(0.0, 180.0))
+        assertFalse(latLngList.isLocationOnPath(LatLng(0.0, -45.0), geodesic = true))
+    }
 }
