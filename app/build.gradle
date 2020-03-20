@@ -23,12 +23,16 @@ android {
     buildToolsVersion versions.android.buildTools
 
     defaultConfig {
-        applicationId "com.google.android_maps_utils_ktx"
+        applicationId "com.google.maps.android.ktx.demo"
         minSdkVersion versions.android.minSdk
         targetSdkVersion versions.android.targetSdk
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // To add your Maps API key to this project:
+        // 1. Create a file app/gradle.properties
+        // 2. Add the below line, where YOUR_API_KEY is your API key:
+        //        MAPS_API_KEY="YOUR_API_KEY"
+        resValue "string", "maps_api_key", (project.findProperty("MAPS_API_KEY") ?: "")
     }
 
     buildTypes {
@@ -44,9 +48,5 @@ dependencies {
     implementation deps.kotlin
     implementation deps.androidx.appcompat
     implementation deps.androidx.coreKtx
-
-    // Tests
-    testImplementation deps.junit
-    androidTestImplementation deps.androidx.junit
-    androidTestImplementation deps.androidx.espresso
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 }
