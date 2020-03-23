@@ -1,0 +1,37 @@
+# A workflow that updates the gh-pages branch whenever a new release is made
+name: Update gh-pages
+
+on: [tags, repository_dispatch]
+
+jobs:
+    gh-page-sync:
+        runs-on: ubuntu-latest
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Checkout android-maps-ktx
+      uses: actions/checkout@v2
+
+    # Run dokka and create tar
+    - name: Generate documentation
+      run: |
+        ./gradlew dokka
+
+        echo "Creating tar for generated docs"
+        cd $GITHUB_WORKSPACE/maps-utils-ktx/build/documentation && tar cvf ~/docs.tar .
+
+        echo "Unpacking tar into gh-pages branch"
+        cd $GITHUB_WORKSPACE && git checkout gh-pages && tar xvf ~/docs.tar
+
+    # Commit changes and create a PR
+    - name: PR Changes
+      uses: peter-evans/create-pull-request@v2
+      with:
+        token: ${{ secrets.ACTION_GITHUB_TOKEN }}
+        commit-message: 'docs: Update docs'
+        committer: googlemaps-bot <googlemaps-bot@google.com>
+        author: googlemaps-bot <googlemaps-bot@google.com>
+        title: 'docs: Update docs'
+        body: |
+            Updated GitHub pages with latest from `./gradlew dokka`.
+        branch: googlemaps-bot/update_gh_pages
