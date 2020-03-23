@@ -1,7 +1,10 @@
 # A workflow that updates the gh-pages branch whenever a new release is made
 name: Update gh-pages
 
-on: [tags, repository_dispatch]
+on:
+    push:
+        tags: *
+    repository_dispatch:
 
 jobs:
     gh-page-sync:
