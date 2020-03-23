@@ -25,6 +25,7 @@ jobs:
         cd $GITHUB_WORKSPACE/maps-utils-ktx/build/documentation && tar cvf ~/docs.tar .
 
         echo "Unpacking tar into gh-pages branch"
+        git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
         cd $GITHUB_WORKSPACE && git checkout gh-pages && tar xvf ~/docs.tar
 
     # Commit changes and create a PR
