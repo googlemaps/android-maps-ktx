@@ -15,24 +15,31 @@
  *
  */
 
-package com.google.maps.android.ktx
+package com.google.maps.android.ktx.model
 
-import android.graphics.Color
 import com.google.android.gms.maps.model.LatLng
-import org.junit.Assert.assertEquals
+import org.junit.Assert.*
 import org.junit.Test
 
-class PolygonOptionsTest {
+class MarkerOptionsTest {
+
     @Test
     fun testBuilder() {
-        val polygonOptions =
-            com.google.maps.android.ktx.buildPolygonOptions {
-                strokeWidth(1.0f)
-                strokeColor(Color.BLACK)
-                add(LatLng(0.0, 0.0))
-            }
-        assertEquals(1.0f, polygonOptions.strokeWidth)
-        assertEquals(Color.BLACK, polygonOptions.strokeColor)
-        assertEquals(listOf(LatLng(0.0, 0.0)), polygonOptions.points)
+        val markerOptions = buildMarkerOptions {
+            position(LatLng(1.0, 2.0))
+            alpha(0.5f)
+            draggable(false)
+            flat(true)
+            title("Test")
+            snippet("Snippet")
+            visible(true)
+        }
+        assertEquals(LatLng(1.0, 2.0), markerOptions.position)
+        assertEquals(0.5f, markerOptions.alpha, 1e-6f)
+        assertFalse(markerOptions.isDraggable)
+        assertTrue(markerOptions.isFlat)
+        assertEquals("Test", markerOptions.title)
+        assertEquals("Snippet", markerOptions.snippet)
+        assertTrue(markerOptions.isVisible)
     }
 }

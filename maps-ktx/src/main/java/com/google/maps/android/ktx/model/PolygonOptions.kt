@@ -15,14 +15,17 @@
  *
  */
 
-package com.google.maps.android.ktx
+package com.google.maps.android.ktx.model
 
 import com.google.android.gms.maps.model.PolygonOptions
 
 /**
  * Builds a new [PolygonOptions] using the provided [optionsActions].
- * CORE
+ *
+ * @return the [PolygonOptions]
  */
 inline fun buildPolygonOptions(optionsActions: PolygonOptions.() -> Unit): PolygonOptions =
-    PolygonOptions().apply(optionsActions)
+    PolygonOptions().apply(
+        optionsActions
+    )
 

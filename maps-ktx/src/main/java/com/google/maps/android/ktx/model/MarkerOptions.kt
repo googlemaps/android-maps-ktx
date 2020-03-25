@@ -15,20 +15,16 @@
  *
  */
 
-package com.google.maps.android.ktx
+package com.google.maps.android.ktx.model
 
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.SupportMapFragment
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
+import com.google.android.gms.maps.model.MarkerOptions
 
 /**
- * A suspending functioning that provides an instance of a [GoogleMap] from this
- * [SupportMapFragment].
+ * Builds a new [MarkerOptions] using the provided [optionsActions].
+ *
+ * @return the constructed [MarkerOptions]
  */
-suspend inline fun SupportMapFragment.awaitMap(): GoogleMap =
-    suspendCoroutine { continuation ->
-        getMapAsync {
-            continuation.resume(it)
-        }
-    }
+inline fun buildMarkerOptions(optionsActions: MarkerOptions.() -> Unit): MarkerOptions =
+    MarkerOptions().apply(
+        optionsActions
+    )
