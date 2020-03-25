@@ -15,7 +15,7 @@
  *
  */
 
-package com.google.maps.android.ktx.core
+package com.google.maps.android.ktx.utils.core
 
 import com.google.android.gms.maps.model.PolygonOptions
 

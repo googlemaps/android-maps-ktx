@@ -16,7 +16,7 @@
  */
 
 @file:Suppress("NOTHING_TO_INLINE")
-package com.google.maps.android.ktx.geojson
+package com.google.maps.android.ktx.utils.geojson
 
 import com.google.android.gms.maps.GoogleMap
 import com.google.maps.android.collections.GroundOverlayManager

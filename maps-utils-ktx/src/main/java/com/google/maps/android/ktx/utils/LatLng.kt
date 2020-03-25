@@ -16,7 +16,7 @@
  */
 @file:Suppress("NOTHING_TO_INLINE")
 
-package com.google.maps.android.ktx
+package com.google.maps.android.ktx.utils
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.PolyUtil

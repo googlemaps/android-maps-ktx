@@ -15,19 +15,28 @@
  *
  */
 
-package com.google.maps.android.ktx.core
+@file:Suppress("NOTHING_TO_INLINE")
+package com.google.maps.android.ktx.utils.geometry
 
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.SupportMapFragment
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
+import com.google.maps.android.geometry.Point
 
 /**
- * CORE
+ * Returns the x value of this Point.
+ *
+ * e.g.
+ *
+ * ```
+ * val (x, _) = point
+ * ```
  */
-suspend inline fun SupportMapFragment.awaitMap(): GoogleMap =
-    suspendCoroutine { continuation ->
-        getMapAsync {
-            continuation.resume(it)
-        }
-    }
+inline operator fun Point.component1() = this.x
+
+/**
+ * Returns the y value of this Point.
+ *
+ * e.g.
+ *
+ * ```
+ * val (_, y) = point
+ */
+inline operator fun Point.component2() = this.y

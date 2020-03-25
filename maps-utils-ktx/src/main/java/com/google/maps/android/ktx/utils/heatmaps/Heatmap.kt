@@ -16,7 +16,7 @@
  */
 
 @file:Suppress("NOTHING_TO_INLINE")
-package com.google.maps.android.ktx.heatmaps
+package com.google.maps.android.ktx.utils.heatmaps
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.heatmaps.Gradient

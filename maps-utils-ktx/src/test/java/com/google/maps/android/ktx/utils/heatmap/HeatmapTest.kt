@@ -15,11 +15,11 @@
  *
  */
 
-package com.google.maps.android.ktx.heatmap
+package com.google.maps.android.ktx.utils.heatmap
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.heatmaps.WeightedLatLng
-import com.google.maps.android.ktx.heatmaps.toWeightedLatLng
+import com.google.maps.android.ktx.utils.heatmaps.toWeightedLatLng
 import org.junit.Assert.*
 import org.junit.Test
 

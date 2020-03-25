@@ -15,28 +15,31 @@
  *
  */
 
-@file:Suppress("NOTHING_TO_INLINE")
-package com.google.maps.android.ktx.geometry
+package com.google.maps.android.ktx.utils.geometry
 
 import com.google.maps.android.geometry.Point
+import org.junit.Assert.assertEquals
+import org.junit.Before
+import org.junit.Test
 
-/**
- * Returns the x value of this Point.
- *
- * e.g.
- *
- * ```
- * val (x, _) = point
- * ```
- */
-inline operator fun Point.component1() = this.x
+class PointTest {
 
-/**
- * Returns the y value of this Point.
- *
- * e.g.
- *
- * ```
- * val (_, y) = point
- */
-inline operator fun Point.component2() = this.y
+    private lateinit var point: Point
+
+    @Before
+    fun setUp() {
+        point = Point(1.0, 2.0)
+    }
+
+    @Test
+    fun `destructure x`() {
+        val (x, _) = point
+        assertEquals(1.0, x, 1e-6)
+    }
+
+    @Test
+    fun `destructure y`() {
+        val (_, y) = point
+        assertEquals(2.0, y, 1e-6)
+    }
+}

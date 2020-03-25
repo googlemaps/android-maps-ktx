@@ -15,31 +15,19 @@
  *
  */
 
-package com.google.maps.android.ktx.geometry
+package com.google.maps.android.ktx.utils.core
 
-import com.google.maps.android.geometry.Point
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Test
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
-class PointTest {
-
-    private lateinit var point: Point
-
-    @Before
-    fun setUp() {
-        point = Point(1.0, 2.0)
+/**
+ * CORE
+ */
+suspend inline fun SupportMapFragment.awaitMap(): GoogleMap =
+    suspendCoroutine { continuation ->
+        getMapAsync {
+            continuation.resume(it)
+        }
     }
-
-    @Test
-    fun `destructure x`() {
-        val (x, _) = point
-        assertEquals(1.0, x, 1e-6)
-    }
-
-    @Test
-    fun `destructure y`() {
-        val (_, y) = point
-        assertEquals(2.0, y, 1e-6)
-    }
-}
