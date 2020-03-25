@@ -15,19 +15,14 @@
  *
  */
 
-package com.google.maps.android.ktx.utils.core
+package com.google.maps.android.ktx
 
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.SupportMapFragment
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
+import com.google.android.gms.maps.model.PolygonOptions
 
 /**
+ * Builds a new [PolygonOptions] using the provided [optionsActions].
  * CORE
  */
-suspend inline fun SupportMapFragment.awaitMap(): GoogleMap =
-    suspendCoroutine { continuation ->
-        getMapAsync {
-            continuation.resume(it)
-        }
-    }
+inline fun buildPolygonOptions(optionsActions: PolygonOptions.() -> Unit): PolygonOptions =
+    PolygonOptions().apply(optionsActions)
+

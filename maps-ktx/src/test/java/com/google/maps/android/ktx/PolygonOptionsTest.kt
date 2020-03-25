@@ -15,7 +15,7 @@
  *
  */
 
-package com.google.maps.android.ktx.utils.core
+package com.google.maps.android.ktx
 
 import android.graphics.Color
 import com.google.android.gms.maps.model.LatLng
@@ -26,7 +26,7 @@ class PolygonOptionsTest {
     @Test
     fun testBuilder() {
         val polygonOptions =
-            buildPolygonOptions {
+            com.google.maps.android.ktx.buildPolygonOptions {
                 strokeWidth(1.0f)
                 strokeColor(Color.BLACK)
                 add(LatLng(0.0, 0.0))
