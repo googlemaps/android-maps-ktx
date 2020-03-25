@@ -32,7 +32,7 @@ jobs:
     - name: PR Changes
       uses: peter-evans/create-pull-request@v2
       with:
-        token: ${{ secrets.ACTION_GITHUB_TOKEN }}
+        token: ${{ secrets.SYNCED_GITHUB_TOKEN_REPO }}
         commit-message: 'docs: Update docs'
         committer: googlemaps-bot <googlemaps-bot@google.com>
         author: googlemaps-bot <googlemaps-bot@google.com>
