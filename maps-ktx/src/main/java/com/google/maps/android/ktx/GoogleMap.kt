@@ -18,13 +18,26 @@
 package com.google.maps.android.ktx
 
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.Circle
+import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.Polygon
 import com.google.android.gms.maps.model.PolygonOptions
+import com.google.maps.android.ktx.model.buildCircleOptions
 import com.google.maps.android.ktx.model.buildMarkerOptions
 import com.google.maps.android.ktx.model.buildPolygonOptions
 
+/**
+ * Adds a [Circle] to this [GoogleMap] using the [CircleOptions] specified in the [optionsActions]
+ * lambda.
+ *
+ * @return the added [Circle]
+ */
+inline fun GoogleMap.addCircle(optionsActions: CircleOptions.() -> Unit): Circle =
+    this.addCircle(
+        buildCircleOptions(optionsActions)
+    )
 /**
  * Adds a [Marker] to this [GoogleMap] using the [MarkerOptions] specified in the [optionsActions]
  * lambda.

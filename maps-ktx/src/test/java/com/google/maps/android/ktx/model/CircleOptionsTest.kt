@@ -23,25 +23,27 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class MarkerOptionsTest {
+class CircleOptionsTest {
 
     @Test
     fun testBuilder() {
-        val markerOptions = buildMarkerOptions {
-            position(LatLng(1.0, 2.0))
-            alpha(0.5f)
-            draggable(false)
-            flat(true)
-            title("Test")
-            snippet("Snippet")
+        val circleOptions = buildCircleOptions {
+            center(LatLng(0.0, 0.0))
+            clickable(true)
+            fillColor(0)
+            radius(1.23)
+            strokeColor(1)
+            strokeWidth(2f)
             visible(true)
+            zIndex(1f)
         }
-        assertEquals(LatLng(1.0, 2.0), markerOptions.position)
-        assertEquals(0.5f, markerOptions.alpha, 1e-6f)
-        assertFalse(markerOptions.isDraggable)
-        assertTrue(markerOptions.isFlat)
-        assertEquals("Test", markerOptions.title)
-        assertEquals("Snippet", markerOptions.snippet)
-        assertTrue(markerOptions.isVisible)
+        assertEquals(LatLng(0.0, 0.0), circleOptions.center)
+        assertTrue(circleOptions.isClickable)
+        assertEquals(0, circleOptions.fillColor)
+        assertEquals(1.23, circleOptions.radius, 1e-6)
+        assertEquals(1, circleOptions.strokeColor)
+        assertEquals(2f, circleOptions.strokeWidth)
+        assertTrue(circleOptions.isVisible)
+        assertEquals(1f, circleOptions.zIndex, 1e-6f)
     }
 }
