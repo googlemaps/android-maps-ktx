@@ -18,6 +18,7 @@
 package com.google.maps.android.ktx
 
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMapOptions
 import com.google.android.gms.maps.model.Circle
 import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.GroundOverlay
@@ -36,6 +37,16 @@ import com.google.maps.android.ktx.model.buildMarkerOptions
 import com.google.maps.android.ktx.model.buildPolygonOptions
 import com.google.maps.android.ktx.model.buildPolylineOptions
 import com.google.maps.android.ktx.model.buildTileOverlayOptions
+
+/**
+ * Builds a new [GoogleMapOptions] using the provided [optionsActions].
+ *
+ * @return the constructed [GoogleMapOptions]
+ */
+inline fun buildGoogleMapOptions(optionsActions: GoogleMapOptions.() -> Unit): GoogleMapOptions =
+    GoogleMapOptions().apply(
+        optionsActions
+    )
 
 /**
  * Adds a [Circle] to this [GoogleMap] using the function literal with receiver [optionsActions].
