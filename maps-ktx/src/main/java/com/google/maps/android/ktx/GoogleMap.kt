@@ -20,6 +20,8 @@ package com.google.maps.android.ktx
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Circle
 import com.google.android.gms.maps.model.CircleOptions
+import com.google.android.gms.maps.model.GroundOverlay
+import com.google.android.gms.maps.model.GroundOverlayOptions
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.Polygon
@@ -27,13 +29,13 @@ import com.google.android.gms.maps.model.PolygonOptions
 import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.maps.android.ktx.model.buildCircleOptions
+import com.google.maps.android.ktx.model.buildGroundOverlayOptions
 import com.google.maps.android.ktx.model.buildMarkerOptions
 import com.google.maps.android.ktx.model.buildPolygonOptions
 import com.google.maps.android.ktx.model.buildPolylineOptions
 
 /**
- * Adds a [Circle] to this [GoogleMap] using the [CircleOptions] specified in the [optionsActions]
- * lambda.
+ * Adds a [Circle] to this [GoogleMap] using the function literal with receiver [optionsActions].
  *
  * @return the added [Circle]
  */
@@ -41,9 +43,22 @@ inline fun GoogleMap.addCircle(optionsActions: CircleOptions.() -> Unit): Circle
     this.addCircle(
         buildCircleOptions(optionsActions)
     )
+
 /**
- * Adds a [Marker] to this [GoogleMap] using the [MarkerOptions] specified in the [optionsActions]
- * lambda.
+ * Adds a [GroundOverlay] to this [GoogleMap] using the function literal with receiver
+ * [optionsActions].
+ *
+ * @return the added [Circle]
+ */
+inline fun GoogleMap.addGroundOverlay(
+    optionsActions: GroundOverlayOptions.() -> Unit
+): GroundOverlay =
+    this.addGroundOverlay(
+        buildGroundOverlayOptions(optionsActions)
+    )
+
+/**
+ * Adds a [Marker] to this [GoogleMap] using the function literal with receiver [optionsActions].
  *
  * @return the added [Marker]
  */
@@ -53,8 +68,7 @@ inline fun GoogleMap.addMarker(optionsActions: MarkerOptions.() -> Unit): Marker
     )
 
 /**
- * Adds a [Polygon] to this [GoogleMap] using the [PolygonOptions] specified in the [optionsActions]
- * lambda.
+ * Adds a [Polygon] to this [GoogleMap] using the function literal with receiver [optionsActions].
  *
  * @return the added [Polygon]
  */
@@ -64,8 +78,7 @@ inline fun GoogleMap.addPolygon(optionsActions: PolygonOptions.() -> Unit): Poly
     )
 
 /**
- * Adds a [Polyline] to this [GoogleMap] using the [PolylineOptions] specified in the
- * [optionsActions] lambda.
+ * Adds a [Polyline] to this [GoogleMap] using the function literal with receiver [optionsActions].
  *
  * @return the added [Polyline]
  */
