@@ -3,11 +3,11 @@
 [![Discord](https://img.shields.io/discord/676948200904589322)](https://discord.gg/hYsWbmk)
 ![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)
 
-Maps SDK for Android Utility KTX
-================================
+Maps Android KTX
+================
 
 ## Description
-This library contains a set of Kotlin extensions (KTX) for the [Maps SDK for Android Utility Library][amu] enabling you to write more concise, idiomatic Kotlin.
+This repository contains a set a of Kotlin extensions (KTX) for the [Maps SDK for Android Library][maps-sdk] and the [Utility][amu] libraries enabling you to write more concise, idiomatic Kotlin.
 
 ## Requirements
 * API level 15+
@@ -16,6 +16,11 @@ This library contains a set of Kotlin extensions (KTX) for the [Maps SDK for And
 
 ```groovy
 dependencies {
+
+    // KTX for the maps SDK library - Coming Soon
+    // implementation 'com.google.maps.android:maps-utils-ktx:<future-version>'
+
+    // KTX for the utility library
     implementation 'com.google.maps.android:maps-utils-ktx:0.2'
 }
 ```
@@ -93,10 +98,11 @@ You can also reach us on our [Discord channel].
 For more information, check out the detailed guide on the
 [Google Developers site][devsite-guide]. 
 
-[file an issue]: https://github.com/googlemaps/android-maps-ktx/issues/new/choose
-[pull request]: https://github.com/googlemaps/android-maps-ktx/compare
-[code of conduct]: CODE_OF_CONDUCT.md
 [Discord channel]: https://discord.gg/hYsWbmk
-[devsite-guide]: https://developers.google.com/maps/documentation/android-api/utility/
-[amu]: https://github.com/googlemaps/android-maps-utils
 [Javadoc]: https://googlemaps.github.io/android-maps-ktx/maps-utils-ktx/
+[amu]: https://github.com/googlemaps/android-maps-utils
+[code of conduct]: CODE_OF_CONDUCT.md
+[devsite-guide]: https://developers.google.com/maps/documentation/android-api/utility/
+[file an issue]: https://github.com/googlemaps/android-maps-ktx/issues/new/choose
+[maps-sdk]: https://developers.google.com/maps/documentation/android-sdk/intro
+[pull request]: https://github.com/googlemaps/android-maps-ktx/compare
