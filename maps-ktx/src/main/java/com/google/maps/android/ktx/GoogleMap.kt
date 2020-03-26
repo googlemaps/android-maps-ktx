@@ -28,11 +28,14 @@ import com.google.android.gms.maps.model.Polygon
 import com.google.android.gms.maps.model.PolygonOptions
 import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.maps.model.PolylineOptions
+import com.google.android.gms.maps.model.TileOverlay
+import com.google.android.gms.maps.model.TileOverlayOptions
 import com.google.maps.android.ktx.model.buildCircleOptions
 import com.google.maps.android.ktx.model.buildGroundOverlayOptions
 import com.google.maps.android.ktx.model.buildMarkerOptions
 import com.google.maps.android.ktx.model.buildPolygonOptions
 import com.google.maps.android.ktx.model.buildPolylineOptions
+import com.google.maps.android.ktx.model.buildTileOverlayOptions
 
 /**
  * Adds a [Circle] to this [GoogleMap] using the function literal with receiver [optionsActions].
@@ -85,4 +88,15 @@ inline fun GoogleMap.addPolygon(optionsActions: PolygonOptions.() -> Unit): Poly
 inline fun GoogleMap.addPolyline(optionsActions: PolylineOptions.() -> Unit): Polyline =
     this.addPolyline(
         buildPolylineOptions(optionsActions)
+    )
+
+/**
+ * Adds a [TileOverlay] to this [GoogleMap] using the function literal with receiver
+ * [optionsActions].
+ *
+ * @return the added [Polyline]
+ */
+inline fun GoogleMap.addTileOverlay(optionsActions: TileOverlayOptions.() -> Unit): TileOverlay =
+    this.addTileOverlay(
+        buildTileOverlayOptions(optionsActions)
     )
