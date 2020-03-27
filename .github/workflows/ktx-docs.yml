@@ -6,6 +6,7 @@ on:
     tags: 
       - '*'
   repository_dispatch:
+      types: [gh-pages]
 
 jobs:
   gh-page-sync:
