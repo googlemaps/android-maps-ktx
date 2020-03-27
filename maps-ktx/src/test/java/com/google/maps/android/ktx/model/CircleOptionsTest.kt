@@ -19,7 +19,6 @@ package com.google.maps.android.ktx.model
 
 import com.google.android.gms.maps.model.LatLng
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -27,7 +26,7 @@ class CircleOptionsTest {
 
     @Test
     fun testBuilder() {
-        val circleOptions = buildCircleOptions {
+        val circleOptions = circleOptions {
             center(LatLng(0.0, 0.0))
             clickable(true)
             fillColor(0)

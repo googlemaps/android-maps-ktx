@@ -24,7 +24,7 @@ import com.google.android.gms.maps.model.PolylineOptions
  *
  * @return the constructed [PolylineOptions]
  */
-inline fun buildPolylineOptions(optionsActions: PolylineOptions.() -> Unit): PolylineOptions =
+inline fun polylineOptions(optionsActions: PolylineOptions.() -> Unit): PolylineOptions =
     PolylineOptions().apply(
         optionsActions
     )

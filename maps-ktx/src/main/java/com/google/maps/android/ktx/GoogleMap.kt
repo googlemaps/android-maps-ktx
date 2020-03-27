@@ -31,12 +31,12 @@ import com.google.android.gms.maps.model.Polyline
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.gms.maps.model.TileOverlay
 import com.google.android.gms.maps.model.TileOverlayOptions
-import com.google.maps.android.ktx.model.buildCircleOptions
-import com.google.maps.android.ktx.model.buildGroundOverlayOptions
-import com.google.maps.android.ktx.model.buildMarkerOptions
-import com.google.maps.android.ktx.model.buildPolygonOptions
-import com.google.maps.android.ktx.model.buildPolylineOptions
-import com.google.maps.android.ktx.model.buildTileOverlayOptions
+import com.google.maps.android.ktx.model.circleOptions
+import com.google.maps.android.ktx.model.groundOverlayOptions
+import com.google.maps.android.ktx.model.markerOptions
+import com.google.maps.android.ktx.model.polygonOptions
+import com.google.maps.android.ktx.model.polylineOptions
+import com.google.maps.android.ktx.model.tileOverlayOptions
 
 /**
  * Builds a new [GoogleMapOptions] using the provided [optionsActions].
@@ -55,7 +55,7 @@ inline fun buildGoogleMapOptions(optionsActions: GoogleMapOptions.() -> Unit): G
  */
 inline fun GoogleMap.addCircle(optionsActions: CircleOptions.() -> Unit): Circle =
     this.addCircle(
-        buildCircleOptions(optionsActions)
+        circleOptions(optionsActions)
     )
 
 /**
@@ -68,7 +68,7 @@ inline fun GoogleMap.addGroundOverlay(
     optionsActions: GroundOverlayOptions.() -> Unit
 ): GroundOverlay =
     this.addGroundOverlay(
-        buildGroundOverlayOptions(optionsActions)
+        groundOverlayOptions(optionsActions)
     )
 
 /**
@@ -78,7 +78,7 @@ inline fun GoogleMap.addGroundOverlay(
  */
 inline fun GoogleMap.addMarker(optionsActions: MarkerOptions.() -> Unit): Marker =
     this.addMarker(
-        buildMarkerOptions(optionsActions)
+        markerOptions(optionsActions)
     )
 
 /**
@@ -88,7 +88,7 @@ inline fun GoogleMap.addMarker(optionsActions: MarkerOptions.() -> Unit): Marker
  */
 inline fun GoogleMap.addPolygon(optionsActions: PolygonOptions.() -> Unit): Polygon =
     this.addPolygon(
-        buildPolygonOptions(optionsActions)
+        polygonOptions(optionsActions)
     )
 
 /**
@@ -98,7 +98,7 @@ inline fun GoogleMap.addPolygon(optionsActions: PolygonOptions.() -> Unit): Poly
  */
 inline fun GoogleMap.addPolyline(optionsActions: PolylineOptions.() -> Unit): Polyline =
     this.addPolyline(
-        buildPolylineOptions(optionsActions)
+        polylineOptions(optionsActions)
     )
 
 /**
@@ -109,5 +109,5 @@ inline fun GoogleMap.addPolyline(optionsActions: PolylineOptions.() -> Unit): Po
  */
 inline fun GoogleMap.addTileOverlay(optionsActions: TileOverlayOptions.() -> Unit): TileOverlay =
     this.addTileOverlay(
-        buildTileOverlayOptions(optionsActions)
+        tileOverlayOptions(optionsActions)
     )

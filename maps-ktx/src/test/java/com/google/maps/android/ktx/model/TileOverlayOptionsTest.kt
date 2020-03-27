@@ -17,8 +17,6 @@
 
 package com.google.maps.android.ktx.model
 
-import com.google.android.gms.maps.model.TileProvider
-import com.nhaarman.mockitokotlin2.mock
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -28,7 +26,7 @@ class TileOverlayOptionsTest {
 
     @Test
     fun testBuilder() {
-        val tileOverlayOptions = buildTileOverlayOptions {
+        val tileOverlayOptions = tileOverlayOptions {
             fadeIn(true)
             transparency(0.5f)
             visible(false)

@@ -27,7 +27,7 @@ class MarkerOptionsTest {
 
     @Test
     fun testBuilder() {
-        val markerOptions = buildMarkerOptions {
+        val markerOptions = markerOptions {
             position(LatLng(1.0, 2.0))
             alpha(0.5f)
             draggable(false)

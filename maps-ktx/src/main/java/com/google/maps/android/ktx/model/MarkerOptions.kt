@@ -24,7 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions
  *
  * @return the constructed [MarkerOptions]
  */
-inline fun buildMarkerOptions(optionsActions: MarkerOptions.() -> Unit): MarkerOptions =
+inline fun markerOptions(optionsActions: MarkerOptions.() -> Unit): MarkerOptions =
     MarkerOptions().apply(
         optionsActions
     )

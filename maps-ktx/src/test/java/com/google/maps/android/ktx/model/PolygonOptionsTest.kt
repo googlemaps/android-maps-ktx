@@ -26,7 +26,7 @@ class PolygonOptionsTest {
     @Test
     fun testBuilder() {
         val polygonOptions =
-            buildPolygonOptions {
+            polygonOptions {
                 strokeWidth(1.0f)
                 strokeColor(Color.BLACK)
                 add(LatLng(0.0, 0.0))

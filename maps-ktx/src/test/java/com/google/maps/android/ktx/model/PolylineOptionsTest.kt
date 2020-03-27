@@ -26,7 +26,7 @@ class PolylineOptionsTest {
 
     @Test
     fun testBuilder() {
-        val polylineOptions = buildPolylineOptions {
+        val polylineOptions = polylineOptions {
             add(LatLng(1.0, 2.0))
             clickable(true)
             color(0)

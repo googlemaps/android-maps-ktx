@@ -28,7 +28,7 @@ class GroundOverlayOptionsTest {
     @Test
     fun testBuilder() {
         val descriptor: BitmapDescriptor = mock()
-        val groundOverlayOptions = buildGroundOverlayOptions {
+        val groundOverlayOptions = groundOverlayOptions {
             image(descriptor)
             bearing(1f)
             clickable(true)
