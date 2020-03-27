@@ -16,7 +16,7 @@ This library contains a set of Kotlin extensions (KTX) for the [Maps SDK for And
 
 ```groovy
 dependencies {
-    implementation 'com.google.maps.android:maps-utils-ktx:0.1.2'
+    implementation 'com.google.maps.android:maps-utils-ktx:0.2'
 }
 ```
 
