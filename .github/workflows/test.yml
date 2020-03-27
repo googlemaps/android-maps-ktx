@@ -1,0 +1,25 @@
+# A workflow that runs tests on every new pull request
+name: Run unit tests
+
+on:
+  repository_dispatch:
+    types: [test]
+  pull_request:
+    branches: ['*']
+
+jobs:
+  run-unit-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: Checkout android-maps-ktx
+      uses: actions/checkout@v2
+
+    - name: Run tests
+      run: |
+        echo "Running unit tests"
+        ./gradlew check test jacocoTestReport -x lint --stacktrace
+
+        echo "Sending test results to CodeCov"
+        bash <(curl -s https://codecov.io/bash)
