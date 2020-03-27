@@ -11,6 +11,7 @@ jobs:
   run-unit-test:
     runs-on: ubuntu-latest
 
+    steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: Checkout android-maps-ktx
       uses: actions/checkout@v2
