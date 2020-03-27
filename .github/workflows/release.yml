@@ -21,7 +21,7 @@ jobs:
       run: |
         echo "Decrypting secret key ring file."
         gpg --quiet --batch --yes --decrypt --passphrase=${{ secrets.GPG_SECRING_DECRYPTION_PASSPHASE }} 
-        --output $GITHUB_WORKSPACE/release.gpg release.gpg.gpg
+        --output $GITHUB_WORKSPACE/release.gpg $GITHUB_WORKSPACE/release.gpg.gpg
 
         echo "Creating build"
         ./gradlew build dokka publish
