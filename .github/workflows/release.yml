@@ -20,13 +20,13 @@ jobs:
     - name: Release build
       run: |
         echo "Decrypting secret key ring file."
-        gpg --quiet --batch --yes --decrypt --passphrase=${{ secrets.GPG_SECRING_DECRYPTION_PASSPHASE }} 
+        gpg --quiet --batch --yes --decrypt --passphrase=${{ secrets.GPG_SECRING_DECRYPTION_PASSPHASE }} \
         --output $GITHUB_WORKSPACE/release.gpg $GITHUB_WORKSPACE/release.gpg.gpg
 
         echo "Creating build"
-        ./gradlew build dokka publish
-        -PsonatypeUserUsername=${{ secrets.SONATYPE_USERNAME }}
-        -PsonatypePassword=${{ secrets.SONATYPE_PASSWORD }}
-        -Psigning.keyId=${{ secrets.GPG_KEY_ID }}
-        -Psigning.password=${{ secrets.GPG_KEY_PASSPHRASE }}
+        ./gradlew build dokka publish \
+        -PsonatypeUserUsername=${{ secrets.SONATYPE_USERNAME }} \
+        -PsonatypePassword=${{ secrets.SONATYPE_PASSWORD }} \
+        -Psigning.keyId=${{ secrets.GPG_KEY_ID }} \
+        -Psigning.password=${{ secrets.GPG_KEY_PASSPHRASE }} \
         -Psigning.secretKeyRingFile=$GITHUB_WORKSPACE/release.gpg
