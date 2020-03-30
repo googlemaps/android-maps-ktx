@@ -3,6 +3,7 @@ package com.google.maps.android.ktx.demo
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.coroutineScope
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -13,19 +14,26 @@ import com.google.maps.android.collections.GroundOverlayManager
 import com.google.maps.android.collections.MarkerManager
 import com.google.maps.android.collections.PolygonManager
 import com.google.maps.android.collections.PolylineManager
+import com.google.maps.android.ktx.MapsExperimentalFeature
+import com.google.maps.android.ktx.awaitMap
 import com.google.maps.android.ktx.demo.model.MyItem
 import org.json.JSONException
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     var mIsRestore: Boolean = false
 
+    @OptIn(MapsExperimentalFeature::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mIsRestore = savedInstanceState != null
         setContentView(R.layout.activity_main)
-        val mapFragment : SupportMapFragment? =
-            supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
-        mapFragment?.getMapAsync(this)
+        lifecycle.coroutineScope.launchWhenCreated {
+            val mapFragment : SupportMapFragment? =
+                supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
+            check(mapFragment != null)
+            val googleMap = mapFragment.awaitMap()
+            showMapLayers(googleMap)
+        }
     }
 
     override fun onMapReady(map: GoogleMap?) {
