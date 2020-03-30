@@ -9,7 +9,7 @@ Maps Android KTX
 ## Description
 This repository contains Kotlin extensions (KTX) for:
 1. The [Maps SDK for Android][maps-sdk]
-1. The [Utility library][amu]
+1. The [Maps SDK for Android Utility library][amu]
 
 It enables you to write more concise, idiomatic Kotlin. Each set of extensions can be used independently or together.
 
