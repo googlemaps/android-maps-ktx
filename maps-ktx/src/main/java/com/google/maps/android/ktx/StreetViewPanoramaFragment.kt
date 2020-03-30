@@ -17,21 +17,22 @@
 
 package com.google.maps.android.ktx
 
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.StreetViewPanorama
+import com.google.android.gms.maps.StreetViewPanoramaFragment
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
 /**
- * A suspending function that provides an instance of a [GoogleMap] from this [SupportMapFragment].
- * This is an alternative to using [SupportMapFragment.getMapAsync] by using coroutines to obtain
- * a [GoogleMap].
+ * A suspending function that provides an instance of a [StreetViewPanorama] from this
+ * [StreetViewPanoramaFragment]. This is an alternative to using
+ * [StreetViewPanoramaFragment.getStreetViewPanoramaAsync] by using coroutines to obtain a
+ * [StreetViewPanorama].
  *
- * @return the [GoogleMap] instance
+ * @return the [StreetViewPanorama]
  */
-suspend inline fun SupportMapFragment.awaitMap(): GoogleMap =
+suspend inline fun StreetViewPanoramaFragment.awaitStreetViewPanorama(): StreetViewPanorama =
     suspendCoroutine { continuation ->
-        getMapAsync {
+        getStreetViewPanoramaAsync {
             continuation.resume(it)
         }
     }
