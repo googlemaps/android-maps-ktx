@@ -29,10 +29,10 @@ class PolygonOptionsTest {
             polygonOptions {
                 strokeWidth(1.0f)
                 strokeColor(Color.BLACK)
-                add(LatLng(0.0, 0.0))
+                add(LatLng(1.0, 2.0))
             }
         assertEquals(1.0f, polygonOptions.strokeWidth, 1e-6f)
         assertEquals(Color.BLACK, polygonOptions.strokeColor)
-        assertEquals(listOf(LatLng(0.0, 0.0)), polygonOptions.points)
+        assertEquals(listOf(LatLng(1.0, 2.0)), polygonOptions.points)
     }
 }

@@ -64,9 +64,7 @@ inline fun GoogleMap.addCircle(optionsActions: CircleOptions.() -> Unit): Circle
  *
  * @return the added [Circle]
  */
-inline fun GoogleMap.addGroundOverlay(
-    optionsActions: GroundOverlayOptions.() -> Unit
-): GroundOverlay =
+inline fun GoogleMap.addGroundOverlay(optionsActions: GroundOverlayOptions.() -> Unit): GroundOverlay =
     this.addGroundOverlay(
         groundOverlayOptions(optionsActions)
     )
