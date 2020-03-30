@@ -49,4 +49,6 @@ dependencies {
     implementation deps.androidx.appcompat
     implementation deps.androidx.coreKtx
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation project(':maps-utils-ktx')
+    //implementation 'com.google.maps.android:maps-utils-ktx:0.1.2'
 }
