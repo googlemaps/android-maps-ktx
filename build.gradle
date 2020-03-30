@@ -31,7 +31,7 @@ buildscript {
             'junit'    : '1.1.1',
         ],
         'junit'            : '4.12',
-        'kotlin'           : '1.3.61',
+        'kotlin'           : '1.3.70',
         'kotlinxCoroutines': '1.3.2',
         'mockito'          : '3.0.0',
         'mockitoKotlin'    : '2.2.0',
@@ -60,7 +60,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:3.6.1'
         classpath 'com.dicedmelon.gradle:jacoco-android:0.1.4'
         classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.10.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
@@ -81,7 +81,7 @@ ext.projectArtifactId = { project ->
 allprojects {
     group = 'com.google.maps.android'
     project.ext.artifactId = rootProject.ext.projectArtifactId(project)
-    version = '0.1.2'
+    version = '0.2'
 
     repositories {
         google()
