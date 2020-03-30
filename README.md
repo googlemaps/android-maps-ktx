@@ -18,7 +18,7 @@ This repository contains a set a of Kotlin extensions (KTX) for the [Maps SDK fo
 dependencies {
 
     // KTX for the maps SDK library - Coming Soon
-    // implementation 'com.google.maps.android:maps-utils-ktx:<future-version>'
+// implementation 'com.google.maps.android:maps-ktx:<future-version>'
 
     // KTX for the utility library
     implementation 'com.google.maps.android:maps-utils-ktx:0.2'
