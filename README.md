@@ -21,28 +21,58 @@ It enables you to write more concise, idiomatic Kotlin. Each set of extensions c
 ```groovy
 dependencies {
 
-    // KTX for the maps SDK library - Coming Soon
-// implementation 'com.google.maps.android:maps-ktx:<future-version>'
+    // KTX for the Maps SDK library - Coming Soon
+    // implementation 'com.google.maps.android:maps-ktx:<future-version>'
 
-    // KTX for the utility library
+    // KTX for the Maps SDK for Android Utility library
     implementation 'com.google.maps.android:maps-utils-ktx:0.2'
 }
 ```
 
 ## Example Usage
 
-With this KTX library, you should be able to take advantage of several Kotlin language features such as:
+With this KTX library, you should be able to take advantage of several Kotlin language features such as extension functions, named parameters and default arguments, destructuring declarations, and coroutines.
+
+### Maps SDK KTX
 
 #### Extension functions
 
-_Before_:
+Adding a `Marker`:
+
+_Before_
+```java
+GoogleMap googleMap = // ...
+LatLng sydney = new LatLng(-33.852, 151.211);
+MarkerOptions markerOptions = new MarkerOptions()
+    .position(Sydney)
+    .title("Marker in Sydney");
+Marker marker = googleMap.addMarker(markerOptions);
+```
+
+_After_
+```kotlin
+Val googleMap = // ...
+val sydney = LatLng(-33.852, 151.211)
+val marker = googleMap.addMarker {
+    position(sydney)
+    title("Marker in Sydney")
+}
+```
+
+### Maps SDK for Android Utilities KTX
+
+#### Extension functions
+
+Checking if a `LatLng` is contained within a `Polygon`:
+
+_Before_
 ```java
 Polygon polygon = // some polygon
 LatLng latlng = // some latlng
 boolean result = PolygonUtil.containsLocation(latlng, polygon.getPoints(), true);
 ```
 
-_After_:
+_After_
 ```kotlin
 val polygon: Polygon = // some polygon
 val latlng: LatLng = // some latlng
@@ -51,7 +81,9 @@ val result: Boolean = polygon.contains(latLng)
 
 #### Named parameters and default arguments
 
-_Before_:
+Creating a `GeoJsonLayer` object:
+
+_Before_
 ```java
 GeoJsonLayer layer = new GeoJsonLayer(
     map, 
@@ -63,7 +95,7 @@ GeoJsonLayer layer = new GeoJsonLayer(
 );
 ```
 
-_After_:
+_After_
 ```kotlin
 val layer = GeoJsonLayer(
     map = map,
@@ -75,20 +107,22 @@ val layer = GeoJsonLayer(
 
 #### Destructuring Declarations
 
-_Before_:
+Destructuring properties of a `Point`:
+
+_Before_
 ```java
 Point point = new Point(1.0, 2.0);
 double x = point.x;
 double y = point.y;
 ```
 
-_After_:
+_After_
 ```kotlin
 val point = Point(1.0, 2.0)
 val (x, y) = point
 ```
 
-You can learn more by reading the [Javadoc].
+You can learn more about all the extensions provided by this library by reading the [reference documents][Javadoc].
 
 ## Support
 

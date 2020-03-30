@@ -29,6 +29,7 @@ import kotlin.coroutines.suspendCoroutine
  *
  * @return the [GoogleMap] instance
  */
+@MapsExperimentalFeature
 suspend inline fun SupportMapFragment.awaitMap(): GoogleMap =
     suspendCoroutine { continuation ->
         getMapAsync {
