@@ -19,7 +19,7 @@ import com.google.maps.android.ktx.awaitMap
 import com.google.maps.android.ktx.demo.model.MyItem
 import org.json.JSONException
 
-class MainActivity : AppCompatActivity(), OnMapReadyCallback {
+class MainActivity : AppCompatActivity() {
     var mIsRestore: Boolean = false
 
     @OptIn(MapsExperimentalFeature::class)
@@ -27,21 +27,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         mIsRestore = savedInstanceState != null
         setContentView(R.layout.activity_main)
+        val mapFragment : SupportMapFragment? =
+            supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
         lifecycle.coroutineScope.launchWhenCreated {
-            val mapFragment : SupportMapFragment? =
-                supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
             check(mapFragment != null)
             val googleMap = mapFragment.awaitMap()
             showMapLayers(googleMap)
         }
-    }
-
-    override fun onMapReady(map: GoogleMap?) {
-        map?: return
-        if (!mIsRestore) {
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(51.403186, -0.126446),10F))
-        }
-        showMapLayers(map)
     }
 
     private fun showMapLayers(map: GoogleMap) {
