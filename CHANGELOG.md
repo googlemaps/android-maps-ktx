@@ -1,7 +1,15 @@
 Change Log
 ==========
 
-## [Unreleased](https://github.com/googlemaps/android-maps-ktx/compare/0.2...HEAD)
+## [Unreleased](https://github.com/googlemaps/android-maps-ktx/compare/0.3...HEAD)
+
+## [0.3](https://github.com/googlemaps/android-maps-ktx/compare/0.2...0.3)
+
+>  March 30, 2020
+
+### Features
+
+* Adding KTX to Maps SDK ([#21](https://github.com/googlemaps/android-maps-ktx/issues/21)) ([3313167](https://github.com/googlemaps/android-maps-ktx/commit/3313167e9c78daf0a581c42d45bc3ebb8211839d))
 
 ## [0.2](https://github.com/googlemaps/android-maps-ktx/compare/0.1.2...0.2)
 

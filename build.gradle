@@ -68,7 +68,7 @@ buildscript {
 }
 
 ext.projectArtifactId = { project ->
-    if (project.name == 'maps-utils-ktx') {
+    if (project.name == 'maps-utils-ktx' || project.name == 'maps-ktx') {
         return project.name
     } else {
         return null
@@ -81,7 +81,7 @@ ext.projectArtifactId = { project ->
 allprojects {
     group = 'com.google.maps.android'
     project.ext.artifactId = rootProject.ext.projectArtifactId(project)
-    version = '0.2'
+    version = '0.3'
 
     repositories {
         google()
@@ -95,9 +95,45 @@ allprojects {
 subprojects { project ->
     if (project.ext.artifactId == null) return
 
+    apply plugin: 'com.android.library'
+    apply plugin: 'jacoco-android'
     apply plugin: 'maven-publish'
+    apply plugin: 'org.jetbrains.dokka'
     apply plugin: 'signing'
 
+    // Documentation
+    dokka {
+        outputFormat = 'html'
+        outputDirectory = "$buildDir/documentation"
+        configuration {
+            includeNonPublic = false
+            skipEmptyPackages = true
+            skipDeprecated = true
+            reportUndocumented = true
+            jdkVersion = 8
+        }
+    }
+
+    // Code coverage
+    jacoco {
+        toolVersion = "0.8.4"
+    }
+
+    tasks.withType(Test) {
+        jacoco.includeNoLocationClasses = true
+    }
+
+    task sourcesJar(type: Jar) {
+        from android.sourceSets.main.java.source
+        archiveClassifier = "sources"
+    }
+
+    task dokkaJar(type: Jar, dependsOn: dokka) {
+        from dokka.outputDirectory
+        archiveClassifier = "javadoc"
+    }
+
+    // Publishing
     publishing {
         publications {
             aar(MavenPublication) {
