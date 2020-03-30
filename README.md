@@ -1,4 +1,4 @@
-![Tests](https://github.com/googlemaps/android-maps-ktx/workflows/.github/workflows/test.yml/badge.svg)
+![Tests](![Run unit tests](https://github.com/googlemaps/android-maps-ktx/workflows/Run%20unit%20tests/badge.svg)
 ![Beta](https://img.shields.io/badge/stability-beta-yellow)
 [![Discord](https://img.shields.io/discord/676948200904589322)](https://discord.gg/hYsWbmk)
 ![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)
@@ -21,11 +21,11 @@ It enables you to write more concise, idiomatic Kotlin. Each set of extensions c
 ```groovy
 dependencies {
 
-    // KTX for the Maps SDK library - Coming Soon
-    // implementation 'com.google.maps.android:maps-ktx:<future-version>'
+    // KTX for the Maps SDK library
+    implementation 'com.google.maps.android:maps-ktx:0.3'
 
     // KTX for the Maps SDK for Android Utility library
-    implementation 'com.google.maps.android:maps-utils-ktx:0.2'
+    implementation 'com.google.maps.android:maps-utils-ktx:0.3'
 }
 ```
 

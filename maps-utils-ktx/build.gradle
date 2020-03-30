@@ -15,10 +15,8 @@
  */
 
 apply plugin: 'com.android.library'
-apply plugin: 'jacoco-android'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'org.jetbrains.dokka'
 
 android {
     compileSdkVersion versions.android.compileSdk
@@ -47,36 +45,4 @@ dependencies {
     testImplementation deps.junit
     testImplementation deps.mockito
     testImplementation deps.mockitoKotlin
-}
-
-// Documentation
-dokka {
-    outputFormat = 'html'
-    outputDirectory = "$buildDir/documentation"
-    configuration {
-        includeNonPublic = false
-        skipEmptyPackages = true
-        skipDeprecated = true
-        reportUndocumented = true
-        jdkVersion = 8
-    }
-}
-
-// Code coverage
-jacoco {
-    toolVersion = "0.8.4"
-}
-
-tasks.withType(Test) {
-    jacoco.includeNoLocationClasses = true
-}
-
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.source
-    archiveClassifier = "sources"
-}
-
-task dokkaJar(type: Jar, dependsOn: dokka) {
-    from dokka.outputDirectory
-    archiveClassifier = "javadoc"
 }
