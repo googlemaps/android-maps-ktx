@@ -15,14 +15,16 @@
  *
  */
 
-package com.google.maps.android.ktx
+package com.google.maps.android.ktx.model
 
-import com.google.android.gms.maps.model.PolygonOptions
+import com.google.android.gms.maps.model.CircleOptions
 
 /**
- * Builds a new [PolygonOptions] using the provided [optionsActions].
- * CORE
+ * Builds a new [CircleOptions] using the provided [optionsActions].
+ *
+ * @return the constructed [CircleOptions]
  */
-inline fun buildPolygonOptions(optionsActions: PolygonOptions.() -> Unit): PolygonOptions =
-    PolygonOptions().apply(optionsActions)
-
+inline fun circleOptions(optionsActions: CircleOptions.() -> Unit): CircleOptions =
+    CircleOptions().apply(
+        optionsActions
+    )

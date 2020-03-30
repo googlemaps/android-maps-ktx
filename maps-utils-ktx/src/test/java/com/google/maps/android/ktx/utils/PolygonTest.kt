@@ -19,8 +19,6 @@ package com.google.maps.android.ktx.utils
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Polygon
-import com.google.maps.android.ktx.utils.contains
-import com.google.maps.android.ktx.utils.isOnEdge
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import org.junit.Assert.assertFalse

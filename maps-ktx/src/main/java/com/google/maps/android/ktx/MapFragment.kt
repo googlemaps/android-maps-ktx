@@ -18,19 +18,21 @@
 package com.google.maps.android.ktx
 
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.MapFragment
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
+@RequiresOptIn
+annotation class MapsExperimentalFeature
+
 /**
- * A suspending function that provides an instance of a [GoogleMap] from this [SupportMapFragment].
- * This is an alternative to using [SupportMapFragment.getMapAsync] by using coroutines to obtain
- * a [GoogleMap].
+ * A suspending function that provides an instance of a [GoogleMap] from this [MapFragment].
+ * This is an alternative to [MapFragment.getMapAsync] by using coroutines to obtain a [GoogleMap].
  *
  * @return the [GoogleMap] instance
  */
 @MapsExperimentalFeature
-suspend inline fun SupportMapFragment.awaitMap(): GoogleMap =
+suspend inline fun MapFragment.awaitMap(): GoogleMap =
     suspendCoroutine { continuation ->
         getMapAsync {
             continuation.resume(it)
