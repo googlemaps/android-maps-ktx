@@ -59,6 +59,41 @@ val marker = googleMap.addMarker {
 }
 ```
 
+#### Coroutines
+
+Accessing a `GoogleMap` instance can be retrieved using coroutines vs. traditional the callback mechanism. The example here demonstrates how you can use this feature alongside with [Lifecycle-aware coroutine scopes][lifecycle] provided in Android’s Architecture Components.
+
+**NOTE**: This is an experimental feature and can only be used by using the `MapsExperimentalFeature` annotation class.
+
+_Before_
+```java
+@Override
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    SupportMapFragment mapFragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
+
+    mapFragment.getMapAsync(new OnMapReadyCallback {
+        @Override
+        public void onMapReady(GoogleMap map) {
+            // Access GoogleMap instance here
+        }
+    });
+}
+```
+
+_After_
+```kotlin
+@MapsExperimentalFeature
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as! SupportMapFragment
+
+    lifecycle.coroutineScope.launchWhenCreated {
+        val googleMap = mapFragment.awaitMap()
+    }
+}
+```
+
 ### Maps SDK for Android Utilities KTX
 
 #### Extension functions
@@ -142,5 +177,6 @@ For more information, check out the detailed guide on the
 [code of conduct]: CODE_OF_CONDUCT.md
 [devsite-guide]: https://developers.google.com/maps/documentation/android-api/utility/
 [file an issue]: https://github.com/googlemaps/android-maps-ktx/issues/new/choose
+[lifecycle]: https://developer.android.com/topic/libraries/architecture/coroutines#lifecyclescope
 [maps-sdk]: https://developers.google.com/maps/documentation/android-sdk/intro
 [pull request]: https://github.com/googlemaps/android-maps-ktx/compare
