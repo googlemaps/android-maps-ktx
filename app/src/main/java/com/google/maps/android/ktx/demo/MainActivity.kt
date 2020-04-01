@@ -178,7 +178,7 @@ class MainActivity : AppCompatActivity() {
             polygonManager = polygonManager,
             polylineManager = polylineManager,
             groundOverlayManager = groundOverlayManager,
-            imagesCache = getImagesCache()
+            imagesCache = getImagesCache() // Alternately, you could remove this line to not use the cache
         )
         kmlPolygonLayer.addLayerToMap()
         kmlPolygonLayer.setOnFeatureClickListener { feature ->
