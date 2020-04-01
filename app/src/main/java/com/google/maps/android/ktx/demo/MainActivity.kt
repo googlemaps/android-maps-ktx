@@ -192,8 +192,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun addMarker(markerManager: MarkerManager) {
         // Unclustered marker - instead of adding to the map directly, use the MarkerManager
-        val markerCollection: MarkerManager.Collection =
-            markerManager.newCollection()
+        val markerCollection: MarkerManager.Collection = markerManager.newCollection()
         markerCollection.addMarker(
             MarkerOptions()
                 .position(LatLng(51.150000, -0.150032))
