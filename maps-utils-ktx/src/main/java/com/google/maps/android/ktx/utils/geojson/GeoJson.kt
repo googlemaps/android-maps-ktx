@@ -52,7 +52,6 @@ inline fun geoJsonLayer(
  * Alias for the [GeoJsonLayer] constructor that provides Kotlin named parameters and default
  * values.
  */
-// FIXME - Why isn't this working with named parameters in demo app?
 inline fun geoJsonLayer(
     map: GoogleMap,
     resourceId: Int,

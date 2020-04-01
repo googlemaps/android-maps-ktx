@@ -20,6 +20,7 @@ import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
 import com.google.maps.android.ktx.MapsExperimentalFeature
 import com.google.maps.android.ktx.awaitMap
 import com.google.maps.android.ktx.demo.model.MyItem
+import com.google.maps.android.ktx.utils.geojson.geoJsonLayer
 import org.json.JSONException
 
 /**
@@ -75,15 +76,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun addGeoJson(map: GoogleMap, markerManager: MarkerManager, polylineManager: PolylineManager, polygonManager: PolygonManager, groundOverlayManager: GroundOverlayManager) {
         // GeoJSON polyline
-        // FIXME - Why can't we use named parameters here?
-        val geoJsonLineLayer = GeoJsonLayer(
-            map,
-            R.raw.south_london_line_geojson,
-            this,
-            markerManager,
-            polygonManager,
-            polylineManager,
-            groundOverlayManager
+        val geoJsonLineLayer = geoJsonLayer(
+            map = map,
+            resourceId = R.raw.south_london_line_geojson,
+            context = this,
+            markerManager = markerManager,
+            polygonManager = polygonManager,
+            polylineManager = polylineManager,
+            groundOverlayManager = groundOverlayManager
         )
         // Make the line red
         val geoJsonLineStringStyle = GeoJsonLineStringStyle()
@@ -101,15 +101,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         // GeoJSON polygon
-        // FIXME - Why can't we use named parameters here?
-        val geoJsonPolygonLayer = GeoJsonLayer(
-            map,
-            R.raw.south_london_square_geojson,
-            this,
-            markerManager,
-            polygonManager,
-            polylineManager,
-            groundOverlayManager
+        val geoJsonPolygonLayer = geoJsonLayer(
+            map = map,
+            resourceId = R.raw.south_london_square_geojson,
+            context = this,
+            markerManager = markerManager,
+            polygonManager = polygonManager,
+            polylineManager = polylineManager,
+            groundOverlayManager = groundOverlayManager
         )
         // Fill it with red
         val geoJsonPolygonStyle = GeoJsonPolygonStyle()
