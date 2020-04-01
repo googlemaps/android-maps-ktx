@@ -14,13 +14,15 @@ import com.google.maps.android.collections.GroundOverlayManager
 import com.google.maps.android.collections.MarkerManager
 import com.google.maps.android.collections.PolygonManager
 import com.google.maps.android.collections.PolylineManager
-import com.google.maps.android.data.geojson.GeoJsonLayer
+import com.google.maps.android.data.Renderer.ImagesCache
 import com.google.maps.android.data.geojson.GeoJsonLineStringStyle
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
+import com.google.maps.android.data.kml.KmlLayer
 import com.google.maps.android.ktx.MapsExperimentalFeature
 import com.google.maps.android.ktx.awaitMap
 import com.google.maps.android.ktx.demo.model.MyItem
 import com.google.maps.android.ktx.utils.geojson.geoJsonLayer
+import com.google.maps.android.ktx.utils.kml.kmlLayer
 import org.json.JSONException
 
 /**
@@ -59,6 +61,7 @@ class MainActivity : AppCompatActivity() {
 
         addClusters(map, markerManager)
         addGeoJson(map, markerManager, polylineManager, polygonManager, groundOverlayManager)
+        addKml(map, markerManager, polylineManager, polygonManager, groundOverlayManager)
     }
 
     private fun addClusters(map: GoogleMap, markerManager: MarkerManager) {
@@ -74,7 +77,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addGeoJson(map: GoogleMap, markerManager: MarkerManager, polylineManager: PolylineManager, polygonManager: PolygonManager, groundOverlayManager: GroundOverlayManager) {
+    private fun addGeoJson(map: GoogleMap,
+                           markerManager: MarkerManager,
+                           polylineManager: PolylineManager,
+                           polygonManager: PolygonManager,
+                           groundOverlayManager: GroundOverlayManager) {
         // GeoJSON polyline
         val geoJsonLineLayer = geoJsonLayer(
             map = map,
@@ -124,5 +131,59 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
+    }
+
+    private fun addKml(map: GoogleMap,
+                       markerManager: MarkerManager,
+                       polylineManager: PolylineManager,
+                       polygonManager: PolygonManager,
+                       groundOverlayManager: GroundOverlayManager) {
+        // KML Polyline
+        val kmlPolylineLayer = kmlLayer(
+            map = map,
+            resourceId = R.raw.south_london_line_kml,
+            context = this,
+            markerManager = markerManager,
+            polygonManager = polygonManager,
+            polylineManager = polylineManager,
+            groundOverlayManager = groundOverlayManager,
+            imagesCache = getImagesCache()
+        )
+        kmlPolylineLayer.addLayerToMap()
+        kmlPolylineLayer.setOnFeatureClickListener { feature ->
+            Toast.makeText(
+                this,
+                "KML polyline clicked: " + feature.getProperty("name"),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        // KML Polygon
+        val kmlPolygonLayer = kmlLayer(
+            map = map,
+            resourceId = R.raw.south_london_square_kml,
+            context = this,
+            markerManager = markerManager,
+            polygonManager = polygonManager,
+            polylineManager = polylineManager,
+            groundOverlayManager = groundOverlayManager,
+            imagesCache = getImagesCache()
+        )
+        kmlPolygonLayer.addLayerToMap()
+        kmlPolygonLayer.setOnFeatureClickListener { feature ->
+            Toast.makeText(
+                this,
+                "KML polygon clicked: " + feature.getProperty("name"),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    /**
+     * Returns a cache that survives configuration changes
+     */
+    private fun getImagesCache(): ImagesCache? {
+        val retainFragment = RetainFragment.findOrCreateRetainFragment(supportFragmentManager)
+        return retainFragment.mImagesCache
     }
 }

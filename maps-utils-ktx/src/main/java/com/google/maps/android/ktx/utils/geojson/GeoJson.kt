@@ -20,6 +20,7 @@ package com.google.maps.android.ktx.utils.geojson
 
 import android.content.Context
 import androidx.annotation.IntegerRes
+import androidx.annotation.RawRes
 import com.google.android.gms.maps.GoogleMap
 import com.google.maps.android.collections.GroundOverlayManager
 import com.google.maps.android.collections.MarkerManager
@@ -54,7 +55,7 @@ inline fun geoJsonLayer(
  */
 inline fun geoJsonLayer(
     map: GoogleMap,
-    resourceId: Int,
+    @RawRes resourceId: Int,
     context: Context,
     markerManager: MarkerManager? = null,
     polygonManager: PolygonManager? = null,
