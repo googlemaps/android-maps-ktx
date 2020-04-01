@@ -74,7 +74,7 @@ public void onCreate(Bundle savedInstanceState) {
 
     mapFragment.getMapAsync(new OnMapReadyCallback {
         @Override
-        public void onMapReady(GoogleMap map) {
+        public void onMapReady(GoogleMap googleMap) {
             // Access GoogleMap instance here
         }
     });
