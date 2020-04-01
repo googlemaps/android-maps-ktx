@@ -24,9 +24,9 @@ jobs:
         --output $GITHUB_WORKSPACE/release.gpg $GITHUB_WORKSPACE/release.gpg.gpg
 
         echo "Creating build"
-        ./gradlew build dokka publish --info --stacktrace \
-        -PsonatypeUserUsername=${{ secrets.SONATYPE_USERNAME }} \
-        -PsonatypePassword=${{ secrets.SONATYPE_PASSWORD }} \
+        ./gradlew build dokka publish --stacktrace \
+        -PsonatypeUserUsername=${{ secrets.SYNCED_SONATYPE_USERNAME }} \
+        -PsonatypePassword=${{ secrets.SYNCED_SONATYPE_PASSWORD }} \
         -Psigning.keyId=${{ secrets.GPG_KEY_ID }} \
         -Psigning.password=${{ secrets.GPG_KEY_PASSPHRASE }} \
         -Psigning.secretKeyRingFile=$GITHUB_WORKSPACE/release.gpg
