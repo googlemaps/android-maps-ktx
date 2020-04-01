@@ -21,7 +21,7 @@
         <!--
         To add your Maps API key to this project:
             1. Create a file app/gradle.properties
-            2. Add the below line, where YOUR_API_KEY is your API key:
+            2. Add this line, where YOUR_API_KEY is your API key:
                 MAPS_API_KEY="YOUR_API_KEY"
         -->
         <meta-data

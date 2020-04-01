@@ -22,6 +22,14 @@ import com.google.maps.android.ktx.awaitMap
 import com.google.maps.android.ktx.demo.model.MyItem
 import org.json.JSONException
 
+/**
+ * A demo of multiple layers on the map.
+ *
+ * To add your Maps API key to this project:
+ *   1. Create a file app/gradle.properties
+ *   2. Add this line, where YOUR_API_KEY is your API key:
+ *        MAPS_API_KEY="YOUR_API_KEY"
+ */
 class MainActivity : AppCompatActivity() {
     var mIsRestore: Boolean = false
 
