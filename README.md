@@ -134,7 +134,7 @@ GeoJsonLayer layer = new GeoJsonLayer(
 
 _After_
 ```kotlin
-val layer = GeoJsonLayer(
+val layer = geoJsonLayer(
     map = map,
     geoJsonFile = geoJsonFile,
     polygonManager = polygonManager,
