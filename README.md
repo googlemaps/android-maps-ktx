@@ -174,7 +174,7 @@ For more information, check out the detailed guide on the
 [Google Developers site][devsite-guide]. 
 
 [Discord channel]: https://discord.gg/hYsWbmk
-[Javadoc]: https://googlemaps.github.io/android-maps-ktx/maps-utils-ktx/
+[Javadoc]: https://googlemaps.github.io/android-maps-ktx
 [amu]: https://github.com/googlemaps/android-maps-utils
 [code of conduct]: CODE_OF_CONDUCT.md
 [devsite-guide]: https://developers.google.com/maps/documentation/android-api/utility/
