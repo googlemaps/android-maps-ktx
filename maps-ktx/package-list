@@ -1,0 +1,14 @@
+$dokka.format:html
+$dokka.linkExtension:html
+$dokka.location:com.google.maps.android.ktx$addCircle(com.google.android.gms.maps.GoogleMap, kotlin.Function1((com.google.android.gms.maps.model.CircleOptions, kotlin.Unit)))com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/add-circle.html
+$dokka.location:com.google.maps.android.ktx$addGroundOverlay(com.google.android.gms.maps.GoogleMap, kotlin.Function1((com.google.android.gms.maps.model.GroundOverlayOptions, kotlin.Unit)))com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/add-ground-overlay.html
+$dokka.location:com.google.maps.android.ktx$addMarker(com.google.android.gms.maps.GoogleMap, kotlin.Function1((com.google.android.gms.maps.model.MarkerOptions, kotlin.Unit)))com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/add-marker.html
+$dokka.location:com.google.maps.android.ktx$addPolygon(com.google.android.gms.maps.GoogleMap, kotlin.Function1((com.google.android.gms.maps.model.PolygonOptions, kotlin.Unit)))com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/add-polygon.html
+$dokka.location:com.google.maps.android.ktx$addPolyline(com.google.android.gms.maps.GoogleMap, kotlin.Function1((com.google.android.gms.maps.model.PolylineOptions, kotlin.Unit)))com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/add-polyline.html
+$dokka.location:com.google.maps.android.ktx$addTileOverlay(com.google.android.gms.maps.GoogleMap, kotlin.Function1((com.google.android.gms.maps.model.TileOverlayOptions, kotlin.Unit)))com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/add-tile-overlay.html
+$dokka.location:com.google.maps.android.ktx$awaitMap(com.google.android.gms.maps.MapFragment)com.google.maps.android.ktx/com.google.android.gms.maps.-map-fragment/await-map.html
+$dokka.location:com.google.maps.android.ktx$awaitMap(com.google.android.gms.maps.SupportMapFragment)com.google.maps.android.ktx/com.google.android.gms.maps.-support-map-fragment/await-map.html
+$dokka.location:com.google.maps.android.ktx$awaitStreetViewPanorama(com.google.android.gms.maps.StreetViewPanoramaFragment)com.google.maps.android.ktx/com.google.android.gms.maps.-street-view-panorama-fragment/await-street-view-panorama.html
+$dokka.location:com.google.maps.android.ktx$awaitStreetViewPanorama(com.google.android.gms.maps.SupportStreetViewPanoramaFragment)com.google.maps.android.ktx/com.google.android.gms.maps.-support-street-view-panorama-fragment/await-street-view-panorama.html
+com.google.maps.android.ktx
+com.google.maps.android.ktx.model
