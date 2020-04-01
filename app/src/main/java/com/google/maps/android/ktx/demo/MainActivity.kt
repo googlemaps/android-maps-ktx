@@ -8,7 +8,9 @@ import androidx.lifecycle.coroutineScope
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.collections.GroundOverlayManager
 import com.google.maps.android.collections.MarkerManager
@@ -66,6 +68,7 @@ class MainActivity : AppCompatActivity() {
         addClusters(map, markerManager)
         addGeoJson(map, markerManager, polylineManager, polygonManager, groundOverlayManager)
         addKml(map, markerManager, polylineManager, polygonManager, groundOverlayManager)
+        addMarker(markerManager)
     }
 
     private fun addClusters(map: GoogleMap, markerManager: MarkerManager) {
@@ -184,6 +187,26 @@ class MainActivity : AppCompatActivity() {
                 "KML polygon clicked: " + feature.getProperty("name"),
                 Toast.LENGTH_SHORT
             ).show()
+        }
+    }
+
+    private fun addMarker(markerManager: MarkerManager) {
+        // Unclustered marker - instead of adding to the map directly, use the MarkerManager
+        val markerCollection: MarkerManager.Collection =
+            markerManager.newCollection()
+        markerCollection.addMarker(
+            MarkerOptions()
+                .position(LatLng(51.150000, -0.150032))
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                .title("Unclustered marker")
+        )
+        markerCollection.setOnMarkerClickListener { marker ->
+            Toast.makeText(
+                this,
+                "Marker clicked: " + marker.title,
+                Toast.LENGTH_SHORT
+            ).show()
+            false
         }
     }
 
