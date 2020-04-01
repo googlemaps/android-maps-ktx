@@ -7,8 +7,14 @@ import org.json.JSONException
 import java.io.InputStream
 import java.util.*
 
+/**
+ * Helper class to read in cluster items from a resource
+ */
 class MyItemReader {
 
+    /**
+     * Returns a list of cluster items read from the provided [inputStream]
+     */
     @Throws(JSONException::class)
     fun read(inputStream: InputStream): List<MyItem> {
         // This matches only once in whole input so Scanner.next returns whole InputStream as a

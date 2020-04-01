@@ -17,7 +17,6 @@ import com.google.maps.android.collections.PolylineManager
 import com.google.maps.android.data.Renderer.ImagesCache
 import com.google.maps.android.data.geojson.GeoJsonLineStringStyle
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
-import com.google.maps.android.data.kml.KmlLayer
 import com.google.maps.android.ktx.MapsExperimentalFeature
 import com.google.maps.android.ktx.awaitMap
 import com.google.maps.android.ktx.demo.model.MyItem
@@ -46,7 +45,12 @@ class MainActivity : AppCompatActivity() {
             check(mapFragment != null)
             val googleMap = mapFragment.awaitMap()
             if (!mIsRestore) {
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(51.403186, -0.126446),10F))
+                googleMap.moveCamera(
+                    CameraUpdateFactory.newLatLngZoom(
+                        LatLng(51.403186, -0.126446),
+                        10F
+                    )
+                )
             }
             showMapLayers(googleMap)
         }
@@ -77,11 +81,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addGeoJson(map: GoogleMap,
-                           markerManager: MarkerManager,
-                           polylineManager: PolylineManager,
-                           polygonManager: PolygonManager,
-                           groundOverlayManager: GroundOverlayManager) {
+    private fun addGeoJson(
+        map: GoogleMap,
+        markerManager: MarkerManager,
+        polylineManager: PolylineManager,
+        polygonManager: PolygonManager,
+        groundOverlayManager: GroundOverlayManager
+    ) {
         // GeoJSON polyline
         val geoJsonLineLayer = geoJsonLayer(
             map = map,
@@ -133,11 +139,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addKml(map: GoogleMap,
-                       markerManager: MarkerManager,
-                       polylineManager: PolylineManager,
-                       polygonManager: PolygonManager,
-                       groundOverlayManager: GroundOverlayManager) {
+    private fun addKml(
+        map: GoogleMap,
+        markerManager: MarkerManager,
+        polylineManager: PolylineManager,
+        polygonManager: PolygonManager,
+        groundOverlayManager: GroundOverlayManager
+    ) {
         // KML Polyline
         val kmlPolylineLayer = kmlLayer(
             map = map,
