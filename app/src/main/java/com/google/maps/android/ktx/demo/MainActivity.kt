@@ -1,18 +1,22 @@
 package com.google.maps.android.ktx.demo
 
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
-import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.coroutineScope
-import com.google.android.gms.maps.*
-import com.google.android.gms.maps.model.CircleOptions
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.collections.GroundOverlayManager
 import com.google.maps.android.collections.MarkerManager
 import com.google.maps.android.collections.PolygonManager
 import com.google.maps.android.collections.PolylineManager
+import com.google.maps.android.data.geojson.GeoJsonLayer
+import com.google.maps.android.data.geojson.GeoJsonLineStringStyle
+import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
 import com.google.maps.android.ktx.MapsExperimentalFeature
 import com.google.maps.android.ktx.awaitMap
 import com.google.maps.android.ktx.demo.model.MyItem
@@ -45,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         val polylineManager = PolylineManager(map)
 
         addClusters(map, markerManager)
+        addGeoJson(map, markerManager, polylineManager, polygonManager, groundOverlayManager)
     }
 
     private fun addClusters(map: GoogleMap, markerManager: MarkerManager) {
@@ -57,6 +62,60 @@ class MainActivity : AppCompatActivity() {
         } catch (e: JSONException) {
             Toast.makeText(this, "Problem reading list of markers.", Toast.LENGTH_LONG).show()
             e.printStackTrace()
+        }
+    }
+
+    private fun addGeoJson(map: GoogleMap, markerManager: MarkerManager, polylineManager: PolylineManager, polygonManager: PolygonManager, groundOverlayManager: GroundOverlayManager) {
+        // GeoJSON polyline
+        // FIXME - Why can't we use named parameters here?
+        val geoJsonLineLayer = GeoJsonLayer(
+            map,
+            R.raw.south_london_line_geojson,
+            this,
+            markerManager,
+            polygonManager,
+            polylineManager,
+            groundOverlayManager
+        )
+        // Make the line red
+        val geoJsonLineStringStyle = GeoJsonLineStringStyle()
+        geoJsonLineStringStyle.color = Color.RED
+        for (f in geoJsonLineLayer.features) {
+            f.lineStringStyle = geoJsonLineStringStyle
+        }
+        geoJsonLineLayer.addLayerToMap()
+        geoJsonLineLayer.setOnFeatureClickListener { feature ->
+            Toast.makeText(
+                this,
+                "GeoJSON polyline clicked: " + feature.getProperty("title"),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        // GeoJSON polygon
+        // FIXME - Why can't we use named parameters here?
+        val geoJsonPolygonLayer = GeoJsonLayer(
+            map,
+            R.raw.south_london_square_geojson,
+            this,
+            markerManager,
+            polygonManager,
+            polylineManager,
+            groundOverlayManager
+        )
+        // Fill it with red
+        val geoJsonPolygonStyle = GeoJsonPolygonStyle()
+        geoJsonPolygonStyle.fillColor = Color.RED
+        for (f in geoJsonPolygonLayer.features) {
+            f.polygonStyle = geoJsonPolygonStyle
+        }
+        geoJsonPolygonLayer.addLayerToMap()
+        geoJsonPolygonLayer.setOnFeatureClickListener { feature ->
+            Toast.makeText(
+                this,
+                "GeoJSON polygon clicked: " + feature.getProperty("title"),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }

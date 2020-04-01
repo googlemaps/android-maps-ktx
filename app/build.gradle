@@ -51,8 +51,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
-    implementation 'com.google.maps.android:maps-ktx:0.3'
-    implementation 'com.google.maps.android:maps-utils-ktx:0.3'
-    //implementation project(':maps-ktx')
-    //implementation project(':maps-utils-ktx')
+//    implementation 'com.google.maps.android:maps-ktx:0.3'
+//    implementation 'com.google.maps.android:maps-utils-ktx:0.3'
+    implementation project(':maps-ktx')
+    implementation project(':maps-utils-ktx')
 }

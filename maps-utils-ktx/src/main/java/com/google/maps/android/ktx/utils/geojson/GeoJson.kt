@@ -18,6 +18,8 @@
 @file:Suppress("NOTHING_TO_INLINE")
 package com.google.maps.android.ktx.utils.geojson
 
+import android.content.Context
+import androidx.annotation.IntegerRes
 import com.google.android.gms.maps.GoogleMap
 import com.google.maps.android.collections.GroundOverlayManager
 import com.google.maps.android.collections.MarkerManager
@@ -40,6 +42,29 @@ inline fun geoJsonLayer(
 ): GeoJsonLayer = GeoJsonLayer(
     map,
     geoJsonFile,
+    markerManager,
+    polygonManager,
+    polylineManager,
+    groundOverlayManager
+)
+
+/**
+ * Alias for the [GeoJsonLayer] constructor that provides Kotlin named parameters and default
+ * values.
+ */
+// FIXME - Why isn't this working with named parameters in demo app?
+inline fun geoJsonLayer(
+    map: GoogleMap,
+    resourceId: Int,
+    context: Context,
+    markerManager: MarkerManager? = null,
+    polygonManager: PolygonManager? = null,
+    polylineManager: PolylineManager? = null,
+    groundOverlayManager: GroundOverlayManager? = null
+): GeoJsonLayer = GeoJsonLayer(
+    map,
+    resourceId,
+    context,
     markerManager,
     polygonManager,
     polylineManager,
