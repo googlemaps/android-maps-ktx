@@ -1,7 +1,15 @@
 Change Log
 ==========
 
-## [Unreleased](https://github.com/googlemaps/android-maps-ktx/compare/0.3...HEAD)
+## [Unreleased](https://github.com/googlemaps/android-maps-ktx/compare/0.3.1...HEAD)
+
+## [0.3.1](https://github.com/googlemaps/android-maps-ktx/compare/0.3...0.3.1)
+
+>  April 1, 2020
+
+### Features
+
+* Add GeoJsonLayer constructor alias for a resource ID ([#31](https://github.com/googlemaps/android-maps-ktx/issues/31))
 
 ## [0.3](https://github.com/googlemaps/android-maps-ktx/compare/0.2...0.3)
 
