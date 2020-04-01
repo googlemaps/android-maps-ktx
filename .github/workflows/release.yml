@@ -25,7 +25,7 @@ jobs:
 
         echo "Creating build"
         ./gradlew build dokka publish --warn --stacktrace \
-        -PsonatypeUserUsername=${{ secrets.SYNCED_SONATYPE_USERNAME }} \
+        -PsonatypeUsername=${{ secrets.SYNCED_SONATYPE_USERNAME }} \
         -PsonatypePassword=${{ secrets.SYNCED_SONATYPE_PASSWORD }} \
         -Psigning.keyId=${{ secrets.GPG_KEY_ID }} \
         -Psigning.password=${{ secrets.GPG_KEY_PASSPHRASE }} \
