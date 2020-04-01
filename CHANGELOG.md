@@ -1,7 +1,29 @@
 Change Log
 ==========
 
-## [Unreleased](https://github.com/googlemaps/android-maps-ktx/compare/0.1.2...HEAD)
+## [Unreleased](https://github.com/googlemaps/android-maps-ktx/compare/0.3...HEAD)
+
+## [0.3](https://github.com/googlemaps/android-maps-ktx/compare/0.2...0.3)
+
+>  March 30, 2020
+
+### Features
+
+* Adding KTX to Maps SDK ([#21](https://github.com/googlemaps/android-maps-ktx/issues/21)) ([3313167](https://github.com/googlemaps/android-maps-ktx/commit/3313167e9c78daf0a581c42d45bc3ebb8211839d))
+
+## [0.2](https://github.com/googlemaps/android-maps-ktx/compare/0.1.2...0.2)
+
+> March 27, 2020
+
+### Features
+
+* Adding PolyUtil extensions to List<LatLng> ([#16](https://github.com/googlemaps/android-maps-ktx/issues/16)) ([d4cd6f5](https://github.com/googlemaps/android-maps-ktx/commit/d4cd6f5b312a77e91935ac56add90f1b459573b8))
+* Create maps-ktx module ([#20](https://github.com/googlemaps/android-maps-ktx/issues/20)) ([597a70c](https://github.com/googlemaps/android-maps-ktx/commit/597a70cfa23efde95a1d9b827a420ee1081c3dfc))
+
+### BREAKING CHANGES
+* Moved KTX for utils from com.google.maps.android.ktx to
+com.google.maps.android.ktx.utils to avoid package name conflicts with
+the new maps-ktx module.
 
 ## [0.1.2](https://github.com/googlemaps/android-maps-ktx/compare/0.1.1...0.1.2)
 
