@@ -1,23 +1,22 @@
 # A workflow that pushes artifacts to Sonatype
-name: Release build
+name: Publish build to Sonatype
 
 on:
   push:
     tags:
       - '*'
   repository_dispatch:
-    types: [release]
+    types: [publish]
 
 jobs:
   release:
     runs-on: ubuntu-latest
 
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: Checkout android-maps-ktx
+    - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Release build
+    - name: Publish build
       run: |
         echo "Decrypting secret key ring file."
         gpg --quiet --batch --yes --decrypt --passphrase=${{ secrets.GPG_SECRING_DECRYPTION_PASSPHASE }} \
