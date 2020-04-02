@@ -12,28 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# A workflow that runs tests on every new pull request
-name: Run unit tests
-
+name: Release
 on:
-  repository_dispatch:
-    types: [test]
-  pull_request:
-    branches: ['*']
-
+  push:
+    branches: [ master ]
 jobs:
-  run-unit-test:
+  release:
     runs-on: ubuntu-latest
-
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: Checkout android-maps-ktx
+    - name: Checkout
       uses: actions/checkout@v2
-
-    - name: Run tests
-      run: |
-        echo "Running unit tests"
-        ./gradlew check test jacocoTestReport -x lint --stacktrace
-
-        echo "Sending test results to CodeCov"
-        bash <(curl -s https://codecov.io/bash)
+      with:
+        token: ${{ secrets.SYNCED_GITHUB_TOKEN_REPO }}
+    - name: Semantic Release
+      uses: cycjimmy/semantic-release-action@v2
+      with:
+        extra_plugins: |
+          "@semantic-release/commit-analyzer"
+          "@semantic-release/release-notes-generator"
+          "@google/semantic-release-replace-plugin"
+          "@semantic-release/git
+          "@semantic-release/github
+      env:
+        GH_TOKEN: ${{ secrets.SYNCED_GITHUB_TOKEN_REPO }}
