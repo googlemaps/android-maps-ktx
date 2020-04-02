@@ -21,6 +21,7 @@ import com.google.maps.android.data.geojson.GeoJsonLineStringStyle
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
 import com.google.maps.android.ktx.MapsExperimentalFeature
 import com.google.maps.android.ktx.awaitMap
+import com.google.maps.android.ktx.demo.io.MyItemReader
 import com.google.maps.android.ktx.demo.model.MyItem
 import com.google.maps.android.ktx.utils.geojson.geoJsonLayer
 import com.google.maps.android.ktx.utils.kml.kmlLayer

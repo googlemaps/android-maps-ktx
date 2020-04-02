@@ -1,4 +1,4 @@
-package com.google.maps.android.ktx.demo
+package com.google.maps.android.ktx.demo.io
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.ktx.demo.model.MyItem
