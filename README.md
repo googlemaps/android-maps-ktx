@@ -22,10 +22,10 @@ It enables you to write more concise, idiomatic Kotlin. Each set of extensions c
 dependencies {
 
     // KTX for the Maps SDK library
-    implementation 'com.google.maps.android:maps-ktx:0.3'
+    implementation 'com.google.maps.android:maps-ktx:0.3.1'
 
     // KTX for the Maps SDK for Android Utility library
-    implementation 'com.google.maps.android:maps-utils-ktx:0.3'
+    implementation 'com.google.maps.android:maps-utils-ktx:0.3.1'
 }
 ```
 
@@ -56,6 +56,43 @@ val sydney = LatLng(-33.852, 151.211)
 val marker = googleMap.addMarker {
     position(sydney)
     title("Marker in Sydney")
+}
+```
+
+#### Coroutines
+
+Accessing a `GoogleMap` instance can be retrieved using coroutines vs. traditional the callback mechanism. The example here demonstrates how you can use this feature alongside with [Lifecycle-aware coroutine scopes][lifecycle] provided in Android’s Architecture Components. To use this, you'll need to add the following to your `build.gradle` dependencies:
+`implementation 'androidx.lifecycle:lifecycle-runtime-ktx:<latest-version>'`
+
+
+**NOTE**: This is an experimental feature and can only be used by using the `MapsExperimentalFeature` annotation class.
+
+_Before_
+```java
+@Override
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    SupportMapFragment mapFragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
+
+    mapFragment.getMapAsync(new OnMapReadyCallback {
+        @Override
+        public void onMapReady(GoogleMap googleMap) {
+            // Access GoogleMap instance here
+        }
+    });
+}
+```
+
+_After_
+```kotlin
+@MapsExperimentalFeature
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
+
+    lifecycle.coroutineScope.launchWhenCreated {
+        val googleMap = mapFragment?.awaitMap()
+    }
 }
 ```
 
@@ -97,7 +134,7 @@ GeoJsonLayer layer = new GeoJsonLayer(
 
 _After_
 ```kotlin
-val layer = GeoJsonLayer(
+val layer = geoJsonLayer(
     map = map,
     geoJsonFile = geoJsonFile,
     polygonManager = polygonManager,
@@ -137,10 +174,11 @@ For more information, check out the detailed guide on the
 [Google Developers site][devsite-guide]. 
 
 [Discord channel]: https://discord.gg/hYsWbmk
-[Javadoc]: https://googlemaps.github.io/android-maps-ktx/maps-utils-ktx/
+[Javadoc]: https://googlemaps.github.io/android-maps-ktx
 [amu]: https://github.com/googlemaps/android-maps-utils
 [code of conduct]: CODE_OF_CONDUCT.md
 [devsite-guide]: https://developers.google.com/maps/documentation/android-api/utility/
 [file an issue]: https://github.com/googlemaps/android-maps-ktx/issues/new/choose
+[lifecycle]: https://developer.android.com/topic/libraries/architecture/coroutines#lifecyclescope
 [maps-sdk]: https://developers.google.com/maps/documentation/android-sdk/intro
 [pull request]: https://github.com/googlemaps/android-maps-ktx/compare
