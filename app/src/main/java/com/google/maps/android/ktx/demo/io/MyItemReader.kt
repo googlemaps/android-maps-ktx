@@ -37,7 +37,7 @@ class MyItemReader {
         // String. http://stackoverflow.com/a/5445161/2183804
         val REGEX_INPUT_BOUNDARY_BEGINNING = "\\A"
 
-        val items: MutableList<MyItem> = ArrayList()
+        val items = mutableListOf<MyItem>()
         val json = Scanner(inputStream)
             .useDelimiter(REGEX_INPUT_BOUNDARY_BEGINNING).next()
         val array = JSONArray(json)
