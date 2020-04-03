@@ -52,12 +52,11 @@ import org.json.JSONException
  *        MAPS_API_KEY=YOUR_API_KEY
  */
 class MainActivity : AppCompatActivity() {
-    var mIsRestore: Boolean = false
 
     @MapsExperimentalFeature
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mIsRestore = savedInstanceState != null
+        val isRestore = savedInstanceState != null
         setContentView(R.layout.activity_main)
 
         if (getString(R.string.maps_api_key).isEmpty()) {
@@ -68,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         lifecycle.coroutineScope.launchWhenCreated {
             check(mapFragment != null)
             val googleMap = mapFragment.awaitMap()
-            if (!mIsRestore) {
+            if (!isRestore) {
                 googleMap.moveCamera(
                     CameraUpdateFactory.newLatLngZoom(
                         LatLng(51.403186, -0.126446),
