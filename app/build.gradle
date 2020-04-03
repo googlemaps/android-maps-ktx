@@ -23,12 +23,23 @@ android {
     buildToolsVersion versions.android.buildTools
 
     defaultConfig {
-        applicationId "com.google.android_maps_utils_ktx"
+        applicationId "com.google.maps.android.ktx.demo"
         minSdkVersion versions.android.minSdk
         targetSdkVersion versions.android.targetSdk
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Read the API key from app/secure.properties into R.string.maps_api_key
+        def secureProps = new Properties()
+        if (file("secure.properties").exists()) {
+            file("secure.properties")?.withInputStream { secureProps.load(it) }
+        }
+        resValue "string", "maps_api_key", (secureProps.getProperty("MAPS_API_KEY") ?: "")
+
+        // To add your Maps API key to this project:
+        // 1. Create a file app/secure.properties
+        // 2. Add this line, where YOUR_API_KEY is your API key:
+        //        MAPS_API_KEY=YOUR_API_KEY
     }
 
     buildTypes {
@@ -44,9 +55,11 @@ dependencies {
     implementation deps.kotlin
     implementation deps.androidx.appcompat
     implementation deps.androidx.coreKtx
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
-    // Tests
-    testImplementation deps.junit
-    androidTestImplementation deps.androidx.junit
-    androidTestImplementation deps.androidx.espresso
+    implementation 'com.google.maps.android:maps-ktx:0.3.1'
+    implementation 'com.google.maps.android:maps-utils-ktx:0.3.1'
+//    implementation project(':maps-ktx')
+//    implementation project(':maps-utils-ktx')
 }
