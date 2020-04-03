@@ -123,11 +123,12 @@ class MainActivity : AppCompatActivity() {
             groundOverlayManager = groundOverlayManager
         )
         // Make the line red
-        val geoJsonLineStringStyle = GeoJsonLineStringStyle()
-        geoJsonLineStringStyle.color = Color.RED
-        for (f in geoJsonLineLayer.features) {
-            f.lineStringStyle = geoJsonLineStringStyle
+        geoJsonLineLayer.features.forEach {
+            it.lineStringStyle = GeoJsonLineStringStyle().apply {
+                color = Color.RED
+            }
         }
+
         geoJsonLineLayer.addLayerToMap()
         geoJsonLineLayer.setOnFeatureClickListener { feature ->
             Toast.makeText(
@@ -148,11 +149,12 @@ class MainActivity : AppCompatActivity() {
             groundOverlayManager = groundOverlayManager
         )
         // Fill it with red
-        val geoJsonPolygonStyle = GeoJsonPolygonStyle()
-        geoJsonPolygonStyle.fillColor = Color.RED
-        for (f in geoJsonPolygonLayer.features) {
-            f.polygonStyle = geoJsonPolygonStyle
+        geoJsonPolygonLayer.features.forEach {
+            it.polygonStyle = GeoJsonPolygonStyle().apply {
+                fillColor = Color.RED
+            }
         }
+
         geoJsonPolygonLayer.addLayerToMap()
         geoJsonPolygonLayer.setOnFeatureClickListener { feature ->
             Toast.makeText(
