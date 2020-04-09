@@ -23,6 +23,26 @@ import com.google.maps.android.PolyUtil
 import com.google.maps.android.SphericalUtil
 
 /**
+ * Returns the [LatLng.latitude] of this [LatLng].
+ *
+ * e.g.
+ * ```
+ * val (lat, _) = latLng
+ * ```
+ */
+inline operator fun LatLng.component1() = this.latitude
+
+/**
+ * Returns the [LatLng.longitude] of this [LatLng].
+ *
+ * e.g.
+ * ```
+ * val (_, lng) = latLng
+ * ```
+ */
+inline operator fun LatLng.component2() = this.longitude
+
+/**
  * Computes whether the given [latLng] lies on or is near this polyline within [tolerance] (in
  * meters).
  *

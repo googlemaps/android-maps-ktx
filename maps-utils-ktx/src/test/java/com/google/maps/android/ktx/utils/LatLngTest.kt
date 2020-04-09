@@ -25,6 +25,14 @@ class LatLngTest {
     private val earthRadius = 6371009.0
 
     @Test
+    fun `test that latLng can be destructured`() {
+        val latLng = LatLng(2.0, 3.0)
+        val (lat, lng) = latLng
+        assertEquals(2.0, lat, 1e-6)
+        assertEquals(3.0, lng, 1e-6)
+    }
+
+    @Test
     fun `single LatLng encoding`() {
         val line = listOf(LatLng(1.0, 2.0))
         assertEquals("_ibE_seK", line.latLngListEncode())
