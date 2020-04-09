@@ -39,7 +39,7 @@ With this KTX library, you should be able to take advantage of several Kotlin la
 
 This repository includes a [demo app](app) that illustrates the use of this KTX library.
 
-To run the demo app, you'll to:
+To run the demo app, you'll have to:
 
 1. [Get a Maps API key](https://developers.google.com/maps/documentation/android-sdk/get-api-key)
 1. Create a file in the `app` directory called `secure.properties` (this file should *NOT* be under version control to protect your API key)
