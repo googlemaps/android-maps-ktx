@@ -35,9 +35,9 @@ With this KTX library, you should be able to take advantage of several Kotlin la
 
 ### Demo App
 
-This repository includes a [demo app](app) that illustrates the use of this KTX library.
-
 <img src="https://developers.google.com/maps/documentation/android-sdk/images/utility-multilayer.png" width="150" align=right>
+
+This repository includes a [demo app](app) that illustrates the use of this KTX library.
 
 To run the demo app, you'll to:
 
