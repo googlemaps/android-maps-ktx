@@ -1,6 +1,8 @@
 $dokka.format:html
 $dokka.linkExtension:html
 $dokka.location:com.google.maps.android.ktx.utils$area#com.google.android.gms.maps.model.Polygoncom.google.maps.android.ktx.utils/com.google.android.gms.maps.model.-polygon/area.html
+$dokka.location:com.google.maps.android.ktx.utils$component1(com.google.android.gms.maps.model.LatLng)com.google.maps.android.ktx.utils/com.google.android.gms.maps.model.-lat-lng/component1.html
+$dokka.location:com.google.maps.android.ktx.utils$component2(com.google.android.gms.maps.model.LatLng)com.google.maps.android.ktx.utils/com.google.android.gms.maps.model.-lat-lng/component2.html
 $dokka.location:com.google.maps.android.ktx.utils$computeSphericalOffsetOrigin(com.google.android.gms.maps.model.LatLng, kotlin.Double, kotlin.Double)com.google.maps.android.ktx.utils/com.google.android.gms.maps.model.-lat-lng/compute-spherical-offset-origin.html
 $dokka.location:com.google.maps.android.ktx.utils$contains(com.google.android.gms.maps.model.Polygon, com.google.android.gms.maps.model.LatLng)com.google.maps.android.ktx.utils/com.google.android.gms.maps.model.-polygon/contains.html
 $dokka.location:com.google.maps.android.ktx.utils$contains(com.google.android.gms.maps.model.Polyline, com.google.android.gms.maps.model.LatLng, kotlin.Double)com.google.maps.android.ktx.utils/com.google.android.gms.maps.model.-polyline/contains.html
