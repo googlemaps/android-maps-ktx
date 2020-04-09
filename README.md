@@ -37,14 +37,14 @@ With this KTX library, you should be able to take advantage of several Kotlin la
 
 This repository includes a [demo app](app) that illustrates the use of this KTX library.
 
+<img src="https://developers.google.com/maps/documentation/android-sdk/images/utility-multilayer.png" width="150" align=right>
+
 To run the demo app, you'll to:
 
 1. [Get a Maps API key](https://developers.google.com/maps/documentation/android-sdk/get-api-key)
 1. Create a file in the `app` directory called `secure.properties` (this file should *NOT* be under version control to protect your API key)
 1. Add a single line to `app/secure.properties` that looks like `MAPS_API_KEY=YOUR_API_KEY`, where `YOUR_API_KEY` is the API key you obtained in the first step
 1. Build and run
-
-<img src="https://developers.google.com/maps/documentation/android-sdk/images/utility-multilayer.png" width="150" align=right>
 
 ### Maps SDK KTX
 
