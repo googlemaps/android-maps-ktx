@@ -64,7 +64,7 @@ Marker marker = googleMap.addMarker(markerOptions);
 
 _After_
 ```kotlin
-Val googleMap = // ...
+val googleMap = // ...
 val sydney = LatLng(-33.852, 151.211)
 val marker = googleMap.addMarker {
     position(sydney)
@@ -76,7 +76,6 @@ val marker = googleMap.addMarker {
 
 Accessing a `GoogleMap` instance can be retrieved using coroutines vs. traditional the callback mechanism. The example here demonstrates how you can use this feature alongside with [Lifecycle-aware coroutine scopes][lifecycle] provided in Android’s Architecture Components. To use this, you'll need to add the following to your `build.gradle` dependencies:
 `implementation 'androidx.lifecycle:lifecycle-runtime-ktx:<latest-version>'`
-
 
 **NOTE**: This is an experimental feature and can only be used by using the `MapsExperimentalFeature` annotation class.
 
