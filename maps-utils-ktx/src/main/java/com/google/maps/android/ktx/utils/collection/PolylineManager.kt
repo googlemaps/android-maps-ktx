@@ -17,15 +17,17 @@
 
 package com.google.maps.android.ktx.utils.collection
 
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
-import com.google.maps.android.collections.MarkerManager
+import com.google.android.gms.maps.model.Polyline
+import com.google.android.gms.maps.model.PolylineOptions
+import com.google.maps.android.collections.PolylineManager
 
 /**
- * Adds a new [Marker] to the underlying map and to this [MarkerManager.Collection] with the
+ * Adds a new [Polyline] to the underlying map and to this [PolylineManager.Collection] with the
  * provided [optionsActions].
  */
-inline fun MarkerManager.Collection.addMarker(optionsActions: MarkerOptions.() -> Unit): Marker =
-    this.addMarker(
-        MarkerOptions().apply(optionsActions)
+inline fun PolylineManager.Collection.addPolyline(
+    optionsActions: PolylineOptions.() -> Unit
+): Polyline =
+    this.addPolyline(
+        PolylineOptions().apply(optionsActions)
     )

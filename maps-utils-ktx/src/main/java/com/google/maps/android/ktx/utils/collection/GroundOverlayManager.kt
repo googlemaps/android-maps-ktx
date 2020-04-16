@@ -17,15 +17,17 @@
 
 package com.google.maps.android.ktx.utils.collection
 
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
-import com.google.maps.android.collections.MarkerManager
+import com.google.android.gms.maps.model.GroundOverlay
+import com.google.android.gms.maps.model.GroundOverlayOptions
+import com.google.maps.android.collections.GroundOverlayManager
 
 /**
- * Adds a new [Marker] to the underlying map and to this [MarkerManager.Collection] with the
- * provided [optionsActions].
+ * Adds a new [GroundOverlay] to the underlying map and to this [GroundOverlayManager.Collection]
+ * with the provided [optionsActions].
  */
-inline fun MarkerManager.Collection.addMarker(optionsActions: MarkerOptions.() -> Unit): Marker =
-    this.addMarker(
-        MarkerOptions().apply(optionsActions)
+inline fun GroundOverlayManager.Collection.addGroundOverlay(
+    optionsActions: GroundOverlayOptions.() -> Unit
+): GroundOverlay =
+    this.addGroundOverlay(
+        GroundOverlayOptions().apply(optionsActions)
     )
