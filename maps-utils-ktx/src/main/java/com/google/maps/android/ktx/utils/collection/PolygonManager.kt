@@ -17,15 +17,17 @@
 
 package com.google.maps.android.ktx.utils.collection
 
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
-import com.google.maps.android.collections.MarkerManager
+import com.google.android.gms.maps.model.Polygon
+import com.google.android.gms.maps.model.PolygonOptions
+import com.google.maps.android.collections.PolygonManager
 
 /**
- * Adds a new [Marker] to the underlying map and to this [MarkerManager.Collection] with the
+ * Adds a new [Polygon] to the underlying map and to this [PolygonManager.Collection] with the
  * provided [optionsActions].
  */
-inline fun MarkerManager.Collection.addMarker(optionsActions: MarkerOptions.() -> Unit): Marker =
-    this.addMarker(
-        MarkerOptions().apply(optionsActions)
+inline fun PolygonManager.Collection.addPolygon(
+    optionsActions: PolygonOptions.() -> Unit
+): Polygon =
+    this.addPolygon(
+        PolygonOptions().apply(optionsActions)
     )
