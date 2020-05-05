@@ -33,7 +33,7 @@ android {
 
 dependencies {
     api deps.kotlin
-    implementation deps.playServicesMaps
+    implementation deps.playServices.maps
     implementation deps.kotlinxCoroutines
 
     // Tests

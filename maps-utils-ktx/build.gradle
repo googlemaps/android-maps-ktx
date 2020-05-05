@@ -37,7 +37,7 @@ android {
 dependencies {
     api deps.kotlin
     api deps.androidMapsUtils
-    implementation deps.playServicesMaps
+    implementation deps.playServices.maps
 
     // Tests
     testImplementation deps.androidx.test
