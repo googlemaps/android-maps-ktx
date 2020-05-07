@@ -29,14 +29,52 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
+
+    flavorDimensions "version"
+
+    productFlavors {
+        gms {
+            dimension "version"
+        }
+
+        standalone {
+            dimension "version"
+        }
+    }
 }
+
+task copyGmsToStandalone {
+    inputs.dir 'src/gms/java/com/google/maps/android/ktx'
+    outputs.dir 'src/standalone/java/com/google/maps/android/ktx'
+    doLast {
+        copy {
+            from 'src/gms/java/com/google/maps/android/ktx'
+            into 'src/standalone/java/com/google/maps/android/ktx'
+            filter { line ->
+                line.replace('com.google.android.gms.maps', 'com.google.android.libraries.maps')
+            }
+        }
+    }
+}
+
+preBuild.dependsOn copyGmsToStandalone
 
 dependencies {
     api deps.kotlin
-    implementation deps.playServices.maps
     implementation deps.kotlinxCoroutines
 
+    // GMS Flavor specific dependencies
+    gmsImplementation deps.playServices.maps
+
+    // V3-Beta specific dependencies
+    standaloneImplementation deps.playServices.basement
+    standaloneImplementation deps.playServices.base
+    standaloneImplementation deps.playServices.gcm
+    standaloneImplementation deps.playServices.location
+    standaloneImplementation name: 'maps-sdk-3.0.0-beta', ext: 'aar'
+
     // Tests
+    testImplementation deps.playServices.maps
     testImplementation deps.androidx.test
     testImplementation deps.androidx.junit
     testImplementation deps.junit
