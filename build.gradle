@@ -104,21 +104,6 @@ allprojects {
     }
 }
 
-//task debugThis {
-//    subprojects { project ->
-//        println("Is project library $project.ext.isLibrary")
-//        if (!project.ext.isLibrary) return
-//
-//        apply plugin: 'com.android.library'
-//
-//        android.libraryVariants.all { variant ->
-//            if (variant.buildType.name == 'debug') return
-//            println("The project name is " + project.name)
-//            println("Variant flavor name is $variant.flavorName")
-//        }
-//    }
-//}
-
 /**
  * Publishing and signing info
  */
