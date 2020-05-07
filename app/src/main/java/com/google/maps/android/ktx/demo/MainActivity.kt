@@ -26,7 +26,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.collections.GroundOverlayManager
 import com.google.maps.android.collections.MarkerManager
@@ -39,6 +38,7 @@ import com.google.maps.android.ktx.MapsExperimentalFeature
 import com.google.maps.android.ktx.awaitMap
 import com.google.maps.android.ktx.demo.io.MyItemReader
 import com.google.maps.android.ktx.demo.model.MyItem
+import com.google.maps.android.ktx.utils.collection.addMarker
 import com.google.maps.android.ktx.utils.geojson.geoJsonLayer
 import com.google.maps.android.ktx.utils.kml.kmlLayer
 import org.json.JSONException
@@ -65,17 +65,16 @@ class MainActivity : AppCompatActivity() {
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
         lifecycle.coroutineScope.launchWhenCreated {
-            check(mapFragment != null)
-            val googleMap = mapFragment.awaitMap()
+            val googleMap = mapFragment?.awaitMap()
             if (!isRestore) {
-                googleMap.moveCamera(
+                googleMap?.moveCamera(
                     CameraUpdateFactory.newLatLngZoom(
                         LatLng(51.403186, -0.126446),
                         10F
                     )
                 )
             }
-            showMapLayers(googleMap)
+            googleMap?.let { showMapLayers(it) }
         }
     }
 
@@ -216,12 +215,11 @@ class MainActivity : AppCompatActivity() {
     private fun addMarker(markerManager: MarkerManager) {
         // Unclustered marker - instead of adding to the map directly, use the MarkerManager
         val markerCollection: MarkerManager.Collection = markerManager.newCollection()
-        markerCollection.addMarker(
-            MarkerOptions()
-                .position(LatLng(51.150000, -0.150032))
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
-                .title("Unclustered marker")
-        )
+        markerCollection.addMarker {
+            position(LatLng(51.150000, -0.150032))
+            icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+            title("Unclustered marker")
+        }
         markerCollection.setOnMarkerClickListener { marker ->
             Toast.makeText(
                 this,
