@@ -155,7 +155,6 @@ subprojects { project ->
             publications {
                 def aarSuffix = (variant.flavorName == "") ? "-release" : "-$variant.flavorName-release"
                 def libId = rootProject.ext.artifactId(project, variant)
-                println("The artifact ID is $libId")
                 "${project.name + variant.flavorName}Aar"(MavenPublication) {
                     groupId project.group
                     artifactId libId
