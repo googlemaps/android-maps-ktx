@@ -73,18 +73,14 @@ buildscript {
     }
 }
 
-ext.artifactId = { project, variant ->
-    if (project.name == 'maps-utils-ktx') {
+ext.projectArtifactId = { project ->
+    if (project.name == 'maps-utils-ktx' ||
+        project.name == 'maps-ktx' ||
+        project.name == 'maps-v3-ktx') {
         return project.name
-    } else if (project.name == 'maps-ktx') {
-        return (variant.flavorName == 'standalone') ? "$project.name-v3" : project.name
     } else {
         return null
     }
-}
-
-ext.isProjectLibrary = { project ->
-    return project.name == 'maps-utils-ktx' || project.name == 'maps-ktx'
 }
 
 /**
@@ -93,7 +89,7 @@ ext.isProjectLibrary = { project ->
 allprojects {
     group = 'com.google.maps.android'
     version = '1.4.0'
-    project.ext.isLibrary = rootProject.ext.isProjectLibrary(project)
+    project.ext.artifactId = rootProject.ext.projectArtifactId(project)
 
     repositories {
         google()
@@ -108,7 +104,7 @@ allprojects {
  * Publishing and signing info
  */
 subprojects { project ->
-    if (!project.ext.isLibrary) return
+    if (project.ext.artifactId == null) return
 
     apply plugin: 'com.android.library'
     apply plugin: 'jacoco-android'
@@ -148,81 +144,75 @@ subprojects { project ->
         archiveClassifier = "javadoc"
     }
 
-    android.libraryVariants.all { variant ->
-        if (variant.buildType.name == 'debug') return
-        // Publishing
-        publishing {
-            publications {
-                def aarSuffix = (variant.flavorName == "") ? "-release" : "-$variant.flavorName-release"
-                def libId = rootProject.ext.artifactId(project, variant)
-                "${project.name + variant.flavorName}Aar"(MavenPublication) {
-                    groupId project.group
-                    artifactId libId
-                    version project.version
+    publishing {
+        publications {
+            aar(MavenPublication) {
+                groupId project.group
+                artifactId project.ext.artifactId
+                version project.version
 
-                    pom {
-                        name = project.name
-                        description = "Kotlin extensions (KTX) for Google Maps SDK"
-                        url = "https://github.com/googlemaps/android-maps-ktx"
-                        scm {
-                            connection = 'scm:git@github.com:googlemaps/android-maps-ktx.git'
-                            developerConnection = 'scm:git@github.com:googlemaps/android-maps-ktx.git'
-                            url = 'https://github.com/googlemaps/android-maps-ktx'
-                        }
+                pom {
+                    name = project.name
+                    description = "Kotlin extensions (KTX) for Google Maps SDK"
+                    url = "https://github.com/googlemaps/android-maps-ktx"
+                    scm {
+                        connection = 'scm:git@github.com:googlemaps/android-maps-ktx.git'
+                        developerConnection = 'scm:git@github.com:googlemaps/android-maps-ktx.git'
+                        url = 'https://github.com/googlemaps/android-maps-ktx'
+                    }
 
-                        licenses {
-                            license {
-                                name = 'The Apache Software License, Version 2.0'
-                                url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                                distribution = 'repo'
-                            }
-                        }
-
-                        organization {
-                            name = 'Google Inc'
-                            url = 'http://developers.google.com/maps'
-                        }
-
-                        developers {
-                            developer {
-                                name = 'Google Inc.'
-                            }
+                    licenses {
+                        license {
+                            name = 'The Apache Software License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                            distribution = 'repo'
                         }
                     }
 
-                    pom.withXml {
-                        def dependenciesNode = asNode().appendNode('dependencies')
-                        project.configurations.api.allDependencies.each { dependency ->
-                            def dependencyNode = dependenciesNode.appendNode('dependency')
-                            dependencyNode.appendNode('groupId', dependency.group)
-                            dependencyNode.appendNode('artifactId', dependency.name)
-                            dependencyNode.appendNode('version', dependency.version)
-                        }
+                    organization {
+                        name = 'Google Inc'
+                        url = 'http://developers.google.com/maps'
                     }
 
-                    afterEvaluate {
-                        artifact "$buildDir/outputs/aar/${project.name + aarSuffix}.aar"
-                        artifact dokkaJar
-                        artifact sourcesJar
+                    developers {
+                        developer {
+                            name = 'Google Inc.'
+                        }
                     }
                 }
-            }
 
-            repositories {
-                maven {
-                    name = "mavencentral"
-                    url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-                    credentials {
-                        username sonatypeUsername
-                        password sonatypePassword
+                pom.withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    project.configurations.api.allDependencies.each { dependency ->
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', dependency.group)
+                        dependencyNode.appendNode('artifactId', dependency.name)
+                        dependencyNode.appendNode('version', dependency.version)
                     }
+                }
+
+                afterEvaluate {
+                    artifact "$buildDir/outputs/aar/$project.name-release.aar"
+                    artifact dokkaJar
+                    artifact sourcesJar
                 }
             }
         }
 
-        signing {
-            sign publishing.publications."${project.name + variant.flavorName}Aar"
+        repositories {
+            maven {
+                name = "mavencentral"
+                url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+                credentials {
+                    username sonatypeUsername
+                    password sonatypePassword
+                }
+            }
         }
+    }
+
+    signing {
+        sign publishing.publications.aar
     }
 }
 

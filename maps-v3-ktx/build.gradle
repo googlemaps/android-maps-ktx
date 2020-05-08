@@ -31,35 +31,12 @@ android {
     }
 }
 
-/**
- * This task will copy all of the source code in this module into the `maps-v3-ktx` module
- * and change its imports from the Maps SDK on Play Services to the Standalone V3 Beta Maps SDK.
- */
-task copyGmsToV3Beta {
-    inputs.dir 'src/main/java/com/google/maps/android/ktx'
-    outputs.dir '../src/main/java/com/google/maps/android/ktx'
-    doLast {
-        copy {
-            from 'src/main/java/com/google/maps/android/ktx'
-            into '../maps-v3-ktx/src/main/java/com/google/maps/android/ktx'
-            filter { line ->
-                line.replace('com.google.android.gms.maps', 'com.google.android.libraries.maps')
-            }
-        }
-    }
-}
-
-preBuild.dependsOn copyGmsToV3Beta
-
 dependencies {
     api deps.kotlin
     implementation deps.kotlinxCoroutines
-    implementation deps.playServices.maps
-
-    // Tests
-    testImplementation deps.androidx.test
-    testImplementation deps.androidx.junit
-    testImplementation deps.junit
-    testImplementation deps.mockito
-    testImplementation deps.mockitoKotlin
+    implementation deps.playServices.basement
+    implementation deps.playServices.base
+    implementation deps.playServices.gcm
+    implementation deps.playServices.location
+    implementation name: 'maps-sdk-3.0.0-beta', ext: 'aar'
 }
