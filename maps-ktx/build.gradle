@@ -37,7 +37,7 @@ android {
  */
 task copyGmsToV3BetaSource {
     inputs.dir 'src/main/java/com/google/maps/android/ktx'
-    outputs.dir '../src/main/java/com/google/maps/android/ktx'
+    outputs.dir '../maps-v3-ktx/src/main/java/com/google/maps/android/ktx'
     doLast {
         copy {
             from 'src/main/java/com/google/maps/android/ktx'
@@ -55,7 +55,7 @@ task copyGmsToV3BetaSource {
  */
 task copyGmsToV3BetaTest {
     inputs.dir 'src/test/java/com/google/maps/android/ktx'
-    outputs.dir '../src/main/java/com/google/maps/android/ktx'
+    outputs.dir '../maps-v3-ktx/src/main/java/com/google/maps/android/ktx'
     doLast {
         copy {
             from 'src/test/java/com/google/maps/android/ktx'
