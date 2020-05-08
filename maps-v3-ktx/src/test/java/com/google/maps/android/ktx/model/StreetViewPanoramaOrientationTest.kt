@@ -17,14 +17,18 @@
 
 package com.google.maps.android.ktx.model
 
-import com.google.android.libraries.maps.model.TileOverlayOptions
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
-/**
- * Builds a new [TileOverlayOptions] using the provided [optionsActions].
- *
- * @return the constructed [TileOverlayOptions]
- */
-inline fun tileOverlayOptions(optionsActions: TileOverlayOptions.() -> Unit): TileOverlayOptions =
-    TileOverlayOptions().apply(
-        optionsActions
-    )
+class StreetViewPanoramaOrientationTest {
+
+    @Test
+    fun `test that StreetViewPanoramaOrientation is constructed`() {
+        val orientation = streetViewPanoramaOrientation {
+            bearing(1f)
+            tilt(20f)
+        }
+        assertEquals(1f, orientation.bearing, 1e-6f)
+        assertEquals(20f, orientation.tilt, 1e-6f)
+    }
+}

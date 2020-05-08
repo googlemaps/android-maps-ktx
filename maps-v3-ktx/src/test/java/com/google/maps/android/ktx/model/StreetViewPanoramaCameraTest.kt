@@ -17,14 +17,20 @@
 
 package com.google.maps.android.ktx.model
 
-import com.google.android.libraries.maps.model.GroundOverlayOptions
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
-/**
- * Builds a new [GroundOverlayOptions] using the provided [optionsActions].
- *
- * @return the constructed [GroundOverlayOptions]
- */
-inline fun groundOverlayOptions(optionsActions: GroundOverlayOptions.() -> Unit): GroundOverlayOptions =
-    GroundOverlayOptions().apply(
-        optionsActions
-    )
+class StreetViewPanoramaCameraTest {
+
+    @Test
+    fun `test that StreetViewPanoramaCamera is constructed`() {
+        val camera = streetViewPanoramaCamera {
+            bearing(1f)
+            tilt(20f)
+            zoom(2f)
+        }
+        assertEquals(1f, camera.bearing, 1e-6f)
+        assertEquals(20f, camera.tilt, 1e-6f)
+        assertEquals(2f, camera.zoom, 1e-6f)
+    }
+}

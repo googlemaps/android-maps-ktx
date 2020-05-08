@@ -17,14 +17,22 @@
 
 package com.google.maps.android.ktx.model
 
-import com.google.android.libraries.maps.model.CircleOptions
+import android.graphics.Color
+import com.google.android.libraries.maps.model.LatLng
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
-/**
- * Builds a new [CircleOptions] using the provided [optionsActions].
- *
- * @return the constructed [CircleOptions]
- */
-inline fun circleOptions(optionsActions: CircleOptions.() -> Unit): CircleOptions =
-    CircleOptions().apply(
-        optionsActions
-    )
+class PolygonOptionsTest {
+    @Test
+    fun testBuilder() {
+        val polygonOptions =
+            polygonOptions {
+                strokeWidth(1.0f)
+                strokeColor(Color.BLACK)
+                add(LatLng(1.0, 2.0))
+            }
+        assertEquals(1.0f, polygonOptions.strokeWidth, 1e-6f)
+        assertEquals(Color.BLACK, polygonOptions.strokeColor)
+        assertEquals(listOf(LatLng(1.0, 2.0)), polygonOptions.points)
+    }
+}

@@ -17,17 +17,23 @@
 
 package com.google.maps.android.ktx.model
 
-import com.google.android.libraries.maps.model.StreetViewPanoramaOrientation
+import com.google.android.libraries.maps.model.LatLng
+import org.junit.Assert.assertEquals
+import org.junit.Test
 
-/**
- * Builds a new [StreetViewPanoramaOrientation] using the provided [optionsActions]. Using this
- * removes * the need to construct a [StreetViewPanoramaOrientation.Builder] object.
- *
- * @return the constructed [StreetViewPanoramaOrientation]
- */
-inline fun streetViewPanoramaOrientation(
-    optionsActions: StreetViewPanoramaOrientation.Builder.() -> Unit
-): StreetViewPanoramaOrientation =
-    StreetViewPanoramaOrientation.Builder().apply(
-        optionsActions
-    ).build()
+class CameraPositionTest {
+
+    @Test
+    fun testBuilder() {
+        val cameraPosition = cameraPosition {
+            bearing(1f)
+            target(LatLng(1.0, 2.0))
+            tilt(1f)
+            zoom(12f)
+        }
+        assertEquals(1f, cameraPosition.bearing, 1e-6f)
+        assertEquals(LatLng(1.0, 2.0), cameraPosition.target)
+        assertEquals(1f, cameraPosition.tilt, 1e-6f)
+        assertEquals(12f, cameraPosition.zoom, 1e-6f)
+    }
+}

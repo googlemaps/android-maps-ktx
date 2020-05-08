@@ -39,4 +39,11 @@ dependencies {
     implementation deps.playServices.gcm
     implementation deps.playServices.location
     implementation name: 'maps-sdk-3.0.0-beta', ext: 'aar'
+
+    // Tests
+    testImplementation deps.androidx.test
+    testImplementation deps.androidx.junit
+    testImplementation deps.junit
+    testImplementation deps.mockito
+    testImplementation deps.mockitoKotlin
 }

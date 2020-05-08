@@ -17,14 +17,24 @@
 
 package com.google.maps.android.ktx.model
 
-import com.google.android.libraries.maps.model.MarkerOptions
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
+import org.junit.Test
 
-/**
- * Builds a new [MarkerOptions] using the provided [optionsActions].
- *
- * @return the constructed [MarkerOptions]
- */
-inline fun markerOptions(optionsActions: MarkerOptions.() -> Unit): MarkerOptions =
-    MarkerOptions().apply(
-        optionsActions
-    )
+class TileOverlayOptionsTest {
+
+    @Test
+    fun testBuilder() {
+        val tileOverlayOptions = tileOverlayOptions {
+            fadeIn(true)
+            transparency(0.5f)
+            visible(false)
+            zIndex(1f)
+        }
+        assertTrue(tileOverlayOptions.fadeIn)
+        assertFalse(tileOverlayOptions.isVisible)
+        assertEquals(0.5f, tileOverlayOptions.transparency, 1e-6f)
+        assertEquals(1f, tileOverlayOptions.zIndex, 1e-6f)
+    }
+}
