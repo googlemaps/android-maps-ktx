@@ -31,43 +31,7 @@ android {
     }
 }
 
-/**
- * This task will copy all of the source code in this module into the `maps-v3-ktx` module
- * and change its imports from the Maps SDK on Play Services to the Standalone V3 Beta Maps SDK.
- */
-task copyGmsToV3BetaSource {
-    inputs.dir 'src/main/java/com/google/maps/android/ktx'
-    outputs.dir '../maps-v3-ktx/src/main/java/com/google/maps/android/ktx'
-    doLast {
-        copy {
-            from 'src/main/java/com/google/maps/android/ktx'
-            into '../maps-v3-ktx/src/main/java/com/google/maps/android/ktx'
-            filter { line ->
-                line.replace('com.google.android.gms.maps', 'com.google.android.libraries.maps')
-            }
-        }
-    }
-}
-
-/**
- * This task will copy all of the tests in this module into the `maps-v3-ktx` module
- * and change its imports from the Maps SDK on Play Services to the Standalone V3 Beta Maps SDK.
- */
-task copyGmsToV3BetaTest {
-    inputs.dir 'src/test/java/com/google/maps/android/ktx'
-    outputs.dir '../maps-v3-ktx/src/main/java/com/google/maps/android/ktx'
-    doLast {
-        copy {
-            from 'src/test/java/com/google/maps/android/ktx'
-            into '../maps-v3-ktx/src/test/java/com/google/maps/android/ktx'
-            filter { line ->
-                line.replace('com.google.android.gms.maps', 'com.google.android.libraries.maps')
-            }
-        }
-    }
-}
-
-preBuild.dependsOn(copyGmsToV3BetaSource, copyGmsToV3BetaTest)
+preBuild.dependsOn(rootProject.tasks.copyGmsToV3Beta)
 
 dependencies {
     api deps.kotlin
