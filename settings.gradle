@@ -1,2 +1,5 @@
-include ':app', ':maps-ktx', ':maps-utils-ktx'
+include ':app'
+include ':maps-ktx'
+include ':maps-utils-ktx'
+include ':maps-v3-ktx'
 rootProject.name='android-maps-ktx'

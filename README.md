@@ -8,7 +8,7 @@ Maps Android KTX
 
 ## Description
 This repository contains Kotlin extensions (KTX) for:
-1. The [Maps SDK for Android][maps-sdk]
+1. The [Maps SDK for Android][maps-sdk] and [Maps SDK for Android V3 BETA][maps-v3-sdk]
 1. The [Maps SDK for Android Utility library][amu]
 
 It enables you to write more concise, idiomatic Kotlin. Each set of extensions can be used independently or together.
@@ -21,8 +21,11 @@ It enables you to write more concise, idiomatic Kotlin. Each set of extensions c
 ```groovy
 dependencies {
 
-    // KTX for the Maps SDK library
+    // KTX for the Maps SDK for Android library
     implementation 'com.google.maps.android:maps-ktx:1.4.0'
+
+    // KTX for the Maps SDK for Android V3 BETA library
+    implementation 'com.google.maps.android:maps-v3-ktx:1.4.0'
 
     // KTX for the Maps SDK for Android Utility library
     implementation 'com.google.maps.android:maps-utils-ktx:1.4.0'
@@ -193,4 +196,5 @@ For more information, check out the detailed guide on the
 [file an issue]: https://github.com/googlemaps/android-maps-ktx/issues/new/choose
 [lifecycle]: https://developer.android.com/topic/libraries/architecture/coroutines#lifecyclescope
 [maps-sdk]: https://developers.google.com/maps/documentation/android-sdk/intro
+[maps-v3-sdk]: https://developers.google.com/maps/documentation/android-sdk/v3-client-migration
 [pull request]: https://github.com/googlemaps/android-maps-ktx/compare

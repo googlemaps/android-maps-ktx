@@ -5,7 +5,5 @@ build
 local.properties
 .classpath
 .project
-library/bin
-library/gen
 project.properties
 .DS_Store
