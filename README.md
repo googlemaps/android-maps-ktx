@@ -22,13 +22,13 @@ It enables you to write more concise, idiomatic Kotlin. Each set of extensions c
 dependencies {
 
     // KTX for the Maps SDK for Android library
-    implementation 'com.google.maps.android:maps-ktx:1.4.0'
+    implementation 'com.google.maps.android:maps-ktx:1.5.0'
 
     // KTX for the Maps SDK for Android V3 BETA library
-    implementation 'com.google.maps.android:maps-v3-ktx:1.4.0'
+    implementation 'com.google.maps.android:maps-v3-ktx:1.5.0'
 
     // KTX for the Maps SDK for Android Utility library
-    implementation 'com.google.maps.android:maps-utils-ktx:1.4.0'
+    implementation 'com.google.maps.android:maps-utils-ktx:1.5.0'
 }
 ```
 
