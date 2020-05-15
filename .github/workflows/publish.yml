@@ -34,6 +34,7 @@ jobs:
       run: |
         echo "Creating .gpg key"
         echo $GPG_KEY_ARMOR > ./release.asc
+        echo "Line count of resulting file: $(wc -l ./release.asc)"
         gpg --quiet --output ./release.gpg --dearmor ./release.asc
 
         echo "Creating build"
