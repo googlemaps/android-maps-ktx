@@ -30,26 +30,21 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Create .gpg key
+    - name: Build and Publish
       run: |
+        echo "Create .gpg key"
         echo $GPG_KEY_ARMOR | base64 --decode > ./release.asc
         gpg --quiet --output ./release.gpg --dearmor ./release.asc
-      env:
-        GPG_KEY_ARMOR: "${{ secrets.SYNCED_GPG_KEY_ARMOR }}"
 
-    - name: Build
-      run: ./gradlew build --warn --stacktrace
-
-    - name: Publish
-      run: |
         echo "sonatypeUsername=$SONATYPE_USERNAME" >> ~/.gradle/gradle.properties
         echo "sonatypePassword=$SONATYPE_PASSWORD" >> ~/.gradle/gradle.properties
         echo "signing.keyId=$GPG_KEY_ID" >> ~/.gradle/gradle.properties
         echo "signing.password=$GPG_PASSWORD" >> ~/.gradle/gradle.properties
         echo "signing.secretKeyRingFile=./release.gpg" >> ~/.gradle/gradle.properties
-        ./gradlew publish --warn --stacktrace
+        ./gradlew build publish --warn --stacktrace
       env:
-        SONATYPE_USERNAME: ${{ secrets.SYNCED_SONATYPE_USERNAME }}
-        SONATYPE_PASSWORD: ${{ secrets.SYNCED_SONATYPE_PASSWORD }}
+        GPG_KEY_ARMOR: "${{ secrets.SYNCED_GPG_KEY_ARMOR }}"
         GPG_KEY_ID: ${{ secrets.SYNCED_GPG_KEY_ID }}
         GPG_PASSWORD: ${{ secrets.SYNCED_GPG_KEY_PASSWORD }}
+        SONATYPE_PASSWORD: ${{ secrets.SYNCED_SONATYPE_PASSWORD }}
+        SONATYPE_USERNAME: ${{ secrets.SYNCED_SONATYPE_USERNAME }}
