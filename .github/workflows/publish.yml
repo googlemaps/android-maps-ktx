@@ -23,7 +23,7 @@ on:
     types: [publish]
 
 jobs:
-  release:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -45,4 +45,4 @@ jobs:
         -Psigning.password=${{ secrets.SYNCED_GPG_KEY_PASSWORD }} \
         -Psigning.secretKeyRingFile=./release.gpg
       env:
-        GPG_KEY_ARMOR: ${{ secrets.SYNCED_GPG_KEY_ARMOR }}
+        GPG_KEY_ARMOR: "${{ secrets.SYNCED_GPG_KEY_ARMOR }}"
