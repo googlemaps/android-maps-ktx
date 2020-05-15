@@ -36,12 +36,11 @@ jobs:
         echo $GPG_KEY_ARMOR | base64 --decode > ./release.asc
         gpg --quiet --output ./release.gpg --dearmor ./release.asc
 
-        touch ~/.gradle/gradle.properties
-        echo "sonatypeUsername=$SONATYPE_USERNAME" >> ~/.gradle/gradle.properties
-        echo "sonatypePassword=$SONATYPE_PASSWORD" >> ~/.gradle/gradle.properties
-        echo "signing.keyId=$GPG_KEY_ID" >> ~/.gradle/gradle.properties
-        echo "signing.password=$GPG_PASSWORD" >> ~/.gradle/gradle.properties
-        echo "signing.secretKeyRingFile=./release.gpg" >> ~/.gradle/gradle.properties
+        sed -i -e "s/sonatypeUsername=/sonatypeUsername=$SONATYPE_USERNAME/g" gradle.properties
+        sed -i -e "s/sonatypePassword=/sonatypePassword=$SONATYPE_PASSWORD/g" gradle.properties
+        sed -i -e "s/signing.keyId=/signing.keyId=$GPG_KEY_ID/g" gradle.properties
+        sed -i -e "s/signing.password=/signing.password=$GPG_PASSWORD/g" gradle.properties
+        sed -i -e "s/signing.secretKeyRingFile=/signing.secretKeyRingFile=./release.gpg/g" gradle.properties
         ./gradlew build publish --warn --stacktrace
       env:
         GPG_KEY_ARMOR: "${{ secrets.SYNCED_GPG_KEY_ARMOR }}"
