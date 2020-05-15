@@ -41,4 +41,15 @@ jobs:
       run: ./gradlew build --warn --stacktrace
 
     - name: Publish
-      run: ./gradlew publish --warn --stacktrace -PsonatypeUsername=${{ secrets.SYNCED_SONATYPE_USERNAME }} -PsonatypePassword=${{ secrets.SYNCED_SONATYPE_PASSWORD }} -Psigning.keyId=${{ secrets.SYNCED_GPG_KEY_ID }} -Psigning.password=${{ secrets.SYNCED_GPG_KEY_PASSWORD }} -Psigning.secretKeyRingFile=./release.gpg
+      run: |
+        echo "sonatypeUsername=$SONATYPE_USERNAME" >> ~/.gradle/gradle.properties
+        echo "sonatypePassword=$SONATYPE_PASSWORD" >> ~/.gradle/gradle.properties
+        echo "signing.keyId=$GPG_KEY_ID" >> ~/.gradle/gradle.properties
+        echo "signing.password=$GPG_PASSWORD" >> ~/.gradle/gradle.properties
+        echo "signing.secretKeyRingFile=./release.gpg" >> ~/.gradle/gradle.properties
+        ./gradlew publish --warn --stacktrace
+      env:
+        SONATYPE_USERNAME: ${{ secrets.SYNCED_SONATYPE_USERNAME }}
+        SONATYPE_PASSWORD: ${{ secrets.SYNCED_SONATYPE_PASSWORD }}
+        GPG_KEY_ID: ${{ secrets.SYNCED_GPG_KEY_ID }}
+        GPG_PASSWORD: ${{ secrets.SYNCED_GPG_KEY_PASSWORD }}
