@@ -34,9 +34,11 @@ android {
     }
 }
 
+preBuild.dependsOn(rootProject.tasks.copyGmsUtilsToV3Beta)
+
 dependencies {
     api deps.kotlin
-    api deps.androidMapsUtils
+    api deps.androidMapsUtils.gms
     implementation deps.playServices.maps
 
     // Tests

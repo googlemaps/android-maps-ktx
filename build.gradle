@@ -22,7 +22,7 @@ buildscript {
             "minSdk"    : 15,
             "targetSdk" : 29
         ],
-        'androidMapsUtils' : '1.1.0',
+        'androidMapsUtils' : '1.3.1',
         'androidx'         : [
             'appcompat': '1.1.0',
             'coreKtx'  : '1.2.0',
@@ -39,7 +39,10 @@ buildscript {
     ]
 
     ext.deps = [
-        'androidMapsUtils' : "com.google.maps.android:android-maps-utils:$versions.androidMapsUtils",
+        'androidMapsUtils' : [
+            'gms': "com.google.maps.android:android-maps-utils:$versions.androidMapsUtils",
+            'v3' : "com.google.maps.android:android-maps-utils-v3:$versions.androidMapsUtils"
+        ],
         'androidx'         : [
             'appcompat': "androidx.appcompat:appcompat:$versions.androidx.appcompat",
             'coreKtx'  : "androidx.core:core-ktx:$versions.androidx.coreKtx",
@@ -76,7 +79,8 @@ buildscript {
 ext.projectArtifactId = { project ->
     if (project.name == 'maps-utils-ktx' ||
         project.name == 'maps-ktx' ||
-        project.name == 'maps-v3-ktx') {
+        project.name == 'maps-v3-ktx' ||
+        project.name == 'maps-utils-v3-ktx') {
         return project.name
     } else {
         return null
@@ -228,6 +232,18 @@ task clean(type: Delete) {
 task copyGmsToV3Beta(type: Copy) {
     from 'maps-ktx/src'
     into 'maps-v3-ktx/src'
+    filter { line ->
+        line.replace('com.google.android.gms.maps', 'com.google.android.libraries.maps')
+    }
+}
+
+/**
+ * This task will copy all of the source code in this module into the `maps-v3-ktx` module
+ * and change its imports from the Maps SDK on Play Services to the Standalone V3 Beta Maps SDK.
+ */
+task copyGmsUtilsToV3Beta(type: Copy) {
+    from 'maps-utils-ktx/src'
+    into 'maps-utils-v3-ktx/src'
     filter { line ->
         line.replace('com.google.android.gms.maps', 'com.google.android.libraries.maps')
     }
