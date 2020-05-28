@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>containsLocation - maps-utils-v3-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">maps-utils-v3-ktx</a>&nbsp;/&nbsp;<a href="../index.html">com.google.maps.android.ktx.utils</a>&nbsp;/&nbsp;<a href="index.html">kotlin.collections.List</a>&nbsp;/&nbsp;<a href="./contains-location.html">containsLocation</a><br/>
+<br/>
+<h1>containsLocation</h1>
+<a name="com.google.maps.android.ktx.utils$containsLocation(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean)"></a>
+<code><span class="keyword">fun </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">LatLng</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">containsLocation</span><span class="symbol">(</span><span class="identifier" id="com.google.maps.android.ktx.utils$containsLocation(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean)/latLng">latLng</span><span class="symbol">:</span>&nbsp;<span class="identifier">LatLng</span><span class="symbol">, </span><span class="identifier" id="com.google.maps.android.ktx.utils$containsLocation(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean)/geodesic">geodesic</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Computes whether the <a href="contains-location.html#com.google.maps.android.ktx.utils$containsLocation(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean)/latLng">latLng</a> lies inside this.</p>
+<p>The polygon is always considered closed, regardless of whether the last point equals
+the first or not.</p>
+<p>Inside is defined as not containing the South Pole -- the South Pole is always outside.
+The polygon is formed of great circle segments if <a href="contains-location.html#com.google.maps.android.ktx.utils$containsLocation(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean)/geodesic">geodesic</a> is true, and of rhumb
+(loxodromic) segments otherwise.</p>
+<h3>Parameters</h3>
+<p><a name="latLng"></a>
+<code>latLng</code> - the LatLng to check if it is contained within this polygon</p>
+<p><a name="geodesic"></a>
+<code>geodesic</code> - if this Polygon is geodesic or not</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">PolyUtil.containsLocation</a></p>
+</p>
+</BODY>
+</HTML>
