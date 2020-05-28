@@ -34,6 +34,7 @@ import com.google.maps.android.collections.PolylineManager
 import com.google.maps.android.data.Renderer.ImagesCache
 import com.google.maps.android.data.geojson.GeoJsonLineStringStyle
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
+import com.google.maps.android.ktx.MapsExperimentalFeature
 import com.google.maps.android.ktx.awaitMap
 import com.google.maps.android.ktx.demo.io.MyItemReader
 import com.google.maps.android.ktx.demo.model.MyItem
@@ -52,6 +53,7 @@ import org.json.JSONException
  */
 class MainActivity : AppCompatActivity() {
 
+    @MapsExperimentalFeature
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val isRestore = savedInstanceState != null
