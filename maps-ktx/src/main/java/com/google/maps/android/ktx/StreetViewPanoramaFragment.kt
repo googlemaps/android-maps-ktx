@@ -30,7 +30,6 @@ import kotlin.coroutines.suspendCoroutine
  *
  * @return the [StreetViewPanorama]
  */
-@MapsExperimentalFeature
 suspend inline fun StreetViewPanoramaFragment.awaitStreetViewPanorama(): StreetViewPanorama =
     suspendCoroutine { continuation ->
         getStreetViewPanoramaAsync {
