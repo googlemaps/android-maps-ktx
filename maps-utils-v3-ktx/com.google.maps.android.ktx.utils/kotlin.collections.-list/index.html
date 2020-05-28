@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>com.google.maps.android.ktx.utils.kotlin.collections.List - maps-utils-v3-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">maps-utils-v3-ktx</a>&nbsp;/&nbsp;<a href="../index.html">com.google.maps.android.ktx.utils</a>&nbsp;/&nbsp;<a href="./index.html">kotlin.collections.List</a><br/>
+<br/>
+<h3>Extensions for kotlin.collections.List</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="contains-location.html">containsLocation</a></h4>
+</td>
+<td>
+<p>Computes whether the <a href="contains-location.html#com.google.maps.android.ktx.utils$containsLocation(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean)/latLng">latLng</a> lies inside this.</p>
+<code><span class="keyword">fun </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">LatLng</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">containsLocation</span><span class="symbol">(</span><span class="identifier" id="com.google.maps.android.ktx.utils$containsLocation(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean)/latLng">latLng</span><span class="symbol">:</span>&nbsp;<span class="identifier">LatLng</span><span class="symbol">, </span><span class="identifier" id="com.google.maps.android.ktx.utils$containsLocation(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean)/geodesic">geodesic</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-closed-polygon.html">isClosedPolygon</a></h4>
+</td>
+<td>
+<p>Checks whether or not this <a href="#">LatLng</a> list is a closed Polygon.</p>
+<code><span class="keyword">fun </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">LatLng</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">isClosedPolygon</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-location-on-path.html">isLocationOnPath</a></h4>
+</td>
+<td>
+<p>Computes whether the given <a href="is-location-on-path.html#com.google.maps.android.ktx.utils$isLocationOnPath(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean, kotlin.Double)/latLng">latLng</a> lies on or is near this polyline within <a href="is-location-on-path.html#com.google.maps.android.ktx.utils$isLocationOnPath(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean, kotlin.Double)/tolerance">tolerance</a> (in
+meters).</p>
+<code><span class="keyword">fun </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">LatLng</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">isLocationOnPath</span><span class="symbol">(</span><span class="identifier" id="com.google.maps.android.ktx.utils$isLocationOnPath(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean, kotlin.Double)/latLng">latLng</span><span class="symbol">:</span>&nbsp;<span class="identifier">LatLng</span><span class="symbol">, </span><span class="identifier" id="com.google.maps.android.ktx.utils$isLocationOnPath(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean, kotlin.Double)/geodesic">geodesic</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.google.maps.android.ktx.utils$isLocationOnPath(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean, kotlin.Double)/tolerance">tolerance</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a>&nbsp;<span class="symbol">=</span>&nbsp;0.1<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="is-on-edge.html">isOnEdge</a></h4>
+</td>
+<td>
+<p>Checks whether or not <a href="is-on-edge.html#com.google.maps.android.ktx.utils$isOnEdge(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean, kotlin.Double)/latLng">latLng</a> lies on or is near the edge of this polygon within the <a href="is-on-edge.html#com.google.maps.android.ktx.utils$isOnEdge(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean, kotlin.Double)/tolerance">tolerance</a>
+(in meters). The default value is <a href="#">PolyUtil.DEFAULT_TOLERANCE</a>.</p>
+<code><span class="keyword">fun </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">LatLng</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">isOnEdge</span><span class="symbol">(</span><span class="identifier" id="com.google.maps.android.ktx.utils$isOnEdge(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean, kotlin.Double)/latLng">latLng</span><span class="symbol">:</span>&nbsp;<span class="identifier">LatLng</span><span class="symbol">, </span><span class="identifier" id="com.google.maps.android.ktx.utils$isOnEdge(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean, kotlin.Double)/geodesic">geodesic</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="com.google.maps.android.ktx.utils$isOnEdge(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), com.google.android.libraries.maps.model.LatLng, kotlin.Boolean, kotlin.Double)/tolerance">tolerance</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a>&nbsp;<span class="symbol">=</span>&nbsp;0.1<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="lat-lng-list-encode.html">latLngListEncode</a></h4>
+</td>
+<td>
+<p>Encodes this <a href="#">LatLng</a> list in a String using the
+<a href="https://developers.google.com/maps/documentation/utilities/polylinealgorithm">Polyline Algorithm Format</a>.</p>
+<code><span class="keyword">fun </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">LatLng</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">latLngListEncode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="simplify.html">simplify</a></h4>
+</td>
+<td>
+<p>Simplifies this list of LatLng using the Douglas-Peucker decimation. Increasing the value of
+<a href="simplify.html#com.google.maps.android.ktx.utils$simplify(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), kotlin.Double)/tolerance">tolerance</a> will result in fewer points.</p>
+<code><span class="keyword">fun </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">LatLng</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">simplify</span><span class="symbol">(</span><span class="identifier" id="com.google.maps.android.ktx.utils$simplify(kotlin.collections.List((com.google.android.libraries.maps.model.LatLng)), kotlin.Double)/tolerance">tolerance</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">LatLng</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="spherical-path-length.html">sphericalPathLength</a></h4>
+</td>
+<td>
+<p>Computes the length of this path on Earth.</p>
+<code><span class="keyword">fun </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">LatLng</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">sphericalPathLength</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="spherical-polygon-area.html">sphericalPolygonArea</a></h4>
+</td>
+<td>
+<p>Computes the area under a closed path on Earth.</p>
+<code><span class="keyword">fun </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">LatLng</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">sphericalPolygonArea</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="spherical-polygon-signed-area.html">sphericalPolygonSignedArea</a></h4>
+</td>
+<td>
+<p>Computes the signed area under a closed path on Earth. The sign of the area may be used to
+determine the orientation of the path.</p>
+<code><span class="keyword">fun </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">LatLng</span><span class="symbol">&gt;</span><span class="symbol">.</span><span class="identifier">sphericalPolygonSignedArea</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
