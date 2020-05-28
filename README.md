@@ -92,8 +92,6 @@ val marker = googleMap.addMarker {
 Accessing a `GoogleMap` instance can be retrieved using coroutines vs. traditional the callback mechanism. The example here demonstrates how you can use this feature alongside with [Lifecycle-aware coroutine scopes][lifecycle] provided in Android’s Architecture Components. To use this, you'll need to add the following to your `build.gradle` dependencies:
 `implementation 'androidx.lifecycle:lifecycle-runtime-ktx:<latest-version>'`
 
-**NOTE**: This is an experimental feature and can only be used by using the `MapsExperimentalFeature` annotation class.
-
 _Before_
 ```java
 @Override
@@ -112,7 +110,6 @@ public void onCreate(Bundle savedInstanceState) {
 
 _After_
 ```kotlin
-@MapsExperimentalFeature
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
