@@ -34,11 +34,11 @@ android {
 dependencies {
     api deps.kotlin
     implementation deps.kotlinxCoroutines
-    implementation deps.playServices.basement
+    implementation deps.mapsBeta
     implementation deps.playServices.base
+    implementation deps.playServices.basement
     implementation deps.playServices.gcm
     implementation deps.playServices.location
-    implementation name: 'maps-sdk-3.0.0-beta', ext: 'aar'
 
     // Tests
     testImplementation deps.androidx.test

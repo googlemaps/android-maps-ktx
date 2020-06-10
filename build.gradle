@@ -33,6 +33,7 @@ buildscript {
         'junit'            : '4.12',
         'kotlin'           : '1.3.70',
         'kotlinxCoroutines': '1.3.2',
+        'mapsBeta'         : '3.1.0-beta',
         'mockito'          : '3.0.0',
         'mockitoKotlin'    : '2.2.0',
         'playServices'     : '17.0.0',
@@ -53,6 +54,7 @@ buildscript {
         'junit'            : "junit:junit:$versions.junit",
         'kotlin'           : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin",
         'kotlinxCoroutines': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinxCoroutines",
+        'mapsBeta'         : "com.google.android.libraries.maps:maps:$versions.mapsBeta",
         'mockito'          : "org.mockito:mockito-core:$versions.mockito",
         'mockitoKotlin'    : "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockitoKotlin",
         'playServices'     : [
