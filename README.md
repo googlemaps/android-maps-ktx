@@ -1,5 +1,5 @@
 ![Tests](https://github.com/googlemaps/android-maps-ktx/workflows/Run%20unit%20tests/badge.svg)
-![Beta](https://img.shields.io/badge/stability-beta-yellow)
+![Stable](https://img.shields.io/badge/stability-stable-green)
 [![Discord](https://img.shields.io/discord/676948200904589322)](https://discord.gg/hYsWbmk)
 ![Apache-2.0](https://img.shields.io/badge/license-Apache-blue)
 
