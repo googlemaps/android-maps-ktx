@@ -50,7 +50,10 @@ android {
     }
 }
 
+// [START maps_android_utils_ktx_install_snippet]
 dependencies {
+    implementation 'com.google.maps.android:maps-utils-ktx:1.7.0'
+    // [START_EXCLUDE silent]
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.kotlin
     implementation deps.androidx.appcompat
@@ -58,7 +61,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.maps.android:maps-ktx:1.7.0'
-    implementation 'com.google.maps.android:maps-utils-ktx:1.7.0'
 //    implementation project(':maps-ktx')
 //    implementation project(':maps-utils-ktx')
+    // [END_EXCLUDE]
 }
+// [END maps_android_utils_ktx_install_snippet]
