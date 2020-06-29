@@ -22,7 +22,7 @@ buildscript {
             "minSdk"    : 15,
             "targetSdk" : 29
         ],
-        'androidMapsUtils' : '1.3.1',
+        'androidMapsUtils' : '2.0.1',
         'androidx'         : [
             'appcompat': '1.1.0',
             'coreKtx'  : '1.2.0',
@@ -31,7 +31,7 @@ buildscript {
             'junit'    : '1.1.1',
         ],
         'junit'            : '4.12',
-        'kotlin'           : '1.3.70',
+        'kotlin'           : '1.3.72',
         'kotlinxCoroutines': '1.3.2',
         'mapsBeta'         : '3.1.0-beta',
         'mockito'          : '3.0.0',
