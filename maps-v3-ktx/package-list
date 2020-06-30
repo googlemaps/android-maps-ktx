@@ -7,8 +7,10 @@ $dokka.location:com.google.maps.android.ktx$addPolygon(com.google.android.librar
 $dokka.location:com.google.maps.android.ktx$addPolyline(com.google.android.libraries.maps.GoogleMap, kotlin.Function1((com.google.android.libraries.maps.model.PolylineOptions, kotlin.Unit)))com.google.maps.android.ktx/com.google.android.libraries.maps.-google-map/add-polyline.html
 $dokka.location:com.google.maps.android.ktx$addTileOverlay(com.google.android.libraries.maps.GoogleMap, kotlin.Function1((com.google.android.libraries.maps.model.TileOverlayOptions, kotlin.Unit)))com.google.maps.android.ktx/com.google.android.libraries.maps.-google-map/add-tile-overlay.html
 $dokka.location:com.google.maps.android.ktx$awaitMap(com.google.android.libraries.maps.MapFragment)com.google.maps.android.ktx/com.google.android.libraries.maps.-map-fragment/await-map.html
+$dokka.location:com.google.maps.android.ktx$awaitMap(com.google.android.libraries.maps.MapView)com.google.maps.android.ktx/com.google.android.libraries.maps.-map-view/await-map.html
 $dokka.location:com.google.maps.android.ktx$awaitMap(com.google.android.libraries.maps.SupportMapFragment)com.google.maps.android.ktx/com.google.android.libraries.maps.-support-map-fragment/await-map.html
 $dokka.location:com.google.maps.android.ktx$awaitStreetViewPanorama(com.google.android.libraries.maps.StreetViewPanoramaFragment)com.google.maps.android.ktx/com.google.android.libraries.maps.-street-view-panorama-fragment/await-street-view-panorama.html
+$dokka.location:com.google.maps.android.ktx$awaitStreetViewPanorama(com.google.android.libraries.maps.StreetViewPanoramaView)com.google.maps.android.ktx/com.google.android.libraries.maps.-street-view-panorama-view/await-street-view-panorama.html
 $dokka.location:com.google.maps.android.ktx$awaitStreetViewPanorama(com.google.android.libraries.maps.SupportStreetViewPanoramaFragment)com.google.maps.android.ktx/com.google.android.libraries.maps.-support-street-view-panorama-fragment/await-street-view-panorama.html
 com.google.maps.android.ktx
 com.google.maps.android.ktx.model
