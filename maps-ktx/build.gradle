@@ -34,9 +34,9 @@ android {
 preBuild.dependsOn(rootProject.tasks.copyGmsToV3Beta)
 
 dependencies {
-    api deps.kotlin
+    implementation deps.kotlin
     implementation deps.kotlinxCoroutines
-    implementation deps.playServices.maps
+    api deps.playServices.maps
 
     // Tests
     testImplementation deps.androidx.test

@@ -14,6 +14,7 @@ This repository contains Kotlin extensions (KTX) for:
 It enables you to write more concise, idiomatic Kotlin. Each set of extensions can be used independently or together.
 
 ## Requirements
+* Kotlin-enabled project
 * API level 15+
 
 ## Installation
