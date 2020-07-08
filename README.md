@@ -15,6 +15,7 @@ It enables you to write more concise, idiomatic Kotlin. Each set of extensions c
 
 ## Requirements
 * Kotlin-enabled project
+* Kotlin coroutines
 * API level 15+
 
 ## Installation

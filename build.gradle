@@ -58,10 +58,6 @@ buildscript {
         'mockito'          : "org.mockito:mockito-core:$versions.mockito",
         'mockitoKotlin'    : "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockitoKotlin",
         'playServices'     : [
-            'basement' : "com.google.android.gms:play-services-basement:$versions.playServices",
-            'base' : "com.google.android.gms:play-services-base:$versions.playServices",
-            'gcm' : "com.google.android.gms:play-services-gcm:$versions.playServices",
-            'location' : "com.google.android.gms:play-services-location:$versions.playServices",
             'maps' : "com.google.android.gms:play-services-maps:$versions.playServices",
         ],
     ]
