@@ -32,13 +32,9 @@ android {
 }
 
 dependencies {
-    api deps.kotlin
+    implementation deps.kotlin
     implementation deps.kotlinxCoroutines
-    implementation deps.mapsBeta
-    implementation deps.playServices.base
-    implementation deps.playServices.basement
-    implementation deps.playServices.gcm
-    implementation deps.playServices.location
+    api deps.mapsBeta
 
     // Tests
     testImplementation deps.androidx.test

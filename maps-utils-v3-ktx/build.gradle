@@ -35,14 +35,10 @@ android {
 }
 
 dependencies {
-    api deps.kotlin
-    api deps.androidMapsUtils.v3
+    implementation deps.kotlin
     implementation deps.kotlinxCoroutines
-    implementation deps.mapsBeta
-    implementation deps.playServices.base
-    implementation deps.playServices.basement
-    implementation deps.playServices.gcm
-    implementation deps.playServices.location
+    api deps.androidMapsUtils.v3
+    api deps.mapsBeta
 
     // Tests
     testImplementation deps.androidx.test
