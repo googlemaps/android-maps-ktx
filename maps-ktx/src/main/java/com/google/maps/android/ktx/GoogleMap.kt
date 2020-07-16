@@ -17,6 +17,7 @@
 
 package com.google.maps.android.ktx
 
+import androidx.annotation.IntDef
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMapOptions
 import com.google.android.gms.maps.model.Circle
@@ -37,6 +38,40 @@ import com.google.maps.android.ktx.model.markerOptions
 import com.google.maps.android.ktx.model.polygonOptions
 import com.google.maps.android.ktx.model.polylineOptions
 import com.google.maps.android.ktx.model.tileOverlayOptions
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
+
+@IntDef(
+    GoogleMap.OnCameraMoveStartedListener.REASON_GESTURE,
+    GoogleMap.OnCameraMoveStartedListener.REASON_API_ANIMATION,
+    GoogleMap.OnCameraMoveStartedListener.REASON_DEVELOPER_ANIMATION
+)
+@Retention(AnnotationRetention.SOURCE)
+annotation class MoveStartedReason
+
+sealed class CameraEvent
+object CameraIdleEvent : CameraEvent()
+object CameraMoveCanceledEvent : CameraEvent()
+object CameraMoveEvent : CameraEvent()
+data class CameraMoveStartedEvent(@MoveStartedReason val reason: Int) : CameraEvent()
+
+/**
+ * Returns a [Flow] of [CameraEvent] items so that camera movements can be observed. Using this to
+ * observe camera events will set listeners and thus override existing listeners to
+ * [GoogleMap.setOnCameraIdleListener], [GoogleMap.setOnCameraMoveCanceledListener],
+ * [GoogleMap.setOnCameraMoveListener] and [GoogleMap.setOnCameraMoveStartedListener].
+ */
+@ExperimentalCoroutinesApi
+inline fun GoogleMap.cameraEvents(): Flow<CameraEvent> =
+    callbackFlow {
+        setOnCameraIdleListener { offer(CameraIdleEvent) }
+        setOnCameraMoveCanceledListener { offer(CameraMoveCanceledEvent) }
+        setOnCameraMoveListener { offer(CameraMoveEvent) }
+        setOnCameraMoveStartedListener { offer(CameraMoveStartedEvent(it)) }
+        awaitClose()
+    }
 
 /**
  * Builds a new [GoogleMapOptions] using the provided [optionsActions].

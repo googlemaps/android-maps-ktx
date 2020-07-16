@@ -18,6 +18,7 @@ package com.google.maps.android.ktx.demo
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.coroutineScope
@@ -34,12 +35,19 @@ import com.google.maps.android.collections.PolylineManager
 import com.google.maps.android.data.Renderer.ImagesCache
 import com.google.maps.android.data.geojson.GeoJsonLineStringStyle
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
+import com.google.maps.android.ktx.CameraIdleEvent
+import com.google.maps.android.ktx.CameraMoveCanceledEvent
+import com.google.maps.android.ktx.CameraMoveEvent
+import com.google.maps.android.ktx.CameraMoveStartedEvent
 import com.google.maps.android.ktx.awaitMap
+import com.google.maps.android.ktx.cameraEvents
 import com.google.maps.android.ktx.demo.io.MyItemReader
 import com.google.maps.android.ktx.demo.model.MyItem
 import com.google.maps.android.ktx.utils.collection.addMarker
 import com.google.maps.android.ktx.utils.geojson.geoJsonLayer
 import com.google.maps.android.ktx.utils.kml.kmlLayer
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import org.json.JSONException
 
 /**
@@ -52,6 +60,7 @@ import org.json.JSONException
  */
 class MainActivity : AppCompatActivity() {
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val isRestore = savedInstanceState != null
@@ -61,18 +70,29 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Add your own API key in app/secure.properties as MAPS_API_KEY=YOUR_API_KEY", Toast.LENGTH_LONG).show()
         }
 
-        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         lifecycle.coroutineScope.launchWhenCreated {
-            val googleMap = mapFragment?.awaitMap()
+            val googleMap = mapFragment.awaitMap()
             if (!isRestore) {
-                googleMap?.moveCamera(
+                googleMap.moveCamera(
                     CameraUpdateFactory.newLatLngZoom(
                         LatLng(51.403186, -0.126446),
                         10F
                     )
                 )
             }
-            googleMap?.let { showMapLayers(it) }
+            showMapLayers(googleMap)
+            googleMap.cameraEvents().collect { event ->
+                when (event) {
+                    is CameraIdleEvent -> Log.d(TAG, "Camera is idle.")
+                    is CameraMoveCanceledEvent -> Log.d(TAG, "Camera move canceled")
+                    is CameraMoveEvent -> Log.d(TAG, "Camera moved")
+                    is CameraMoveStartedEvent -> Log.d(
+                        TAG,
+                        "Camera moved started. Reason: ${event.reason}"
+                    )
+                }
+            }
         }
     }
 
@@ -234,5 +254,9 @@ class MainActivity : AppCompatActivity() {
     private fun getImagesCache(): ImagesCache? {
         val retainFragment = RetainFragment.findOrCreateRetainFragment(supportFragmentManager)
         return retainFragment.mImagesCache
+    }
+
+    companion object {
+        private val TAG = MainActivity::class.java.simpleName
     }
 }
