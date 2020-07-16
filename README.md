@@ -132,6 +132,34 @@ override fun onCreate(savedInstanceState: Bundle?) {
 }
 ```
 
+#### Flow
+
+> **Note**: The following feature utilizes an experimental coroutine API. To use this, you will have to add the `@OptIn(ExperimentalCoroutinesApi::class)` at the site of its usage as well as the compiler flag `-Xopt-in=kotlin.RequiresOptIn`.
+
+Listing to camera events can be collected via [Kotlin Flow](kotlin-flow). 
+
+_Before_
+```java
+val googleMap = //...
+googleMap.setOnCameraIdleListener = { //... }
+googleMap.setOnCameraMoveCanceledListener { //... }
+googleMap.setOnCameraMoveListener { //... }
+googleMap.setOnCameraMoveStartedListener { //... }
+```
+
+_After_
+```kotlin
+// To be invoked within a coroutine scope
+googleMap.cameraEvents().collect { event ->
+    when (event) {
+        is CameraIdleEvent -> //...
+        is CameraMoveCanceledEvent -> //...
+        is CameraMoveEvent -> //...
+        Is CameraMoveStartedEvent -> //...
+    }
+}
+```
+
 ### Maps SDK for Android Utilities KTX
 
 #### Extension functions
@@ -219,3 +247,4 @@ For more information, check out the detailed guide on the
 [maps-sdk]: https://developers.google.com/maps/documentation/android-sdk/intro
 [maps-v3-sdk]: https://developers.google.com/maps/documentation/android-sdk/v3-client-migration
 [pull request]: https://github.com/googlemaps/android-maps-ktx/compare
+[kotlin-flow]: https://kotlinlang.org/docs/reference/coroutines/flow.html
