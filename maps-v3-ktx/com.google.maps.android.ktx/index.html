@@ -8,6 +8,46 @@
 <a href="../index.html">maps-v3-ktx</a>&nbsp;/&nbsp;<a href="./index.html">com.google.maps.android.ktx</a><br/>
 <br/>
 <h2>Package com.google.maps.android.ktx</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="-camera-event.html">CameraEvent</a></h4>
+</td>
+<td>
+<code><span class="keyword">sealed</span> <span class="keyword">class </span><span class="identifier">CameraEvent</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-camera-idle-event.html">CameraIdleEvent</a></h4>
+</td>
+<td>
+<code><span class="keyword">object </span><span class="identifier">CameraIdleEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-camera-event.html"><span class="identifier">CameraEvent</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-camera-move-canceled-event.html">CameraMoveCanceledEvent</a></h4>
+</td>
+<td>
+<code><span class="keyword">object </span><span class="identifier">CameraMoveCanceledEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-camera-event.html"><span class="identifier">CameraEvent</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-camera-move-event.html">CameraMoveEvent</a></h4>
+</td>
+<td>
+<code><span class="keyword">object </span><span class="identifier">CameraMoveEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-camera-event.html"><span class="identifier">CameraEvent</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-camera-move-started-event/index.html">CameraMoveStartedEvent</a></h4>
+</td>
+<td>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">CameraMoveStartedEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-camera-event.html"><span class="identifier">CameraEvent</span></a></code></td>
+</tr>
+</tbody>
+</table>
 <h3>Annotations</h3>
 <table>
 <tbody>
@@ -18,6 +58,13 @@
 <td>
 <p>Annotation for APIs that are experimental and require explicit opt-in annotation before use.</p>
 <code><span class="keyword">annotation</span> <span class="keyword">class </span><span class="identifier">MapsExperimentalFeature</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-move-started-reason/index.html">MoveStartedReason</a></h4>
+</td>
+<td>
+<code><span class="keyword">annotation</span> <span class="keyword">class </span><span class="identifier">MoveStartedReason</span></code></td>
 </tr>
 </tbody>
 </table>

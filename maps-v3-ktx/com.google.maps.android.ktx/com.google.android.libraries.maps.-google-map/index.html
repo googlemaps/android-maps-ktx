@@ -60,6 +60,17 @@
 <a href="add-tile-overlay.html#com.google.maps.android.ktx$addTileOverlay(com.google.android.libraries.maps.GoogleMap, kotlin.Function1((com.google.android.libraries.maps.model.TileOverlayOptions, kotlin.Unit)))/optionsActions">optionsActions</a>.</p>
 <code><span class="keyword">fun </span><span class="identifier">GoogleMap</span><span class="symbol">.</span><span class="identifier">addTileOverlay</span><span class="symbol">(</span><span class="identifier" id="com.google.maps.android.ktx$addTileOverlay(com.google.android.libraries.maps.GoogleMap, kotlin.Function1((com.google.android.libraries.maps.model.TileOverlayOptions, kotlin.Unit)))/optionsActions">optionsActions</span><span class="symbol">:</span>&nbsp;<span class="identifier">TileOverlayOptions</span><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TileOverlay</span></code></td>
 </tr>
+<tr>
+<td>
+<h4><a href="camera-events.html">cameraEvents</a></h4>
+</td>
+<td>
+<p>Returns a <a href="#">Flow</a> of <a href="../-camera-event.html">CameraEvent</a> items so that camera movements can be observed. Using this to
+observe camera events will set listeners and thus override existing listeners to
+<a href="#">GoogleMap.setOnCameraIdleListener</a>, <a href="#">GoogleMap.setOnCameraMoveCanceledListener</a>,
+<a href="#">GoogleMap.setOnCameraMoveListener</a> and <a href="#">GoogleMap.setOnCameraMoveStartedListener</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">GoogleMap</span><span class="symbol">.</span><span class="identifier">cameraEvents</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><a href="../-camera-event.html"><span class="identifier">CameraEvent</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
 </tbody>
 </table>
 </BODY>

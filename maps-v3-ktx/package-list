@@ -12,5 +12,6 @@ $dokka.location:com.google.maps.android.ktx$awaitMap(com.google.android.librarie
 $dokka.location:com.google.maps.android.ktx$awaitStreetViewPanorama(com.google.android.libraries.maps.StreetViewPanoramaFragment)com.google.maps.android.ktx/com.google.android.libraries.maps.-street-view-panorama-fragment/await-street-view-panorama.html
 $dokka.location:com.google.maps.android.ktx$awaitStreetViewPanorama(com.google.android.libraries.maps.StreetViewPanoramaView)com.google.maps.android.ktx/com.google.android.libraries.maps.-street-view-panorama-view/await-street-view-panorama.html
 $dokka.location:com.google.maps.android.ktx$awaitStreetViewPanorama(com.google.android.libraries.maps.SupportStreetViewPanoramaFragment)com.google.maps.android.ktx/com.google.android.libraries.maps.-support-street-view-panorama-fragment/await-street-view-panorama.html
+$dokka.location:com.google.maps.android.ktx$cameraEvents(com.google.android.libraries.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.libraries.maps.-google-map/camera-events.html
 com.google.maps.android.ktx
 com.google.maps.android.ktx.model
