@@ -64,13 +64,18 @@ data class CameraMoveStartedEvent(@MoveStartedReason val reason: Int) : CameraEv
  * [GoogleMap.setOnCameraMoveListener] and [GoogleMap.setOnCameraMoveStartedListener].
  */
 @ExperimentalCoroutinesApi
-inline fun GoogleMap.cameraEvents(): Flow<CameraEvent> =
+fun GoogleMap.cameraEvents(): Flow<CameraEvent> =
     callbackFlow {
         setOnCameraIdleListener { offer(CameraIdleEvent) }
         setOnCameraMoveCanceledListener { offer(CameraMoveCanceledEvent) }
         setOnCameraMoveListener { offer(CameraMoveEvent) }
         setOnCameraMoveStartedListener { offer(CameraMoveStartedEvent(it)) }
-        awaitClose()
+        awaitClose {
+            setOnCameraIdleListener(null)
+            setOnCameraMoveCanceledListener(null)
+            setOnCameraMoveListener(null)
+            setOnCameraMoveStartedListener(null)
+        }
     }
 
 /**
