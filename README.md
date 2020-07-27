@@ -223,6 +223,8 @@ val point = Point(1.0, 2.0)
 val (x, y) = point
 ```
 
+## Documentation
+
 You can learn more about all the extensions provided by this library by reading the [reference documents][Javadoc].
 
 ## Support
