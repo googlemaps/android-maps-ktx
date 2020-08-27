@@ -38,10 +38,15 @@ import com.google.maps.android.ktx.model.markerOptions
 import com.google.maps.android.ktx.model.polygonOptions
 import com.google.maps.android.ktx.model.polylineOptions
 import com.google.maps.android.ktx.model.tileOverlayOptions
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.SendChannel
 import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.launch
 
 @IntDef(
     GoogleMap.OnCameraMoveStartedListener.REASON_GESTURE,
@@ -57,6 +62,13 @@ object CameraMoveCanceledEvent : CameraEvent()
 object CameraMoveEvent : CameraEvent()
 data class CameraMoveStartedEvent(@MoveStartedReason val reason: Int) : CameraEvent()
 
+// Since offer() can throw when the channel is closed (channel can close before the
+// block within awaitClose), wrap `offer` calls inside `runCatching`.
+// See: https://github.com/Kotlin/kotlinx.coroutines/issues/974
+private fun <E> SendChannel<E>.offerCatching(element: E): Boolean {
+    return runCatching { offer(element) }.getOrDefault(false)
+}
+
 /**
  * Returns a [Flow] of [CameraEvent] items so that camera movements can be observed. Using this to
  * observe camera events will set listeners and thus override existing listeners to
@@ -66,10 +78,18 @@ data class CameraMoveStartedEvent(@MoveStartedReason val reason: Int) : CameraEv
 @ExperimentalCoroutinesApi
 fun GoogleMap.cameraEvents(): Flow<CameraEvent> =
     callbackFlow {
-        setOnCameraIdleListener { offer(CameraIdleEvent) }
-        setOnCameraMoveCanceledListener { offer(CameraMoveCanceledEvent) }
-        setOnCameraMoveListener { offer(CameraMoveEvent) }
-        setOnCameraMoveStartedListener { offer(CameraMoveStartedEvent(it)) }
+        setOnCameraIdleListener {
+            offerCatching(CameraIdleEvent)
+        }
+        setOnCameraMoveCanceledListener {
+            offerCatching(CameraMoveCanceledEvent)
+        }
+        setOnCameraMoveListener {
+            offerCatching(CameraMoveEvent)
+        }
+        setOnCameraMoveStartedListener {
+            offerCatching(CameraMoveStartedEvent(it))
+        }
         awaitClose {
             setOnCameraIdleListener(null)
             setOnCameraMoveCanceledListener(null)
