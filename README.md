@@ -51,8 +51,8 @@ dependencies {
 
     // It is recommended to also include the latest Maps SDK and/or Utility Library versions
     // as well to ensure that you have the latest features and bug fixes.
-    implementation 'com.google.android.libraries.maps:maps:2.1.2-beta'
-    implementation 'com.google.maps.android:android-maps-utils-v3:2.1.2'
+    implementation 'com.google.android.libraries.maps:maps:3.1.0-beta'
+    implementation 'com.google.maps.android:android-maps-utils-v3:2.0.3'
 }
 ```
 
