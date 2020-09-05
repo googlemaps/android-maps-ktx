@@ -138,7 +138,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 Listing to camera events can be collected via [Kotlin Flow](kotlin-flow). 
 
-_Before_
+_Before_
 ```java
 val googleMap = //...
 googleMap.setOnCameraIdleListener = { //... }
