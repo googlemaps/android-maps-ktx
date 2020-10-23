@@ -26,7 +26,9 @@ import com.google.maps.android.heatmaps.WeightedLatLng
 /**
  * Converts this LatLng to a [WeightedLatLng]
  */
-inline fun LatLng.toWeightedLatLng(intensity: Double = WeightedLatLng.DEFAULT_INTENSITY) =
+public inline fun LatLng.toWeightedLatLng(
+    intensity: Double = WeightedLatLng.DEFAULT_INTENSITY
+): WeightedLatLng =
     WeightedLatLng(this, intensity)
 
 /**
@@ -35,7 +37,7 @@ inline fun LatLng.toWeightedLatLng(intensity: Double = WeightedLatLng.DEFAULT_IN
  * @throws IllegalStateException when [opacity] is not within the range [0, 1] or if [latLngs] is
  * empty
  */
-inline fun heatmapTileProviderWithData(
+public inline fun heatmapTileProviderWithData(
     latLngs: Collection<LatLng>,
     radius: Int = HeatmapTileProvider.DEFAULT_RADIUS,
     gradient: Gradient = HeatmapTileProvider.DEFAULT_GRADIENT,
@@ -57,7 +59,7 @@ inline fun heatmapTileProviderWithData(
  * @throws IllegalStateException when [opacity] is not within the range [0, 1] or if [latLngs] is
  * empty
  */
-inline fun heatmapTileProviderWithWeightedData(
+public inline fun heatmapTileProviderWithWeightedData(
     latLngs: Collection<WeightedLatLng>,
     radius: Int = HeatmapTileProvider.DEFAULT_RADIUS,
     gradient: Gradient = HeatmapTileProvider.DEFAULT_GRADIENT,

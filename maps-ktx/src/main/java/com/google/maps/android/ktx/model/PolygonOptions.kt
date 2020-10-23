@@ -24,7 +24,7 @@ import com.google.android.gms.maps.model.PolygonOptions
  *
  * @return the [PolygonOptions]
  */
-inline fun polygonOptions(optionsActions: PolygonOptions.() -> Unit): PolygonOptions =
+public inline fun polygonOptions(optionsActions: PolygonOptions.() -> Unit): PolygonOptions =
     PolygonOptions().apply(
         optionsActions
     )

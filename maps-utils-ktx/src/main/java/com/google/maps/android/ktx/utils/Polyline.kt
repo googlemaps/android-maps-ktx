@@ -27,11 +27,11 @@ import com.google.maps.android.SphericalUtil
  * Computes where the given [latLng] is contained on or near this Polyline within a specified
  * tolerance in meters.
  */
-inline fun Polyline.contains(latLng: LatLng, tolerance: Double = 0.1): Boolean =
+public inline fun Polyline.contains(latLng: LatLng, tolerance: Double = 0.1): Boolean =
     PolyUtil.isLocationOnPath(latLng, this.points, this.isGeodesic, tolerance)
 
 /**
  * The spherical length of this Polyline on Earth as measured in meters.
  */
-inline val Polyline.sphericalPathLength: Double
+public inline val Polyline.sphericalPathLength: Double
     get() = SphericalUtil.computeLength(this.points)

@@ -25,7 +25,7 @@ import com.google.android.gms.maps.model.StreetViewPanoramaOrientation
  *
  * @return the constructed [StreetViewPanoramaOrientation]
  */
-inline fun streetViewPanoramaOrientation(
+public inline fun streetViewPanoramaOrientation(
     optionsActions: StreetViewPanoramaOrientation.Builder.() -> Unit
 ): StreetViewPanoramaOrientation =
     StreetViewPanoramaOrientation.Builder().apply(

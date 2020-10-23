@@ -11,7 +11,7 @@ import kotlin.coroutines.suspendCoroutine
  *
  * @return the [GoogleMap] instance
  */
-suspend inline fun MapView.awaitMap(): GoogleMap =
+public suspend inline fun MapView.awaitMap(): GoogleMap =
     suspendCoroutine { continuation ->
         getMapAsync {
             continuation.resume(it)

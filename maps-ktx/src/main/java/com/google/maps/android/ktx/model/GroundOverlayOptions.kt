@@ -24,7 +24,7 @@ import com.google.android.gms.maps.model.GroundOverlayOptions
  *
  * @return the constructed [GroundOverlayOptions]
  */
-inline fun groundOverlayOptions(optionsActions: GroundOverlayOptions.() -> Unit): GroundOverlayOptions =
+public inline fun groundOverlayOptions(optionsActions: GroundOverlayOptions.() -> Unit): GroundOverlayOptions =
     GroundOverlayOptions().apply(
         optionsActions
     )

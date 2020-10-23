@@ -25,7 +25,7 @@ import com.google.maps.android.collections.PolylineManager
  * Adds a new [Polyline] to the underlying map and to this [PolylineManager.Collection] with the
  * provided [optionsActions].
  */
-inline fun PolylineManager.Collection.addPolyline(
+public inline fun PolylineManager.Collection.addPolyline(
     optionsActions: PolylineOptions.() -> Unit
 ): Polyline =
     this.addPolyline(

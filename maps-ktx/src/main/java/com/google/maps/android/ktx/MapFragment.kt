@@ -29,7 +29,7 @@ import kotlin.coroutines.resume
  *
  * @return the [GoogleMap] instance
  */
-suspend inline fun MapFragment.awaitMap(): GoogleMap =
+public suspend inline fun MapFragment.awaitMap(): GoogleMap =
     suspendCancellableCoroutine { continuation ->
         getMapAsync {
             continuation.resume(it)

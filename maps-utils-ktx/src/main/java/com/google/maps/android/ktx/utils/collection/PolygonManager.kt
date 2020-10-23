@@ -25,7 +25,7 @@ import com.google.maps.android.collections.PolygonManager
  * Adds a new [Polygon] to the underlying map and to this [PolygonManager.Collection] with the
  * provided [optionsActions].
  */
-inline fun PolygonManager.Collection.addPolygon(
+public inline fun PolygonManager.Collection.addPolygon(
     optionsActions: PolygonOptions.() -> Unit
 ): Polygon =
     this.addPolygon(

@@ -30,7 +30,7 @@ import com.google.maps.android.SphericalUtil
  * val (lat, _) = latLng
  * ```
  */
-inline operator fun LatLng.component1() = this.latitude
+public inline operator fun LatLng.component1(): Double = this.latitude
 
 /**
  * Returns the [LatLng.longitude] of this [LatLng].
@@ -40,7 +40,7 @@ inline operator fun LatLng.component1() = this.latitude
  * val (_, lng) = latLng
  * ```
  */
-inline operator fun LatLng.component2() = this.longitude
+public inline operator fun LatLng.component2(): Double = this.longitude
 
 /**
  * Computes whether the given [latLng] lies on or is near this polyline within [tolerance] (in
@@ -53,7 +53,7 @@ inline operator fun LatLng.component2() = this.longitude
  *
  * @see PolyUtil.isLocationOnPath
  */
-inline fun List<LatLng>.isLocationOnPath(
+public inline fun List<LatLng>.isLocationOnPath(
     latLng: LatLng,
     geodesic: Boolean,
     tolerance: Double = 0.1
@@ -70,7 +70,7 @@ inline fun List<LatLng>.isLocationOnPath(
  *
  * @see PolyUtil.isLocationOnEdge
  */
-inline fun List<LatLng>.isOnEdge(
+public inline fun List<LatLng>.isOnEdge(
     latLng: LatLng,
     geodesic: Boolean,
     tolerance: Double = 0.1
@@ -91,7 +91,7 @@ inline fun List<LatLng>.isOnEdge(
  *
  * @see PolyUtil.containsLocation
  */
-inline fun List<LatLng>.containsLocation(latLng: LatLng, geodesic: Boolean): Boolean =
+public inline fun List<LatLng>.containsLocation(latLng: LatLng, geodesic: Boolean): Boolean =
     PolyUtil.containsLocation(latLng, this, geodesic)
 
 /**
@@ -103,7 +103,7 @@ inline fun List<LatLng>.containsLocation(latLng: LatLng, geodesic: Boolean): Boo
  *
  * @see PolyUtil.simplify
  */
-inline fun List<LatLng>.simplify(tolerance: Double): List<LatLng> =
+public inline fun List<LatLng>.simplify(tolerance: Double): List<LatLng> =
     PolyUtil.simplify(this, tolerance)
 
 /**
@@ -113,7 +113,7 @@ inline fun List<LatLng>.simplify(tolerance: Double): List<LatLng> =
  *
  * @see [Polyline Algorithm Format](https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
  */
-inline fun String.toLatLngList(): List<LatLng> = PolyUtil.decode(this)
+public inline fun String.toLatLngList(): List<LatLng> = PolyUtil.decode(this)
 
 /**
  * Encodes this [LatLng] list in a String using the
@@ -123,7 +123,7 @@ inline fun String.toLatLngList(): List<LatLng> = PolyUtil.decode(this)
  *
  * @see [Polyline Algorithm Format](https://developers.google.com/maps/documentation/utilities/polylinealgorithm)
  */
-inline fun List<LatLng>.latLngListEncode(): String = PolyUtil.encode(this)
+public inline fun List<LatLng>.latLngListEncode(): String = PolyUtil.encode(this)
 
 /**
  * Checks whether or not this [LatLng] list is a closed Polygon.
@@ -132,21 +132,21 @@ inline fun List<LatLng>.latLngListEncode(): String = PolyUtil.encode(this)
  *
  * @see PolyUtil.isClosedPolygon
  */
-inline fun List<LatLng>.isClosedPolygon(): Boolean = PolyUtil.isClosedPolygon(this)
+public inline fun List<LatLng>.isClosedPolygon(): Boolean = PolyUtil.isClosedPolygon(this)
 
 /**
  * Computes the length of this path on Earth.
  *
  * @return the length of this path in meters
  */
-inline fun List<LatLng>.sphericalPathLength(): Double = SphericalUtil.computeLength(this)
+public inline fun List<LatLng>.sphericalPathLength(): Double = SphericalUtil.computeLength(this)
 
 /**
  * Computes the area under a closed path on Earth.
  *
  * @return the area in square meters
  */
-inline fun List<LatLng>.sphericalPolygonArea(): Double = SphericalUtil.computeArea(this)
+public inline fun List<LatLng>.sphericalPolygonArea(): Double = SphericalUtil.computeArea(this)
 
 /**
  * Computes the signed area under a closed path on Earth. The sign of the area may be used to
@@ -154,7 +154,7 @@ inline fun List<LatLng>.sphericalPolygonArea(): Double = SphericalUtil.computeAr
  *
  * @return the signed area in square meters
  */
-inline fun List<LatLng>.sphericalPolygonSignedArea(): Double = SphericalUtil.computeSignedArea(this)
+public inline fun List<LatLng>.sphericalPolygonSignedArea(): Double = SphericalUtil.computeSignedArea(this)
 
 /**
  * Computes the heading from this LatLng to [toLatLng].
@@ -164,7 +164,7 @@ inline fun List<LatLng>.sphericalPolygonSignedArea(): Double = SphericalUtil.com
  *
  * @see SphericalUtil.computeHeading
  */
-inline fun LatLng.sphericalHeading(toLatLng: LatLng): Double =
+public inline fun LatLng.sphericalHeading(toLatLng: LatLng): Double =
     SphericalUtil.computeHeading(this, toLatLng)
 
 /**
@@ -176,7 +176,7 @@ inline fun LatLng.sphericalHeading(toLatLng: LatLng): Double =
  *
  * @see SphericalUtil.computeOffset
  */
-inline fun LatLng.withSphericalOffset(distance: Double, heading: Double): LatLng =
+public inline fun LatLng.withSphericalOffset(distance: Double, heading: Double): LatLng =
     SphericalUtil.computeOffset(this, distance, heading)
 
 /**
@@ -189,7 +189,7 @@ inline fun LatLng.withSphericalOffset(distance: Double, heading: Double): LatLng
  *
  * @see SphericalUtil.computeOffsetOrigin
  */
-inline fun LatLng.computeSphericalOffsetOrigin(distance: Double, heading: Double): LatLng? =
+public inline fun LatLng.computeSphericalOffsetOrigin(distance: Double, heading: Double): LatLng? =
     SphericalUtil.computeOffsetOrigin(this, distance, heading)
 
 /**
@@ -202,7 +202,7 @@ inline fun LatLng.computeSphericalOffsetOrigin(distance: Double, heading: Double
  *
  * @see [Slerp](http://en.wikipedia.org/wiki/Slerp)
  */
-inline fun LatLng.withSphericalLinearInterpolation(to: LatLng, fraction: Double): LatLng =
+public inline fun LatLng.withSphericalLinearInterpolation(to: LatLng, fraction: Double): LatLng =
     SphericalUtil.interpolate(this, to, fraction)
 
 /**
@@ -211,5 +211,5 @@ inline fun LatLng.withSphericalLinearInterpolation(to: LatLng, fraction: Double)
  * @param to the LatLng to compute the distance to
  * @return the distance between this and [to] in meters
  */
-inline fun LatLng.sphericalDistance(to: LatLng): Double =
+public inline fun LatLng.sphericalDistance(to: LatLng): Double =
     SphericalUtil.computeDistanceBetween(this, to)

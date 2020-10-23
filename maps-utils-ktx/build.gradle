@@ -32,6 +32,10 @@ android {
     libraryVariants.all {
         it.generateBuildConfig.enabled = false
     }
+
+    kotlinOptions {
+        freeCompilerArgs += '-Xexplicit-api=strict'
+    }
 }
 
 preBuild.dependsOn(rootProject.tasks.copyGmsUtilsToV3Beta)

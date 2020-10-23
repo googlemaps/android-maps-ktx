@@ -25,7 +25,7 @@ import com.google.maps.android.collections.MarkerManager
  * Adds a new [Marker] to the underlying map and to this [MarkerManager.Collection] with the
  * provided [optionsActions].
  */
-inline fun MarkerManager.Collection.addMarker(optionsActions: MarkerOptions.() -> Unit): Marker =
+public inline fun MarkerManager.Collection.addMarker(optionsActions: MarkerOptions.() -> Unit): Marker =
     this.addMarker(
         MarkerOptions().apply(optionsActions)
     )

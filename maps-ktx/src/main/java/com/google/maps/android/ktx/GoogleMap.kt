@@ -54,13 +54,13 @@ import kotlinx.coroutines.launch
     GoogleMap.OnCameraMoveStartedListener.REASON_DEVELOPER_ANIMATION
 )
 @Retention(AnnotationRetention.SOURCE)
-annotation class MoveStartedReason
+public annotation class MoveStartedReason
 
-sealed class CameraEvent
-object CameraIdleEvent : CameraEvent()
-object CameraMoveCanceledEvent : CameraEvent()
-object CameraMoveEvent : CameraEvent()
-data class CameraMoveStartedEvent(@MoveStartedReason val reason: Int) : CameraEvent()
+public sealed class CameraEvent
+public object CameraIdleEvent : CameraEvent()
+public object CameraMoveCanceledEvent : CameraEvent()
+public object CameraMoveEvent : CameraEvent()
+public data class CameraMoveStartedEvent(@MoveStartedReason val reason: Int) : CameraEvent()
 
 // Since offer() can throw when the channel is closed (channel can close before the
 // block within awaitClose), wrap `offer` calls inside `runCatching`.
@@ -76,7 +76,7 @@ private fun <E> SendChannel<E>.offerCatching(element: E): Boolean {
  * [GoogleMap.setOnCameraMoveListener] and [GoogleMap.setOnCameraMoveStartedListener].
  */
 @ExperimentalCoroutinesApi
-fun GoogleMap.cameraEvents(): Flow<CameraEvent> =
+public fun GoogleMap.cameraEvents(): Flow<CameraEvent> =
     callbackFlow {
         setOnCameraIdleListener {
             offerCatching(CameraIdleEvent)
@@ -103,7 +103,7 @@ fun GoogleMap.cameraEvents(): Flow<CameraEvent> =
  *
  * @return the constructed [GoogleMapOptions]
  */
-inline fun buildGoogleMapOptions(optionsActions: GoogleMapOptions.() -> Unit): GoogleMapOptions =
+public inline fun buildGoogleMapOptions(optionsActions: GoogleMapOptions.() -> Unit): GoogleMapOptions =
     GoogleMapOptions().apply(
         optionsActions
     )
@@ -113,7 +113,7 @@ inline fun buildGoogleMapOptions(optionsActions: GoogleMapOptions.() -> Unit): G
  *
  * @return the added [Circle]
  */
-inline fun GoogleMap.addCircle(optionsActions: CircleOptions.() -> Unit): Circle =
+public inline fun GoogleMap.addCircle(optionsActions: CircleOptions.() -> Unit): Circle =
     this.addCircle(
         circleOptions(optionsActions)
     )
@@ -124,7 +124,7 @@ inline fun GoogleMap.addCircle(optionsActions: CircleOptions.() -> Unit): Circle
  *
  * @return the added [Circle]
  */
-inline fun GoogleMap.addGroundOverlay(optionsActions: GroundOverlayOptions.() -> Unit): GroundOverlay =
+public inline fun GoogleMap.addGroundOverlay(optionsActions: GroundOverlayOptions.() -> Unit): GroundOverlay =
     this.addGroundOverlay(
         groundOverlayOptions(optionsActions)
     )
@@ -134,7 +134,7 @@ inline fun GoogleMap.addGroundOverlay(optionsActions: GroundOverlayOptions.() ->
  *
  * @return the added [Marker]
  */
-inline fun GoogleMap.addMarker(optionsActions: MarkerOptions.() -> Unit): Marker =
+public inline fun GoogleMap.addMarker(optionsActions: MarkerOptions.() -> Unit): Marker =
     this.addMarker(
         markerOptions(optionsActions)
     )
@@ -144,7 +144,7 @@ inline fun GoogleMap.addMarker(optionsActions: MarkerOptions.() -> Unit): Marker
  *
  * @return the added [Polygon]
  */
-inline fun GoogleMap.addPolygon(optionsActions: PolygonOptions.() -> Unit): Polygon =
+public inline fun GoogleMap.addPolygon(optionsActions: PolygonOptions.() -> Unit): Polygon =
     this.addPolygon(
         polygonOptions(optionsActions)
     )
@@ -154,7 +154,7 @@ inline fun GoogleMap.addPolygon(optionsActions: PolygonOptions.() -> Unit): Poly
  *
  * @return the added [Polyline]
  */
-inline fun GoogleMap.addPolyline(optionsActions: PolylineOptions.() -> Unit): Polyline =
+public inline fun GoogleMap.addPolyline(optionsActions: PolylineOptions.() -> Unit): Polyline =
     this.addPolyline(
         polylineOptions(optionsActions)
     )
@@ -165,7 +165,7 @@ inline fun GoogleMap.addPolyline(optionsActions: PolylineOptions.() -> Unit): Po
  *
  * @return the added [Polyline]
  */
-inline fun GoogleMap.addTileOverlay(optionsActions: TileOverlayOptions.() -> Unit): TileOverlay =
+public inline fun GoogleMap.addTileOverlay(optionsActions: TileOverlayOptions.() -> Unit): TileOverlay =
     this.addTileOverlay(
         tileOverlayOptions(optionsActions)
     )

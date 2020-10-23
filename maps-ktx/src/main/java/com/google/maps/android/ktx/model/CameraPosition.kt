@@ -25,5 +25,5 @@ import com.google.android.gms.maps.model.CameraPosition
  *
  * @return the constructed [CameraPosition]
  */
-inline fun cameraPosition(optionsActions: CameraPosition.Builder.() -> Unit): CameraPosition =
+public inline fun cameraPosition(optionsActions: CameraPosition.Builder.() -> Unit): CameraPosition =
     CameraPosition.Builder().apply(optionsActions).build()
