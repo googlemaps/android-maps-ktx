@@ -22,7 +22,7 @@ import com.google.android.gms.maps.model.LatLng
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class PolygonOptionsTest {
+internal class PolygonOptionsTest {
     @Test
     fun testBuilder() {
         val polygonOptions =

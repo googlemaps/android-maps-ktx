@@ -22,7 +22,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class TileOverlayOptionsTest {
+internal class TileOverlayOptionsTest {
 
     @Test
     fun testBuilder() {

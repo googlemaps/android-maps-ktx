@@ -33,7 +33,7 @@ import org.json.JSONObject
  * Alias for the [GeoJsonLayer] constructor that provides Kotlin named parameters and default
  * values.
  */
-inline fun geoJsonLayer(
+public inline fun geoJsonLayer(
     map: GoogleMap,
     geoJsonFile: JSONObject,
     markerManager: MarkerManager? = null,
@@ -53,7 +53,7 @@ inline fun geoJsonLayer(
  * Alias for the [GeoJsonLayer] constructor that provides Kotlin named parameters and default
  * values.
  */
-inline fun geoJsonLayer(
+public inline fun geoJsonLayer(
     map: GoogleMap,
     @RawRes resourceId: Int,
     context: Context,

@@ -25,7 +25,7 @@ import com.google.maps.android.collections.CircleManager
  * Adds a new [Circle] to the underlying map and to this [CircleManager.Collection] with the
  * provided [optionsActions].
  */
-inline fun CircleManager.Collection.addCircle(optionsActions: CircleOptions.() -> Unit): Circle =
+public inline fun CircleManager.Collection.addCircle(optionsActions: CircleOptions.() -> Unit): Circle =
     this.addCircle(
         CircleOptions().apply(optionsActions)
     )
