@@ -21,7 +21,7 @@ import com.google.android.gms.maps.model.LatLng
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class CameraPositionTest {
+internal class CameraPositionTest {
 
     @Test
     fun testBuilder() {

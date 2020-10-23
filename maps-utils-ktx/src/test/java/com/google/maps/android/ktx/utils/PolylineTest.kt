@@ -26,7 +26,7 @@ import com.nhaarman.mockitokotlin2.mock
 import org.junit.Assert.*
 import org.junit.Test
 
-class PolylineTest {
+internal class PolylineTest {
     private val earthRadius = 6371009.0
 
     @Test

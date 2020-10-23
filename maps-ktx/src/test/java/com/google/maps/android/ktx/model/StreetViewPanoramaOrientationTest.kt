@@ -20,7 +20,7 @@ package com.google.maps.android.ktx.model
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class StreetViewPanoramaOrientationTest {
+internal class StreetViewPanoramaOrientationTest {
 
     @Test
     fun `test that StreetViewPanoramaOrientation is constructed`() {

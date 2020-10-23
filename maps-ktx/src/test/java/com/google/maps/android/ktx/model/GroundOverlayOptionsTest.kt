@@ -23,7 +23,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class GroundOverlayOptionsTest {
+internal class GroundOverlayOptionsTest {
 
     @Test
     fun testBuilder() {

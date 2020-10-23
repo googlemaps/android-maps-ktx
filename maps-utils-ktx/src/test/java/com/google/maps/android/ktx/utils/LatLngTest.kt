@@ -21,7 +21,7 @@ import com.google.android.gms.maps.model.LatLng
 import org.junit.Assert.*
 import org.junit.Test
 
-class LatLngTest {
+internal class LatLngTest {
     private val earthRadius = 6371009.0
 
     @Test
