@@ -54,7 +54,7 @@ import org.json.JSONException
  * A demo of multiple layers on the map.
  *
  * To add your Maps API key to this project:
- *   1. Create a file app/secure.properties
+ *   1. Create a file ./secure.properties
  *   2. Add this line, where YOUR_API_KEY is your API key:
  *        MAPS_API_KEY=YOUR_API_KEY
  */
@@ -66,8 +66,8 @@ class MainActivity : AppCompatActivity() {
         val isRestore = savedInstanceState != null
         setContentView(R.layout.activity_main)
 
-        if (getString(R.string.maps_api_key).isEmpty()) {
-            Toast.makeText(this, "Add your own API key in app/secure.properties as MAPS_API_KEY=YOUR_API_KEY", Toast.LENGTH_LONG).show()
+        if (BuildConfig.MAPS_API_KEY.isEmpty()) {
+            Toast.makeText(this, "Add your own API key in ./secure.properties as MAPS_API_KEY=YOUR_API_KEY", Toast.LENGTH_LONG).show()
         }
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
