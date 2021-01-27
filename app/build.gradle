@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'com.google.secrets_gradle_plugin' version '0.4'
+}
 
 android {
     compileSdkVersion versions.android.compileSdk
@@ -28,18 +30,6 @@ android {
         targetSdkVersion versions.android.targetSdk
         versionCode 1
         versionName "1.0"
-
-        // Read the API key from app/secure.properties into R.string.maps_api_key
-        def secureProps = new Properties()
-        if (file("secure.properties").exists()) {
-            file("secure.properties")?.withInputStream { secureProps.load(it) }
-        }
-        resValue "string", "maps_api_key", (secureProps.getProperty("MAPS_API_KEY") ?: "")
-
-        // To add your Maps API key to this project:
-        // 1. Create a file app/secure.properties
-        // 2. Add this line, where YOUR_API_KEY is your API key:
-        //        MAPS_API_KEY=YOUR_API_KEY
     }
 
     buildTypes {
@@ -65,4 +55,13 @@ dependencies {
     implementation 'com.google.maps.android:maps-utils-ktx:2.2.0'
     implementation project(':maps-ktx')
 //    implementation project(':maps-utils-ktx')
+}
+
+secrets {
+    // To add your Maps API key to this project:
+    // 1. Create a file ./secure.properties
+    // 2. Add this line, where YOUR_API_KEY is your API key:
+    //        MAPS_API_KEY=YOUR_API_KEY
+    propertiesFileName 'secure.properties'
+    defaultPropertiesFileName 'secure.defaults.properties'
 }

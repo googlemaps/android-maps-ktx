@@ -20,12 +20,12 @@
 
         <!--
         To add your Maps API key to this project:
-            1. Create a file app/secure.properties
+            1. Create a file ./secure.properties
             2. Add this line, where YOUR_API_KEY is your API key:
                 MAPS_API_KEY=YOUR_API_KEY
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/maps_api_key" />
+            android:value="${MAPS_API_KEY}" />
     </application>
 </manifest>
