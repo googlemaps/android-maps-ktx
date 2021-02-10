@@ -204,6 +204,52 @@ subprojects { project ->
                 groupId project.group
                 artifactId project.ext.artifactId
                 version project.version
+                
+                pom {
+                    name = project.name
+                    description = "Kotlin extensions (KTX) for Google Maps SDK"
+                    url = "https://github.com/googlemaps/android-maps-ktx"
+                    scm {
+                        connection = 'scm:git@github.com:googlemaps/android-maps-ktx.git'
+                        developerConnection = 'scm:git@github.com:googlemaps/android-maps-ktx.git'
+                        url = 'https://github.com/googlemaps/android-maps-ktx'
+                    }
+
+                    licenses {
+                        license {
+                            name = 'The Apache Software License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                            distribution = 'repo'
+                        }
+                    }
+
+                    organization {
+                        name = 'Google Inc'
+                        url = 'http://developers.google.com/maps'
+                    }
+
+                    developers {
+                        developer {
+                            name = 'Google Inc.'
+                        }
+                    }
+                }
+
+                pom.withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    project.configurations.api.allDependencies.each { dependency ->
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', dependency.group)
+                        dependencyNode.appendNode('artifactId', dependency.name)
+                        dependencyNode.appendNode('version', dependency.version)
+                    }
+                }
+
+                afterEvaluate {
+                    artifact "$buildDir/outputs/aar/$project.name-release.aar"
+                    artifact dokkaJar
+                    artifact sourcesJar
+                }
             }
         }
 
