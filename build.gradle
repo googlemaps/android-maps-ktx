@@ -200,6 +200,11 @@ subprojects { project ->
                     artifact sourcesJar
                 }
             }
+            gpr(MavenPublication) {
+                groupId project.group
+                artifactId project.ext.artifactId
+                version project.version
+            }
         }
 
         repositories {
@@ -209,6 +214,14 @@ subprojects { project ->
                 credentials {
                     username sonatypeUsername
                     password sonatypePassword
+                }
+            }
+            maven {
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/googlemaps/google-maps-services-java")
+                credentials {
+                    username = 'googlemaps-bot'
+                    password = githubPassword
                 }
             }
         }
