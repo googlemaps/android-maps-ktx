@@ -21,6 +21,7 @@ on:
       - '*'
   repository_dispatch:
       types: [gh-pages]
+  workflow_dispatch:
 
 jobs:
   gh-page-sync:

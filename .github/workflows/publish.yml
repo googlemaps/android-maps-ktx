@@ -21,6 +21,7 @@ on:
       - '*'
   repository_dispatch:
     types: [publish]
+  workflow_dispatch:
 
 jobs:
   publish:
