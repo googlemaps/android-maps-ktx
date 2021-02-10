@@ -218,7 +218,7 @@ subprojects { project ->
             }
             maven {
                 name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/googlemaps/google-maps-services-java")
+                url = uri("https://maven.pkg.github.com/googlemaps/android-maps-ktx")
                 credentials {
                     username = 'googlemaps-bot'
                     password = githubPassword
