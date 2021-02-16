@@ -18,6 +18,7 @@
 package com.google.maps.android.ktx
 
 import androidx.annotation.IntDef
+import com.google.android.gms.maps.CameraUpdate
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMapOptions
 import com.google.android.gms.maps.model.Circle
@@ -38,15 +39,13 @@ import com.google.maps.android.ktx.model.markerOptions
 import com.google.maps.android.ktx.model.polygonOptions
 import com.google.maps.android.ktx.model.polylineOptions
 import com.google.maps.android.ktx.model.tileOverlayOptions
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.SendChannel
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlin.coroutines.resume
 
 @IntDef(
     GoogleMap.OnCameraMoveStartedListener.REASON_GESTURE,
@@ -97,6 +96,29 @@ public fun GoogleMap.cameraEvents(): Flow<CameraEvent> =
             setOnCameraMoveStartedListener(null)
         }
     }
+
+/**
+ * A suspending function that awaits the completion of the [cameraUpdate] animation.
+ *
+ * @param cameraUpdate the [CameraUpdate] to apply on the map
+ * @param durationMs the duration in milliseconds of the animation. Defaults to 3 seconds.
+ */
+public suspend inline fun GoogleMap.awaitAnimation(
+    cameraUpdate: CameraUpdate,
+    durationMs: Int = 3000
+): Unit =
+    suspendCancellableCoroutine { continuation ->
+        animateCamera(cameraUpdate, durationMs, object : GoogleMap.CancelableCallback {
+            override fun onFinish() {
+                continuation.resume(Unit)
+            }
+
+            override fun onCancel() {
+                continuation.cancel()
+            }
+        })
+    }
+
 
 /**
  * Builds a new [GoogleMapOptions] using the provided [optionsActions].
