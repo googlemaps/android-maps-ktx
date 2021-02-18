@@ -19,13 +19,16 @@ package com.google.maps.android.ktx.demo
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.coroutineScope
+import com.google.android.gms.maps.CameraUpdate
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.collections.GroundOverlayManager
@@ -39,10 +42,12 @@ import com.google.maps.android.ktx.CameraIdleEvent
 import com.google.maps.android.ktx.CameraMoveCanceledEvent
 import com.google.maps.android.ktx.CameraMoveEvent
 import com.google.maps.android.ktx.CameraMoveStartedEvent
+import com.google.maps.android.ktx.awaitAnimation
 import com.google.maps.android.ktx.awaitMap
 import com.google.maps.android.ktx.cameraEvents
 import com.google.maps.android.ktx.demo.io.MyItemReader
 import com.google.maps.android.ktx.demo.model.MyItem
+import com.google.maps.android.ktx.model.cameraPosition
 import com.google.maps.android.ktx.utils.collection.addMarker
 import com.google.maps.android.ktx.utils.geojson.geoJsonLayer
 import com.google.maps.android.ktx.utils.kml.kmlLayer
@@ -60,6 +65,10 @@ import org.json.JSONException
  */
 class MainActivity : AppCompatActivity() {
 
+    private val london = LatLng(51.403186, -0.126446)
+    private val sanFrancisco = LatLng( 37.7576, -122.4194)
+    private var currentLocation = london
+
     @OptIn(ExperimentalCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,12 +85,13 @@ class MainActivity : AppCompatActivity() {
             if (!isRestore) {
                 googleMap.moveCamera(
                     CameraUpdateFactory.newLatLngZoom(
-                        LatLng(51.403186, -0.126446),
+                        london,
                         10F
                     )
                 )
             }
             showMapLayers(googleMap)
+            addButtonClickListener(googleMap)
             googleMap.cameraEvents().collect { event ->
                 when (event) {
                     is CameraIdleEvent -> Log.d(TAG, "Camera is idle.")
@@ -91,6 +101,33 @@ class MainActivity : AppCompatActivity() {
                         TAG,
                         "Camera moved started. Reason: ${event.reason}"
                     )
+                }
+            }
+        }
+    }
+
+    private suspend fun addButtonClickListener(googleMap: GoogleMap) {
+        findViewById<Button>(R.id.button_animate_camera).setOnClickListener {
+            currentLocation = if (currentLocation == london) sanFrancisco else london
+            lifecycle.coroutineScope.launchWhenStarted {
+                googleMap.run {
+                    awaitAnimation(CameraUpdateFactory.newCameraPosition(
+                        cameraPosition {
+                            target(currentLocation)
+                            zoom(0.0f)
+                            tilt(0.0f)
+                            bearing(0.0f)
+                        }
+                    ))
+                    awaitAnimation(CameraUpdateFactory.newCameraPosition(
+                        cameraPosition {
+                            target(currentLocation)
+                            zoom(10.0f)
+                            bearing(180f)
+                            tilt(75f)
+                            build()
+                        }
+                    ))
                 }
             }
         }
