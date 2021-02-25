@@ -17,6 +17,7 @@
 
 package com.google.maps.android.ktx
 
+import android.graphics.Bitmap
 import androidx.annotation.IntDef
 import com.google.android.gms.maps.CameraUpdate
 import com.google.android.gms.maps.GoogleMap
@@ -46,6 +47,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 @IntDef(
     GoogleMap.OnCameraMoveStartedListener.REASON_GESTURE,
@@ -119,6 +121,28 @@ public suspend inline fun GoogleMap.awaitAnimation(
         })
     }
 
+/**
+ * A suspending function that awaits for the map to be loaded. Uses
+ * [GoogleMap.setOnMapLoadedCallback].
+ */
+public suspend inline fun GoogleMap.awaitMapLoad(): Unit =
+    suspendCoroutine { continuation ->
+        setOnMapLoadedCallback {
+            continuation.resume(Unit)
+        }
+    }
+
+/**
+ * A suspending function that returns a bitmap snapshot of the current view of the map. Uses
+ * [GoogleMap.snapshot].
+ *
+ * @param bitmap an optional preallocated bitmap
+ * @return the snapshot
+ */
+public suspend inline fun GoogleMap.awaitSnapshot(bitmap: Bitmap? = null): Bitmap =
+    suspendCoroutine { continuation ->
+        snapshot({ continuation.resume(it) }, bitmap)
+    }
 
 /**
  * Builds a new [GoogleMapOptions] using the provided [optionsActions].
