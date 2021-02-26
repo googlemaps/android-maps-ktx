@@ -20,6 +20,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.coroutineScope
@@ -44,6 +45,8 @@ import com.google.maps.android.ktx.CameraMoveEvent
 import com.google.maps.android.ktx.CameraMoveStartedEvent
 import com.google.maps.android.ktx.awaitAnimation
 import com.google.maps.android.ktx.awaitMap
+import com.google.maps.android.ktx.awaitMapLoad
+import com.google.maps.android.ktx.awaitSnapshot
 import com.google.maps.android.ktx.cameraEvents
 import com.google.maps.android.ktx.demo.io.MyItemReader
 import com.google.maps.android.ktx.demo.model.MyItem
@@ -83,7 +86,8 @@ class MainActivity : AppCompatActivity() {
         lifecycle.coroutineScope.launchWhenCreated {
             val googleMap = mapFragment.awaitMap()
             if (!isRestore) {
-                googleMap.moveCamera(
+                googleMap.awaitMapLoad()
+                googleMap.animateCamera(
                     CameraUpdateFactory.newLatLngZoom(
                         london,
                         10F
@@ -119,6 +123,7 @@ class MainActivity : AppCompatActivity() {
                             bearing(0.0f)
                         }
                     ))
+                    awaitMapLoad()
                     awaitAnimation(CameraUpdateFactory.newCameraPosition(
                         cameraPosition {
                             target(currentLocation)
@@ -129,6 +134,13 @@ class MainActivity : AppCompatActivity() {
                         }
                     ))
                 }
+            }
+        }
+
+        findViewById<Button>(R.id.button_snapshot).setOnClickListener {
+            lifecycle.coroutineScope.launchWhenStarted {
+                val bitmap = googleMap.awaitSnapshot()
+                findViewById<ImageView>(R.id.image_view_snapshot).setImageBitmap(bitmap)
             }
         }
     }
