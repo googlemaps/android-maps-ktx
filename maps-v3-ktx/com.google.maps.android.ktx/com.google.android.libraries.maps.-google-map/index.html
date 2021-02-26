@@ -62,6 +62,32 @@
 </tr>
 <tr>
 <td>
+<h4><a href="await-animation.html">awaitAnimation</a></h4>
+</td>
+<td>
+<p>A suspending function that awaits the completion of the <a href="await-animation.html#com.google.maps.android.ktx$awaitAnimation(com.google.android.libraries.maps.GoogleMap, com.google.android.libraries.maps.CameraUpdate, kotlin.Int)/cameraUpdate">cameraUpdate</a> animation.</p>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">GoogleMap</span><span class="symbol">.</span><span class="identifier">awaitAnimation</span><span class="symbol">(</span><span class="identifier" id="com.google.maps.android.ktx$awaitAnimation(com.google.android.libraries.maps.GoogleMap, com.google.android.libraries.maps.CameraUpdate, kotlin.Int)/cameraUpdate">cameraUpdate</span><span class="symbol">:</span>&nbsp;<span class="identifier">CameraUpdate</span><span class="symbol">, </span><span class="identifier" id="com.google.maps.android.ktx$awaitAnimation(com.google.android.libraries.maps.GoogleMap, com.google.android.libraries.maps.CameraUpdate, kotlin.Int)/durationMs">durationMs</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a>&nbsp;<span class="symbol">=</span>&nbsp;3000<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="await-map-load.html">awaitMapLoad</a></h4>
+</td>
+<td>
+<p>A suspending function that awaits for the map to be loaded. Uses
+<a href="#">GoogleMap.setOnMapLoadedCallback</a>.</p>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">GoogleMap</span><span class="symbol">.</span><span class="identifier">awaitMapLoad</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="await-snapshot.html">awaitSnapshot</a></h4>
+</td>
+<td>
+<p>A suspending function that returns a bitmap snapshot of the current view of the map. Uses
+<a href="#">GoogleMap.snapshot</a>.</p>
+<code><span class="keyword">suspend</span> <span class="keyword">fun </span><span class="identifier">GoogleMap</span><span class="symbol">.</span><span class="identifier">awaitSnapshot</span><span class="symbol">(</span><span class="identifier" id="com.google.maps.android.ktx$awaitSnapshot(com.google.android.libraries.maps.GoogleMap, android.graphics.Bitmap)/bitmap">bitmap</span><span class="symbol">:</span>&nbsp;<a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><span class="identifier">Bitmap</span></a></code></td>
+</tr>
+<tr>
+<td>
 <h4><a href="camera-events.html">cameraEvents</a></h4>
 </td>
 <td>
