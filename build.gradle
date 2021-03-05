@@ -135,6 +135,7 @@ subprojects { project ->
 
     tasks.withType(Test) {
         jacoco.includeNoLocationClasses = true
+        jacoco.excludes = ['jdk.internal.*']
     }
 
     task sourcesJar(type: Jar) {

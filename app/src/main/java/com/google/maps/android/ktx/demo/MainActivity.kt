@@ -24,12 +24,10 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.coroutineScope
-import com.google.android.gms.maps.CameraUpdate
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.collections.GroundOverlayManager
@@ -43,7 +41,7 @@ import com.google.maps.android.ktx.CameraIdleEvent
 import com.google.maps.android.ktx.CameraMoveCanceledEvent
 import com.google.maps.android.ktx.CameraMoveEvent
 import com.google.maps.android.ktx.CameraMoveStartedEvent
-import com.google.maps.android.ktx.awaitAnimation
+import com.google.maps.android.ktx.awaitAnimateCamera
 import com.google.maps.android.ktx.awaitMap
 import com.google.maps.android.ktx.awaitMapLoad
 import com.google.maps.android.ktx.awaitSnapshot
@@ -115,7 +113,7 @@ class MainActivity : AppCompatActivity() {
             currentLocation = if (currentLocation == london) sanFrancisco else london
             lifecycle.coroutineScope.launchWhenStarted {
                 googleMap.run {
-                    awaitAnimation(CameraUpdateFactory.newCameraPosition(
+                    awaitAnimateCamera(CameraUpdateFactory.newCameraPosition(
                         cameraPosition {
                             target(currentLocation)
                             zoom(0.0f)
@@ -124,7 +122,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     ))
                     awaitMapLoad()
-                    awaitAnimation(CameraUpdateFactory.newCameraPosition(
+                    awaitAnimateCamera(CameraUpdateFactory.newCameraPosition(
                         cameraPosition {
                             target(currentLocation)
                             zoom(10.0f)

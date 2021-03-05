@@ -105,7 +105,7 @@ public fun GoogleMap.cameraEvents(): Flow<CameraEvent> =
  * @param cameraUpdate the [CameraUpdate] to apply on the map
  * @param durationMs the duration in milliseconds of the animation. Defaults to 3 seconds.
  */
-public suspend inline fun GoogleMap.awaitAnimation(
+public suspend inline fun GoogleMap.awaitAnimateCamera(
     cameraUpdate: CameraUpdate,
     durationMs: Int = 3000
 ): Unit =
