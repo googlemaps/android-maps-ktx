@@ -13,9 +13,6 @@ plugins:
             - "README.md"
           from: "ktx:[0-9].[0-9].[0-9]"
           to: "ktx:${nextRelease.version}"
-  - - "@semantic-release/exec"
-    - prepareCmd: "./gradlew build --warn --stacktrace"
-      publishCmd: "./gradlew publish --warn --stacktrace"
   - - "@semantic-release/git"
     - assets:
         - "./build.gradle"
