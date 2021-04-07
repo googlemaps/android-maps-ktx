@@ -224,6 +224,22 @@ public fun GoogleMap.circleClickEvents(): Flow<Circle> =
     }
 
 /**
+ * Returns a flow that emits when a ground overlay is clicked. Using this to observe ground overlay
+ * clicks events will override an existing listener (if any) to
+ * [GoogleMap.setOnGroundOverlayClickListener].
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.groundOverlayClicks(): Flow<GroundOverlay> =
+    callbackFlow {
+        setOnGroundOverlayClickListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnGroundOverlayClickListener(null)
+        }
+    }
+
+/**
  * Builds a new [GoogleMapOptions] using the provided [optionsActions].
  *
  * @return the constructed [GoogleMapOptions]
