@@ -1,0 +1,31 @@
+version: 2
+updates:
+- package-ecosystem: gradle
+  directory: "/./app"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  commit-message:
+    prefix: chore(deps)
+- package-ecosystem: gradle
+  directory: "/./maps-ktx"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  commit-message:
+    prefix: chore(deps)
+- package-ecosystem: gradle
+  directory: "/./maps-utils-ktx"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  commit-message:
+    prefix: chore(deps)
+- package-ecosystem: gradle
+  directory: "/./app"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  target-branch: devsite
+  commit-message:
+    prefix: chore(deps)
