@@ -103,7 +103,6 @@ public fun GoogleMap.cameraEvents(): Flow<CameraEvent> =
     }
 
 /**
-<<<<<<< HEAD
  * A suspending function that awaits the completion of the [cameraUpdate] animation.
  *
  * @param cameraUpdate the [CameraUpdate] to apply on the map
@@ -146,7 +145,7 @@ public fun GoogleMap.cameraIdleEvents(): Flow<Unit> =
         setOnCameraIdleListener {
             offerCatching(Unit)
         }
-        awaitClose{
+        awaitClose {
             setOnCameraIdleListener(null)
         }
     }
@@ -162,7 +161,7 @@ public fun GoogleMap.cameraMoveCanceledEvents(): Flow<Unit> =
         setOnCameraMoveCanceledListener {
             offerCatching(Unit)
         }
-        awaitClose{
+        awaitClose {
             setOnCameraMoveCanceledListener(null)
         }
     }
@@ -177,7 +176,7 @@ public fun GoogleMap.cameraMoveEvents(): Flow<Unit> =
         setOnCameraMoveListener {
             offerCatching(Unit)
         }
-        awaitClose{
+        awaitClose {
             setOnCameraMoveListener(null)
         }
     }
@@ -204,8 +203,23 @@ public fun GoogleMap.cameraMoveStartedEvents(): Flow<Unit> =
         setOnCameraMoveStartedListener {
             offerCatching(Unit)
         }
-        awaitClose{
+        awaitClose {
             setOnCameraMoveStartedListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when a circle is clicked. Using this to observe circle clicks events
+ * will override an existing listener (if any) to [GoogleMap.setOnCircleClickListener].
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.circleClickEvents(): Flow<Circle> =
+    callbackFlow {
+        setOnCircleClickListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnCircleClickListener(null)
         }
     }
 
