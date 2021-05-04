@@ -280,6 +280,54 @@ public fun GoogleMap.indoorStateChangeEvents(): Flow<IndoorChangeEvent> =
     }
 
 /**
+ * Returns a flow that emits when a marker's info window is clicked. Using this to observe info
+ * info window clicks will override an existing listener (if any) to
+ * [GoogleMap.setOnInfoWindowClickListener]
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.infoWindowClickEvents(): Flow<Marker> =
+    callbackFlow {
+        setOnInfoWindowClickListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnInfoWindowClickListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when a marker's info window is closed. Using this to observe info
+ * window closes will override an existing listener (if any) to
+ * [GoogleMap.setOnInfoWindowCloseListener]
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.infoWindowCloseEvents(): Flow<Marker> =
+    callbackFlow {
+        setOnInfoWindowCloseListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnInfoWindowCloseListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when a marker's info window is long pressed. Using this to observe info
+ * window long presses will override an existing listener (if any) to
+ * [GoogleMap.setOnInfoWindowLongClickListener]
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.infoWindowLongClickEvents(): Flow<Marker> =
+    callbackFlow {
+        setOnInfoWindowLongClickListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnInfoWindowLongClickListener(null)
+        }
+    }
+
+/**
  * Builds a new [GoogleMapOptions] using the provided [optionsActions].
  *
  * @return the constructed [GoogleMapOptions]
