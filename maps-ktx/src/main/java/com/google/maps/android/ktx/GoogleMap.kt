@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.Circle
 import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.GroundOverlay
 import com.google.android.gms.maps.model.GroundOverlayOptions
+import com.google.android.gms.maps.model.IndoorBuilding
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.Polygon
@@ -62,6 +63,23 @@ public object CameraIdleEvent : CameraEvent()
 public object CameraMoveCanceledEvent : CameraEvent()
 public object CameraMoveEvent : CameraEvent()
 public data class CameraMoveStartedEvent(@MoveStartedReason val reason: Int) : CameraEvent()
+
+/**
+ * Change event when the indoor state changes. See [GoogleMap.OnIndoorStateChangeListener]
+ */
+public sealed class IndoorChangeEvent
+
+/**
+ * Change event when an indoor building is focused.
+ * See [GoogleMap.OnIndoorStateChangeListener.onIndoorBuildingFocused]
+ */
+public object IndoorBuildingFocusedEvent : IndoorChangeEvent()
+
+/**
+ * Change event when an indoor level is activated.
+ * See [GoogleMap.OnIndoorStateChangeListener.onIndoorLevelActivated]
+ */
+public data class IndoorLevelActivatedEvent(val building: IndoorBuilding) : IndoorChangeEvent()
 
 // Since offer() can throw when the channel is closed (channel can close before the
 // block within awaitClose), wrap `offer` calls inside `runCatching`.
@@ -236,6 +254,28 @@ public fun GoogleMap.groundOverlayClicks(): Flow<GroundOverlay> =
         }
         awaitClose {
             setOnGroundOverlayClickListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when the indoor state changes. Using this to observe indoor state
+ * change events will override an existing listener (if any) to
+ * [GoogleMap.setOnIndoorStateChangeListener]
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.indoorStateChangeEvents(): Flow<IndoorChangeEvent> =
+    callbackFlow {
+        setOnIndoorStateChangeListener(object : GoogleMap.OnIndoorStateChangeListener {
+            override fun onIndoorBuildingFocused() {
+                offerCatching(IndoorBuildingFocusedEvent)
+            }
+
+            override fun onIndoorLevelActivated(indoorBuilding: IndoorBuilding) {
+                offerCatching(IndoorLevelActivatedEvent(building = indoorBuilding))
+            }
+        })
+        awaitClose {
+            setOnIndoorStateChangeListener(null)
         }
     }
 
