@@ -31,12 +31,13 @@ buildscript {
             'junit'    : '1.1.1',
         ],
         'junit'            : '4.12',
-        'kotlin'           : '1.4.0',
-        'kotlinxCoroutines': '1.3.2',
+        'kotlin'           : '1.4.32',
+        'kotlinxCoroutines': '1.4.3',
         'mapsBeta'         : '3.1.0-beta',
         'mockito'          : '3.0.0',
         'mockitoKotlin'    : '2.2.0',
         'playServices'     : '17.0.0',
+        'volley'           : '1.2.0',
     ]
 
     ext.deps = [
@@ -60,6 +61,7 @@ buildscript {
         'playServices'     : [
             'maps' : "com.google.android.gms:play-services-maps:$versions.playServices",
         ],
+        'volley'           : "com.android.volley:volley:$versions.volley",
     ]
 
     repositories {
@@ -68,7 +70,7 @@ buildscript {
         maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath 'com.android.tools.build:gradle:4.1.3'
         classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.10.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         classpath 'com.hiya:jacoco-android:0.2'

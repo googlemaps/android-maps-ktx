@@ -41,6 +41,7 @@ android {
 dependencies {
     implementation deps.kotlin
     implementation deps.kotlinxCoroutines
+    implementation deps.volley
     api deps.androidMapsUtils.v3
     api deps.mapsBeta
 
