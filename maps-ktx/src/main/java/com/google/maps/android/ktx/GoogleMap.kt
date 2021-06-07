@@ -229,7 +229,7 @@ public fun GoogleMap.cameraMoveEvents(): Flow<Unit> =
  * @param bitmap an optional preallocated bitmap
  * @return the snapshot
  */
-public suspend inline fun GoogleMap.awaitSnapshot(bitmap: Bitmap? = null): Bitmap =
+public suspend inline fun GoogleMap.awaitSnapshot(bitmap: Bitmap? = null): Bitmap? =
     suspendCoroutine { continuation ->
         snapshot({ continuation.resume(it) }, bitmap)
     }
@@ -463,7 +463,7 @@ public inline fun GoogleMap.addCircle(optionsActions: CircleOptions.() -> Unit):
  *
  * @return the added [Circle]
  */
-public inline fun GoogleMap.addGroundOverlay(optionsActions: GroundOverlayOptions.() -> Unit): GroundOverlay =
+public inline fun GoogleMap.addGroundOverlay(optionsActions: GroundOverlayOptions.() -> Unit): GroundOverlay? =
     this.addGroundOverlay(
         groundOverlayOptions(optionsActions)
     )
@@ -473,7 +473,7 @@ public inline fun GoogleMap.addGroundOverlay(optionsActions: GroundOverlayOption
  *
  * @return the added [Marker]
  */
-public inline fun GoogleMap.addMarker(optionsActions: MarkerOptions.() -> Unit): Marker =
+public inline fun GoogleMap.addMarker(optionsActions: MarkerOptions.() -> Unit): Marker? =
     this.addMarker(
         markerOptions(optionsActions)
     )
@@ -504,7 +504,7 @@ public inline fun GoogleMap.addPolyline(optionsActions: PolylineOptions.() -> Un
  *
  * @return the added [Polyline]
  */
-public inline fun GoogleMap.addTileOverlay(optionsActions: TileOverlayOptions.() -> Unit): TileOverlay =
+public inline fun GoogleMap.addTileOverlay(optionsActions: TileOverlayOptions.() -> Unit): TileOverlay? =
     this.addTileOverlay(
         tileOverlayOptions(optionsActions)
     )
