@@ -18,6 +18,7 @@
 package com.google.maps.android.ktx
 
 import android.graphics.Bitmap
+import android.location.Location
 import androidx.annotation.IntDef
 import com.google.android.gms.maps.CameraUpdate
 import com.google.android.gms.maps.GoogleMap
@@ -30,6 +31,7 @@ import com.google.android.gms.maps.model.IndoorBuilding
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PointOfInterest
 import com.google.android.gms.maps.model.Polygon
 import com.google.android.gms.maps.model.PolygonOptions
 import com.google.android.gms.maps.model.Polyline
@@ -423,7 +425,7 @@ public fun GoogleMap.markerDragEvents(): Flow<OnMarkerDragEvent> =
 
 /**
  * Returns a flow that emits when the my location button is clicked. Using this to observe my
- * location click events will override an existing listener (if any) to
+ * location button click events will override an existing listener (if any) to
  * [GoogleMap.setOnMyLocationButtonClickListener]
  */
 @ExperimentalCoroutinesApi
@@ -434,6 +436,68 @@ public fun GoogleMap.myLocationButtonClickEvents(): Flow<Unit> =
         }
         awaitClose {
             setOnMyLocationButtonClickListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when the my location blue dot is clicked. Using this to observe my
+ * location blue dot click events will override an existing listener (if any) to
+ * [GoogleMap.setOnMyLocationClickListener]
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.myLocationClickEvents(): Flow<Location> =
+    callbackFlow {
+        setOnMyLocationClickListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnMyLocationClickListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when a PointOfInterest is clicked. Using this to observe
+ * PointOfInterest click events will override an existing listener (if any) to
+ * [GoogleMap.setOnPoiClickListener]
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.poiClickEvents(): Flow<PointOfInterest> =
+    callbackFlow {
+         setOnPoiClickListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnPoiClickListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when a Polygon is clicked. Using this to observe Polygon click events
+ * will override an existing listener (if any) to [GoogleMap.setOnPolygonClickListener]
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.polygonClickEvents(): Flow<Polygon> =
+    callbackFlow {
+        setOnPolygonClickListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnPolygonClickListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when a Polyline is clicked. Using this to observe Polyline click events
+ * will override an existing listener (if any) to [GoogleMap.setOnPolylineClickListener]
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.polylineClickEvents(): Flow<Polyline> =
+    callbackFlow {
+        setOnPolylineClickListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnPolylineClickListener(null)
         }
     }
 
