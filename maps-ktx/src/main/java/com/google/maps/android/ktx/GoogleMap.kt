@@ -27,6 +27,7 @@ import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.GroundOverlay
 import com.google.android.gms.maps.model.GroundOverlayOptions
 import com.google.android.gms.maps.model.IndoorBuilding
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.Polygon
@@ -63,6 +64,28 @@ public object CameraIdleEvent : CameraEvent()
 public object CameraMoveCanceledEvent : CameraEvent()
 public object CameraMoveEvent : CameraEvent()
 public data class CameraMoveStartedEvent(@MoveStartedReason val reason: Int) : CameraEvent()
+
+/**
+ * Change event when a marker is dragged. See [GoogleMap.setOnMarkerDragListener]
+ */
+public sealed class OnMarkerDragEvent {
+    public abstract val marker: Marker
+}
+
+/**
+ * Event emitted repeatedly while a marker is being dragged.
+ */
+public data class MarkerDragEvent(public override val marker: Marker) : OnMarkerDragEvent()
+
+/**
+ * Event emitted when a marker has finished being dragged.
+ */
+public data class MarkerDragEndEvent(public override val marker: Marker) : OnMarkerDragEvent()
+
+/**
+ * Event emitted when a marker starts being dragged.
+ */
+public data class MarkerDragStartEvent(public override val marker: Marker) : OnMarkerDragEvent()
 
 /**
  * Change event when the indoor state changes. See [GoogleMap.OnIndoorStateChangeListener]
@@ -324,6 +347,93 @@ public fun GoogleMap.infoWindowLongClickEvents(): Flow<Marker> =
         }
         awaitClose {
             setOnInfoWindowLongClickListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when the map is clicked. Using this to observe map click events will
+ * override an existing listener (if any) to [GoogleMap.setOnMapClickListener]
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.mapClickEvents(): Flow<LatLng> =
+    callbackFlow {
+        setOnMapClickListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnMapClickListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when the map is long clicked. Using this to observe map click events
+ * will override an existing listener (if any) to [GoogleMap.setOnMapLongClickListener]
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.mapLongClickEvents(): Flow<LatLng> =
+    callbackFlow {
+        setOnMapLongClickListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnMapLongClickListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when a marker on the map is clicked. Using this to observe marker click
+ * events will override an existing listener (if any) to [GoogleMap.setOnMarkerClickListener]
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.markerClickEvents(): Flow<Marker> =
+    callbackFlow {
+        setOnMarkerClickListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnMarkerClickListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when a marker is dragged. Using this to observer marker drag events
+ * will override existing listeners (if any) to [GoogleMap.setOnMarkerDragListener]
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.markerDragEvents(): Flow<OnMarkerDragEvent> =
+    callbackFlow {
+        setOnMarkerDragListener(object : GoogleMap.OnMarkerDragListener {
+            override fun onMarkerDragStart(marker: Marker) {
+                offerCatching(MarkerDragStartEvent(marker = marker))
+            }
+
+            override fun onMarkerDrag(marker: Marker) {
+                offerCatching(MarkerDragEvent(marker = marker))
+            }
+
+            override fun onMarkerDragEnd(marker: Marker) {
+                offerCatching(MarkerDragEndEvent(marker = marker))
+            }
+
+        })
+        awaitClose {
+            setOnMarkerDragListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when the my location button is clicked. Using this to observe my
+ * location click events will override an existing listener (if any) to
+ * [GoogleMap.setOnMyLocationButtonClickListener]
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.myLocationButtonClickEvents(): Flow<Unit> =
+    callbackFlow {
+        setOnMyLocationButtonClickListener {
+            offerCatching(Unit)
+        }
+        awaitClose {
+            setOnMyLocationButtonClickListener(null)
         }
     }
 
