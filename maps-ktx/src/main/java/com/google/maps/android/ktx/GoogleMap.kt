@@ -109,7 +109,7 @@ public data class IndoorLevelActivatedEvent(val building: IndoorBuilding) : Indo
 // Since offer() can throw when the channel is closed (channel can close before the
 // block within awaitClose), wrap `offer` calls inside `runCatching`.
 // See: https://github.com/Kotlin/kotlinx.coroutines/issues/974
-private fun <E> SendChannel<E>.offerCatching(element: E): Boolean {
+internal fun <E> SendChannel<E>.offerCatching(element: E): Boolean {
     return runCatching { offer(element) }.getOrDefault(false)
 }
 
