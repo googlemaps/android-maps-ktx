@@ -26,10 +26,10 @@ If you are using the Maps SDK through Google Play Services:
 dependencies {
 
     // KTX for the Maps SDK for Android library
-    implementation 'com.google.maps.android:maps-ktx:3.0.1'
+    implementation 'com.google.maps.android:maps-ktx:3.1.0'
 
     // KTX for the Maps SDK for Android Utility Library
-    implementation 'com.google.maps.android:maps-utils-ktx:3.0.1'
+    implementation 'com.google.maps.android:maps-utils-ktx:3.1.0'
 
     // It is recommended to also include the latest Maps SDK and/or Utility Library versions
     // as well to ensure that you have the latest features and bug fixes.
@@ -44,10 +44,10 @@ Alternatively, if you are using the Maps SDK through the standalone V3 BETA dist
 dependencies {
 
     // KTX for the Maps SDK for Android V3 BETA Library
-    implementation 'com.google.maps.android:maps-v3-ktx:3.0.1'
+    implementation 'com.google.maps.android:maps-v3-ktx:3.1.0'
 
     // KTX for the Maps SDK for Android V3 BETA Utility Library
-    implementation 'com.google.maps.android:maps-utils-v3-ktx:3.0.1'
+    implementation 'com.google.maps.android:maps-utils-v3-ktx:3.1.0'
 
     // It is recommended to also include the latest Maps SDK and/or Utility Library versions
     // as well to ensure that you have the latest features and bug fixes.
