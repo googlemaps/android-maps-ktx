@@ -2,6 +2,13 @@ package com.google.maps.android.ktx
 
 import com.google.android.gms.maps.StreetViewPanorama
 import com.google.android.gms.maps.StreetViewPanoramaView
+import com.google.android.gms.maps.model.StreetViewPanoramaCamera
+import com.google.android.gms.maps.model.StreetViewPanoramaLocation
+import com.google.android.gms.maps.model.StreetViewPanoramaOrientation
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
@@ -17,5 +24,69 @@ public suspend inline fun StreetViewPanoramaView.awaitStreetViewPanorama(): Stre
     suspendCoroutine { continuation ->
         getStreetViewPanoramaAsync {
             continuation.resume(it)
+        }
+    }
+
+/**
+ * Returns a flow that emits when the street view panorama camera changes. Using this to
+ * observe panorama camera change events will override an existing listener (if any) to
+ * [StreetViewPanorama.setOnStreetViewPanoramaCameraChangeListener].
+ */
+@ExperimentalCoroutinesApi
+public fun StreetViewPanorama.cameraChangeEvents(): Flow<StreetViewPanoramaCamera> =
+    callbackFlow {
+        setOnStreetViewPanoramaCameraChangeListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnStreetViewPanoramaCameraChangeListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when the street view panorama loads a new panorama. Using this to
+ * observe panorama load change events will override an existing listener (if any) to
+ * [StreetViewPanorama.setOnStreetViewPanoramaChangeListener].
+ */
+@ExperimentalCoroutinesApi
+public fun StreetViewPanorama.changeEvents(): Flow<StreetViewPanoramaLocation> =
+    callbackFlow {
+        setOnStreetViewPanoramaChangeListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnStreetViewPanoramaChangeListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when the street view panorama is clicked. Using this to
+ * observe panorama click events will override an existing listener (if any) to
+ * [StreetViewPanorama.setOnStreetViewPanoramaClickListener].
+ */
+@ExperimentalCoroutinesApi
+public fun StreetViewPanorama.clickEvents(): Flow<StreetViewPanoramaOrientation> =
+    callbackFlow {
+        setOnStreetViewPanoramaClickListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnStreetViewPanoramaClickListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when the street view panorama is long clicked. Using this to
+ * observe panorama long click events will override an existing listener (if any) to
+ * [StreetViewPanorama.setOnStreetViewPanoramaLongClickListener].
+ */
+@ExperimentalCoroutinesApi
+public fun StreetViewPanorama.longClickEvents(): Flow<StreetViewPanoramaOrientation> =
+    callbackFlow {
+        setOnStreetViewPanoramaLongClickListener {
+            offerCatching(it)
+        }
+        awaitClose {
+            setOnStreetViewPanoramaLongClickListener(null)
         }
     }
