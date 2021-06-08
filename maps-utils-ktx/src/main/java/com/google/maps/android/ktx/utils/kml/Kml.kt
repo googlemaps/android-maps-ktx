@@ -32,7 +32,7 @@ import java.io.InputStream
 /**
  * Alias for the [KmlLayer] constructor that provides Kotlin named parameters and default values.
  */
-inline fun kmlLayer(
+public inline fun kmlLayer(
     map: GoogleMap,
     @RawRes resourceId: Int,
     context: Context,
@@ -55,7 +55,7 @@ inline fun kmlLayer(
 /**
  * Alias for the [KmlLayer] constructor that provides Kotlin named parameters and default values.
  */
-inline fun kmlLayer(
+public inline fun kmlLayer(
     map: GoogleMap,
     stream: InputStream,
     context: Context,

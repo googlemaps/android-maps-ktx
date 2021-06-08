@@ -18,6 +18,9 @@ package com.google.maps.android.ktx.demo
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.coroutineScope
@@ -34,45 +37,112 @@ import com.google.maps.android.collections.PolylineManager
 import com.google.maps.android.data.Renderer.ImagesCache
 import com.google.maps.android.data.geojson.GeoJsonLineStringStyle
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
+import com.google.maps.android.ktx.CameraIdleEvent
+import com.google.maps.android.ktx.CameraMoveCanceledEvent
+import com.google.maps.android.ktx.CameraMoveEvent
+import com.google.maps.android.ktx.CameraMoveStartedEvent
+import com.google.maps.android.ktx.awaitAnimateCamera
 import com.google.maps.android.ktx.awaitMap
+import com.google.maps.android.ktx.awaitMapLoad
+import com.google.maps.android.ktx.awaitSnapshot
+import com.google.maps.android.ktx.cameraEvents
+import com.google.maps.android.ktx.awaitMap
+import com.google.maps.android.ktx.cameraIdleEvents
+import com.google.maps.android.ktx.cameraMoveStartedEvents
 import com.google.maps.android.ktx.demo.io.MyItemReader
 import com.google.maps.android.ktx.demo.model.MyItem
+import com.google.maps.android.ktx.model.cameraPosition
 import com.google.maps.android.ktx.utils.collection.addMarker
 import com.google.maps.android.ktx.utils.geojson.geoJsonLayer
 import com.google.maps.android.ktx.utils.kml.kmlLayer
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.json.JSONException
 
 /**
  * A demo of multiple layers on the map.
  *
  * To add your Maps API key to this project:
- *   1. Create a file app/secure.properties
+ *   1. Create a file ./secure.properties
  *   2. Add this line, where YOUR_API_KEY is your API key:
  *        MAPS_API_KEY=YOUR_API_KEY
  */
 class MainActivity : AppCompatActivity() {
 
+    private val london = LatLng(51.403186, -0.126446)
+    private val sanFrancisco = LatLng( 37.7576, -122.4194)
+    private var currentLocation = london
+
+    @OptIn(ExperimentalCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val isRestore = savedInstanceState != null
         setContentView(R.layout.activity_main)
 
-        if (getString(R.string.maps_api_key).isEmpty()) {
-            Toast.makeText(this, "Add your own API key in app/secure.properties as MAPS_API_KEY=YOUR_API_KEY", Toast.LENGTH_LONG).show()
+        if (BuildConfig.MAPS_API_KEY.isEmpty()) {
+            Toast.makeText(this, "Add your own API key in ./secure.properties as MAPS_API_KEY=YOUR_API_KEY", Toast.LENGTH_LONG).show()
         }
 
-        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         lifecycle.coroutineScope.launchWhenCreated {
-            val googleMap = mapFragment?.awaitMap()
+            val googleMap = mapFragment.awaitMap()
             if (!isRestore) {
-                googleMap?.moveCamera(
+                googleMap.awaitMapLoad()
+                googleMap.animateCamera(
                     CameraUpdateFactory.newLatLngZoom(
-                        LatLng(51.403186, -0.126446),
+                        london,
                         10F
                     )
                 )
             }
-            googleMap?.let { showMapLayers(it) }
+            showMapLayers(googleMap)
+            addButtonClickListener(googleMap)
+            launch {
+                googleMap.cameraMoveStartedEvents().collect {
+                    Log.d(TAG, "Camera moved.")
+                }
+            }
+            launch {
+                googleMap.cameraIdleEvents().collect {
+                    Log.d(TAG, "Camera is idle.")
+                }
+            }
+        }
+    }
+
+    private suspend fun addButtonClickListener(googleMap: GoogleMap) {
+        findViewById<Button>(R.id.button_animate_camera).setOnClickListener {
+            currentLocation = if (currentLocation == london) sanFrancisco else london
+            lifecycle.coroutineScope.launchWhenStarted {
+                googleMap.run {
+                    awaitAnimateCamera(CameraUpdateFactory.newCameraPosition(
+                        cameraPosition {
+                            target(currentLocation)
+                            zoom(0.0f)
+                            tilt(0.0f)
+                            bearing(0.0f)
+                        }
+                    ))
+                    awaitMapLoad()
+                    awaitAnimateCamera(CameraUpdateFactory.newCameraPosition(
+                        cameraPosition {
+                            target(currentLocation)
+                            zoom(10.0f)
+                            bearing(180f)
+                            tilt(75f)
+                            build()
+                        }
+                    ))
+                }
+            }
+        }
+
+        findViewById<Button>(R.id.button_snapshot).setOnClickListener {
+            lifecycle.coroutineScope.launchWhenStarted {
+                val bitmap = googleMap.awaitSnapshot()
+                findViewById<ImageView>(R.id.image_view_snapshot).setImageBitmap(bitmap)
+            }
         }
     }
 
@@ -234,5 +304,9 @@ class MainActivity : AppCompatActivity() {
     private fun getImagesCache(): ImagesCache? {
         val retainFragment = RetainFragment.findOrCreateRetainFragment(supportFragmentManager)
         return retainFragment.mImagesCache
+    }
+
+    companion object {
+        private val TAG = MainActivity::class.java.simpleName
     }
 }

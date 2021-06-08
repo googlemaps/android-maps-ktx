@@ -19,8 +19,8 @@ package com.google.maps.android.ktx
 
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
 
 /**
  * A suspending function that provides an instance of a [GoogleMap] from this [SupportMapFragment].
@@ -29,8 +29,8 @@ import kotlin.coroutines.suspendCoroutine
  *
  * @return the [GoogleMap] instance
  */
-suspend inline fun SupportMapFragment.awaitMap(): GoogleMap =
-    suspendCoroutine { continuation ->
+public suspend inline fun SupportMapFragment.awaitMap(): GoogleMap =
+    suspendCancellableCoroutine { continuation ->
         getMapAsync {
             continuation.resume(it)
         }

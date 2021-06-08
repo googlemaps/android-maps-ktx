@@ -48,12 +48,11 @@ jobs:
 
     # Commit changes and create a PR
     - name: PR Changes
-      uses: peter-evans/create-pull-request@v2
+      uses: peter-evans/create-pull-request@v3
       with:
         token: ${{ secrets.SYNCED_GITHUB_TOKEN_REPO }}
         commit-message: 'docs: Update docs'
         committer: googlemaps-bot <googlemaps-bot@google.com>
-        author: googlemaps-bot <googlemaps-bot@google.com>
         title: 'docs: Update docs'
         body: |
             Updated GitHub pages with latest from `./gradlew dokka`.

@@ -32,14 +32,18 @@ android {
     libraryVariants.all {
         it.generateBuildConfig.enabled = false
     }
+
+    kotlinOptions {
+        freeCompilerArgs += '-Xexplicit-api=strict'
+    }
 }
 
 preBuild.dependsOn(rootProject.tasks.copyGmsUtilsToV3Beta)
 
 dependencies {
-    api deps.kotlin
+    implementation deps.kotlin
     api deps.androidMapsUtils.gms
-    implementation deps.playServices.maps
+    api deps.playServices.maps
 
     // Tests
     testImplementation deps.androidx.test

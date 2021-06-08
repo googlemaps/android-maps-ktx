@@ -29,7 +29,7 @@ import com.google.maps.android.geometry.Point
  * val (x, _) = point
  * ```
  */
-inline operator fun Point.component1() = this.x
+public inline operator fun Point.component1(): Double = this.x
 
 /**
  * Returns the y value of this Point.
@@ -39,4 +39,4 @@ inline operator fun Point.component1() = this.x
  * ```
  * val (_, y) = point
  */
-inline operator fun Point.component2() = this.y
+public inline operator fun Point.component2(): Double = this.y

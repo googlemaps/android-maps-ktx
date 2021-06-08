@@ -23,7 +23,7 @@ import com.google.maps.android.ktx.utils.heatmaps.toWeightedLatLng
 import org.junit.Assert.*
 import org.junit.Test
 
-class HeatmapTest {
+internal class HeatmapTest {
     @Test
     fun `to WeightedLatLng converts correctly`() {
         val latLng = LatLng(1.0, 2.0)

@@ -25,7 +25,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-class PolygonTest {
+internal class PolygonTest {
     @Test
     fun testContainsTrue() {
         val polygon = mockPolygon(listOf(LatLng(1.0, 2.2), LatLng(0.0, 1.0)))

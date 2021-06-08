@@ -25,7 +25,7 @@ import com.google.maps.android.collections.GroundOverlayManager
  * Adds a new [GroundOverlay] to the underlying map and to this [GroundOverlayManager.Collection]
  * with the provided [optionsActions].
  */
-inline fun GroundOverlayManager.Collection.addGroundOverlay(
+public inline fun GroundOverlayManager.Collection.addGroundOverlay(
     optionsActions: GroundOverlayOptions.() -> Unit
 ): GroundOverlay =
     this.addGroundOverlay(

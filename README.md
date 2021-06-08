@@ -14,6 +14,8 @@ This repository contains Kotlin extensions (KTX) for:
 It enables you to write more concise, idiomatic Kotlin. Each set of extensions can be used independently or together.
 
 ## Requirements
+* Kotlin-enabled project
+* Kotlin coroutines
 * API level 15+
 
 ## Installation
@@ -24,10 +26,15 @@ If you are using the Maps SDK through Google Play Services:
 dependencies {
 
     // KTX for the Maps SDK for Android library
-    implementation 'com.google.maps.android:maps-ktx:1.7.0'
+    implementation 'com.google.maps.android:maps-ktx:3.1.0'
 
     // KTX for the Maps SDK for Android Utility Library
-    implementation 'com.google.maps.android:maps-utils-ktx:1.7.0'
+    implementation 'com.google.maps.android:maps-utils-ktx:3.1.0'
+
+    // It is recommended to also include the latest Maps SDK and/or Utility Library versions
+    // as well to ensure that you have the latest features and bug fixes.
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.maps.android:android-maps-utils:2.0.3'
 }
 ```
 
@@ -37,10 +44,15 @@ Alternatively, if you are using the Maps SDK through the standalone V3 BETA dist
 dependencies {
 
     // KTX for the Maps SDK for Android V3 BETA Library
-    implementation 'com.google.maps.android:maps-v3-ktx:1.7.0'
+    implementation 'com.google.maps.android:maps-v3-ktx:3.1.0'
 
     // KTX for the Maps SDK for Android V3 BETA Utility Library
-    implementation 'com.google.maps.android:maps-utils-v3-ktx:1.7.0'
+    implementation 'com.google.maps.android:maps-utils-v3-ktx:3.1.0'
+
+    // It is recommended to also include the latest Maps SDK and/or Utility Library versions
+    // as well to ensure that you have the latest features and bug fixes.
+    implementation 'com.google.android.libraries.maps:maps:3.1.0-beta'
+    implementation 'com.google.maps.android:android-maps-utils-v3:2.0.3'
 }
 ```
 
@@ -57,8 +69,8 @@ This repository includes a [demo app](app) that illustrates the use of this KTX 
 To run the demo app, you'll have to:
 
 1. [Get a Maps API key](https://developers.google.com/maps/documentation/android-sdk/get-api-key)
-1. Create a file in the `app` directory called `secure.properties` (this file should *NOT* be under version control to protect your API key)
-1. Add a single line to `app/secure.properties` that looks like `MAPS_API_KEY=YOUR_API_KEY`, where `YOUR_API_KEY` is the API key you obtained in the first step
+1. Create a file in the root directory called `secure.properties` (this file should *NOT* be under version control to protect your API key)
+1. Add a single line to `secure.properties` that looks like `MAPS_API_KEY=YOUR_API_KEY`, where `YOUR_API_KEY` is the API key you obtained in the first step
 1. Build and run
 
 ### Maps SDK KTX
@@ -116,6 +128,34 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     lifecycle.coroutineScope.launchWhenCreated {
         val googleMap = mapFragment?.awaitMap()
+    }
+}
+```
+
+#### Flow
+
+> **Note**: The following feature utilizes an experimental coroutine API. To use this, you will have to add the `@OptIn(ExperimentalCoroutinesApi::class)` at the site of its usage as well as the compiler flag `-Xopt-in=kotlin.RequiresOptIn`.
+
+Listing to camera events can be collected via [Kotlin Flow](kotlin-flow). 
+
+_Before_
+```java
+val googleMap = //...
+googleMap.setOnCameraIdleListener = { //... }
+googleMap.setOnCameraMoveCanceledListener { //... }
+googleMap.setOnCameraMoveListener { //... }
+googleMap.setOnCameraMoveStartedListener { //... }
+```
+
+_After_
+```kotlin
+// To be invoked within a coroutine scope
+googleMap.cameraEvents().collect { event ->
+    when (event) {
+        is CameraIdleEvent -> //...
+        is CameraMoveCanceledEvent -> //...
+        is CameraMoveEvent -> //...
+        is CameraMoveStartedEvent -> //...
     }
 }
 ```
@@ -183,6 +223,8 @@ val point = Point(1.0, 2.0)
 val (x, y) = point
 ```
 
+## Documentation
+
 You can learn more about all the extensions provided by this library by reading the [reference documents][Javadoc].
 
 ## Support
@@ -207,3 +249,4 @@ For more information, check out the detailed guide on the
 [maps-sdk]: https://developers.google.com/maps/documentation/android-sdk/intro
 [maps-v3-sdk]: https://developers.google.com/maps/documentation/android-sdk/v3-client-migration
 [pull request]: https://github.com/googlemaps/android-maps-ktx/compare
+[kotlin-flow]: https://kotlinlang.org/docs/reference/coroutines/flow.html
