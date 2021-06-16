@@ -46,7 +46,7 @@ android {
 
 // [START maps_android_utils_ktx_install_snippet]
 dependencies {
-    implementation 'com.google.maps.android:maps-utils-ktx:2.4.0'
+    implementation 'com.google.maps.android:maps-utils-ktx:3.1.0'
     // [START_EXCLUDE silent]
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.kotlin
