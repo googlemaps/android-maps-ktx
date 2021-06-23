@@ -52,6 +52,7 @@ jobs:
       with:
         token: ${{ secrets.SYNCED_GITHUB_TOKEN_REPO }}
         commit-message: 'docs: Update docs'
+        author: googlemaps-bot <googlemaps-bot@google.com>
         committer: googlemaps-bot <googlemaps-bot@google.com>
         title: 'docs: Update docs'
         body: |
