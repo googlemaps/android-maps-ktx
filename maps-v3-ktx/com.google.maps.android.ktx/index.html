@@ -46,6 +46,64 @@
 <td>
 <code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">CameraMoveStartedEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-camera-event.html"><span class="identifier">CameraEvent</span></a></code></td>
 </tr>
+<tr>
+<td>
+<h4><a href="-indoor-building-focused-event.html">IndoorBuildingFocusedEvent</a></h4>
+</td>
+<td>
+<p>Change event when an indoor building is focused.
+See <a href="#">GoogleMap.OnIndoorStateChangeListener.onIndoorBuildingFocused</a></p>
+<code><span class="keyword">object </span><span class="identifier">IndoorBuildingFocusedEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-indoor-change-event.html"><span class="identifier">IndoorChangeEvent</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-indoor-change-event.html">IndoorChangeEvent</a></h4>
+</td>
+<td>
+<p>Change event when the indoor state changes. See <a href="#">GoogleMap.OnIndoorStateChangeListener</a></p>
+<code><span class="keyword">sealed</span> <span class="keyword">class </span><span class="identifier">IndoorChangeEvent</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-indoor-level-activated-event/index.html">IndoorLevelActivatedEvent</a></h4>
+</td>
+<td>
+<p>Change event when an indoor level is activated.
+See <a href="#">GoogleMap.OnIndoorStateChangeListener.onIndoorLevelActivated</a></p>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">IndoorLevelActivatedEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-indoor-change-event.html"><span class="identifier">IndoorChangeEvent</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-marker-drag-end-event/index.html">MarkerDragEndEvent</a></h4>
+</td>
+<td>
+<p>Event emitted when a marker has finished being dragged.</p>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">MarkerDragEndEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-on-marker-drag-event/index.html"><span class="identifier">OnMarkerDragEvent</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-marker-drag-event/index.html">MarkerDragEvent</a></h4>
+</td>
+<td>
+<p>Event emitted repeatedly while a marker is being dragged.</p>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">MarkerDragEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-on-marker-drag-event/index.html"><span class="identifier">OnMarkerDragEvent</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-marker-drag-start-event/index.html">MarkerDragStartEvent</a></h4>
+</td>
+<td>
+<p>Event emitted when a marker starts being dragged.</p>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">MarkerDragStartEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-on-marker-drag-event/index.html"><span class="identifier">OnMarkerDragEvent</span></a></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="-on-marker-drag-event/index.html">OnMarkerDragEvent</a></h4>
+</td>
+<td>
+<p>Change event when a marker is dragged. See <a href="#">GoogleMap.setOnMarkerDragListener</a></p>
+<code><span class="keyword">sealed</span> <span class="keyword">class </span><span class="identifier">OnMarkerDragEvent</span></code></td>
+</tr>
 </tbody>
 </table>
 <h3>Annotations</h3>
@@ -88,6 +146,13 @@
 <tr>
 <td>
 <h4><a href="com.google.android.libraries.maps.-map-view/index.html">com.google.android.libraries.maps.MapView</a></h4>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+<h4><a href="com.google.android.libraries.maps.-street-view-panorama/index.html">com.google.android.libraries.maps.StreetViewPanorama</a></h4>
 </td>
 <td>
 </td>
