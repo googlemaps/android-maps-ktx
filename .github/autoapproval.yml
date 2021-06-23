@@ -3,8 +3,9 @@ from_owner:
   - dependabot
   - dependabot[bot]
   - dependabot-preview[bot]
+  - googlemaps-bot
 
-required_labels: 
+required_labels:
   - dependencies
   - docs
 
