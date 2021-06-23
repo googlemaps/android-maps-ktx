@@ -9,8 +9,7 @@ required_labels:
   - dependencies
   - docs
 
-required_labels_mode:
-  - one_of
+required_labels_mode: one_of
 
 apply_labels:
   - merge
