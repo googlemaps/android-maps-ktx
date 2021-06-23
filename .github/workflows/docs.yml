@@ -17,10 +17,10 @@ name: Update documentation
 
 on:
   push:
-    tags:
-      - '*'
+    branches: [ main ]
   repository_dispatch:
       types: [gh-pages]
+  workflow_dispatch:
 
 jobs:
   gh-page-sync:
