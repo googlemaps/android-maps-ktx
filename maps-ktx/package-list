@@ -6,7 +6,7 @@ $dokka.location:com.google.maps.android.ktx$addMarker(com.google.android.gms.map
 $dokka.location:com.google.maps.android.ktx$addPolygon(com.google.android.gms.maps.GoogleMap, kotlin.Function1((com.google.android.gms.maps.model.PolygonOptions, kotlin.Unit)))com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/add-polygon.html
 $dokka.location:com.google.maps.android.ktx$addPolyline(com.google.android.gms.maps.GoogleMap, kotlin.Function1((com.google.android.gms.maps.model.PolylineOptions, kotlin.Unit)))com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/add-polyline.html
 $dokka.location:com.google.maps.android.ktx$addTileOverlay(com.google.android.gms.maps.GoogleMap, kotlin.Function1((com.google.android.gms.maps.model.TileOverlayOptions, kotlin.Unit)))com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/add-tile-overlay.html
-$dokka.location:com.google.maps.android.ktx$awaitAnimation(com.google.android.gms.maps.GoogleMap, com.google.android.gms.maps.CameraUpdate, kotlin.Int)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/await-animation.html
+$dokka.location:com.google.maps.android.ktx$awaitAnimateCamera(com.google.android.gms.maps.GoogleMap, com.google.android.gms.maps.CameraUpdate, kotlin.Int)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/await-animate-camera.html
 $dokka.location:com.google.maps.android.ktx$awaitMap(com.google.android.gms.maps.MapFragment)com.google.maps.android.ktx/com.google.android.gms.maps.-map-fragment/await-map.html
 $dokka.location:com.google.maps.android.ktx$awaitMap(com.google.android.gms.maps.MapView)com.google.maps.android.ktx/com.google.android.gms.maps.-map-view/await-map.html
 $dokka.location:com.google.maps.android.ktx$awaitMap(com.google.android.gms.maps.SupportMapFragment)com.google.maps.android.ktx/com.google.android.gms.maps.-support-map-fragment/await-map.html
@@ -15,6 +15,28 @@ $dokka.location:com.google.maps.android.ktx$awaitSnapshot(com.google.android.gms
 $dokka.location:com.google.maps.android.ktx$awaitStreetViewPanorama(com.google.android.gms.maps.StreetViewPanoramaFragment)com.google.maps.android.ktx/com.google.android.gms.maps.-street-view-panorama-fragment/await-street-view-panorama.html
 $dokka.location:com.google.maps.android.ktx$awaitStreetViewPanorama(com.google.android.gms.maps.StreetViewPanoramaView)com.google.maps.android.ktx/com.google.android.gms.maps.-street-view-panorama-view/await-street-view-panorama.html
 $dokka.location:com.google.maps.android.ktx$awaitStreetViewPanorama(com.google.android.gms.maps.SupportStreetViewPanoramaFragment)com.google.maps.android.ktx/com.google.android.gms.maps.-support-street-view-panorama-fragment/await-street-view-panorama.html
-$dokka.location:com.google.maps.android.ktx$cameraEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/camera-events.html
+$dokka.location:com.google.maps.android.ktx$cameraChangeEvents(com.google.android.gms.maps.StreetViewPanorama)com.google.maps.android.ktx/com.google.android.gms.maps.-street-view-panorama/camera-change-events.html
+$dokka.location:com.google.maps.android.ktx$cameraIdleEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/camera-idle-events.html
+$dokka.location:com.google.maps.android.ktx$cameraMoveCanceledEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/camera-move-canceled-events.html
+$dokka.location:com.google.maps.android.ktx$cameraMoveEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/camera-move-events.html
+$dokka.location:com.google.maps.android.ktx$cameraMoveStartedEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/camera-move-started-events.html
+$dokka.location:com.google.maps.android.ktx$changeEvents(com.google.android.gms.maps.StreetViewPanorama)com.google.maps.android.ktx/com.google.android.gms.maps.-street-view-panorama/change-events.html
+$dokka.location:com.google.maps.android.ktx$circleClickEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/circle-click-events.html
+$dokka.location:com.google.maps.android.ktx$clickEvents(com.google.android.gms.maps.StreetViewPanorama)com.google.maps.android.ktx/com.google.android.gms.maps.-street-view-panorama/click-events.html
+$dokka.location:com.google.maps.android.ktx$groundOverlayClicks(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/ground-overlay-clicks.html
+$dokka.location:com.google.maps.android.ktx$indoorStateChangeEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/indoor-state-change-events.html
+$dokka.location:com.google.maps.android.ktx$infoWindowClickEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/info-window-click-events.html
+$dokka.location:com.google.maps.android.ktx$infoWindowCloseEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/info-window-close-events.html
+$dokka.location:com.google.maps.android.ktx$infoWindowLongClickEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/info-window-long-click-events.html
+$dokka.location:com.google.maps.android.ktx$longClickEvents(com.google.android.gms.maps.StreetViewPanorama)com.google.maps.android.ktx/com.google.android.gms.maps.-street-view-panorama/long-click-events.html
+$dokka.location:com.google.maps.android.ktx$mapClickEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/map-click-events.html
+$dokka.location:com.google.maps.android.ktx$mapLongClickEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/map-long-click-events.html
+$dokka.location:com.google.maps.android.ktx$markerClickEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/marker-click-events.html
+$dokka.location:com.google.maps.android.ktx$markerDragEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/marker-drag-events.html
+$dokka.location:com.google.maps.android.ktx$myLocationButtonClickEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/my-location-button-click-events.html
+$dokka.location:com.google.maps.android.ktx$myLocationClickEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/my-location-click-events.html
+$dokka.location:com.google.maps.android.ktx$poiClickEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/poi-click-events.html
+$dokka.location:com.google.maps.android.ktx$polygonClickEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/polygon-click-events.html
+$dokka.location:com.google.maps.android.ktx$polylineClickEvents(com.google.android.gms.maps.GoogleMap)com.google.maps.android.ktx/com.google.android.gms.maps.-google-map/polyline-click-events.html
 com.google.maps.android.ktx
 com.google.maps.android.ktx.model

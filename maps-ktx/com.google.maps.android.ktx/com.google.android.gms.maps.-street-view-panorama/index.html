@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>com.google.maps.android.ktx.com.google.android.gms.maps.StreetViewPanorama - maps-ktx</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">maps-ktx</a>&nbsp;/&nbsp;<a href="../index.html">com.google.maps.android.ktx</a>&nbsp;/&nbsp;<a href="./index.html">com.google.android.gms.maps.StreetViewPanorama</a><br/>
+<br/>
+<h3>Extensions for com.google.android.gms.maps.StreetViewPanorama</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<h4><a href="camera-change-events.html">cameraChangeEvents</a></h4>
+</td>
+<td>
+<p>Returns a flow that emits when the street view panorama camera changes. Using this to
+observe panorama camera change events will override an existing listener (if any) to
+<a href="#">StreetViewPanorama.setOnStreetViewPanoramaCameraChangeListener</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">StreetViewPanorama</span><span class="symbol">.</span><span class="identifier">cameraChangeEvents</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">StreetViewPanoramaCamera</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="change-events.html">changeEvents</a></h4>
+</td>
+<td>
+<p>Returns a flow that emits when the street view panorama loads a new panorama. Using this to
+observe panorama load change events will override an existing listener (if any) to
+<a href="#">StreetViewPanorama.setOnStreetViewPanoramaChangeListener</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">StreetViewPanorama</span><span class="symbol">.</span><span class="identifier">changeEvents</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">StreetViewPanoramaLocation</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="click-events.html">clickEvents</a></h4>
+</td>
+<td>
+<p>Returns a flow that emits when the street view panorama is clicked. Using this to
+observe panorama click events will override an existing listener (if any) to
+<a href="#">StreetViewPanorama.setOnStreetViewPanoramaClickListener</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">StreetViewPanorama</span><span class="symbol">.</span><span class="identifier">clickEvents</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">StreetViewPanoramaOrientation</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<h4><a href="long-click-events.html">longClickEvents</a></h4>
+</td>
+<td>
+<p>Returns a flow that emits when the street view panorama is long clicked. Using this to
+observe panorama long click events will override an existing listener (if any) to
+<a href="#">StreetViewPanorama.setOnStreetViewPanoramaLongClickListener</a>.</p>
+<code><span class="keyword">fun </span><span class="identifier">StreetViewPanorama</span><span class="symbol">.</span><span class="identifier">longClickEvents</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Flow</span><span class="symbol">&lt;</span><span class="identifier">StreetViewPanoramaOrientation</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
