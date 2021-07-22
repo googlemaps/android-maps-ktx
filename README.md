@@ -33,7 +33,7 @@ dependencies {
 
     // It is recommended to also include the latest Maps SDK and/or Utility Library versions
     // as well to ensure that you have the latest features and bug fixes.
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
     implementation 'com.google.maps.android:android-maps-utils:2.0.3'
 }
 ```
