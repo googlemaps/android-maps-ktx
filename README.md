@@ -150,14 +150,10 @@ googleMap.setOnCameraMoveStartedListener { //... }
 _After_
 ```kotlin
 // To be invoked within a coroutine scope
-googleMap.cameraEvents().collect { event ->
-    when (event) {
-        is CameraIdleEvent -> //...
-        is CameraMoveCanceledEvent -> //...
-        is CameraMoveEvent -> //...
-        is CameraMoveStartedEvent -> //...
-    }
-}
+googleMap.cameraIdleEvents().collect { //... }
+googleMap.cameraMoveCanceledEvents().collect { //... }
+googleMap.cameraMoveEvents().collect { //... }
+googleMap.cameraMoveStartedEvents().collect { //... }
 ```
 
 ### Maps SDK for Android Utilities KTX
