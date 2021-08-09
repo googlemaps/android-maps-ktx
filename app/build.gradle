@@ -46,7 +46,7 @@ android {
 
 // [START maps_android_utils_ktx_install_snippet]
 dependencies {
-    // [START_EXCLUDE silent ]
+    // [START_EXCLUDE silent]
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.kotlin
     implementation deps.androidx.appcompat
