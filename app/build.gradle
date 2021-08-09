@@ -44,7 +44,9 @@ android {
     }
 }
 
+// [START maps_android_utils_ktx_install_snippet]
 dependencies {
+    // [START_EXCLUDE silent ]
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.kotlin
     implementation deps.androidx.appcompat
@@ -52,10 +54,12 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
 //    implementation 'com.google.maps.android:maps-ktx:3.0.1'
-    implementation 'com.google.maps.android:maps-utils-ktx:3.1.0'
     implementation project(':maps-ktx')
     // implementation project(':maps-utils-ktx')
+    // [END_EXCLUDE]
+    implementation 'com.google.maps.android:maps-utils-ktx:3.1.0'
 }
+// [END maps_android_utils_ktx_install_snippet]
 
 secrets {
     // To add your Maps API key to this project:
