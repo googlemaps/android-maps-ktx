@@ -56,6 +56,8 @@ dependencies {
 }
 ```
 
+**Note**: The Beta version of the SDK is deprecated and scheduled for decommissioning. A future version of the SDK will provide similar support for Beta features. See the [release notes](https://developers.devsite.corp.google.com/maps/documentation/android-sdk/releases#2021-08-18) for more information.
+
 ## Example Usage
 
 With this KTX library, you should be able to take advantage of several Kotlin language features such as extension functions, named parameters and default arguments, destructuring declarations, and coroutines.
