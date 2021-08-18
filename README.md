@@ -38,7 +38,7 @@ dependencies {
 }
 ```
 
-Alternatively, if you are using the Maps SDK through the standalone V3 BETA distribution:
+(Deprecated) Alternatively, if you are using the Maps SDK through the standalone V3 BETA distribution:
 
 ```groovy
 dependencies {
@@ -56,7 +56,7 @@ dependencies {
 }
 ```
 
-**Note**: The Beta version of the SDK is deprecated and scheduled for decommissioning. A future version of the SDK will provide similar support for Beta features. See the [release notes](https://developers.devsite.corp.google.com/maps/documentation/android-sdk/releases#2021-08-18) for more information.
+_**Note**_: The Beta version of the SDK is deprecated and scheduled for decommissioning. A future version of the SDK will provide similar support for Beta features. See the [release notes](https://developers.devsite.corp.google.com/maps/documentation/android-sdk/releases#2021-08-18) for more information.
 
 ## Example Usage
 
