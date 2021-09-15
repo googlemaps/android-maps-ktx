@@ -38,7 +38,7 @@ dependencies {
 }
 ```
 
-(Deprecated) Alternatively, if you are using the Maps SDK through the standalone V3 BETA distribution:
+(**Deprecated**) ~Alternatively, if you are using the Maps SDK through the standalone V3 BETA distribution:~
 
 ```groovy
 dependencies {
