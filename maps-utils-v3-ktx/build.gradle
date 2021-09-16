@@ -33,6 +33,11 @@ android {
         it.generateBuildConfig.enabled = false
     }
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
     kotlinOptions {
         freeCompilerArgs += '-Xexplicit-api=strict'
         jvmTarget = "1.8"
