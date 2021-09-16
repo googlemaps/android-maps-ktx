@@ -36,7 +36,7 @@ public suspend inline fun StreetViewPanoramaView.awaitStreetViewPanorama(): Stre
 public fun StreetViewPanorama.cameraChangeEvents(): Flow<StreetViewPanoramaCamera> =
     callbackFlow {
         setOnStreetViewPanoramaCameraChangeListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnStreetViewPanoramaCameraChangeListener(null)
@@ -52,7 +52,7 @@ public fun StreetViewPanorama.cameraChangeEvents(): Flow<StreetViewPanoramaCamer
 public fun StreetViewPanorama.changeEvents(): Flow<StreetViewPanoramaLocation> =
     callbackFlow {
         setOnStreetViewPanoramaChangeListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnStreetViewPanoramaChangeListener(null)
@@ -68,7 +68,7 @@ public fun StreetViewPanorama.changeEvents(): Flow<StreetViewPanoramaLocation> =
 public fun StreetViewPanorama.clickEvents(): Flow<StreetViewPanoramaOrientation> =
     callbackFlow {
         setOnStreetViewPanoramaClickListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnStreetViewPanoramaClickListener(null)
@@ -84,7 +84,7 @@ public fun StreetViewPanorama.clickEvents(): Flow<StreetViewPanoramaOrientation>
 public fun StreetViewPanorama.longClickEvents(): Flow<StreetViewPanoramaOrientation> =
     callbackFlow {
         setOnStreetViewPanoramaLongClickListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnStreetViewPanoramaLongClickListener(null)

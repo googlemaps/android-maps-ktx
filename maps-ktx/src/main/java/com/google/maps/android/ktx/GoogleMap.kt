@@ -106,13 +106,6 @@ public object IndoorBuildingFocusedEvent : IndoorChangeEvent()
  */
 public data class IndoorLevelActivatedEvent(val building: IndoorBuilding) : IndoorChangeEvent()
 
-// Since offer() can throw when the channel is closed (channel can close before the
-// block within awaitClose), wrap `offer` calls inside `runCatching`.
-// See: https://github.com/Kotlin/kotlinx.coroutines/issues/974
-internal fun <E> SendChannel<E>.offerCatching(element: E): Boolean {
-    return runCatching { offer(element) }.getOrDefault(false)
-}
-
 /**
  * Returns a [Flow] of [CameraEvent] items so that camera movements can be observed. Using this to
  * observe camera events will set listeners and thus override existing listeners to
@@ -126,16 +119,16 @@ internal fun <E> SendChannel<E>.offerCatching(element: E): Boolean {
 public fun GoogleMap.cameraEvents(): Flow<CameraEvent> =
     callbackFlow {
         setOnCameraIdleListener {
-            offerCatching(CameraIdleEvent)
+            trySend(CameraIdleEvent)
         }
         setOnCameraMoveCanceledListener {
-            offerCatching(CameraMoveCanceledEvent)
+            trySend(CameraMoveCanceledEvent)
         }
         setOnCameraMoveListener {
-            offerCatching(CameraMoveEvent)
+            trySend(CameraMoveEvent)
         }
         setOnCameraMoveStartedListener {
-            offerCatching(CameraMoveStartedEvent(it))
+            trySend(CameraMoveStartedEvent(it))
         }
         awaitClose {
             setOnCameraIdleListener(null)
@@ -186,7 +179,7 @@ public suspend inline fun GoogleMap.awaitMapLoad(): Unit =
 public fun GoogleMap.cameraIdleEvents(): Flow<Unit> =
     callbackFlow {
         setOnCameraIdleListener {
-            offerCatching(Unit)
+            trySend(Unit)
         }
         awaitClose {
             setOnCameraIdleListener(null)
@@ -202,7 +195,7 @@ public fun GoogleMap.cameraIdleEvents(): Flow<Unit> =
 public fun GoogleMap.cameraMoveCanceledEvents(): Flow<Unit> =
     callbackFlow {
         setOnCameraMoveCanceledListener {
-            offerCatching(Unit)
+            trySend(Unit)
         }
         awaitClose {
             setOnCameraMoveCanceledListener(null)
@@ -217,7 +210,7 @@ public fun GoogleMap.cameraMoveCanceledEvents(): Flow<Unit> =
 public fun GoogleMap.cameraMoveEvents(): Flow<Unit> =
     callbackFlow {
         setOnCameraMoveListener {
-            offerCatching(Unit)
+            trySend(Unit)
         }
         awaitClose {
             setOnCameraMoveListener(null)
@@ -244,7 +237,7 @@ public suspend inline fun GoogleMap.awaitSnapshot(bitmap: Bitmap? = null): Bitma
 public fun GoogleMap.cameraMoveStartedEvents(): Flow<Unit> =
     callbackFlow {
         setOnCameraMoveStartedListener {
-            offerCatching(Unit)
+            trySend(Unit)
         }
         awaitClose {
             setOnCameraMoveStartedListener(null)
@@ -259,7 +252,7 @@ public fun GoogleMap.cameraMoveStartedEvents(): Flow<Unit> =
 public fun GoogleMap.circleClickEvents(): Flow<Circle> =
     callbackFlow {
         setOnCircleClickListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnCircleClickListener(null)
@@ -275,7 +268,7 @@ public fun GoogleMap.circleClickEvents(): Flow<Circle> =
 public fun GoogleMap.groundOverlayClicks(): Flow<GroundOverlay> =
     callbackFlow {
         setOnGroundOverlayClickListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnGroundOverlayClickListener(null)
@@ -292,11 +285,11 @@ public fun GoogleMap.indoorStateChangeEvents(): Flow<IndoorChangeEvent> =
     callbackFlow {
         setOnIndoorStateChangeListener(object : GoogleMap.OnIndoorStateChangeListener {
             override fun onIndoorBuildingFocused() {
-                offerCatching(IndoorBuildingFocusedEvent)
+                trySend(IndoorBuildingFocusedEvent)
             }
 
             override fun onIndoorLevelActivated(indoorBuilding: IndoorBuilding) {
-                offerCatching(IndoorLevelActivatedEvent(building = indoorBuilding))
+                trySend(IndoorLevelActivatedEvent(building = indoorBuilding))
             }
         })
         awaitClose {
@@ -313,7 +306,7 @@ public fun GoogleMap.indoorStateChangeEvents(): Flow<IndoorChangeEvent> =
 public fun GoogleMap.infoWindowClickEvents(): Flow<Marker> =
     callbackFlow {
         setOnInfoWindowClickListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnInfoWindowClickListener(null)
@@ -329,7 +322,7 @@ public fun GoogleMap.infoWindowClickEvents(): Flow<Marker> =
 public fun GoogleMap.infoWindowCloseEvents(): Flow<Marker> =
     callbackFlow {
         setOnInfoWindowCloseListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnInfoWindowCloseListener(null)
@@ -345,7 +338,7 @@ public fun GoogleMap.infoWindowCloseEvents(): Flow<Marker> =
 public fun GoogleMap.infoWindowLongClickEvents(): Flow<Marker> =
     callbackFlow {
         setOnInfoWindowLongClickListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnInfoWindowLongClickListener(null)
@@ -360,7 +353,7 @@ public fun GoogleMap.infoWindowLongClickEvents(): Flow<Marker> =
 public fun GoogleMap.mapClickEvents(): Flow<LatLng> =
     callbackFlow {
         setOnMapClickListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnMapClickListener(null)
@@ -375,7 +368,7 @@ public fun GoogleMap.mapClickEvents(): Flow<LatLng> =
 public fun GoogleMap.mapLongClickEvents(): Flow<LatLng> =
     callbackFlow {
         setOnMapLongClickListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnMapLongClickListener(null)
@@ -390,7 +383,7 @@ public fun GoogleMap.mapLongClickEvents(): Flow<LatLng> =
 public fun GoogleMap.markerClickEvents(): Flow<Marker> =
     callbackFlow {
         setOnMarkerClickListener {
-            offerCatching(it)
+            trySend(it).isSuccess
         }
         awaitClose {
             setOnMarkerClickListener(null)
@@ -406,15 +399,15 @@ public fun GoogleMap.markerDragEvents(): Flow<OnMarkerDragEvent> =
     callbackFlow {
         setOnMarkerDragListener(object : GoogleMap.OnMarkerDragListener {
             override fun onMarkerDragStart(marker: Marker) {
-                offerCatching(MarkerDragStartEvent(marker = marker))
+                trySend(MarkerDragStartEvent(marker = marker))
             }
 
             override fun onMarkerDrag(marker: Marker) {
-                offerCatching(MarkerDragEvent(marker = marker))
+                trySend(MarkerDragEvent(marker = marker))
             }
 
             override fun onMarkerDragEnd(marker: Marker) {
-                offerCatching(MarkerDragEndEvent(marker = marker))
+                trySend(MarkerDragEndEvent(marker = marker))
             }
 
         })
@@ -432,7 +425,7 @@ public fun GoogleMap.markerDragEvents(): Flow<OnMarkerDragEvent> =
 public fun GoogleMap.myLocationButtonClickEvents(): Flow<Unit> =
     callbackFlow {
         setOnMyLocationButtonClickListener {
-            offerCatching(Unit)
+            trySend(Unit).isSuccess
         }
         awaitClose {
             setOnMyLocationButtonClickListener(null)
@@ -448,7 +441,7 @@ public fun GoogleMap.myLocationButtonClickEvents(): Flow<Unit> =
 public fun GoogleMap.myLocationClickEvents(): Flow<Location> =
     callbackFlow {
         setOnMyLocationClickListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnMyLocationClickListener(null)
@@ -464,7 +457,7 @@ public fun GoogleMap.myLocationClickEvents(): Flow<Location> =
 public fun GoogleMap.poiClickEvents(): Flow<PointOfInterest> =
     callbackFlow {
          setOnPoiClickListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnPoiClickListener(null)
@@ -479,7 +472,7 @@ public fun GoogleMap.poiClickEvents(): Flow<PointOfInterest> =
 public fun GoogleMap.polygonClickEvents(): Flow<Polygon> =
     callbackFlow {
         setOnPolygonClickListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnPolygonClickListener(null)
@@ -494,7 +487,7 @@ public fun GoogleMap.polygonClickEvents(): Flow<Polygon> =
 public fun GoogleMap.polylineClickEvents(): Flow<Polyline> =
     callbackFlow {
         setOnPolylineClickListener {
-            offerCatching(it)
+            trySend(it)
         }
         awaitClose {
             setOnPolylineClickListener(null)

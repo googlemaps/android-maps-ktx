@@ -31,8 +31,8 @@ buildscript {
             'junit'    : '1.1.1',
         ],
         'junit'            : '4.12',
-        'kotlin'           : '1.4.32',
-        'kotlinxCoroutines': '1.4.3',
+        'kotlin'           : '1.5.30',
+        'kotlinxCoroutines': '1.5.1',
         'mapsBeta'         : '3.1.0-beta',
         'mockito'          : '3.0.0',
         'mockitoKotlin'    : '2.2.0',
@@ -132,7 +132,7 @@ subprojects { project ->
 
     // Code coverage
     jacoco {
-        toolVersion = "0.8.4"
+        toolVersion = "0.8.7"
     }
 
     tasks.withType(Test) {

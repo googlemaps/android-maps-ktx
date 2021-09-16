@@ -32,6 +32,7 @@ android {
 
     kotlinOptions {
         freeCompilerArgs += '-Xexplicit-api=strict'
+        jvmTarget = "1.8"
     }
 }
 
