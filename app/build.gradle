@@ -63,7 +63,7 @@ dependencies {
     implementation project(':maps-ktx')
     // implementation project(':maps-utils-ktx')
     // [END_EXCLUDE]
-    implementation 'com.google.maps.android:maps-utils-ktx:3.1.0'
+    implementation 'com.google.maps.android:maps-utils-ktx:3.2.0'
 }
 // [END maps_android_utils_ktx_install_snippet]
 
