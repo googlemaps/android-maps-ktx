@@ -37,18 +37,7 @@ import com.google.maps.android.collections.PolylineManager
 import com.google.maps.android.data.Renderer.ImagesCache
 import com.google.maps.android.data.geojson.GeoJsonLineStringStyle
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
-import com.google.maps.android.ktx.CameraIdleEvent
-import com.google.maps.android.ktx.CameraMoveCanceledEvent
-import com.google.maps.android.ktx.CameraMoveEvent
-import com.google.maps.android.ktx.CameraMoveStartedEvent
-import com.google.maps.android.ktx.awaitAnimateCamera
-import com.google.maps.android.ktx.awaitMap
-import com.google.maps.android.ktx.awaitMapLoad
-import com.google.maps.android.ktx.awaitSnapshot
-import com.google.maps.android.ktx.cameraEvents
-import com.google.maps.android.ktx.awaitMap
-import com.google.maps.android.ktx.cameraIdleEvents
-import com.google.maps.android.ktx.cameraMoveStartedEvents
+import com.google.maps.android.ktx.*
 import com.google.maps.android.ktx.demo.io.MyItemReader
 import com.google.maps.android.ktx.demo.model.MyItem
 import com.google.maps.android.ktx.model.cameraPosition
@@ -100,7 +89,7 @@ class MainActivity : AppCompatActivity() {
             addButtonClickListener(googleMap)
             launch {
                 googleMap.cameraMoveStartedEvents().collect {
-                    Log.d(TAG, "Camera moved.")
+                    Log.d(TAG, "Camera moved - reason $it")
                 }
             }
             launch {
