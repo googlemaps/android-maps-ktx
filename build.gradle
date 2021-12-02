@@ -18,9 +18,9 @@ buildscript {
     ext.versions = [
         'android'          : [
             "buildTools": "29.0.3",
-            "compileSdk": 30,
-            "minSdk"    : 15,
-            "targetSdk" : 30
+            "compileSdk": 31,
+            "minSdk"    : 19,
+            "targetSdk" : 31
         ],
         'androidMapsUtils' : '2.2.3',
         'androidx'         : [
@@ -36,7 +36,7 @@ buildscript {
         'mapsBeta'         : '3.1.0-beta',
         'mockito'          : '3.0.0',
         'mockitoKotlin'    : '2.2.0',
-        'playServices'     : '17.0.1',
+        'playServices'     : '18.0.0',
         'volley'           : '1.2.0',
     ]
 
