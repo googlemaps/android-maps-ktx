@@ -22,7 +22,6 @@ plugins {
 
 android {
     compileSdkVersion versions.android.compileSdk
-    buildToolsVersion versions.android.buildTools
 
     defaultConfig {
         applicationId "com.google.maps.android.ktx.demo"
@@ -48,6 +47,15 @@ android {
         freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        // Enables Jetpack Compose for this module
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.1.0-beta02'
+    }
 }
 
 // [START maps_android_utils_ktx_install_snippet]
@@ -62,6 +70,22 @@ dependencies {
 //    implementation 'com.google.maps.android:maps-ktx:3.0.1'
     implementation project(':maps-ktx')
     // implementation project(':maps-utils-ktx')
+
+    //
+    // Jetpack Compose
+    //
+
+    // Integration with activities
+    implementation 'androidx.activity:activity-compose:1.4.0'
+    implementation "androidx.compose.compiler:compiler:1.1.0-beta02"
+    // Compose Material Design
+    implementation 'androidx.compose.material:material:1.0.5'
+    // Bridging XML themes to Compose
+    implementation "com.google.android.material:compose-theme-adapter:1.1.0"
+    // Animations
+    implementation 'androidx.compose.animation:animation:1.1.0-beta02'
+    // Tooling support (Previews, etc.)
+    implementation 'androidx.compose.ui:ui-tooling:1.0.5'
     // [END_EXCLUDE]
     implementation 'com.google.maps.android:maps-utils-ktx:3.2.1'
 }

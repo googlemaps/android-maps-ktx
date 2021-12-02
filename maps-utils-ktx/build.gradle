@@ -20,7 +20,6 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion versions.android.compileSdk
-    buildToolsVersion versions.android.buildTools
 
     defaultConfig {
         minSdkVersion versions.android.minSdk

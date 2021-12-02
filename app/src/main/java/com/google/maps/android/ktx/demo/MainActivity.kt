@@ -23,6 +23,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.lifecycle.coroutineScope
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -38,6 +40,7 @@ import com.google.maps.android.data.Renderer.ImagesCache
 import com.google.maps.android.data.geojson.GeoJsonLineStringStyle
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
 import com.google.maps.android.ktx.*
+import com.google.maps.android.ktx.demo.components.ScaleBar
 import com.google.maps.android.ktx.demo.io.MyItemReader
 import com.google.maps.android.ktx.demo.model.MyItem
 import com.google.maps.android.ktx.model.cameraPosition
@@ -73,6 +76,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Add your own API key in ./secure.properties as MAPS_API_KEY=YOUR_API_KEY", Toast.LENGTH_LONG).show()
         }
 
+        val scale = findViewById<ComposeView>(R.id.scale)
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         lifecycle.coroutineScope.launchWhenCreated {
             val googleMap = mapFragment.awaitMap()
@@ -84,6 +88,14 @@ class MainActivity : AppCompatActivity() {
                         10F
                     )
                 )
+            }
+            scale.apply {
+                setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+                setContent {
+                    ScaleBar(
+                        googleMap
+                    )
+                }
             }
             showMapLayers(googleMap)
             addButtonClickListener(googleMap)
