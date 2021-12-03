@@ -3,6 +3,7 @@ package com.google.maps.android.ktx.demo.components
 import android.graphics.Point
 import android.util.Log
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -28,9 +29,9 @@ val DarkGray = Color(0xFF3a3c3b)
 @Composable
 fun ScaleBar(
     googleMap: GoogleMap,
-    textColor: Color = DarkGray,
-    lineColor: Color = DarkGray,
-    shadowColor: Color = Color.White
+    textColor: Color =  if (!isSystemInDarkTheme()) DarkGray else Color.White,
+    lineColor: Color = if (!isSystemInDarkTheme()) DarkGray else Color.White,
+    shadowColor: Color = if (!isSystemInDarkTheme()) Color.White else DarkGray
 ) {
     val projection: Projection by googleMap.cameraProjectionEvents().collectAsState(googleMap.projection)
 
@@ -56,9 +57,35 @@ fun ScaleBar(
                 val oneNinthWidth = size.width / 9
                 val oneThirdWidth = size.width / 3
                 val midHeight = size.height / 2
-                val oneFifthHeight = size.height / 5
-                val fourFifthsHeight = size.height * 4 / 5
+                val oneThirdHeight = size.height / 3
+                val twoThirdsHeight = size.height * 2 / 3
                 val strokeWidth = 4f
+                val shadowAdditionalStroke = 3
+
+                // Middle horizontal line shadow (drawn under main lines)
+                drawLine(
+                    color = shadowColor,
+                    start = Offset(oneNinthWidth, midHeight),
+                    end = Offset(size.width, midHeight),
+                    strokeWidth = strokeWidth + shadowAdditionalStroke,
+                    cap = StrokeCap.Round
+                )
+                // Top vertical line shadow (drawn under main lines)
+                drawLine(
+                    color = shadowColor,
+                    start = Offset(oneThirdWidth, oneThirdHeight),
+                    end = Offset(oneThirdWidth, midHeight),
+                    strokeWidth = strokeWidth + shadowAdditionalStroke,
+                    cap = StrokeCap.Round
+                )
+                // Bottom vertical line shadow (drawn under main lines)
+                drawLine(
+                    color = shadowColor,
+                    start = Offset(oneThirdWidth, midHeight),
+                    end = Offset(oneThirdWidth, twoThirdsHeight),
+                    strokeWidth = strokeWidth + shadowAdditionalStroke,
+                    cap = StrokeCap.Round
+                )
 
                 // Middle horizontal line
                 drawLine(
@@ -71,7 +98,7 @@ fun ScaleBar(
                 // Top vertical line
                 drawLine(
                     color = lineColor,
-                    start = Offset(oneThirdWidth, oneFifthHeight),
+                    start = Offset(oneThirdWidth, oneThirdHeight),
                     end = Offset(oneThirdWidth, midHeight),
                     strokeWidth = strokeWidth,
                     cap = StrokeCap.Round
@@ -80,7 +107,7 @@ fun ScaleBar(
                 drawLine(
                     color = lineColor,
                     start = Offset(oneThirdWidth, midHeight),
-                    end = Offset(oneThirdWidth, fourFifthsHeight),
+                    end = Offset(oneThirdWidth, twoThirdsHeight),
                     strokeWidth = strokeWidth,
                     cap = StrokeCap.Round
                 )
@@ -90,16 +117,32 @@ fun ScaleBar(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceAround
         ) {
+            var metricUnits = "m"
+            var metricDistance = twoThirdsCanvasInMeters
+            if (twoThirdsCanvasInMeters > 1000) {
+                // Switch to kilometers as unit
+                metricUnits = "km"
+                metricDistance /= 1000
+            }
+
+            var imperialUnits = "ft"
+            var imperialDistance = toFeet(twoThirdsCanvasInMeters.toDouble())
+            if (imperialDistance > 5280) {
+                // Switch to miles as unit
+                imperialUnits = "mi"
+                imperialDistance = toMiles(imperialDistance)
+            }
+
             ScaleText(
                 modifier = Modifier.align(End),
                 textColor = textColor,
                 shadowColor = shadowColor,
-                text = "${toFeet(twoThirdsCanvasInMeters.toDouble()).toInt()} ft")
+                text = "${imperialDistance.toInt()} $imperialUnits")
             ScaleText(
                 modifier = Modifier.align(End),
                 textColor = textColor,
                 shadowColor = shadowColor,
-                text = "$twoThirdsCanvasInMeters m")
+                text = "$metricDistance $metricUnits")
         }
     }
 }
@@ -121,7 +164,7 @@ private fun ScaleText(
             shadow = Shadow(
                 color = shadowColor,
                 offset = Offset(2f, 2f),
-                blurRadius = 2f
+                blurRadius = 1f
             )
         )
     )
@@ -134,4 +177,13 @@ private fun ScaleText(
  */
 fun toFeet(meters: Double): Double {
     return meters * 1000.0 / 25.4 / 12.0
+}
+
+/**
+ * Converts the provide value in feet to the corresponding value in miles
+ * @param feet value in feet to convert to miles
+ * @return the provided feet value converted to miles
+ */
+fun toMiles(feet: Double): Double {
+    return feet / 5280
 }
