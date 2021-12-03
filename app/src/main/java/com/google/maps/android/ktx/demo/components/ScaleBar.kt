@@ -1,11 +1,14 @@
 package com.google.maps.android.ktx.demo.components
 
+import android.graphics.Point
+import android.util.Log
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -16,7 +19,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.android.gms.maps.GoogleMap
-import com.google.maps.android.ktx.cameraMoveEvents
+import com.google.android.gms.maps.Projection
+import com.google.maps.android.ktx.cameraProjectionEvents
+import com.google.maps.android.ktx.utils.sphericalDistance
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 val DarkGray = Color(0xFF3a3c3b)
@@ -29,9 +34,7 @@ fun ScaleBar(
     lineColor: Color = DarkGray,
     shadowColor: Color = Color.White
 ) {
-    val move = googleMap.cameraMoveEvents().collectAsState(initial = Unit)
-
-    val projection = googleMap.projection
+    val projection: Projection by googleMap.cameraProjectionEvents().collectAsState(googleMap.projection)
 
     Box(
         modifier = Modifier
@@ -41,6 +44,11 @@ fun ScaleBar(
         Canvas(
             modifier = Modifier.fillMaxSize(),
             onDraw = {
+                // Get width of canvas in meters
+                val upperLeftLatLng = projection.fromScreenLocation(Point(0, 0))
+                val upperRightLatLng = projection.fromScreenLocation(Point(0, size.width.toInt()))
+                Log.d("Distance", "Distance: " + upperLeftLatLng.sphericalDistance(upperRightLatLng))
+
                 val midWidth = size.width / 2
                 val midHeight = size.height / 2
                 val oneFifthHeight = size.height / 5

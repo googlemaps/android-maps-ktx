@@ -23,6 +23,7 @@ import androidx.annotation.IntDef
 import com.google.android.gms.maps.CameraUpdate
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMapOptions
+import com.google.android.gms.maps.Projection
 import com.google.android.gms.maps.model.*
 import com.google.maps.android.ktx.model.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -191,6 +192,22 @@ public fun GoogleMap.cameraMoveEvents(): Flow<Unit> =
     callbackFlow {
         setOnCameraMoveListener {
             trySend(Unit)
+        }
+        awaitClose {
+            setOnCameraMoveListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when the camera moves with the current projection of the map.
+ * Using this to observe camera move events will override an existing listener (if any) to
+ * [GoogleMap.setOnCameraMoveListener].
+ */
+@ExperimentalCoroutinesApi
+public fun GoogleMap.cameraProjectionEvents(): Flow<Projection> =
+    callbackFlow {
+        setOnCameraMoveListener {
+            trySend(projection)
         }
         awaitClose {
             setOnCameraMoveListener(null)
