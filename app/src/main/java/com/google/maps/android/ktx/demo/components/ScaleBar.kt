@@ -25,6 +25,9 @@ val DarkGray = Color(0xFF3a3c3b)
 @Composable
 fun ScaleBar(
     googleMap: GoogleMap,
+    textColor: Color = DarkGray,
+    lineColor: Color = DarkGray,
+    shadowColor: Color = Color.White
 ) {
     val move = googleMap.cameraMoveEvents().collectAsState(initial = Unit)
 
@@ -40,28 +43,32 @@ fun ScaleBar(
             onDraw = {
                 val midWidth = size.width / 2
                 val midHeight = size.height / 2
+                val oneFifthHeight = size.height / 5
+                val fourFifthsHeight = size.height * 4 / 5
+                val strokeWidth = 4f
+
                 // Middle horizontal line
                 drawLine(
-                    color = DarkGray,
+                    color = lineColor,
                     start = Offset(0f, midHeight),
                     end = Offset(size.width - 1, midHeight),
-                    strokeWidth = 4f,
+                    strokeWidth = strokeWidth,
                     cap = StrokeCap.Round
                 )
                 // Top vertical line
                 drawLine(
-                    color = DarkGray,
-                    start = Offset(midWidth, 0f),
-                    end = Offset(midWidth, size.height / 2),
-                    strokeWidth = 4f,
+                    color = lineColor,
+                    start = Offset(midWidth, oneFifthHeight),
+                    end = Offset(midWidth, midHeight),
+                    strokeWidth = strokeWidth,
                     cap = StrokeCap.Round
                 )
                 // Bottom vertical line
                 drawLine(
-                    color = DarkGray,
-                    start = Offset(midWidth / 2, size.height / 2),
-                    end = Offset(midWidth / 2, size.height - 1),
-                    strokeWidth = 4f,
+                    color = lineColor,
+                    start = Offset(midWidth / 2, midHeight),
+                    end = Offset(midWidth / 2, fourFifthsHeight),
+                    strokeWidth = strokeWidth,
                     cap = StrokeCap.Round
                 )
             }
@@ -70,28 +77,38 @@ fun ScaleBar(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceAround
         ) {
-            ScaleText(modifier = Modifier.align(End), text = "1000 ft")
-            Spacer(modifier = Modifier.padding(1.dp))
-            ScaleText(modifier = Modifier.align(End), text = "500 m")
+            ScaleText(
+                modifier = Modifier.align(End),
+                textColor = textColor,
+                shadowColor = shadowColor,
+                text = "1000 ft")
+            ScaleText(
+                modifier = Modifier.align(End),
+                textColor = textColor,
+                shadowColor = shadowColor,
+                text = "500 m")
         }
     }
 }
 
 @Composable
-fun ScaleText(
+private fun ScaleText(
     modifier: Modifier = Modifier,
-    text: String) {
+    text: String,
+    textColor: Color = DarkGray,
+    shadowColor: Color = Color.White
+    ) {
     Text(
         text = text,
-        fontSize = 10.sp,
-        color = DarkGray,
+        fontSize = 12.sp,
+        color = textColor,
         textAlign = TextAlign.End,
         modifier = modifier,
         style = MaterialTheme.typography.h4.copy(
             shadow = Shadow(
-                color = Color.White,
-                offset = Offset(4f, 4f),
-                blurRadius = 8f
+                color = shadowColor,
+                offset = Offset(2f, 2f),
+                blurRadius = 2f
             )
         )
     )
