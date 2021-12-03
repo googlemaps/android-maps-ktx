@@ -28,6 +28,7 @@ val DarkGray = Color(0xFF3a3c3b)
 @OptIn(ExperimentalCoroutinesApi::class)
 @Composable
 fun ScaleBar(
+    modifier: Modifier = Modifier,
     googleMap: GoogleMap,
     textColor: Color =  if (!isSystemInDarkTheme()) DarkGray else Color.White,
     lineColor: Color = if (!isSystemInDarkTheme()) DarkGray else Color.White,
@@ -36,9 +37,8 @@ fun ScaleBar(
     val projection: Projection by googleMap.cameraProjectionEvents().collectAsState(googleMap.projection)
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .size(width = 100.dp, height = 50.dp)
-            .padding(5.dp)
     ) {
         var twoThirdsCanvasInMeters by remember {
             mutableStateOf(0)
