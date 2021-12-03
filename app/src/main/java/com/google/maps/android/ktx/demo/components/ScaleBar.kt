@@ -52,7 +52,7 @@ fun ScaleBar(
                 val canvasWidthMeters = upperLeftLatLng.sphericalDistance(upperRightLatLng)
                 Log.d("Distance", "Canvas width (meters): $canvasWidthMeters")
 
-                twoThirdsCanvasInMeters = ((canvasWidthMeters * 2 / 3).toInt())
+                twoThirdsCanvasInMeters = (canvasWidthMeters * 2 / 3).toInt()
 
                 val oneNinthWidth = size.width / 9
                 val oneThirdWidth = size.width / 3
