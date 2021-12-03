@@ -6,9 +6,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -41,15 +39,22 @@ fun ScaleBar(
             .size(width = 100.dp, height = 50.dp)
             .padding(5.dp)
     ) {
+        var twoThirdsCanvasInMeters by remember {
+            mutableStateOf(0)
+        }
         Canvas(
             modifier = Modifier.fillMaxSize(),
             onDraw = {
                 // Get width of canvas in meters
                 val upperLeftLatLng = projection.fromScreenLocation(Point(0, 0))
                 val upperRightLatLng = projection.fromScreenLocation(Point(0, size.width.toInt()))
-                Log.d("Distance", "Distance: " + upperLeftLatLng.sphericalDistance(upperRightLatLng))
+                val canvasWidthMeters = upperLeftLatLng.sphericalDistance(upperRightLatLng)
+                Log.d("Distance", "Canvas width (meters): $canvasWidthMeters")
 
-                val midWidth = size.width / 2
+                twoThirdsCanvasInMeters = ((canvasWidthMeters * 2 / 3).toInt())
+
+                val oneNinthWidth = size.width / 9
+                val oneThirdWidth = size.width / 3
                 val midHeight = size.height / 2
                 val oneFifthHeight = size.height / 5
                 val fourFifthsHeight = size.height * 4 / 5
@@ -58,24 +63,24 @@ fun ScaleBar(
                 // Middle horizontal line
                 drawLine(
                     color = lineColor,
-                    start = Offset(0f, midHeight),
-                    end = Offset(size.width - 1, midHeight),
+                    start = Offset(oneNinthWidth, midHeight),
+                    end = Offset(size.width, midHeight),
                     strokeWidth = strokeWidth,
                     cap = StrokeCap.Round
                 )
                 // Top vertical line
                 drawLine(
                     color = lineColor,
-                    start = Offset(midWidth, oneFifthHeight),
-                    end = Offset(midWidth, midHeight),
+                    start = Offset(oneThirdWidth, oneFifthHeight),
+                    end = Offset(oneThirdWidth, midHeight),
                     strokeWidth = strokeWidth,
                     cap = StrokeCap.Round
                 )
                 // Bottom vertical line
                 drawLine(
                     color = lineColor,
-                    start = Offset(midWidth / 2, midHeight),
-                    end = Offset(midWidth / 2, fourFifthsHeight),
+                    start = Offset(oneThirdWidth, midHeight),
+                    end = Offset(oneThirdWidth, fourFifthsHeight),
                     strokeWidth = strokeWidth,
                     cap = StrokeCap.Round
                 )
@@ -89,12 +94,12 @@ fun ScaleBar(
                 modifier = Modifier.align(End),
                 textColor = textColor,
                 shadowColor = shadowColor,
-                text = "1000 ft")
+                text = "${toFeet(twoThirdsCanvasInMeters.toDouble()).toInt()} ft")
             ScaleText(
                 modifier = Modifier.align(End),
                 textColor = textColor,
                 shadowColor = shadowColor,
-                text = "500 m")
+                text = "$twoThirdsCanvasInMeters m")
         }
     }
 }
@@ -120,4 +125,13 @@ private fun ScaleText(
             )
         )
     )
+}
+
+/**
+ * Converts the provide value in meters to the corresponding value in feet
+ * @param meters value in meters to convert to feet
+ * @return the provided meters value converted to feet
+ */
+fun toFeet(meters: Double): Double {
+    return meters * 1000.0 / 25.4 / 12.0
 }
