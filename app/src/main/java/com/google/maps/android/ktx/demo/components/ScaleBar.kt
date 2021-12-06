@@ -30,17 +30,18 @@ val DarkGray = Color(0xFF3a3c3b)
 fun ScaleBar(
     modifier: Modifier = Modifier,
     googleMap: GoogleMap,
-    textColor: Color =  if (!isSystemInDarkTheme()) DarkGray else Color.White,
+    textColor: Color = if (!isSystemInDarkTheme()) DarkGray else Color.White,
     lineColor: Color = if (!isSystemInDarkTheme()) DarkGray else Color.White,
-    shadowColor: Color = if (!isSystemInDarkTheme()) Color.White else DarkGray
+    shadowColor: Color = if (!isSystemInDarkTheme()) Color.White else DarkGray,
 ) {
-    val projection: Projection by googleMap.cameraProjectionEvents().collectAsState(googleMap.projection)
+    val projection: Projection by googleMap.cameraProjectionEvents()
+        .collectAsState(googleMap.projection)
 
     Box(
         modifier = modifier
-            .size(width = 100.dp, height = 50.dp)
+            .size(width = 75.dp, height = 50.dp)
     ) {
-        var twoThirdsCanvasInMeters by remember {
+        var twoThirdsCanvasMeters by remember {
             mutableStateOf(0)
         }
         Canvas(
@@ -52,22 +53,21 @@ fun ScaleBar(
                 val canvasWidthMeters = upperLeftLatLng.sphericalDistance(upperRightLatLng)
                 Log.d("Distance", "Canvas width (meters): $canvasWidthMeters")
 
-                twoThirdsCanvasInMeters = (canvasWidthMeters * 2 / 3).toInt()
+                twoThirdsCanvasMeters = (canvasWidthMeters * 2 / 3).toInt()
 
-                val oneNinthWidth = size.width / 9
                 val oneThirdWidth = size.width / 3
                 val midHeight = size.height / 2
                 val oneThirdHeight = size.height / 3
                 val twoThirdsHeight = size.height * 2 / 3
                 val strokeWidth = 4f
-                val shadowAdditionalStroke = 3
+                val shadowStrokeWidth = strokeWidth + 3
 
                 // Middle horizontal line shadow (drawn under main lines)
                 drawLine(
                     color = shadowColor,
-                    start = Offset(oneNinthWidth, midHeight),
+                    start = Offset(oneThirdWidth, midHeight),
                     end = Offset(size.width, midHeight),
-                    strokeWidth = strokeWidth + shadowAdditionalStroke,
+                    strokeWidth = shadowStrokeWidth,
                     cap = StrokeCap.Round
                 )
                 // Top vertical line shadow (drawn under main lines)
@@ -75,7 +75,7 @@ fun ScaleBar(
                     color = shadowColor,
                     start = Offset(oneThirdWidth, oneThirdHeight),
                     end = Offset(oneThirdWidth, midHeight),
-                    strokeWidth = strokeWidth + shadowAdditionalStroke,
+                    strokeWidth = shadowStrokeWidth,
                     cap = StrokeCap.Round
                 )
                 // Bottom vertical line shadow (drawn under main lines)
@@ -83,14 +83,14 @@ fun ScaleBar(
                     color = shadowColor,
                     start = Offset(oneThirdWidth, midHeight),
                     end = Offset(oneThirdWidth, twoThirdsHeight),
-                    strokeWidth = strokeWidth + shadowAdditionalStroke,
+                    strokeWidth = shadowStrokeWidth,
                     cap = StrokeCap.Round
                 )
 
                 // Middle horizontal line
                 drawLine(
                     color = lineColor,
-                    start = Offset(oneNinthWidth, midHeight),
+                    start = Offset(oneThirdWidth, midHeight),
                     end = Offset(size.width, midHeight),
                     strokeWidth = strokeWidth,
                     cap = StrokeCap.Round
@@ -113,22 +113,22 @@ fun ScaleBar(
                 )
             }
         )
-        Column (
+        Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceAround
         ) {
             var metricUnits = "m"
-            var metricDistance = twoThirdsCanvasInMeters
-            if (twoThirdsCanvasInMeters > 1000) {
-                // Switch to kilometers as unit
+            var metricDistance = twoThirdsCanvasMeters
+            if (twoThirdsCanvasMeters > 1000) {
+                // Switch from meters to kilometers as unit
                 metricUnits = "km"
                 metricDistance /= 1000
             }
 
             var imperialUnits = "ft"
-            var imperialDistance = toFeet(twoThirdsCanvasInMeters.toDouble())
+            var imperialDistance = toFeet(twoThirdsCanvasMeters.toDouble())
             if (imperialDistance > 5280) {
-                // Switch to miles as unit
+                // Switch from ft to miles as unit
                 imperialUnits = "mi"
                 imperialDistance = toMiles(imperialDistance)
             }
@@ -137,12 +137,14 @@ fun ScaleBar(
                 modifier = Modifier.align(End),
                 textColor = textColor,
                 shadowColor = shadowColor,
-                text = "${imperialDistance.toInt()} $imperialUnits")
+                text = "${imperialDistance.toInt()} $imperialUnits"
+            )
             ScaleText(
                 modifier = Modifier.align(End),
                 textColor = textColor,
                 shadowColor = shadowColor,
-                text = "$metricDistance $metricUnits")
+                text = "$metricDistance $metricUnits"
+            )
         }
     }
 }
@@ -152,8 +154,8 @@ private fun ScaleText(
     modifier: Modifier = Modifier,
     text: String,
     textColor: Color = DarkGray,
-    shadowColor: Color = Color.White
-    ) {
+    shadowColor: Color = Color.White,
+) {
     Text(
         text = text,
         fontSize = 12.sp,

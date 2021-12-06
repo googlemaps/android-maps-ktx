@@ -98,7 +98,8 @@ class MainActivity : AppCompatActivity() {
                     ScaleBar(
                         googleMap = googleMap,
                         modifier = Modifier
-                            .padding(top = 5.dp, end = 15.dp)
+                            .padding(top = 5.dp, end = 15.dp),
+                        showMiles = false
                     )
                 }
             }
