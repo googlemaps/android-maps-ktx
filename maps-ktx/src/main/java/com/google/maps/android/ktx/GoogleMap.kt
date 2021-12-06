@@ -184,27 +184,12 @@ public fun GoogleMap.cameraMoveCanceledEvents(): Flow<Unit> =
     }
 
 /**
- * Returns a flow that emits when the camera moves. Using this to observe camera move events will
- * override an existing listener (if any) to [GoogleMap.setOnCameraMoveListener].
- */
-@ExperimentalCoroutinesApi
-public fun GoogleMap.cameraMoveEvents(): Flow<Unit> =
-    callbackFlow {
-        setOnCameraMoveListener {
-            trySend(Unit)
-        }
-        awaitClose {
-            setOnCameraMoveListener(null)
-        }
-    }
-
-/**
- * Returns a flow that emits when the camera moves with the current projection of the map.
- * Using this to observe camera move events will override an existing listener (if any) to
+ * Returns a flow that emits a [GoogleMap.getProjection] when the camera moves. Using this to
+ * observe camera move events will override an existing listener (if any) to
  * [GoogleMap.setOnCameraMoveListener].
  */
 @ExperimentalCoroutinesApi
-public fun GoogleMap.cameraProjectionEvents(): Flow<Projection> =
+public fun GoogleMap.cameraMoveEvents(): Flow<Projection> =
     callbackFlow {
         setOnCameraMoveListener {
             trySend(projection)

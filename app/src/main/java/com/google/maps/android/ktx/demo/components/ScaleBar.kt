@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.Projection
-import com.google.maps.android.ktx.cameraProjectionEvents
+import com.google.maps.android.ktx.cameraMoveEvents
 import com.google.maps.android.ktx.utils.sphericalDistance
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -34,7 +34,7 @@ fun ScaleBar(
     lineColor: Color = if (!isSystemInDarkTheme()) DarkGray else Color.White,
     shadowColor: Color = if (!isSystemInDarkTheme()) Color.White else DarkGray,
 ) {
-    val projection: Projection by googleMap.cameraProjectionEvents()
+    val projection: Projection by googleMap.cameraMoveEvents()
         .collectAsState(googleMap.projection)
 
     Box(
