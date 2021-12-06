@@ -51,7 +51,6 @@ fun ScaleBar(
                 val upperLeftLatLng = projection.fromScreenLocation(Point(0, 0))
                 val upperRightLatLng = projection.fromScreenLocation(Point(0, size.width.toInt()))
                 val canvasWidthMeters = upperLeftLatLng.sphericalDistance(upperRightLatLng)
-                Log.d("Distance", "Canvas width (meters): $canvasWidthMeters")
 
                 twoThirdsCanvasMeters = (canvasWidthMeters * 2 / 3).toInt()
 
