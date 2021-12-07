@@ -1,7 +1,6 @@
 package com.google.maps.android.ktx.demo.components
 
 import android.graphics.Point
-import android.util.Log
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
@@ -39,9 +38,9 @@ fun ScaleBar(
 
     Box(
         modifier = modifier
-            .size(width = 75.dp, height = 50.dp)
+            .size(width = 65.dp, height = 50.dp)
     ) {
-        var twoThirdsCanvasMeters by remember {
+        var eightNinthsCanvasMeters by remember {
             mutableStateOf(0)
         }
         Canvas(
@@ -52,9 +51,9 @@ fun ScaleBar(
                 val upperRightLatLng = projection.fromScreenLocation(Point(0, size.width.toInt()))
                 val canvasWidthMeters = upperLeftLatLng.sphericalDistance(upperRightLatLng)
 
-                twoThirdsCanvasMeters = (canvasWidthMeters * 2 / 3).toInt()
+                eightNinthsCanvasMeters = (canvasWidthMeters * 8 / 9).toInt()
 
-                val oneThirdWidth = size.width / 3
+                val oneNinthWidth = size.width / 9
                 val midHeight = size.height / 2
                 val oneThirdHeight = size.height / 3
                 val twoThirdsHeight = size.height * 2 / 3
@@ -64,7 +63,7 @@ fun ScaleBar(
                 // Middle horizontal line shadow (drawn under main lines)
                 drawLine(
                     color = shadowColor,
-                    start = Offset(oneThirdWidth, midHeight),
+                    start = Offset(oneNinthWidth, midHeight),
                     end = Offset(size.width, midHeight),
                     strokeWidth = shadowStrokeWidth,
                     cap = StrokeCap.Round
@@ -72,16 +71,16 @@ fun ScaleBar(
                 // Top vertical line shadow (drawn under main lines)
                 drawLine(
                     color = shadowColor,
-                    start = Offset(oneThirdWidth, oneThirdHeight),
-                    end = Offset(oneThirdWidth, midHeight),
+                    start = Offset(oneNinthWidth, oneThirdHeight),
+                    end = Offset(oneNinthWidth, midHeight),
                     strokeWidth = shadowStrokeWidth,
                     cap = StrokeCap.Round
                 )
                 // Bottom vertical line shadow (drawn under main lines)
                 drawLine(
                     color = shadowColor,
-                    start = Offset(oneThirdWidth, midHeight),
-                    end = Offset(oneThirdWidth, twoThirdsHeight),
+                    start = Offset(oneNinthWidth, midHeight),
+                    end = Offset(oneNinthWidth, twoThirdsHeight),
                     strokeWidth = shadowStrokeWidth,
                     cap = StrokeCap.Round
                 )
@@ -89,7 +88,7 @@ fun ScaleBar(
                 // Middle horizontal line
                 drawLine(
                     color = lineColor,
-                    start = Offset(oneThirdWidth, midHeight),
+                    start = Offset(oneNinthWidth, midHeight),
                     end = Offset(size.width, midHeight),
                     strokeWidth = strokeWidth,
                     cap = StrokeCap.Round
@@ -97,16 +96,16 @@ fun ScaleBar(
                 // Top vertical line
                 drawLine(
                     color = lineColor,
-                    start = Offset(oneThirdWidth, oneThirdHeight),
-                    end = Offset(oneThirdWidth, midHeight),
+                    start = Offset(oneNinthWidth, oneThirdHeight),
+                    end = Offset(oneNinthWidth, midHeight),
                     strokeWidth = strokeWidth,
                     cap = StrokeCap.Round
                 )
                 // Bottom vertical line
                 drawLine(
                     color = lineColor,
-                    start = Offset(oneThirdWidth, midHeight),
-                    end = Offset(oneThirdWidth, twoThirdsHeight),
+                    start = Offset(oneNinthWidth, midHeight),
+                    end = Offset(oneNinthWidth, twoThirdsHeight),
                     strokeWidth = strokeWidth,
                     cap = StrokeCap.Round
                 )
@@ -117,15 +116,15 @@ fun ScaleBar(
             verticalArrangement = Arrangement.SpaceAround
         ) {
             var metricUnits = "m"
-            var metricDistance = twoThirdsCanvasMeters
-            if (twoThirdsCanvasMeters > 1000) {
+            var metricDistance = eightNinthsCanvasMeters
+            if (eightNinthsCanvasMeters > 1000) {
                 // Switch from meters to kilometers as unit
                 metricUnits = "km"
                 metricDistance /= 1000
             }
 
             var imperialUnits = "ft"
-            var imperialDistance = toFeet(twoThirdsCanvasMeters.toDouble())
+            var imperialDistance = toFeet(eightNinthsCanvasMeters.toDouble())
             if (imperialDistance > 5280) {
                 // Switch from ft to miles as unit
                 imperialUnits = "mi"
