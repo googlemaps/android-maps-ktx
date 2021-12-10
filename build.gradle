@@ -31,7 +31,7 @@ buildscript {
             'junit'    : '1.1.1',
         ],
         'junit'            : '4.12',
-        'kotlin'           : '1.5.31',
+        'kotlin'           : '1.6.0',
         'kotlinxCoroutines': '1.5.1',
         'mapsBeta'         : '3.1.0-beta',
         'mockito'          : '3.0.0',

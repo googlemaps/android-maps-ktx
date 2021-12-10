@@ -43,6 +43,7 @@ import com.google.maps.android.data.Renderer.ImagesCache
 import com.google.maps.android.data.geojson.GeoJsonLineStringStyle
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
 import com.google.maps.android.ktx.*
+import com.google.maps.android.ktx.demo.components.DisappearingScaleBar
 import com.google.maps.android.ktx.demo.components.ScaleBar
 import com.google.maps.android.ktx.demo.io.MyItemReader
 import com.google.maps.android.ktx.demo.model.MyItem
@@ -96,9 +97,9 @@ class MainActivity : AppCompatActivity() {
                 setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
                 setContent {
                     ScaleBar(
-                        googleMap = googleMap,
                         modifier = Modifier
-                            .padding(top = 5.dp, end = 15.dp)
+                            .padding(top = 5.dp, end = 15.dp),
+                        googleMap = googleMap
                     )
                 }
             }
