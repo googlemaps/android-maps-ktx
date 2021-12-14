@@ -2,13 +2,14 @@ package com.google.maps.android.ktx.demo.components
 
 import android.graphics.Point
 import android.util.Log
-import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.*
 import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -230,6 +231,7 @@ private fun ScaleText(
  * .collectAsState(googleMap.projection)) and animations and pass in the [Projection] to the
  * relevant [ScaleBar] constructor.
  */
+@ExperimentalAnimationApi
 @ExperimentalCoroutinesApi
 @Composable
 fun DisappearingScaleBar(
@@ -238,7 +240,9 @@ fun DisappearingScaleBar(
     textColor: Color = DarkGray,
     lineColor: Color = DarkGray,
     shadowColor: Color = Color.White,
-    visibilityTimeoutMs: Long = 3000
+    visibilityTimeoutMs: Long = 3000,
+    enterTransition: EnterTransition = fadeIn(),
+    exitTransition: ExitTransition = fadeOut(),
 ) {
     val visible = remember {
         MutableTransitionState(true)
@@ -259,7 +263,11 @@ fun DisappearingScaleBar(
         }
     }
 
-    AnimatedVisibility(visibleState = visible) {
+    AnimatedVisibility(
+        visibleState = visible,
+        enter = enterTransition,
+        exit = exitTransition
+    ) {
         ScaleBar(
             modifier = modifier,
             projection = projection,
