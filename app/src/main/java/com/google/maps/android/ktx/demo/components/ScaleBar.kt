@@ -244,17 +244,51 @@ fun DisappearingScaleBar(
     enterTransition: EnterTransition = fadeIn(),
     exitTransition: ExitTransition = fadeOut(),
 ) {
+    val projection: Projection by googleMap.cameraMoveEvents()
+        .collectAsState(googleMap.projection)
+    DisappearingScaleBar(
+        modifier = modifier,
+        projection = projection,
+        textColor = textColor,
+        lineColor = lineColor,
+        shadowColor = shadowColor,
+        visibilityTimeoutMs = visibilityTimeoutMs,
+        enterTransition = enterTransition,
+        exitTransition = exitTransition
+    )
+}
+
+/**
+ * An animated scale bar that appears when the scale of the map changes, and then disappears
+ * after [visibilityTimeoutMs]. This composable wraps [ScaleBar] with visibility animations.
+ *
+ * To use this function, implement your own observer on camera move events
+ * (e.g., val projection: Projection by googleMap.cameraMoveEvents()
+ * .collectAsState(googleMap.projection)) and pass in the [Projection].
+ *
+ * If you'd prefer an entirely self-contained solution that also implements the observer, see
+ * the other [DisappearingScaleBar] constructor that receives a [GoogleMap].
+ */
+@ExperimentalAnimationApi
+@ExperimentalCoroutinesApi
+@Composable
+fun DisappearingScaleBar(
+    modifier: Modifier = Modifier,
+    projection: Projection,
+    textColor: Color = DarkGray,
+    lineColor: Color = DarkGray,
+    shadowColor: Color = Color.White,
+    visibilityTimeoutMs: Long = 3000,
+    enterTransition: EnterTransition = fadeIn(),
+    exitTransition: ExitTransition = fadeOut(),
+) {
     val visible = remember {
         MutableTransitionState(true)
     }
 
-    val projection: Projection by googleMap.cameraMoveEvents()
-        .collectAsState(googleMap.projection)
-
     LaunchedEffect(key1 = projection) {
         if (visible.isIdle && !visible.currentState) {
             Log.d("scale-bar", "show")
-            // FIXME - Why doesn't the ScaleBar re-appear on the map when this executes?
             visible.targetState = true
         } else if (visible.isIdle && visible.currentState) {
             delay(visibilityTimeoutMs)
