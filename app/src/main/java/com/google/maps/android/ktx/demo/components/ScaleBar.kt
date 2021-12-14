@@ -83,7 +83,7 @@ fun ScaleBar(
         modifier = modifier
             .size(width = 65.dp, height = 50.dp)
     ) {
-        var horizontalLineWidth by remember {
+        var horizontalLineWidthMeters by remember {
             mutableStateOf(0)
         }
 
@@ -97,7 +97,7 @@ fun ScaleBar(
                 val canvasWidthMeters = upperLeftLatLng.sphericalDistance(upperRightLatLng)
                 val eightNinthsCanvasMeters = (canvasWidthMeters * 8 / 9).toInt()
 
-                horizontalLineWidth = eightNinthsCanvasMeters
+                horizontalLineWidthMeters = eightNinthsCanvasMeters
 
                 val oneNinthWidth = size.width / 9
                 val midHeight = size.height / 2
@@ -162,15 +162,15 @@ fun ScaleBar(
             verticalArrangement = Arrangement.SpaceAround
         ) {
             var metricUnits = "m"
-            var metricDistance = horizontalLineWidth
-            if (horizontalLineWidth > 1000) {
+            var metricDistance = horizontalLineWidthMeters
+            if (horizontalLineWidthMeters > 1000) {
                 // Switch from meters to kilometers as unit
                 metricUnits = "km"
                 metricDistance /= 1000
             }
 
             var imperialUnits = "ft"
-            var imperialDistance = toFeet(horizontalLineWidth.toDouble())
+            var imperialDistance = toFeet(horizontalLineWidthMeters.toDouble())
             if (imperialDistance > 5280) {
                 // Switch from ft to miles as unit
                 imperialUnits = "mi"
