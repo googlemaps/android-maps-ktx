@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -318,7 +317,7 @@ fun DisappearingScaleBar(
  * @return the provided meters value converted to feet
  */
 private fun toFeet(meters: Double): Double {
-    return meters * 1000.0 / 25.4 / 12.0
+    return meters * CENTIMETERS_IN_METER / CENTIMETERS_IN_INCH / INCHES_IN_FOOT
 }
 
 /**
@@ -327,5 +326,10 @@ private fun toFeet(meters: Double): Double {
  * @return the provided feet value converted to miles
  */
 private fun toMiles(feet: Double): Double {
-    return feet / 5280
+    return feet / FEET_IN_MILE
 }
+
+const val CENTIMETERS_IN_METER: Double = 100.0
+const val CENTIMETERS_IN_INCH: Double = 2.54
+const val INCHES_IN_FOOT: Double = 12.0
+const val FEET_IN_MILE: Double = 5280.0
