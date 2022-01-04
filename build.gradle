@@ -19,8 +19,8 @@ buildscript {
         'android'          : [
             "buildTools": "29.0.3",
             "compileSdk": 31,
-            "minSdk"    : 15,
-            "targetSdk" : 30
+            "minSdk"    : 19,
+            "targetSdk" : 31
         ],
         'androidMapsUtils' : '2.2.3',
         'androidx'         : [
@@ -36,7 +36,7 @@ buildscript {
         'mapsBeta'         : '3.1.0-beta',
         'mockito'          : '3.0.0',
         'mockitoKotlin'    : '2.2.0',
-        'playServices'     : '17.0.1',
+        'playServices'     : '18.0.0',
         'volley'           : '1.2.0',
     ]
 
@@ -93,7 +93,7 @@ ext.projectArtifactId = { project ->
  */
 allprojects {
     group = 'com.google.maps.android'
-    version = '3.2.1'
+    version = '3.3.0'
     project.ext.artifactId = rootProject.ext.projectArtifactId(project)
 
     repositories {
