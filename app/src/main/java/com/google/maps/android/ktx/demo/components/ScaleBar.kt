@@ -1,6 +1,5 @@
 package com.google.maps.android.ktx.demo.components
 
-import android.annotation.SuppressLint
 import android.graphics.Point
 import android.util.Log
 import androidx.compose.animation.*
