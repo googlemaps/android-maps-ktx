@@ -1,5 +1,6 @@
 package com.google.maps.android.ktx.demo.components
 
+import android.annotation.SuppressLint
 import android.graphics.Point
 import android.util.Log
 import androidx.compose.animation.*
@@ -24,6 +25,7 @@ import com.google.maps.android.ktx.cameraMoveEvents
 import com.google.maps.android.ktx.utils.sphericalDistance
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.map
 
 val DarkGray = Color(0xFF3a3c3b)
 
@@ -49,8 +51,12 @@ fun ScaleBar(
     lineColor: Color = DarkGray,
     shadowColor: Color = Color.White,
 ) {
-    val projection: Projection by googleMap.cameraMoveEvents()
-        .collectAsState(googleMap.projection)
+    val projection by remember {
+        googleMap.cameraMoveEvents().map {
+            googleMap.projection
+        }
+    }.collectAsState(googleMap.projection)
+
     ScaleBar(
         modifier = modifier,
         projection = projection,
@@ -243,8 +249,12 @@ fun DisappearingScaleBar(
     enterTransition: EnterTransition = fadeIn(),
     exitTransition: ExitTransition = fadeOut(),
 ) {
-    val projection: Projection by googleMap.cameraMoveEvents()
-        .collectAsState(googleMap.projection)
+    val projection by remember {
+        googleMap.cameraMoveEvents().map {
+            googleMap.projection
+        }
+    }.collectAsState(googleMap.projection)
+
     DisappearingScaleBar(
         modifier = modifier,
         projection = projection,
