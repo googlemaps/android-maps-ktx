@@ -23,7 +23,6 @@ import androidx.annotation.IntDef
 import com.google.android.gms.maps.CameraUpdate
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMapOptions
-import com.google.android.gms.maps.Projection
 import com.google.android.gms.maps.model.*
 import com.google.maps.android.ktx.model.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
