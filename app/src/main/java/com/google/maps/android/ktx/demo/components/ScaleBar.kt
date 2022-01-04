@@ -37,9 +37,7 @@ val DarkGray = Color(0xFF3a3c3b)
  * will override an existing listener (if any) to [GoogleMap.setOnCameraMoveListener].
  *
  * To avoid overriding existing listeners of [GoogleMap.setOnCameraMoveListener], implement your own
- * observer on camera move events (e.g., val projection: Projection by googleMap.cameraMoveEvents()
- * .collectAsState(googleMap.projection)) and pass in the [Projection] to the other [ScaleBar]
- * constructor.
+ * observer on camera move events and pass in the [Projection] to the other [ScaleBar] constructor.
  */
 @ExperimentalCoroutinesApi
 @Composable
@@ -69,9 +67,8 @@ fun ScaleBar(
  * A scale bar composable that shows the current scale of the map in feet and meters when zoomed in
  * to map, changing to miles and kilometers, respectively, when zooming out.
  *
- * To use this function, implement your own observer on camera move events
- * (e.g., val projection: Projection by googleMap.cameraMoveEvents()
- * .collectAsState(googleMap.projection)) and pass in the [Projection].
+ * To use this function, implement your own observer on camera move events and pass in the
+ * [Projection].
  *
  * If you'd prefer an entirely self-contained solution that also implements the observer, see
  * the other [ScaleBar] constructor that receives a [GoogleMap].
@@ -231,8 +228,7 @@ private fun ScaleText(
  * [GoogleMap.setOnCameraMoveListener].
  *
  * To avoid overriding existing listeners of [GoogleMap.setOnCameraMoveListener], implement your own
- * observer on camera move events (e.g., val projection: Projection by googleMap.cameraMoveEvents()
- * .collectAsState(googleMap.projection)) and animations and pass in the [Projection] to the
+ * observer on camera move events and animations and pass in the [Projection] to the
  * relevant [ScaleBar] constructor.
  */
 @ExperimentalAnimationApi
@@ -270,9 +266,8 @@ fun DisappearingScaleBar(
  * An animated scale bar that appears when the scale of the map changes, and then disappears
  * after [visibilityTimeoutMs]. This composable wraps [ScaleBar] with visibility animations.
  *
- * To use this function, implement your own observer on camera move events
- * (e.g., val projection: Projection by googleMap.cameraMoveEvents()
- * .collectAsState(googleMap.projection)) and pass in the [Projection].
+ * To use this function, implement your own observer on camera move events and pass in the
+ * [Projection].
  *
  * If you'd prefer an entirely self-contained solution that also implements the observer, see
  * the other [DisappearingScaleBar] constructor that receives a [GoogleMap].
