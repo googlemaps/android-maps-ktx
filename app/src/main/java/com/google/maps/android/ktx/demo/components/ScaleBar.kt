@@ -165,7 +165,7 @@ fun ScaleBar(
         ) {
             var metricUnits = "m"
             var metricDistance = horizontalLineWidthMeters
-            if (horizontalLineWidthMeters > 1000) {
+            if (horizontalLineWidthMeters > METERS_IN_KILOMETER) {
                 // Switch from meters to kilometers as unit
                 metricUnits = "km"
                 metricDistance /= 1000
@@ -173,7 +173,7 @@ fun ScaleBar(
 
             var imperialUnits = "ft"
             var imperialDistance = toFeet(horizontalLineWidthMeters.toDouble())
-            if (imperialDistance > 5280) {
+            if (imperialDistance > FEET_IN_MILE) {
                 // Switch from ft to miles as unit
                 imperialUnits = "mi"
                 imperialDistance = toMiles(imperialDistance)
@@ -320,7 +320,7 @@ fun DisappearingScaleBar(
  * @param meters value in meters to convert to feet
  * @return the provided meters value converted to feet
  */
-private fun toFeet(meters: Double): Double {
+internal fun toFeet(meters: Double): Double {
     return meters * CENTIMETERS_IN_METER / CENTIMETERS_IN_INCH / INCHES_IN_FOOT
 }
 
@@ -329,11 +329,12 @@ private fun toFeet(meters: Double): Double {
  * @param feet value in feet to convert to miles
  * @return the provided feet value converted to miles
  */
-private fun toMiles(feet: Double): Double {
+internal fun toMiles(feet: Double): Double {
     return feet / FEET_IN_MILE
 }
 
 const val CENTIMETERS_IN_METER: Double = 100.0
+const val METERS_IN_KILOMETER: Double = 1000.0
 const val CENTIMETERS_IN_INCH: Double = 2.54
 const val INCHES_IN_FOOT: Double = 12.0
 const val FEET_IN_MILE: Double = 5280.0

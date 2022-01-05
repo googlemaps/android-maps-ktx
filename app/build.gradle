@@ -88,6 +88,11 @@ dependencies {
     implementation 'androidx.compose.ui:ui-tooling:1.0.5'
     // [END_EXCLUDE]
     implementation 'com.google.maps.android:maps-utils-ktx:3.3.0'
+
+    // Tests
+    testImplementation deps.androidx.test
+    testImplementation deps.androidx.junit
+    testImplementation deps.junit
 }
 // [END maps_android_utils_ktx_install_snippet]
 
