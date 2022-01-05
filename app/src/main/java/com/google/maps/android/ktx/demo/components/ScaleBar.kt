@@ -168,7 +168,7 @@ fun ScaleBar(
             if (horizontalLineWidthMeters > METERS_IN_KILOMETER) {
                 // Switch from meters to kilometers as unit
                 metricUnits = "km"
-                metricDistance /= 1000
+                metricDistance /= METERS_IN_KILOMETER.toInt()
             }
 
             var imperialUnits = "ft"

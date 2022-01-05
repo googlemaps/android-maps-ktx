@@ -34,5 +34,10 @@ internal class ScaleBarTest {
 
         val lessThanMile = toMiles(5279.999999)
         assertTrue(lessThanMile < 1.0)
+
+        val meters = 1000.0
+        val kilometers = meters / 1000.0.toInt()
+        // Ensure a "0 kilometers" value never appears on the map
+        assertTrue(kilometers >= 1.0)
     }
 }
