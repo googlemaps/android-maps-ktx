@@ -17,6 +17,7 @@
 
 package com.google.maps.android.ktx.components
 
+import com.google.maps.android.ktx.demo.components.toFeet
 import com.google.maps.android.ktx.demo.components.toMiles
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -26,8 +27,10 @@ internal class ScaleBarTest {
 
     @Test
     fun testUnits() {
+        val delta = 0.0000001
+
         val mile = toMiles(5280.0)
-        assertEquals(mile, 1.0, 0.0000001)
+        assertEquals(1.0, mile, delta)
 
         // Ensure a "0 miles" value never appears on the map
         assertTrue(mile >= 1.0)
@@ -39,5 +42,8 @@ internal class ScaleBarTest {
         val kilometers = meters / 1000.0.toInt()
         // Ensure a "0 kilometers" value never appears on the map
         assertTrue(kilometers >= 1.0)
+
+        val feet = toFeet(1.0)
+        assertEquals(3.280839895, feet, delta)
     }
 }
