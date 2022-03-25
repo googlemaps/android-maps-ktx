@@ -25,7 +25,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.GoogleMapOptions
 import com.google.android.gms.maps.model.*
 import com.google.maps.android.ktx.model.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -92,7 +91,6 @@ public data class IndoorLevelActivatedEvent(val building: IndoorBuilding) : Indo
  * [GoogleMap.setOnCameraIdleListener], [GoogleMap.setOnCameraMoveCanceledListener],
  * [GoogleMap.setOnCameraMoveListener] and [GoogleMap.setOnCameraMoveStartedListener].
  */
-@ExperimentalCoroutinesApi
 @Deprecated(
     message = "Use cameraIdleEvents(), cameraMoveCanceledEvents(), cameraMoveEvents() or cameraMoveStartedEvents",
 )
@@ -155,7 +153,6 @@ public suspend inline fun GoogleMap.awaitMapLoad(): Unit =
  * Returns a flow that emits when the camera is idle. Using this to observe camera idle events will
  * override an existing listener (if any) to [GoogleMap.setOnCameraIdleListener].
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.cameraIdleEvents(): Flow<Unit> =
     callbackFlow {
         setOnCameraIdleListener {
@@ -171,7 +168,6 @@ public fun GoogleMap.cameraIdleEvents(): Flow<Unit> =
  * cancel events will override an existing listener (if any) to
  * [GoogleMap.setOnCameraMoveCanceledListener].
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.cameraMoveCanceledEvents(): Flow<Unit> =
     callbackFlow {
         setOnCameraMoveCanceledListener {
@@ -186,7 +182,6 @@ public fun GoogleMap.cameraMoveCanceledEvents(): Flow<Unit> =
  * Returns a flow that emits when the camera moves. Using this to observe camera move events will
  * override an existing listener (if any) to [GoogleMap.setOnCameraMoveListener].
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.cameraMoveEvents(): Flow<Unit> =
     callbackFlow {
         setOnCameraMoveListener {
@@ -213,7 +208,6 @@ public suspend inline fun GoogleMap.awaitSnapshot(bitmap: Bitmap? = null): Bitma
  * Returns a flow that emits when a camera move started. Using this to observe camera move start
  * events will override an existing listener (if any) to [GoogleMap.setOnCameraMoveStartedListener].
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.cameraMoveStartedEvents(): Flow<Int> =
     callbackFlow {
         setOnCameraMoveStartedListener {
@@ -228,7 +222,6 @@ public fun GoogleMap.cameraMoveStartedEvents(): Flow<Int> =
  * Returns a flow that emits when a circle is clicked. Using this to observe circle clicks events
  * will override an existing listener (if any) to [GoogleMap.setOnCircleClickListener].
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.circleClickEvents(): Flow<Circle> =
     callbackFlow {
         setOnCircleClickListener {
@@ -244,7 +237,6 @@ public fun GoogleMap.circleClickEvents(): Flow<Circle> =
  * clicks events will override an existing listener (if any) to
  * [GoogleMap.setOnGroundOverlayClickListener].
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.groundOverlayClicks(): Flow<GroundOverlay> =
     callbackFlow {
         setOnGroundOverlayClickListener {
@@ -260,7 +252,6 @@ public fun GoogleMap.groundOverlayClicks(): Flow<GroundOverlay> =
  * change events will override an existing listener (if any) to
  * [GoogleMap.setOnIndoorStateChangeListener]
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.indoorStateChangeEvents(): Flow<IndoorChangeEvent> =
     callbackFlow {
         setOnIndoorStateChangeListener(object : GoogleMap.OnIndoorStateChangeListener {
@@ -282,7 +273,6 @@ public fun GoogleMap.indoorStateChangeEvents(): Flow<IndoorChangeEvent> =
  * info window clicks will override an existing listener (if any) to
  * [GoogleMap.setOnInfoWindowClickListener]
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.infoWindowClickEvents(): Flow<Marker> =
     callbackFlow {
         setOnInfoWindowClickListener {
@@ -298,7 +288,6 @@ public fun GoogleMap.infoWindowClickEvents(): Flow<Marker> =
  * window closes will override an existing listener (if any) to
  * [GoogleMap.setOnInfoWindowCloseListener]
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.infoWindowCloseEvents(): Flow<Marker> =
     callbackFlow {
         setOnInfoWindowCloseListener {
@@ -314,7 +303,6 @@ public fun GoogleMap.infoWindowCloseEvents(): Flow<Marker> =
  * window long presses will override an existing listener (if any) to
  * [GoogleMap.setOnInfoWindowLongClickListener]
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.infoWindowLongClickEvents(): Flow<Marker> =
     callbackFlow {
         setOnInfoWindowLongClickListener {
@@ -329,7 +317,6 @@ public fun GoogleMap.infoWindowLongClickEvents(): Flow<Marker> =
  * Returns a flow that emits when the map is clicked. Using this to observe map click events will
  * override an existing listener (if any) to [GoogleMap.setOnMapClickListener]
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.mapClickEvents(): Flow<LatLng> =
     callbackFlow {
         setOnMapClickListener {
@@ -344,7 +331,6 @@ public fun GoogleMap.mapClickEvents(): Flow<LatLng> =
  * Returns a flow that emits when the map is long clicked. Using this to observe map click events
  * will override an existing listener (if any) to [GoogleMap.setOnMapLongClickListener]
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.mapLongClickEvents(): Flow<LatLng> =
     callbackFlow {
         setOnMapLongClickListener {
@@ -359,7 +345,6 @@ public fun GoogleMap.mapLongClickEvents(): Flow<LatLng> =
  * Returns a flow that emits when a marker on the map is clicked. Using this to observe marker click
  * events will override an existing listener (if any) to [GoogleMap.setOnMarkerClickListener]
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.markerClickEvents(): Flow<Marker> =
     callbackFlow {
         setOnMarkerClickListener {
@@ -374,7 +359,6 @@ public fun GoogleMap.markerClickEvents(): Flow<Marker> =
  * Returns a flow that emits when a marker is dragged. Using this to observer marker drag events
  * will override existing listeners (if any) to [GoogleMap.setOnMarkerDragListener]
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.markerDragEvents(): Flow<OnMarkerDragEvent> =
     callbackFlow {
         setOnMarkerDragListener(object : GoogleMap.OnMarkerDragListener {
@@ -401,7 +385,6 @@ public fun GoogleMap.markerDragEvents(): Flow<OnMarkerDragEvent> =
  * location button click events will override an existing listener (if any) to
  * [GoogleMap.setOnMyLocationButtonClickListener]
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.myLocationButtonClickEvents(): Flow<Unit> =
     callbackFlow {
         setOnMyLocationButtonClickListener {
@@ -417,7 +400,6 @@ public fun GoogleMap.myLocationButtonClickEvents(): Flow<Unit> =
  * location blue dot click events will override an existing listener (if any) to
  * [GoogleMap.setOnMyLocationClickListener]
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.myLocationClickEvents(): Flow<Location> =
     callbackFlow {
         setOnMyLocationClickListener {
@@ -433,7 +415,6 @@ public fun GoogleMap.myLocationClickEvents(): Flow<Location> =
  * PointOfInterest click events will override an existing listener (if any) to
  * [GoogleMap.setOnPoiClickListener]
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.poiClickEvents(): Flow<PointOfInterest> =
     callbackFlow {
          setOnPoiClickListener {
@@ -448,7 +429,6 @@ public fun GoogleMap.poiClickEvents(): Flow<PointOfInterest> =
  * Returns a flow that emits when a Polygon is clicked. Using this to observe Polygon click events
  * will override an existing listener (if any) to [GoogleMap.setOnPolygonClickListener]
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.polygonClickEvents(): Flow<Polygon> =
     callbackFlow {
         setOnPolygonClickListener {
@@ -463,7 +443,6 @@ public fun GoogleMap.polygonClickEvents(): Flow<Polygon> =
  * Returns a flow that emits when a Polyline is clicked. Using this to observe Polyline click events
  * will override an existing listener (if any) to [GoogleMap.setOnPolylineClickListener]
  */
-@ExperimentalCoroutinesApi
 public fun GoogleMap.polylineClickEvents(): Flow<Polyline> =
     callbackFlow {
         setOnPolylineClickListener {
