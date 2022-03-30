@@ -136,8 +136,6 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 #### Flow
 
-> **Note**: The following feature utilizes an experimental coroutine API. To use this, you will have to add the `@OptIn(ExperimentalCoroutinesApi::class)` at the site of its usage as well as the compiler flag `-Xopt-in=kotlin.RequiresOptIn`.
-
 Listing to camera events can be collected via [Kotlin Flow](kotlin-flow). 
 
 _Before_

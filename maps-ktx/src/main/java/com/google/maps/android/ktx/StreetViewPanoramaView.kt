@@ -5,7 +5,6 @@ import com.google.android.gms.maps.StreetViewPanoramaView
 import com.google.android.gms.maps.model.StreetViewPanoramaCamera
 import com.google.android.gms.maps.model.StreetViewPanoramaLocation
 import com.google.android.gms.maps.model.StreetViewPanoramaOrientation
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -32,7 +31,6 @@ public suspend inline fun StreetViewPanoramaView.awaitStreetViewPanorama(): Stre
  * observe panorama camera change events will override an existing listener (if any) to
  * [StreetViewPanorama.setOnStreetViewPanoramaCameraChangeListener].
  */
-@ExperimentalCoroutinesApi
 public fun StreetViewPanorama.cameraChangeEvents(): Flow<StreetViewPanoramaCamera> =
     callbackFlow {
         setOnStreetViewPanoramaCameraChangeListener {
@@ -48,7 +46,6 @@ public fun StreetViewPanorama.cameraChangeEvents(): Flow<StreetViewPanoramaCamer
  * observe panorama load change events will override an existing listener (if any) to
  * [StreetViewPanorama.setOnStreetViewPanoramaChangeListener].
  */
-@ExperimentalCoroutinesApi
 public fun StreetViewPanorama.changeEvents(): Flow<StreetViewPanoramaLocation> =
     callbackFlow {
         setOnStreetViewPanoramaChangeListener {
@@ -64,7 +61,6 @@ public fun StreetViewPanorama.changeEvents(): Flow<StreetViewPanoramaLocation> =
  * observe panorama click events will override an existing listener (if any) to
  * [StreetViewPanorama.setOnStreetViewPanoramaClickListener].
  */
-@ExperimentalCoroutinesApi
 public fun StreetViewPanorama.clickEvents(): Flow<StreetViewPanoramaOrientation> =
     callbackFlow {
         setOnStreetViewPanoramaClickListener {
@@ -80,7 +76,6 @@ public fun StreetViewPanorama.clickEvents(): Flow<StreetViewPanoramaOrientation>
  * observe panorama long click events will override an existing listener (if any) to
  * [StreetViewPanorama.setOnStreetViewPanoramaLongClickListener].
  */
-@ExperimentalCoroutinesApi
 public fun StreetViewPanorama.longClickEvents(): Flow<StreetViewPanoramaOrientation> =
     callbackFlow {
         setOnStreetViewPanoramaLongClickListener {
