@@ -56,7 +56,7 @@ dependencies {
     implementation deps.kotlin
     implementation deps.androidx.appcompat
     implementation deps.androidx.coreKtx
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
 //    implementation 'com.google.maps.android:maps-ktx:3.0.1'
     implementation project(':maps-ktx')
