@@ -19,7 +19,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion versions.android.compileSdk
+    compileSdk versions.android.compileSdk
     buildToolsVersion versions.android.buildTools
 
     defaultConfig {
@@ -29,7 +29,7 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
     }
 
-    libraryVariants.all {
+    libraryVariants.configureEach {
         it.generateBuildConfig.enabled = false
     }
 
@@ -42,6 +42,7 @@ android {
         freeCompilerArgs += '-Xexplicit-api=strict'
         jvmTarget = "1.8"
     }
+    namespace 'com.google.maps.android.ktx.utils'
 }
 
 dependencies {
