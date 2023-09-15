@@ -38,24 +38,6 @@ dependencies {
 }
 ```
 
-(**Deprecated**) ~Alternatively, if you are using the Maps SDK through the standalone V3 BETA distribution:~
-
-```groovy
-dependencies {
-
-    // KTX for the Maps SDK for Android V3 BETA Library
-    implementation 'com.google.maps.android:maps-v3-ktx:3.4.0'
-
-    // KTX for the Maps SDK for Android V3 BETA Utility Library
-    implementation 'com.google.maps.android:maps-utils-v3-ktx:3.4.0'
-
-    // It is recommended to also include the latest Maps SDK and/or Utility Library versions
-    // as well to ensure that you have the latest features and bug fixes.
-    implementation 'com.google.android.libraries.maps:maps:3.4.0-beta'
-    implementation 'com.google.maps.android:android-maps-utils-v3:<latest-version>'
-}
-```
-
 _**Note**_: The Beta version of the SDK is deprecated and scheduled for decommissioning. A future version of the SDK will provide similar support for Beta features. See the [release notes](https://developers.google.com/maps/documentation/android-sdk/releases#2021-08-18) for more information.
 
 ## Example Usage

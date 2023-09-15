@@ -39,10 +39,8 @@ android {
         freeCompilerArgs += '-Xexplicit-api=strict'
         jvmTarget = "1.8"
     }
-    namespace 'com.google.maps.android.v3.ktx'
+    namespace 'com.google.maps.android.ktx'
 }
-
-preBuild.dependsOn(rootProject.tasks.copyGmsToV3Beta)
 
 dependencies {
     implementation deps.kotlin

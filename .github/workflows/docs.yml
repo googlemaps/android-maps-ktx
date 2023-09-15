@@ -39,12 +39,10 @@ jobs:
         echo "Creating tar for generated docs"
         cd $GITHUB_WORKSPACE/maps-utils-ktx/build/documentation && tar cvf ~/maps-utils-docs.tar .
         cd $GITHUB_WORKSPACE/maps-ktx/build/documentation && tar cvf ~/maps-docs.tar .
-        cd $GITHUB_WORKSPACE/maps-v3-ktx/build/documentation && tar cvf ~/maps-v3-docs.tar .
-        cd $GITHUB_WORKSPACE/maps-utils-v3-ktx/build/documentation && tar cvf ~/maps-utils-v3-docs.tar .
 
         echo "Unpacking tar into gh-pages branch"
         git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
-        cd $GITHUB_WORKSPACE && git checkout gh-pages && tar xvf ~/maps-docs.tar && tar xvf ~/maps-utils-docs.tar && tar xvf ~/maps-v3-docs.tar && tar xvf ~/maps-utils-v3-docs.tar
+        cd $GITHUB_WORKSPACE && git checkout gh-pages && tar xvf ~/maps-docs.tar && tar xvf ~/maps-utils-docs.tar
 
     # Commit changes and create a PR
     - name: PR Changes

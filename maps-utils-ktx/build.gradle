@@ -45,8 +45,6 @@ android {
     namespace 'com.google.maps.android.ktx.utils'
 }
 
-preBuild.dependsOn(rootProject.tasks.copyGmsUtilsToV3Beta)
-
 dependencies {
     implementation deps.kotlin
     api deps.androidMapsUtils.gms
