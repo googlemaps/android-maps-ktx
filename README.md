@@ -31,9 +31,6 @@ dependencies {
     // KTX for the Maps SDK for Android Utility Library
     implementation 'com.google.maps.android:maps-utils-ktx:3.4.0'
 
-    // It is recommended to also include the latest Maps SDK and/or Utility Library versions
-    // as well to ensure that you have the latest features and bug fixes.
-    implementation 'com.google.android.gms:play-services-maps:<latest-version>'
     implementation 'com.google.maps.android:android-maps-utils:<latest-version>'
 }
 ```
