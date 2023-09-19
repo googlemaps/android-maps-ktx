@@ -30,8 +30,6 @@ dependencies {
 
     // KTX for the Maps SDK for Android Utility Library
     implementation 'com.google.maps.android:maps-utils-ktx:3.4.0'
-
-    implementation 'com.google.maps.android:android-maps-utils:<latest-version>'
 }
 ```
 
