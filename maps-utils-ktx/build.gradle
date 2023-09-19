@@ -28,7 +28,9 @@ android {
     }
 
     libraryVariants.configureEach {
-        it.generateBuildConfig.enabled = false
+        it.generateBuildConfigProvider.configure {
+            it.enabled = true
+        }
     }
 
     compileOptions {
