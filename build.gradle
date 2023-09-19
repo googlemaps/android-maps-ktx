@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Google Inc.
+ * Copyright 2023 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ buildscript {
             'junit'    : '1.1.1',
         ],
         'junit'            : '4.12',
-        'kotlin'           : '1.6.21',
+        'kotlin'           : '1.8.21',
         'kotlinxCoroutines': '1.6.0',
         'mockito'          : '3.0.0',
         'mockitoKotlin'    : '2.2.0',
@@ -69,7 +69,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.4.2'
-        classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.10.1'
+        classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.9.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         classpath 'com.hiya:jacoco-android:0.2'
         classpath "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1"
@@ -115,15 +115,16 @@ subprojects { project ->
     apply plugin: 'signing'
 
     // Documentation
-    dokka {
-        outputFormat = 'html'
-        outputDirectory = "$buildDir/documentation"
-        configuration {
-            includeNonPublic = false
-            skipEmptyPackages = true
-            skipDeprecated = true
-            reportUndocumented = true
-            jdkVersion = 8
+    tasks.named("dokkaHtml") {
+        outputDirectory.set(file("${buildDir}/documentation"))
+        dokkaSourceSets {
+            configureEach {
+                skipDeprecated.set(true)
+                jdkVersion.set(8)
+                skipEmptyPackages.set(true)
+                reportUndocumented.set(true)
+                displayName.set("JVM")
+            }
         }
     }
 
@@ -132,18 +133,20 @@ subprojects { project ->
         toolVersion = "0.8.7"
     }
 
-    tasks.withType(Test) {
+
+    tasks.withType(Test).configureEach {
         jacoco.includeNoLocationClasses = true
         jacoco.excludes = ['jdk.internal.*']
     }
 
-    task sourcesJar(type: Jar) {
+    tasks.register('sourcesJar', Jar) {
         from android.sourceSets.main.java.source
         archiveClassifier = "sources"
     }
 
-    task dokkaJar(type: Jar, dependsOn: dokka) {
-        from dokka.outputDirectory
+    tasks.register('dokkaJar', Jar) {
+        dependsOn dokkaHtml
+        from dokkaHtml.outputDirectory
         archiveClassifier = "javadoc"
     }
 

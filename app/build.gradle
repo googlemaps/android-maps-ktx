@@ -21,8 +21,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion versions.android.compileSdk
-    buildToolsVersion versions.android.buildTools
+    compileSdk versions.android.compileSdk
 
     defaultConfig {
         applicationId "com.google.maps.android.ktx.demo"
