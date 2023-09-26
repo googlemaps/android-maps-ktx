@@ -17,11 +17,9 @@
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion versions.android.compileSdk
-    buildToolsVersion versions.android.buildTools
+    compileSdk versions.android.compileSdk
 
     defaultConfig {
         minSdkVersion versions.android.minSdk
@@ -39,9 +37,11 @@ android {
         freeCompilerArgs += '-Xexplicit-api=strict'
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding true
+    }
+    namespace 'com.google.maps.android.ktx'
 }
-
-preBuild.dependsOn(rootProject.tasks.copyGmsToV3Beta)
 
 dependencies {
     implementation deps.kotlin

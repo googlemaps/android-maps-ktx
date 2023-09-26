@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Google Inc.
+ * Copyright 2023 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,11 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'com.google.android.secrets-gradle-plugin' version '1.1.0'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
-    compileSdkVersion versions.android.compileSdk
-    buildToolsVersion versions.android.buildTools
+    compileSdk versions.android.compileSdk
 
     defaultConfig {
         applicationId "com.google.maps.android.ktx.demo"
@@ -47,6 +46,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    namespace 'com.google.maps.android.ktx.demo'
 }
 
 // [START maps_android_utils_ktx_install_snippet]
@@ -58,7 +58,7 @@ dependencies {
     implementation deps.androidx.coreKtx
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
-//    implementation 'com.google.maps.android:maps-ktx:3.0.1'
+    // implementation 'com.google.maps.android:maps-ktx:3.4.0'
     implementation project(':maps-ktx')
     // implementation project(':maps-utils-ktx')
     // [END_EXCLUDE]
