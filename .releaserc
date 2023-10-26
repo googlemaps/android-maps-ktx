@@ -11,8 +11,8 @@ plugins:
           to: "version = '${nextRelease.version}'"
         - files:
             - "build.gradle"
-          from: "androidMapsUtils' : ([0-9]+).([0-9]+).([0-9]+)"
-          to: "androidMapsUtils' : ${nextRelease.version}'"
+          from: "androidMapsUtils' : '([0-9]+).([0-9]+).([0-9]+)"
+          to: "androidMapsUtils' : '${nextRelease.version}"
         - files:
             - "README.md"
           from: ":([0-9]+).([0-9]+).([0-9]+)"
