@@ -34,7 +34,7 @@ jobs:
     # Run dokka and create tar
     - name: Generate documentation
       run: |
-        ./gradlew dokka
+        ./gradlew dokkaHtml
 
         echo "Creating tar for generated docs"
         cd $GITHUB_WORKSPACE/maps-utils-ktx/build/documentation && tar cvf ~/maps-utils-docs.tar .
