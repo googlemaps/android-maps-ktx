@@ -22,7 +22,7 @@ buildscript {
             "minSdk"    : 19,
             "targetSdk" : 34
         ],
-        'androidMapsUtils' : '3.5.3',
+        'androidMapsUtils' : '3.7.0',
         'androidx'         : [
             'appcompat': '1.1.0',
             'coreKtx'  : '1.2.0',
@@ -35,7 +35,7 @@ buildscript {
         'kotlinxCoroutines': '1.6.0',
         'mockito'          : '3.0.0',
         'mockitoKotlin'    : '2.2.0',
-        'playServices'     : '18.1.0',
+        'androidMapsSdk'     : '18.2.0',
         'volley'           : '1.2.0',
     ]
 
@@ -53,11 +53,10 @@ buildscript {
         'junit'            : "junit:junit:$versions.junit",
         'kotlin'           : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin",
         'kotlinxCoroutines': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinxCoroutines",
-        'mapsBeta'         : "com.google.android.libraries.maps:maps:$versions.mapsBeta",
         'mockito'          : "org.mockito:mockito-core:$versions.mockito",
         'mockitoKotlin'    : "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockitoKotlin",
         'playServices'     : [
-            'maps' : "com.google.android.gms:play-services-maps:$versions.playServices",
+            'maps' : "com.google.android.gms:play-services-maps:$versions.androidMapsSdk",
         ],
         'volley'           : "com.android.volley:volley:$versions.volley",
     ]
@@ -71,7 +70,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:7.4.2'
         classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.9.10'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
-        classpath 'com.hiya:jacoco-android:0.2'
+        classpath 'com.mxalbert.gradle:jacoco-android:0.2.1'
         classpath "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1"
     }
 }
@@ -109,7 +108,7 @@ subprojects { project ->
     if (project.ext.artifactId == null) return
 
     apply plugin: 'com.android.library'
-    apply plugin: 'com.hiya.jacoco-android'
+    apply plugin: 'com.mxalbert.gradle.jacoco-android'
     apply plugin: 'maven-publish'
     apply plugin: 'org.jetbrains.dokka'
     apply plugin: 'signing'

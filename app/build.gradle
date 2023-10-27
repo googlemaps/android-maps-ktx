@@ -49,28 +49,24 @@ android {
     namespace 'com.google.maps.android.ktx.demo'
 }
 
-// [START maps_android_utils_ktx_install_snippet]
 dependencies {
-    // [START_EXCLUDE silent]
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.kotlin
     implementation deps.androidx.appcompat
     implementation deps.androidx.coreKtx
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
-    implementation 'com.google.android.gms:play-services-maps:18.2.0'
-    // implementation 'com.google.maps.android:maps-ktx:3.4.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
+
+    // Instead of the lines below, regular apps would load these libraries from Maven according to
+    // the README installation instructions
     implementation project(':maps-ktx')
-    // implementation project(':maps-utils-ktx')
-    // [END_EXCLUDE]
-    implementation 'com.google.maps.android:maps-utils-ktx:3.4.0'
+    implementation project(':maps-utils-ktx')
 }
-// [END maps_android_utils_ktx_install_snippet]
 
 secrets {
     // To add your Maps API key to this project:
-    // 1. Create a file ./secure.properties
+    // 1. Create a file ./secrets.properties
     // 2. Add this line, where YOUR_API_KEY is your API key:
     //        MAPS_API_KEY=YOUR_API_KEY
-    propertiesFileName 'secure.properties'
-    defaultPropertiesFileName 'secure.defaults.properties'
+    propertiesFileName 'secrets.properties'
+    defaultPropertiesFileName 'secrets.defaults.properties'
 }

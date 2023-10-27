@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Google Inc.
+ * Copyright 2023 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,8 +26,9 @@ import com.google.maps.android.clustering.ClusterItem
  *  (https://youtrack.jetbrains.com/issue/KT-6653?_ga=2.30406975.1494223917.1585591891-1137021041.1573759593)
  *  so we must name our fields differently and then pass them to the ClusterItem methods.
  */
-data class MyItem(val latLng: LatLng, val myTitle: String?, val mySnippet: String?) : ClusterItem {
+data class MyItem(val latLng: LatLng, val myTitle: String?, val mySnippet: String?, val myZIndex: Float?) : ClusterItem {
     override fun getPosition() = latLng
     override fun getTitle() = myTitle
     override fun getSnippet() = mySnippet
+    override fun getZIndex() = myZIndex
 }

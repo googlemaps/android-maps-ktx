@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Google Inc.
+ * Copyright 2023 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,6 +44,7 @@ class MyItemReader {
         for (i in 0 until array.length()) {
             var title: String? = null
             var snippet: String? = null
+            var zIndex: Double? = null
             val `object` = array.getJSONObject(i)
             val lat = `object`.getDouble("lat")
             val lng = `object`.getDouble("lng")
@@ -53,7 +54,10 @@ class MyItemReader {
             if (!`object`.isNull("snippet")) {
                 snippet = `object`.getString("snippet")
             }
-            items.add(MyItem(LatLng(lat, lng), title, snippet))
+            if (!`object`.isNull("zIndex")) {
+                zIndex = `object`.getDouble("zIndex")
+            }
+            items.add(MyItem(LatLng(lat, lng), title, snippet, zIndex?.toFloat()))
         }
         return items
     }
