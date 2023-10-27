@@ -25,10 +25,10 @@ It enables you to write more concise, idiomatic Kotlin. Each set of extensions c
 dependencies {
 
     // KTX for the Maps SDK for Android library
-    implementation 'com.google.maps.android:maps-ktx:4.0.0'
+    implementation 'com.google.maps.android:maps-ktx:5.0.0'
 
     // KTX for the Maps SDK for Android Utility Library
-    implementation 'com.google.maps.android:maps-utils-ktx:4.0.0'
+    implementation 'com.google.maps.android:maps-utils-ktx:5.0.0'
 }
 ```
 
