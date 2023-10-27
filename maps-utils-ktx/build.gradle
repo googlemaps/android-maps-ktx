@@ -51,7 +51,6 @@ android {
 dependencies {
     implementation deps.kotlin
     api deps.androidMapsUtils.gms
-    api deps.playServices.maps
 
     // Tests
     testImplementation deps.androidx.test

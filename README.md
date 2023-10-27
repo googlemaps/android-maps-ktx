@@ -16,11 +16,10 @@ It enables you to write more concise, idiomatic Kotlin. Each set of extensions c
 ## Requirements
 * Kotlin-enabled project
 * Kotlin coroutines
-* API level 15+
+* API level 21+
+* An [API key](https://developers.google.com/maps/documentation/android-sdk/get-api-key)
 
 ## Installation
-
-If you are using the Maps SDK through Google Play Services:
 
 ```groovy
 dependencies {
@@ -32,8 +31,6 @@ dependencies {
     implementation 'com.google.maps.android:maps-utils-ktx:4.0.0'
 }
 ```
-
-_**Note**_: The Beta version of the SDK is deprecated and scheduled for decommissioning. A future version of the SDK will provide similar support for Beta features. See the [release notes](https://developers.google.com/maps/documentation/android-sdk/releases#2021-08-18) for more information.
 
 ## Example Usage
 
@@ -48,8 +45,8 @@ This repository includes a [demo app](app) that illustrates the use of this KTX 
 To run the demo app, you'll have to:
 
 1. [Get a Maps API key](https://developers.google.com/maps/documentation/android-sdk/get-api-key)
-1. Create a file in the root directory called `secure.properties` (this file should *NOT* be under version control to protect your API key)
-1. Add a single line to `secure.properties` that looks like `MAPS_API_KEY=YOUR_API_KEY`, where `YOUR_API_KEY` is the API key you obtained in the first step
+1. Create a file in the root directory called `secrets.properties` (this file should *NOT* be under version control to protect your API key)
+1. Add a single line to `secrets.properties` that looks like `MAPS_API_KEY=YOUR_API_KEY`, where `YOUR_API_KEY` is the API key you obtained in the first step
 1. Build and run
 
 ### Maps SDK KTX
