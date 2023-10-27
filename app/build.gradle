@@ -55,7 +55,9 @@ dependencies {
     implementation deps.androidx.appcompat
     implementation deps.androidx.coreKtx
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
-    implementation 'com.google.android.gms:play-services-maps:18.2.0'
+
+    // Instead of the lines below, regular apps would load these libraries from Maven according to
+    // the README installation instructions
     implementation project(':maps-ktx')
     implementation project(':maps-utils-ktx')
 }
