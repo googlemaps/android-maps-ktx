@@ -22,7 +22,7 @@ buildscript {
             "minSdk"    : 19,
             "targetSdk" : 34
         ],
-        'androidMapsUtils' : '3.5.3',
+        'androidMapsUtils' : '3.7.0',
         'androidx'         : [
             'appcompat': '1.1.0',
             'coreKtx'  : '1.2.0',
