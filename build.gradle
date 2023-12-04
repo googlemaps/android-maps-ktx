@@ -67,7 +67,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'com.android.tools.build:gradle:8.2.0'
         classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.9.10'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         classpath 'com.mxalbert.gradle:jacoco-android:0.2.1'
