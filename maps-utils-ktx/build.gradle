@@ -58,5 +58,5 @@ dependencies {
     testImplementation deps.junit
     testImplementation deps.mockito
     testImplementation deps.mockitoKotlin
-
+    testImplementation deps.mockitoInline
 }
