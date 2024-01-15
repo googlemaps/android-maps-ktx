@@ -54,7 +54,7 @@ dependencies {
     implementation deps.kotlin
     implementation deps.androidx.appcompat
     implementation deps.androidx.coreKtx
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
 
     // Instead of the lines below, regular apps would load these libraries from Maven according to
     // the README installation instructions
