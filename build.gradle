@@ -36,7 +36,7 @@ buildscript {
         'mockito'          : '3.8.0',
         'mockitoInline'    : '5.2.0',
         'mockitoKotlin'    : '2.2.0',
-        'androidMapsSdk'     : '18.2.0',
+        'androidMapsSdk'   : '18.2.0',
         'volley'           : '1.2.0',
     ]
 
