@@ -22,7 +22,7 @@ buildscript {
             "minSdk"    : 19,
             "targetSdk" : 34
         ],
-        'androidMapsUtils' : '3.7.0',
+        'androidMapsUtils' : '3.8.2',
         'androidx'         : [
             'appcompat': '1.1.0',
             'coreKtx'  : '1.2.0',
@@ -33,9 +33,10 @@ buildscript {
         'junit'            : '4.12',
         'kotlin'           : '1.8.21',
         'kotlinxCoroutines': '1.6.0',
-        'mockito'          : '3.0.0',
+        'mockito'          : '3.8.0',
+        'mockitoInline'    : '5.2.0',
         'mockitoKotlin'    : '2.2.0',
-        'androidMapsSdk'     : '18.2.0',
+        'androidMapsSdk'   : '18.2.0',
         'volley'           : '1.2.0',
     ]
 
@@ -54,11 +55,13 @@ buildscript {
         'kotlin'           : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin",
         'kotlinxCoroutines': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinxCoroutines",
         'mockito'          : "org.mockito:mockito-core:$versions.mockito",
+        'mockitoInline'          : "org.mockito:mockito-inline:$versions.mockitoInline",
         'mockitoKotlin'    : "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockitoKotlin",
         'playServices'     : [
             'maps' : "com.google.android.gms:play-services-maps:$versions.androidMapsSdk",
         ],
         'volley'           : "com.android.volley:volley:$versions.volley",
+
     ]
 
     repositories {
@@ -67,7 +70,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'com.android.tools.build:gradle:8.2.1'
         classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.9.10'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         classpath 'com.mxalbert.gradle:jacoco-android:0.2.1'
@@ -147,6 +150,15 @@ subprojects { project ->
         dependsOn dokkaHtml
         from dokkaHtml.outputDirectory
         archiveClassifier = "javadoc"
+    }
+
+    android {
+        publishing {
+            singleVariant("release") {
+                withSourcesJar()
+                withJavadocJar()
+            }
+        }
     }
 
     publishing {
