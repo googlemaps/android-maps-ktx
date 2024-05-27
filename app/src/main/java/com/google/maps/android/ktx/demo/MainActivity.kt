@@ -23,7 +23,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.coroutineScope
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -71,27 +74,29 @@ class MainActivity : AppCompatActivity() {
         }
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        lifecycle.coroutineScope.launchWhenCreated {
-            val googleMap = mapFragment.awaitMap()
-            if (!isRestore) {
-                googleMap.awaitMapLoad()
-                googleMap.animateCamera(
-                    CameraUpdateFactory.newLatLngZoom(
-                        london,
-                        10F
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
+                val googleMap = mapFragment.awaitMap()
+                if (!isRestore) {
+                    googleMap.awaitMapLoad()
+                    googleMap.animateCamera(
+                        CameraUpdateFactory.newLatLngZoom(
+                            london,
+                            10F
+                        )
                     )
-                )
-            }
-            showMapLayers(googleMap)
-            addButtonClickListener(googleMap)
-            launch {
-                googleMap.cameraMoveStartedEvents().collect {
-                    Log.d(TAG, "Camera moved - reason $it")
                 }
-            }
-            launch {
-                googleMap.cameraIdleEvents().collect {
-                    Log.d(TAG, "Camera is idle.")
+                showMapLayers(googleMap)
+                addButtonClickListener(googleMap)
+                launch {
+                    googleMap.cameraMoveStartedEvents().collect {
+                        Log.d(TAG, "Camera moved - reason $it")
+                    }
+                }
+                launch {
+                    googleMap.cameraIdleEvents().collect {
+                        Log.d(TAG, "Camera is idle.")
+                    }
                 }
             }
         }
@@ -100,34 +105,38 @@ class MainActivity : AppCompatActivity() {
     private suspend fun addButtonClickListener(googleMap: GoogleMap) {
         findViewById<Button>(R.id.button_animate_camera).setOnClickListener {
             currentLocation = if (currentLocation == london) sanFrancisco else london
-            lifecycle.coroutineScope.launchWhenStarted {
-                googleMap.run {
-                    awaitAnimateCamera(CameraUpdateFactory.newCameraPosition(
-                        cameraPosition {
-                            target(currentLocation)
-                            zoom(0.0f)
-                            tilt(0.0f)
-                            bearing(0.0f)
-                        }
-                    ))
-                    awaitMapLoad()
-                    awaitAnimateCamera(CameraUpdateFactory.newCameraPosition(
-                        cameraPosition {
-                            target(currentLocation)
-                            zoom(10.0f)
-                            bearing(180f)
-                            tilt(75f)
-                            build()
-                        }
-                    ))
+            lifecycleScope.launch {
+                lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
+                    googleMap.run {
+                        awaitAnimateCamera(CameraUpdateFactory.newCameraPosition(
+                            cameraPosition {
+                                target(currentLocation)
+                                zoom(0.0f)
+                                tilt(0.0f)
+                                bearing(0.0f)
+                            }
+                        ))
+                        awaitMapLoad()
+                        awaitAnimateCamera(CameraUpdateFactory.newCameraPosition(
+                            cameraPosition {
+                                target(currentLocation)
+                                zoom(10.0f)
+                                bearing(180f)
+                                tilt(75f)
+                                build()
+                            }
+                        ))
+                    }
                 }
             }
         }
 
         findViewById<Button>(R.id.button_snapshot).setOnClickListener {
-            lifecycle.coroutineScope.launchWhenStarted {
-                val bitmap = googleMap.awaitSnapshot()
-                findViewById<ImageView>(R.id.image_view_snapshot).setImageBitmap(bitmap)
+            lifecycleScope.launch {
+                lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    val bitmap = googleMap.awaitSnapshot()
+                    findViewById<ImageView>(R.id.image_view_snapshot).setImageBitmap(bitmap)
+                }
             }
         }
     }
