@@ -1,5 +1,5 @@
 /**
- * Copyright 2024 Google Inc.
+ * Copyright 2023 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,14 @@
  */
 
 buildscript {
+    ext.versions = [
+            'android'          : [
+                    "buildTools": "30.0.3",
+                    "compileSdk": 34,
+                    "minSdk"    : 21,
+                    "targetSdk" : 34
+            ]]
+
     repositories {
         gradlePluginPortal()
         google()
