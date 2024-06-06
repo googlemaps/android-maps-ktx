@@ -1,5 +1,5 @@
 /**
- * Copyright 2023 Google Inc.
+ * Copyright 2024 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,11 +18,11 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdk versions.android.compileSdk
+    compileSdk libs.versions.androidCompileSdk.get().toInteger()
 
     defaultConfig {
-        minSdkVersion versions.android.minSdk
-        targetSdkVersion versions.android.targetSdk
+        minSdkVersion libs.versions.androidMinSdk.get().toInteger()
+        targetSdkVersion libs.versions.androidTargetSdk.get().toInteger()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -44,19 +44,20 @@ android {
     }
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
     namespace 'com.google.maps.android.ktx.utils'
 }
 
 dependencies {
-    implementation deps.kotlin
-    api deps.androidMapsUtils.gms
+    implementation libs.kotlinStdlib
+    api libs.androidMapsUtils
 
     // Tests
-    testImplementation deps.androidx.test
-    testImplementation deps.androidx.junit
-    testImplementation deps.junit
-    testImplementation deps.mockito
-    testImplementation deps.mockitoKotlin
-    testImplementation deps.mockitoInline
+    testImplementation libs.androidxTest
+    testImplementation libs.androidxJunit
+    testImplementation libs.junit
+    testImplementation libs.mockito
+    testImplementation libs.mockitoKotlin
+    testImplementation libs.mockitoInline
 }

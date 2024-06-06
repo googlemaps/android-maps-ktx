@@ -16,53 +16,12 @@
 
 buildscript {
     ext.versions = [
-        'android'          : [
-            "buildTools": "30.0.3",
-            "compileSdk": 34,
-            "minSdk"    : 19,
-            "targetSdk" : 34
-        ],
-        'androidMapsUtils' : '3.8.2',
-        'androidx'         : [
-            'appcompat': '1.1.0',
-            'coreKtx'  : '1.2.0',
-            'espresso' : '3.2.0',
-            'test'     : '1.2.0',
-            'junit'    : '1.1.1',
-        ],
-        'junit'            : '4.12',
-        'kotlin'           : '1.8.21',
-        'kotlinxCoroutines': '1.6.0',
-        'mockito'          : '3.8.0',
-        'mockitoInline'    : '5.2.0',
-        'mockitoKotlin'    : '2.2.0',
-        'androidMapsSdk'   : '18.2.0',
-        'volley'           : '1.2.0',
-    ]
-
-    ext.deps = [
-        'androidMapsUtils' : [
-            'gms': "com.google.maps.android:android-maps-utils:$versions.androidMapsUtils"
-        ],
-        'androidx'         : [
-            'appcompat': "androidx.appcompat:appcompat:$versions.androidx.appcompat",
-            'coreKtx'  : "androidx.core:core-ktx:$versions.androidx.coreKtx",
-            'espresso' : "androidx.test.espresso:espresso-core:$versions.androidx.espresso",
-            'test'     : "androidx.test:core:$versions.androidx.test",
-            'junit'    : "androidx.test.ext:junit:$versions.androidx.junit"
-        ],
-        'junit'            : "junit:junit:$versions.junit",
-        'kotlin'           : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin",
-        'kotlinxCoroutines': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinxCoroutines",
-        'mockito'          : "org.mockito:mockito-core:$versions.mockito",
-        'mockitoInline'          : "org.mockito:mockito-inline:$versions.mockitoInline",
-        'mockitoKotlin'    : "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockitoKotlin",
-        'playServices'     : [
-            'maps' : "com.google.android.gms:play-services-maps:$versions.androidMapsSdk",
-        ],
-        'volley'           : "com.android.volley:volley:$versions.volley",
-
-    ]
+            'android'          : [
+                    "buildTools": "30.0.3",
+                    "compileSdk": 34,
+                    "minSdk"    : 21,
+                    "targetSdk" : 34
+            ]]
 
     repositories {
         gradlePluginPortal()
@@ -70,11 +29,11 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.2'
-        classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.9.20'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
-        classpath 'com.mxalbert.gradle:jacoco-android:0.2.1'
-        classpath "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1"
+        classpath libs.gradle
+        classpath libs.dokkaGradlePlugin
+        classpath libs.kotlinGradlePlugin
+        classpath libs.jacocoAndroid
+        classpath libs.secretsGradlePlugin
     }
 }
 

@@ -21,14 +21,18 @@ plugins {
 }
 
 android {
-    compileSdk versions.android.compileSdk
+    compileSdk libs.versions.androidCompileSdk.get().toInteger()
 
     defaultConfig {
         applicationId "com.google.maps.android.ktx.demo"
-        minSdkVersion 24
-        targetSdkVersion versions.android.targetSdk
+        minSdkVersion libs.versions.androidMinSdk.get().toInteger()
+        targetSdkVersion libs.versions.androidTargetSdk.get().toInteger()
         versionCode 1
         versionName "1.0"
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -51,10 +55,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation deps.kotlin
-    implementation deps.androidx.appcompat
-    implementation deps.androidx.coreKtx
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.1'
+    implementation libs.kotlinStdlib
+    implementation libs.androidxAppcompat
+    implementation libs.androidxCoreKtx
+    implementation libs.lifecycleRuntimeKtx
 
     // Instead of the lines below, regular apps would load these libraries from Maven according to
     // the README installation instructions

@@ -1,0 +1,49 @@
+[versions]
+androidCompileSdk = "34"
+androidMapsSdk = "18.2.0"
+androidMapsUtils = "3.8.2"
+androidMinSdk = "21"
+androidTargetSdk = "34"
+androidxAppcompat = "1.7.0"
+androidxCoreKtx = "1.13.1"
+androidxJunit = "1.1.5"
+androidxTest = "1.5.0"
+dokkaGradlePlugin = "1.9.20"
+gradle = "8.4.1"
+jacocoAndroid = "0.2.1"
+junit = "4.13.2"
+kotlin = "2.0.0"
+kotlinxCoroutines = "1.8.1"
+lifecycleRuntimeKtx = "2.8.1"
+mockito = "5.11.0"
+kotlinGradlePlugin = "1.9.20"
+mockitoInline = "5.2.0"
+mockitoKotlin = "2.2.0"
+secretsGradlePlugin = "2.0.1"
+
+[libraries]
+androidMapsUtils = { group = "com.google.maps.android", name = "android-maps-utils", version.ref = "androidMapsUtils" }
+androidxAppcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppcompat" }
+androidxCoreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCoreKtx" }
+androidxTest = { group = "androidx.test", name = "core", version.ref = "androidxTest" }
+androidxJunit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
+dokkaGradlePlugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokkaGradlePlugin" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
+jacocoAndroid = { module = "com.mxalbert.gradle:jacoco-android", version.ref = "jacocoAndroid" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
+kotlinStdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk7", version.ref = "kotlin" }
+kotlinxCoroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+lifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+mockito = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+mockitoInline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoInline" }
+mockitoKotlin = { group = "com.nhaarman.mockitokotlin2", name = "mockito-kotlin", version.ref = "mockitoKotlin" }
+playServicesMaps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "androidMapsSdk" }
+secretsGradlePlugin = { module = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin", version.ref = "secretsGradlePlugin" }
+
+[plugins]
+androidGradlePlugin = { id = "com.android.tools.build:gradle", version = "8.2.2" }
+dokkaGradlePlugin = { id = "org.jetbrains.dokka:dokka-gradle-plugin", version = "1.9.20" }
+jacocoAndroidPlugin = { id = "com.mxalbert.gradle:jacoco-android", version = "0.2.1" }
+kotlinGradlePlugin = { id = "org.jetbrains.kotlin:kotlin-gradle-plugin", version = "2.0.0" }
+secretsGradlePlugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version = "2.0.1" }
