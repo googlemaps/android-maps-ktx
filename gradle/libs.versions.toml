@@ -1,6 +1,6 @@
 [versions]
 androidCompileSdk = "34"
-androidMapsSdk = "18.2.0"
+androidMapsSdk = "19.0.0"
 androidMapsUtils = "3.8.2"
 androidMinSdk = "21"
 androidTargetSdk = "34"
