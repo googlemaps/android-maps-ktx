@@ -31,10 +31,10 @@ jobs:
     - name: Checkout android-maps-ktx
       uses: actions/checkout@v3
 
-    - name: Set up JDK 17
+    - name: Set up JDK
       uses: actions/setup-java@v3
       with:
-        java-version: '17'
+        java-version: '21'
         distribution: 'temurin'
 
     # Run dokka and create tar
