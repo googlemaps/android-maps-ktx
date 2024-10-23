@@ -18,6 +18,10 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
+    lint {
+        sarifOutput = file("$buildDir/reports/lint-results.sarif")
+    }
+
     compileSdk libs.versions.androidCompileSdk.get().toInteger()
 
     defaultConfig {
