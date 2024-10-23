@@ -21,6 +21,10 @@ plugins {
 }
 
 android {
+    lint {
+        sarifOutput = file("$buildDir/reports/lint-results.sarif")
+    }
+
     compileSdk libs.versions.androidCompileSdk.get().toInteger()
 
     defaultConfig {
