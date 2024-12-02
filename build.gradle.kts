@@ -54,13 +54,6 @@ allprojects {
     group = "com.google.maps.android"
     version = "5.1.1"
     val projectArtifactId by extra { project.name }
-    repositories {
-        google()
-        mavenCentral()
-        flatDir {
-            dirs("libs")
-        }
-    }
 }
 
 tasks.register<Delete>("clean") {

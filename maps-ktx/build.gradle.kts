@@ -18,6 +18,7 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
+    id("android.maps.ktx.PublishingConventionPlugin")
 }
 
 android {
@@ -29,7 +30,6 @@ android {
 
     defaultConfig {
         minSdk = libs.versions.androidMinSdk.get().toInt()
-        targetSdk = libs.versions.androidTargetSdk.get().toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }

@@ -10,16 +10,16 @@ repositories {
 
 
 dependencies {
-    implementation(libs.kotlin.gradle.plugin)
-    implementation(libs.android.gradle.plugin)
-    implementation(libs.dokka.plugin)
+    implementation(libs.kotlinGradlePlugin)
+    implementation(libs.gradle)
+    implementation(libs.dokkaGradlePlugin)
     implementation(libs.org.jacoco.core)
 }
 
 gradlePlugin {
     plugins {
         register("publishingConventionPlugin") {
-            id = "android.maps.compose.PublishingConventionPlugin"
+            id = "android.maps.ktx.PublishingConventionPlugin"
             implementationClass = "PublishingConventionPlugin"
         }
     }
