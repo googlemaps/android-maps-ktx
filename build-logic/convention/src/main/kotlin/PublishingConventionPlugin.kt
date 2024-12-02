@@ -60,7 +60,7 @@ class PublishingConventionPlugin : Plugin<Project> {
                     }
                     pom {
                         name.set(project.name)
-                        description.set("Jetpack Compose components for the Maps SDK for Android")
+                        description.set("Kotlin extensions (KTX) for Google Maps SDK")
                         url.set("https://github.com/googlemaps/android-maps-ktx")
                         scm {
                             connection.set("scm:git@github.com:googlemaps/android-maps-ktx.git")
