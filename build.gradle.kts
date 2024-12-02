@@ -15,14 +15,6 @@
  */
 
 buildscript {
-    extra["versions"] = mapOf(
-        "android" to mapOf(
-            "buildTools" to "30.0.3",
-            "compileSdk" to 34,
-            "minSdk" to 21,
-            "targetSdk" to 35
-        )
-    )
 
     repositories {
         gradlePluginPortal()
