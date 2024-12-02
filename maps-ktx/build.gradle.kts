@@ -15,21 +15,23 @@
  *
  */
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+plugins {
+    id("com.android.library")
+    id("kotlin-android")
+}
 
 android {
     lint {
         sarifOutput = file("$buildDir/reports/lint-results.sarif")
     }
 
-    compileSdk libs.versions.androidCompileSdk.get().toInteger()
+    compileSdk = libs.versions.androidCompileSdk.get().toInt()
 
     defaultConfig {
-        minSdkVersion libs.versions.androidMinSdk.get().toInteger()
-        targetSdkVersion libs.versions.androidTargetSdk.get().toInteger()
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
+        minSdk = libs.versions.androidMinSdk.get().toInt()
+        targetSdk = libs.versions.androidTargetSdk.get().toInt()
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     compileOptions {
@@ -38,25 +40,27 @@ android {
     }
 
     kotlinOptions {
-        freeCompilerArgs += '-Xexplicit-api=strict'
+        freeCompilerArgs += "-Xexplicit-api=strict"
         jvmTarget = "1.8"
     }
+
     buildFeatures {
-        viewBinding true
+        viewBinding = true
     }
-    namespace 'com.google.maps.android.ktx'
+
+    namespace = "com.google.maps.android.ktx"
 }
 
 dependencies {
-    implementation libs.kotlinStdlib
-    implementation libs.kotlinxCoroutines
-    api libs.playServicesMaps
+    implementation(libs.kotlinStdlib)
+    implementation(libs.kotlinxCoroutines)
+    api(libs.playServicesMaps)
 
     // Tests
-    testImplementation libs.androidxTest
-    testImplementation libs.androidxJunit
-    testImplementation libs.junit
-    testImplementation libs.mockito
-    testImplementation libs.mockitoKotlin
-    testImplementation libs.mockitoInline
+    testImplementation(libs.androidxTest)
+    testImplementation(libs.androidxJunit)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito)
+    testImplementation(libs.mockitoKotlin)
+    testImplementation(libs.mockitoInline)
 }

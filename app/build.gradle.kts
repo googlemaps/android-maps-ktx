@@ -15,9 +15,9 @@
  */
 
 plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id("com.android.application")
+    id("kotlin-android")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -25,14 +25,14 @@ android {
         sarifOutput = file("$buildDir/reports/lint-results.sarif")
     }
 
-    compileSdk libs.versions.androidCompileSdk.get().toInteger()
+    compileSdk = libs.versions.androidCompileSdk.get().toInt()
 
     defaultConfig {
-        applicationId "com.google.maps.android.ktx.demo"
-        minSdkVersion libs.versions.androidMinSdk.get().toInteger()
-        targetSdkVersion libs.versions.androidTargetSdk.get().toInteger()
-        versionCode 1
-        versionName "1.0"
+        applicationId = "com.google.maps.android.ktx.demo"
+        minSdk = libs.versions.androidMinSdk.get().toInt()
+        targetSdk = libs.versions.androidTargetSdk.get().toInt()
+        versionCode = 1
+        versionName = "1.0"
     }
 
     buildFeatures {
@@ -40,9 +40,9 @@ android {
     }
 
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
@@ -54,19 +54,20 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    namespace 'com.google.maps.android.ktx.demo'
+
+    namespace = "com.google.maps.android.ktx.demo"
 }
 
 dependencies {
-    implementation libs.kotlinStdlib
-    implementation libs.androidxAppcompat
-    implementation libs.androidxCoreKtx
-    implementation libs.lifecycleRuntimeKtx
+    implementation(libs.kotlinStdlib)
+    implementation(libs.androidxAppcompat)
+    implementation(libs.androidxCoreKtx)
+    implementation(libs.lifecycleRuntimeKtx)
 
     // Instead of the lines below, regular apps would load these libraries from Maven according to
     // the README installation instructions
-    implementation project(':maps-ktx')
-    implementation project(':maps-utils-ktx')
+    implementation(project(":maps-ktx"))
+    implementation(project(":maps-utils-ktx"))
 }
 
 secrets {
@@ -74,6 +75,6 @@ secrets {
     // 1. Create a file ./secrets.properties
     // 2. Add this line, where YOUR_API_KEY is your API key:
     //        MAPS_API_KEY=YOUR_API_KEY
-    propertiesFileName 'secrets.properties'
-    defaultPropertiesFileName 'secrets.defaults.properties'
+    propertiesFileName = "secrets.properties"
+    defaultPropertiesFileName = "secrets.defaults.properties"
 }
