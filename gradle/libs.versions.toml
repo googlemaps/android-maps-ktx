@@ -1,15 +1,15 @@
 [versions]
 androidCompileSdk = "35"
-androidMapsSdk = "19.0.0"
-androidMapsUtils = "3.11.0"
+androidMapsSdk = "19.2.0"
+androidMapsUtils = "3.12.0"
 androidMinSdk = "21"
 androidTargetSdk = "35"
 androidxAppcompat = "1.7.0"
-androidxCoreKtx = "1.15.0"
+androidxCoreKtx = "1.16.0"
 androidxJunit = "1.2.1"
 androidxTest = "1.6.1"
 dokkaGradlePlugin = "2.0.0"
-gradle = "8.8.1"
+gradle = "8.8.2"
 jacocoAndroid = "0.2.1"
 junit = "4.13.2"
 kotlin = "2.1.10"
@@ -20,7 +20,7 @@ kotlinGradlePlugin = "2.1.10"
 mockitoInline = "5.2.0"
 mockitoKotlin = "2.2.0"
 secretsGradlePlugin = "2.0.1"
-org-jacoco-core = "0.8.12"
+org-jacoco-core = "0.8.13"
 
 [libraries]
 androidMapsUtils = { group = "com.google.maps.android", name = "android-maps-utils", version.ref = "androidMapsUtils" }
