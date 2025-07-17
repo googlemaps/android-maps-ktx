@@ -21,6 +21,7 @@ mockitoInline = "5.2.0"
 mockitoKotlin = "2.2.0"
 secretsGradlePlugin = "2.0.1"
 org-jacoco-core = "0.8.13"
+gradleMavenPublishPlugin = "0.34.0"
 
 [libraries]
 androidMapsUtils = { group = "com.google.maps.android", name = "android-maps-utils", version.ref = "androidMapsUtils" }
@@ -42,3 +43,4 @@ mockitoKotlin = { group = "com.nhaarman.mockitokotlin2", name = "mockito-kotlin"
 playServicesMaps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "androidMapsSdk" }
 secretsGradlePlugin = { module = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin", version.ref = "secretsGradlePlugin" }
 org-jacoco-core = { module = "org.jacoco:org.jacoco.core", version.ref = "org-jacoco-core" }
+gradle-maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "gradleMavenPublishPlugin" }
