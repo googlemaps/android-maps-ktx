@@ -19,12 +19,18 @@ package com.google.maps.android.ktx.demo
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.graphics.Insets
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -32,6 +38,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.collections.GroundOverlayManager
 import com.google.maps.android.collections.MarkerManager
@@ -42,6 +49,7 @@ import com.google.maps.android.data.geojson.GeoJsonLineStringStyle
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
 import com.google.maps.android.ktx.*
 import com.google.maps.android.ktx.demo.io.MyItemReader
+import com.google.maps.android.ktx.demo.model.CacheViewModel
 import com.google.maps.android.ktx.demo.model.MyItem
 import com.google.maps.android.ktx.model.cameraPosition
 import com.google.maps.android.ktx.utils.collection.addMarker
@@ -64,10 +72,19 @@ class MainActivity : AppCompatActivity() {
     private val sanFrancisco = LatLng( 37.7576, -122.4194)
     private var currentLocation = london
 
+    private val cacheViewModel: CacheViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         val isRestore = savedInstanceState != null
         setContentView(R.layout.activity_main)
+
+        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        val container = findViewById<ConstraintLayout>(R.id.main_container)
+        applyInsets(container)
 
         if (BuildConfig.MAPS_API_KEY.isEmpty()) {
             Toast.makeText(this, "Add your own API key in ./secrets.properties as MAPS_API_KEY=YOUR_API_KEY", Toast.LENGTH_LONG).show()
@@ -102,7 +119,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun addButtonClickListener(googleMap: GoogleMap) {
+    private fun addButtonClickListener(googleMap: GoogleMap) {
         findViewById<Button>(R.id.button_animate_camera).setOnClickListener {
             currentLocation = if (currentLocation == london) sanFrancisco else london
             lifecycleScope.launch {
@@ -243,7 +260,7 @@ class MainActivity : AppCompatActivity() {
             polygonManager = polygonManager,
             polylineManager = polylineManager,
             groundOverlayManager = groundOverlayManager,
-            imagesCache = getImagesCache()
+            imagesCache = cacheViewModel.imagesCache
         )
         kmlPolylineLayer.addLayerToMap()
         kmlPolylineLayer.setOnFeatureClickListener { feature ->
@@ -263,7 +280,7 @@ class MainActivity : AppCompatActivity() {
             polygonManager = polygonManager,
             polylineManager = polylineManager,
             groundOverlayManager = groundOverlayManager,
-            imagesCache = getImagesCache() // Alternately, you could remove this line to not use the cache
+            imagesCache = cacheViewModel.imagesCache // Alternately, you could remove this line to not use the cache
         )
         kmlPolygonLayer.addLayerToMap()
         kmlPolygonLayer.setOnFeatureClickListener { feature ->
@@ -293,15 +310,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Returns a cache that survives configuration changes
-     */
-    private fun getImagesCache(): ImagesCache? {
-        val retainFragment = RetainFragment.findOrCreateRetainFragment(supportFragmentManager)
-        return retainFragment.mImagesCache
-    }
-
     companion object {
         private val TAG = MainActivity::class.java.simpleName
+
+        fun applyInsets(container: View) {
+            ViewCompat.setOnApplyWindowInsetsListener(
+                container
+            ) { view, insets ->
+                val innerPadding =
+                    insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
+                view.setPadding(innerPadding.left, innerPadding.top, innerPadding.right, innerPadding.bottom)
+                insets
+            }
+        }
     }
 }
