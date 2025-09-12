@@ -1,29 +1,41 @@
 [versions]
+# --- Core Android & Kotlin ---
+# These are the fundamental versions for building the Android app.
+androidCompileSdk = "36"
 androidMinSdk = "21"
 androidTargetSdk = "36"
-androidCompileSdk = "36"
 
-androidMapsSdk = "19.2.0"
-androidMapsUtils = "3.19.0"
 androidxAppcompat = "1.7.1"
 androidxCoreKtx = "1.17.0"
 androidxActivityKtx = "1.11.0"
 lifecycleRuntimeKtx = "2.9.3"
+kotlin = "2.2.10"
+kotlinxCoroutines = "1.10.2"
+material = "1.13.0"
+
+# --- Google Maps ---
+# Versions for Google Play Services libraries, which are essential for this sample.
+androidMapsSdk = "19.2.0"
+androidMapsUtils = "3.17.0"
+
+# --- Testing ---
+# Versions for testing libraries.
 androidxJunit = "1.3.0"
 androidxTest = "1.7.0"
+junit = "4.13.2"
+mockito = "5.19.0"
+mockitoInline = "5.2.0"
+mockitoKotlin = "2.2.0"
+
+# --- Gradle Plugins ---
+# Versions for Gradle plugins used in the build process.
 agp = "8.13.0"
 dokkaGradlePlugin = "2.0.0"
 gradleMavenPublishPlugin = "0.34.0"
 jacocoAndroid = "0.2.1"
-junit = "4.13.2"
-kotlin = "2.2.20"
-kotlinxCoroutines = "1.10.2"
-material = "1.13.0"
-mockito = "5.19.0"
-mockitoInline = "5.2.0"
-mockitoKotlin = "2.2.0"
 secretsGradlePlugin = "2.0.1"
 org-jacoco-core = "0.8.13"
+
 
 [libraries]
 # --- Core Android & Kotlin ---
@@ -55,9 +67,8 @@ mockito-kotlin = { group = "com.nhaarman.mockitokotlin2", name = "mockito-kotlin
 
 # --- Gradle ---
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
-secrets-gradle-plugin = { module = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin", version.ref = "secretsGradlePlugin" }
 org-jacoco-core = { module = "org.jacoco:org.jacoco.core", version.ref = "org-jacoco-core" }
-jacoco-android = { module = "com.mxalbert.gradle:jacoco-android", version.ref = "jacocoAndroid" }
+
 
 [plugins]
 # --- Core Gradle Plugins ---
