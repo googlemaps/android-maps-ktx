@@ -9,7 +9,7 @@ androidxAppcompat = "1.7.1"
 androidxCoreKtx = "1.17.0"
 androidxActivityKtx = "1.11.0"
 lifecycleRuntimeKtx = "2.9.3"
-kotlin = "2.2.10"
+kotlin = "2.2.20"
 kotlinxCoroutines = "1.10.2"
 material = "1.13.0"
 
