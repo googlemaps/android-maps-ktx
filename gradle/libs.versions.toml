@@ -1,46 +1,85 @@
 [versions]
+# --- Core Android & Kotlin ---
+# These are the fundamental versions for building the Android app.
 androidCompileSdk = "36"
-androidMapsSdk = "19.2.0"
-androidMapsUtils = "3.14.0"
 androidMinSdk = "21"
 androidTargetSdk = "36"
+
 androidxAppcompat = "1.7.1"
-androidxCoreKtx = "1.16.0"
+androidxCoreKtx = "1.17.0"
+androidxActivityKtx = "1.11.0"
+lifecycleRuntimeKtx = "2.9.3"
+kotlin = "2.2.20"
+kotlinxCoroutines = "1.10.2"
+material = "1.13.0"
+
+# --- Google Maps ---
+# Versions for Google Play Services libraries, which are essential for this sample.
+androidMapsSdk = "19.2.0"
+androidMapsUtils = "3.17.0"
+
+# --- Testing ---
+# Versions for testing libraries.
 androidxJunit = "1.3.0"
 androidxTest = "1.7.0"
-dokkaGradlePlugin = "2.0.0"
-gradle = "8.12.0"
-jacocoAndroid = "0.2.1"
 junit = "4.13.2"
-kotlin = "2.2.0"
-kotlinxCoroutines = "1.10.2"
-lifecycleRuntimeKtx = "2.9.2"
-mockito = "5.18.0"
-kotlinGradlePlugin = "2.1.10"
+mockito = "5.19.0"
 mockitoInline = "5.2.0"
 mockitoKotlin = "2.2.0"
+
+# --- Gradle Plugins ---
+# Versions for Gradle plugins used in the build process.
+agp = "8.13.0"
+dokkaGradlePlugin = "2.0.0"
+gradleMavenPublishPlugin = "0.34.0"
+jacocoAndroid = "0.2.1"
+kotlinGradlePlugin = "2.1.10"
 secretsGradlePlugin = "2.0.1"
 org-jacoco-core = "0.8.13"
-gradleMavenPublishPlugin = "0.34.0"
+
 
 [libraries]
-androidMapsUtils = { group = "com.google.maps.android", name = "android-maps-utils", version.ref = "androidMapsUtils" }
-androidxAppcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppcompat" }
-androidxCoreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCoreKtx" }
-androidxTest = { group = "androidx.test", name = "core", version.ref = "androidxTest" }
-androidxJunit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
-dokkaGradlePlugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokkaGradlePlugin" }
-gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
-jacocoAndroid = { module = "com.mxalbert.gradle:jacoco-android", version.ref = "jacocoAndroid" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-kotlinGradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
-kotlinStdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk7", version.ref = "kotlin" }
-kotlinxCoroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
-lifecycleRuntimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
-mockito = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
-mockitoInline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoInline" }
-mockitoKotlin = { group = "com.nhaarman.mockitokotlin2", name = "mockito-kotlin", version.ref = "mockitoKotlin" }
-playServicesMaps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "androidMapsSdk" }
-secretsGradlePlugin = { module = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin", version.ref = "secretsGradlePlugin" }
-org-jacoco-core = { module = "org.jacoco:org.jacoco.core", version.ref = "org-jacoco-core" }
+# --- Core Android & Kotlin ---
+# These are the foundational libraries for building a modern Android application with Kotlin.
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppcompat" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCoreKtx" }
+androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidxActivityKtx" }
+kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk7", version.ref = "kotlin" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+dokka-gradle-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokkaGradlePlugin" }
 gradle-maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "gradleMavenPublishPlugin" }
+
+# --- Google Maps ---
+# These are the key libraries for this sample app, providing map and utility functionalities.
+android-maps-utils = { group = "com.google.maps.android", name = "android-maps-utils", version.ref = "androidMapsUtils" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "androidMapsSdk" }
+
+# --- Testing ---
+# Libraries for running unit tests (on the JVM) and instrumented tests (on an Android device/emulator).
+androidx-test = { group = "androidx.test", name = "core", version.ref = "androidxTest" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoInline" }
+mockito-kotlin = { group = "com.nhaarman.mockitokotlin2", name = "mockito-kotlin", version.ref = "mockitoKotlin" }
+
+# --- Gradle ---
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+org-jacoco-core = { module = "org.jacoco:org.jacoco.core", version.ref = "org-jacoco-core" }
+
+
+[plugins]
+# --- Core Gradle Plugins ---
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+# --- Utility Gradle Plugins ---
+# The secrets plugin is used to securely handle the Maps API key, preventing it from being checked into source control.
+secrets-gradle-plugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secretsGradlePlugin" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokkaGradlePlugin" }
+gradle-maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "gradleMavenPublishPlugin" }
+jacoco-android = { id = "com.mxalbert.gradle.jacoco-android", version.ref = "jacocoAndroid" }

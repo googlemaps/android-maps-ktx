@@ -1,5 +1,5 @@
 /**
- * Copyright 2024 Google Inc.
+ * Copyright 2025 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,13 @@
  * limitations under the License.
  */
 
-buildscript {
-
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath(libs.gradle)
-        classpath(libs.dokkaGradlePlugin)
-        classpath(libs.kotlinGradlePlugin)
-        classpath(libs.jacocoAndroid)
-        classpath(libs.secretsGradlePlugin)
-    }
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.dokka) apply false
+    alias(libs.plugins.gradle.maven.publish) apply false
+    alias(libs.plugins.jacoco.android) apply false
+    alias(libs.plugins.secrets.gradle.plugin) apply false
 }
 
 val projectArtifactId: (Project) -> String? = { project ->

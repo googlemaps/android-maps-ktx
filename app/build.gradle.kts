@@ -15,9 +15,9 @@
  */
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.secrets.gradle.plugin)
 }
 
 android {
@@ -59,10 +59,12 @@ android {
 }
 
 dependencies {
-    implementation(libs.kotlinStdlib)
-    implementation(libs.androidxAppcompat)
-    implementation(libs.androidxCoreKtx)
-    implementation(libs.lifecycleRuntimeKtx)
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.material)
+    implementation(libs.androidx.activity.ktx)
 
     // Instead of the lines below, regular apps would load these libraries from Maven according to
     // the README installation instructions

@@ -10,9 +10,9 @@ repositories {
 
 
 dependencies {
-    implementation(libs.kotlinGradlePlugin)
-    implementation(libs.gradle)
-    implementation(libs.dokkaGradlePlugin)
+    implementation(libs.kotlin.gradle.plugin)
+    implementation(libs.android.gradle.plugin)
+    implementation(libs.dokka.gradle.plugin)
     implementation(libs.org.jacoco.core)
     implementation(libs.gradle.maven.publish.plugin)
 }

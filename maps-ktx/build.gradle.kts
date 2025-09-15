@@ -16,8 +16,7 @@
  */
 
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
+    alias(libs.plugins.kotlin.android)
     id("android.maps.ktx.PublishingConventionPlugin")
 }
 
@@ -52,15 +51,15 @@ android {
 }
 
 dependencies {
-    implementation(libs.kotlinStdlib)
-    implementation(libs.kotlinxCoroutines)
-    api(libs.playServicesMaps)
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlinx.coroutines.android)
+    api(libs.play.services.maps)
 
     // Tests
-    testImplementation(libs.androidxTest)
-    testImplementation(libs.androidxJunit)
+    testImplementation(libs.androidx.test)
+    testImplementation(libs.androidx.junit)
     testImplementation(libs.junit)
-    testImplementation(libs.mockito)
-    testImplementation(libs.mockitoKotlin)
-    testImplementation(libs.mockitoInline)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.mockito.inline)
 }
