@@ -33,7 +33,7 @@ agp = "8.13.0"
 dokkaGradlePlugin = "2.0.0"
 gradleMavenPublishPlugin = "0.34.0"
 jacocoAndroid = "0.2.1"
-kotlinGradlePlugin = "2.1.10"
+kotlinGradlePlugin = "2.2.20"
 secretsGradlePlugin = "2.0.1"
 org-jacoco-core = "0.8.13"
 
