@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.google.maps.android.ktx</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../index.html">
+                    maps-ktx
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+5.2.0        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":maps-ktx:dokkaHtml/release">androidJvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":maps-ktx:dokkaHtml/release"
+                                       data-filter=":maps-ktx:dokkaHtml/release"/>
+                                <span class="checkbox--icon"></span>
+                                androidJvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    maps-ktx
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="maps-ktx::com.google.maps.android.ktx////PointingToDeclaration//-1013429845">
+  <div class="breadcrumbs"><a href="../../index.html">maps-ktx</a><span class="delimiter">/</span><span class="current">com.google.maps.android.ktx</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-1410429494%2FClasslikes%2F-1013429845" anchor-label="CameraEvent" id="-1410429494%2FClasslikes%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-camera-event/index.html"><span>Camera</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1410429494%2FClasslikes%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-camera-event/index.html">CameraEvent</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1765524162%2FClasslikes%2F-1013429845" anchor-label="CameraIdleEvent" id="-1765524162%2FClasslikes%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-camera-idle-event/index.html"><span>Camera</span><wbr></wbr><span>Idle</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1765524162%2FClasslikes%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-camera-idle-event/index.html">CameraIdleEvent</a> : <a href="-camera-event/index.html">CameraEvent</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-339035276%2FClasslikes%2F-1013429845" anchor-label="CameraMoveCanceledEvent" id="-339035276%2FClasslikes%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-camera-move-canceled-event/index.html"><span>Camera</span><wbr></wbr><span>Move</span><wbr></wbr><span>Canceled</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-339035276%2FClasslikes%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-camera-move-canceled-event/index.html">CameraMoveCanceledEvent</a> : <a href="-camera-event/index.html">CameraEvent</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1164632187%2FClasslikes%2F-1013429845" anchor-label="CameraMoveEvent" id="1164632187%2FClasslikes%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-camera-move-event/index.html"><span>Camera</span><wbr></wbr><span>Move</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1164632187%2FClasslikes%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-camera-move-event/index.html">CameraMoveEvent</a> : <a href="-camera-event/index.html">CameraEvent</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1265074796%2FClasslikes%2F-1013429845" anchor-label="CameraMoveStartedEvent" id="-1265074796%2FClasslikes%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-camera-move-started-event/index.html"><span>Camera</span><wbr></wbr><span>Move</span><wbr></wbr><span>Started</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1265074796%2FClasslikes%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-camera-move-started-event/index.html">CameraMoveStartedEvent</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>reason<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-camera-event/index.html">CameraEvent</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="817308185%2FClasslikes%2F-1013429845" anchor-label="IndoorBuildingFocusedEvent" id="817308185%2FClasslikes%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-indoor-building-focused-event/index.html"><span>Indoor</span><wbr></wbr><span>Building</span><wbr></wbr><span>Focused</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="817308185%2FClasslikes%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">object </span><a href="-indoor-building-focused-event/index.html">IndoorBuildingFocusedEvent</a> : <a href="-indoor-change-event/index.html">IndoorChangeEvent</a></div><div class="brief "><p class="paragraph">Change event when an indoor building is focused. See <span data-unresolved-link="com.google.android.gms.maps/GoogleMap.OnIndoorStateChangeListener/onIndoorBuildingFocused/#/PointingToDeclaration/">GoogleMap.OnIndoorStateChangeListener.onIndoorBuildingFocused</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-39998584%2FClasslikes%2F-1013429845" anchor-label="IndoorChangeEvent" id="-39998584%2FClasslikes%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-indoor-change-event/index.html"><span>Indoor</span><wbr></wbr><span>Change</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-39998584%2FClasslikes%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-indoor-change-event/index.html">IndoorChangeEvent</a></div><div class="brief "><p class="paragraph">Change event when the indoor state changes. See <span data-unresolved-link="com.google.android.gms.maps/GoogleMap.OnIndoorStateChangeListener///PointingToDeclaration/">GoogleMap.OnIndoorStateChangeListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1476890821%2FClasslikes%2F-1013429845" anchor-label="IndoorLevelActivatedEvent" id="1476890821%2FClasslikes%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-indoor-level-activated-event/index.html"><span>Indoor</span><wbr></wbr><span>Level</span><wbr></wbr><span>Activated</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1476890821%2FClasslikes%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-indoor-level-activated-event/index.html">IndoorLevelActivatedEvent</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>building<span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/IndoorBuilding///PointingToDeclaration/">IndoorBuilding</span></span></span><span class="token punctuation">)</span> : <a href="-indoor-change-event/index.html">IndoorChangeEvent</a></div><div class="brief "><p class="paragraph">Change event when an indoor level is activated. See <span data-unresolved-link="com.google.android.gms.maps/GoogleMap.OnIndoorStateChangeListener/onIndoorLevelActivated/#com.google.android.gms.maps.model.IndoorBuilding/PointingToDeclaration/">GoogleMap.OnIndoorStateChangeListener.onIndoorLevelActivated</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1000799064%2FClasslikes%2F-1013429845" anchor-label="MapsExperimentalFeature" id="-1000799064%2FClasslikes%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-maps-experimental-feature/index.html"><span>Maps</span><wbr></wbr><span>Experimental</span><wbr></wbr><span><span>Feature</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1000799064%2FClasslikes%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">annotation class </span><a href="-maps-experimental-feature/index.html">MapsExperimentalFeature</a></div><div class="brief "><p class="paragraph">Annotation for APIs that are experimental and require explicit opt-in annotation before use.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1111676554%2FClasslikes%2F-1013429845" anchor-label="MarkerDragEndEvent" id="-1111676554%2FClasslikes%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-marker-drag-end-event/index.html"><span>Marker</span><wbr></wbr><span>Drag</span><wbr></wbr><span>End</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1111676554%2FClasslikes%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-marker-drag-end-event/index.html">MarkerDragEndEvent</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>marker<span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/Marker///PointingToDeclaration/">Marker</span></span></span><span class="token punctuation">)</span> : <a href="-on-marker-drag-event/index.html">OnMarkerDragEvent</a></div><div class="brief "><p class="paragraph">Event emitted when a marker has finished being dragged.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1201065587%2FClasslikes%2F-1013429845" anchor-label="MarkerDragEvent" id="1201065587%2FClasslikes%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-marker-drag-event/index.html"><span>Marker</span><wbr></wbr><span>Drag</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1201065587%2FClasslikes%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-marker-drag-event/index.html">MarkerDragEvent</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>marker<span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/Marker///PointingToDeclaration/">Marker</span></span></span><span class="token punctuation">)</span> : <a href="-on-marker-drag-event/index.html">OnMarkerDragEvent</a></div><div class="brief "><p class="paragraph">Event emitted repeatedly while a marker is being dragged.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="660925%2FClasslikes%2F-1013429845" anchor-label="MarkerDragStartEvent" id="660925%2FClasslikes%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-marker-drag-start-event/index.html"><span>Marker</span><wbr></wbr><span>Drag</span><wbr></wbr><span>Start</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="660925%2FClasslikes%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-marker-drag-start-event/index.html">MarkerDragStartEvent</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>marker<span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/Marker///PointingToDeclaration/">Marker</span></span></span><span class="token punctuation">)</span> : <a href="-on-marker-drag-event/index.html">OnMarkerDragEvent</a></div><div class="brief "><p class="paragraph">Event emitted when a marker starts being dragged.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="380117195%2FClasslikes%2F-1013429845" anchor-label="MoveStartedReason" id="380117195%2FClasslikes%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-move-started-reason/index.html"><span>Move</span><wbr></wbr><span>Started</span><wbr></wbr><span><span>Reason</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="380117195%2FClasslikes%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">annotation class </span><a href="-move-started-reason/index.html">MoveStartedReason</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1794281970%2FClasslikes%2F-1013429845" anchor-label="OnMarkerDragEvent" id="1794281970%2FClasslikes%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-on-marker-drag-event/index.html"><span>On</span><wbr></wbr><span>Marker</span><wbr></wbr><span>Drag</span><wbr></wbr><span><span>Event</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1794281970%2FClasslikes%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-on-marker-drag-event/index.html">OnMarkerDragEvent</a></div><div class="brief "><p class="paragraph">Change event when a marker is dragged. See <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnMarkerDragListener/#com.google.android.gms.maps.GoogleMap.OnMarkerDragListener?/PointingToDeclaration/">GoogleMap.setOnMarkerDragListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="1301854578%2FFunctions%2F-1013429845" anchor-label="addCircle" id="1301854578%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-circle.html"><span>add</span><wbr></wbr><span><span>Circle</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1301854578%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="add-circle.html"><span class="token function">addCircle</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">optionsActions<span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/CircleOptions///PointingToDeclaration/">CircleOptions</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/Circle///PointingToDeclaration/">Circle</span></div><div class="brief "><p class="paragraph">Adds a <span data-unresolved-link="com.google.android.gms.maps.model/Circle///PointingToDeclaration/">Circle</span> to this <span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span> using the function literal with receiver <a href="add-circle.html">optionsActions</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-392268708%2FFunctions%2F-1013429845" anchor-label="addGroundOverlay" id="-392268708%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-ground-overlay.html"><span>add</span><wbr></wbr><span>Ground</span><wbr></wbr><span><span>Overlay</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-392268708%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="add-ground-overlay.html"><span class="token function">addGroundOverlay</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">optionsActions<span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/GroundOverlayOptions///PointingToDeclaration/">GroundOverlayOptions</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/GroundOverlay///PointingToDeclaration/">GroundOverlay</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Adds a <span data-unresolved-link="com.google.android.gms.maps.model/GroundOverlay///PointingToDeclaration/">GroundOverlay</span> to this <span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span> using the function literal with receiver <a href="add-ground-overlay.html">optionsActions</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1787623906%2FFunctions%2F-1013429845" anchor-label="addMarker" id="-1787623906%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-marker.html"><span>add</span><wbr></wbr><span><span>Marker</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1787623906%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="add-marker.html"><span class="token function">addMarker</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">optionsActions<span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/MarkerOptions///PointingToDeclaration/">MarkerOptions</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/Marker///PointingToDeclaration/">Marker</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Adds a <span data-unresolved-link="com.google.android.gms.maps.model/Marker///PointingToDeclaration/">Marker</span> to this <span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span> using the function literal with receiver <a href="add-marker.html">optionsActions</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1429024580%2FFunctions%2F-1013429845" anchor-label="addPolygon" id="-1429024580%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-polygon.html"><span>add</span><wbr></wbr><span><span>Polygon</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1429024580%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="add-polygon.html"><span class="token function">addPolygon</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">optionsActions<span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/PolygonOptions///PointingToDeclaration/">PolygonOptions</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/Polygon///PointingToDeclaration/">Polygon</span></div><div class="brief "><p class="paragraph">Adds a <span data-unresolved-link="com.google.android.gms.maps.model/Polygon///PointingToDeclaration/">Polygon</span> to this <span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span> using the function literal with receiver <a href="add-polygon.html">optionsActions</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-60305198%2FFunctions%2F-1013429845" anchor-label="addPolyline" id="-60305198%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-polyline.html"><span>add</span><wbr></wbr><span><span>Polyline</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-60305198%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="add-polyline.html"><span class="token function">addPolyline</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">optionsActions<span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/PolylineOptions///PointingToDeclaration/">PolylineOptions</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/Polyline///PointingToDeclaration/">Polyline</span></div><div class="brief "><p class="paragraph">Adds a <span data-unresolved-link="com.google.android.gms.maps.model/Polyline///PointingToDeclaration/">Polyline</span> to this <span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span> using the function literal with receiver <a href="add-polyline.html">optionsActions</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="359658556%2FFunctions%2F-1013429845" anchor-label="addTileOverlay" id="359658556%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="add-tile-overlay.html"><span>add</span><wbr></wbr><span>Tile</span><wbr></wbr><span><span>Overlay</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="359658556%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="add-tile-overlay.html"><span class="token function">addTileOverlay</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">optionsActions<span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/TileOverlayOptions///PointingToDeclaration/">TileOverlayOptions</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps.model/TileOverlay///PointingToDeclaration/">TileOverlay</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Adds a <span data-unresolved-link="com.google.android.gms.maps.model/TileOverlay///PointingToDeclaration/">TileOverlay</span> to this <span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span> using the function literal with receiver <a href="add-tile-overlay.html">optionsActions</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1854845770%2FFunctions%2F-1013429845" anchor-label="awaitAnimateCamera" id="-1854845770%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="await-animate-camera.html"><span>await</span><wbr></wbr><span>Animate</span><wbr></wbr><span><span>Camera</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1854845770%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">inline suspend </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="await-animate-camera.html"><span class="token function">awaitAnimateCamera</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">cameraUpdate<span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps/CameraUpdate///PointingToDeclaration/">CameraUpdate</span><span class="token punctuation">, </span></span><span class="parameter ">durationMs<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">3000</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A suspending function that awaits the completion of the <a href="await-animate-camera.html">cameraUpdate</a> animation.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1073944215%2FFunctions%2F-1013429845" anchor-label="awaitMap" id="1073944215%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="await-map.html"><span>await</span><wbr></wbr><span><span>Map</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1073944215%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">inline suspend </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/MapFragment///PointingToDeclaration/">MapFragment</span><span class="token punctuation">.</span><a href="await-map.html"><span class="token function">awaitMap</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span></div><div class="brief "><p class="paragraph">A suspending function that provides an instance of a <span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span> from this <span data-unresolved-link="com.google.android.gms.maps/MapFragment///PointingToDeclaration/">MapFragment</span>. This is an alternative to <span data-unresolved-link="com.google.android.gms.maps/MapFragment/getMapAsync/#com.google.android.gms.maps.OnMapReadyCallback/PointingToDeclaration/">MapFragment.getMapAsync</span> by using coroutines to obtain a <span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span>.</p></div><div class="symbol monospace"><span class="token keyword">inline suspend </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/MapView///PointingToDeclaration/">MapView</span><span class="token punctuation">.</span><a href="await-map.html"><span class="token function">awaitMap</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span></div><div class="brief "><p class="paragraph">A suspending function that provides an instance of <span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span> from this <span data-unresolved-link="com.google.android.gms.maps/MapView///PointingToDeclaration/">MapView</span>. This is an alternative to <span data-unresolved-link="com.google.android.gms.maps/MapView/getMapAsync/#com.google.android.gms.maps.OnMapReadyCallback/PointingToDeclaration/">MapView.getMapAsync</span> by using coroutines to obtain the <span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span>.</p></div><div class="symbol monospace"><span class="token keyword">inline suspend </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/SupportMapFragment///PointingToDeclaration/">SupportMapFragment</span><span class="token punctuation">.</span><a href="await-map.html"><span class="token function">awaitMap</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span></div><div class="brief "><p class="paragraph">A suspending function that provides an instance of a <span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span> from this <span data-unresolved-link="com.google.android.gms.maps/SupportMapFragment///PointingToDeclaration/">SupportMapFragment</span>. This is an alternative to using <span data-unresolved-link="com.google.android.gms.maps/SupportMapFragment/getMapAsync/#com.google.android.gms.maps.OnMapReadyCallback/PointingToDeclaration/">SupportMapFragment.getMapAsync</span> by using coroutines to obtain a <span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1512481856%2FFunctions%2F-1013429845" anchor-label="awaitMapLoad" id="1512481856%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="await-map-load.html"><span>await</span><wbr></wbr><span>Map</span><wbr></wbr><span><span>Load</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1512481856%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">inline suspend </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="await-map-load.html"><span class="token function">awaitMapLoad</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A suspending function that awaits for the map to be loaded. Uses <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnMapLoadedCallback/#com.google.android.gms.maps.GoogleMap.OnMapLoadedCallback?/PointingToDeclaration/">GoogleMap.setOnMapLoadedCallback</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="637018016%2FFunctions%2F-1013429845" anchor-label="awaitSnapshot" id="637018016%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="await-snapshot.html"><span>await</span><wbr></wbr><span><span>Snapshot</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="637018016%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">inline suspend </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="await-snapshot.html"><span class="token function">awaitSnapshot</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bitmap<span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html">Bitmap</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://developer.android.com/reference/kotlin/android/graphics/Bitmap.html">Bitmap</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">A suspending function that returns a bitmap snapshot of the current view of the map. Uses <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/snapshot/#com.google.android.gms.maps.GoogleMap.SnapshotReadyCallback/PointingToDeclaration/">GoogleMap.snapshot</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2029668077%2FFunctions%2F-1013429845" anchor-label="awaitStreetViewPanorama" id="-2029668077%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="await-street-view-panorama.html"><span>await</span><wbr></wbr><span>Street</span><wbr></wbr><span>View</span><wbr></wbr><span><span>Panorama</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2029668077%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">inline suspend </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/StreetViewPanoramaFragment///PointingToDeclaration/">StreetViewPanoramaFragment</span><span class="token punctuation">.</span><a href="await-street-view-panorama.html"><span class="token function">awaitStreetViewPanorama</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama///PointingToDeclaration/">StreetViewPanorama</span></div><div class="brief "><p class="paragraph">A suspending function that provides an instance of a <span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama///PointingToDeclaration/">StreetViewPanorama</span> from this <span data-unresolved-link="com.google.android.gms.maps/StreetViewPanoramaFragment///PointingToDeclaration/">StreetViewPanoramaFragment</span>. This is an alternative to using <span data-unresolved-link="com.google.android.gms.maps/StreetViewPanoramaFragment/getStreetViewPanoramaAsync/#com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback/PointingToDeclaration/">StreetViewPanoramaFragment.getStreetViewPanoramaAsync</span> by using coroutines to obtain a <span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama///PointingToDeclaration/">StreetViewPanorama</span>.</p></div><div class="symbol monospace"><span class="token keyword">inline suspend </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/StreetViewPanoramaView///PointingToDeclaration/">StreetViewPanoramaView</span><span class="token punctuation">.</span><a href="await-street-view-panorama.html"><span class="token function">awaitStreetViewPanorama</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama///PointingToDeclaration/">StreetViewPanorama</span></div><div class="brief "><p class="paragraph">A suspending function that provides an instance of a <span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama///PointingToDeclaration/">StreetViewPanorama</span> from this <span data-unresolved-link="com.google.android.gms.maps/StreetViewPanoramaView///PointingToDeclaration/">StreetViewPanoramaView</span>. This is an alternative to using <span data-unresolved-link="com.google.android.gms.maps/StreetViewPanoramaView/getStreetViewPanoramaAsync/#com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback/PointingToDeclaration/">StreetViewPanoramaView.getStreetViewPanoramaAsync</span> by using coroutines to obtain a <span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama///PointingToDeclaration/">StreetViewPanorama</span>.</p></div><div class="symbol monospace"><span class="token keyword">inline suspend </span><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/SupportStreetViewPanoramaFragment///PointingToDeclaration/">SupportStreetViewPanoramaFragment</span><span class="token punctuation">.</span><a href="await-street-view-panorama.html"><span class="token function">awaitStreetViewPanorama</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama///PointingToDeclaration/">StreetViewPanorama</span></div><div class="brief "><p class="paragraph">A suspending function that provides an instance of a <span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama///PointingToDeclaration/">StreetViewPanorama</span> from this <span data-unresolved-link="com.google.android.gms.maps/SupportStreetViewPanoramaFragment///PointingToDeclaration/">SupportStreetViewPanoramaFragment</span>. This is an alternative to using <span data-unresolved-link="com.google.android.gms.maps/SupportStreetViewPanoramaFragment/getStreetViewPanoramaAsync/#com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback/PointingToDeclaration/">SupportStreetViewPanoramaFragment.getStreetViewPanoramaAsync</span> by using coroutines to obtain a <span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama///PointingToDeclaration/">StreetViewPanorama</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1596951702%2FFunctions%2F-1013429845" anchor-label="buildGoogleMapOptions" id="1596951702%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="build-google-map-options.html"><span>build</span><wbr></wbr><span>Google</span><wbr></wbr><span>Map</span><wbr></wbr><span><span>Options</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1596951702%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><a href="build-google-map-options.html"><span class="token function">buildGoogleMapOptions</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">optionsActions<span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMapOptions///PointingToDeclaration/">GoogleMapOptions</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMapOptions///PointingToDeclaration/">GoogleMapOptions</span></div><div class="brief "><p class="paragraph">Builds a new <span data-unresolved-link="com.google.android.gms.maps/GoogleMapOptions///PointingToDeclaration/">GoogleMapOptions</span> using the provided <a href="build-google-map-options.html">optionsActions</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1618743802%2FFunctions%2F-1013429845" anchor-label="cameraChangeEvents" id="1618743802%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="camera-change-events.html"><span>camera</span><wbr></wbr><span>Change</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1618743802%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama///PointingToDeclaration/">StreetViewPanorama</span><span class="token punctuation">.</span><a href="camera-change-events.html"><span class="token function">cameraChangeEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/StreetViewPanoramaCamera///PointingToDeclaration/">StreetViewPanoramaCamera</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when the street view panorama camera changes. Using this to observe panorama camera change events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama/setOnStreetViewPanoramaCameraChangeListener/#com.google.android.gms.maps.StreetViewPanorama.OnStreetViewPanoramaCameraChangeListener?/PointingToDeclaration/">StreetViewPanorama.setOnStreetViewPanoramaCameraChangeListener</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="762644274%2FFunctions%2F-1013429845" anchor-label="cameraEvents" id="762644274%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="camera-events.html"><span>camera</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="762644274%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="camera-events.html"><span class="token function"><strike>cameraEvents</strike></span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="-camera-event/index.html">CameraEvent</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a <span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span> of <a href="-camera-event/index.html">CameraEvent</a> items so that camera movements can be observed. Using this to observe camera events will set listeners and thus override existing listeners to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnCameraIdleListener/#com.google.android.gms.maps.GoogleMap.OnCameraIdleListener?/PointingToDeclaration/">GoogleMap.setOnCameraIdleListener</span>, <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnCameraMoveCanceledListener/#com.google.android.gms.maps.GoogleMap.OnCameraMoveCanceledListener?/PointingToDeclaration/">GoogleMap.setOnCameraMoveCanceledListener</span>, <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnCameraMoveListener/#com.google.android.gms.maps.GoogleMap.OnCameraMoveListener?/PointingToDeclaration/">GoogleMap.setOnCameraMoveListener</span> and <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnCameraMoveStartedListener/#com.google.android.gms.maps.GoogleMap.OnCameraMoveStartedListener?/PointingToDeclaration/">GoogleMap.setOnCameraMoveStartedListener</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="675974694%2FFunctions%2F-1013429845" anchor-label="cameraIdleEvents" id="675974694%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="camera-idle-events.html"><span>camera</span><wbr></wbr><span>Idle</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="675974694%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="camera-idle-events.html"><span class="token function">cameraIdleEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when the camera is idle. Using this to observe camera idle events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnCameraIdleListener/#com.google.android.gms.maps.GoogleMap.OnCameraIdleListener?/PointingToDeclaration/">GoogleMap.setOnCameraIdleListener</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1318383396%2FFunctions%2F-1013429845" anchor-label="cameraMoveCanceledEvents" id="-1318383396%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="camera-move-canceled-events.html"><span>camera</span><wbr></wbr><span>Move</span><wbr></wbr><span>Canceled</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1318383396%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="camera-move-canceled-events.html"><span class="token function">cameraMoveCanceledEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when a camera move is canceled. Using this to observe camera move cancel events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnCameraMoveCanceledListener/#com.google.android.gms.maps.GoogleMap.OnCameraMoveCanceledListener?/PointingToDeclaration/">GoogleMap.setOnCameraMoveCanceledListener</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="756669347%2FFunctions%2F-1013429845" anchor-label="cameraMoveEvents" id="756669347%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="camera-move-events.html"><span>camera</span><wbr></wbr><span>Move</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="756669347%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="camera-move-events.html"><span class="token function">cameraMoveEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when the camera moves. Using this to observe camera move events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnCameraMoveListener/#com.google.android.gms.maps.GoogleMap.OnCameraMoveListener?/PointingToDeclaration/">GoogleMap.setOnCameraMoveListener</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-327486794%2FFunctions%2F-1013429845" anchor-label="cameraMoveStartedEvents" id="-327486794%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="camera-move-started-events.html"><span>camera</span><wbr></wbr><span>Move</span><wbr></wbr><span>Started</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-327486794%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="camera-move-started-events.html"><span class="token function">cameraMoveStartedEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when a camera move started. Using this to observe camera move start events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnCameraMoveStartedListener/#com.google.android.gms.maps.GoogleMap.OnCameraMoveStartedListener?/PointingToDeclaration/">GoogleMap.setOnCameraMoveStartedListener</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1282321249%2FFunctions%2F-1013429845" anchor-label="changeEvents" id="-1282321249%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="change-events.html"><span>change</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1282321249%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama///PointingToDeclaration/">StreetViewPanorama</span><span class="token punctuation">.</span><a href="change-events.html"><span class="token function">changeEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/StreetViewPanoramaLocation///PointingToDeclaration/">StreetViewPanoramaLocation</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when the street view panorama loads a new panorama. Using this to observe panorama load change events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama/setOnStreetViewPanoramaChangeListener/#com.google.android.gms.maps.StreetViewPanorama.OnStreetViewPanoramaChangeListener?/PointingToDeclaration/">StreetViewPanorama.setOnStreetViewPanoramaChangeListener</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-842270973%2FFunctions%2F-1013429845" anchor-label="circleClickEvents" id="-842270973%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="circle-click-events.html"><span>circle</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-842270973%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="circle-click-events.html"><span class="token function">circleClickEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/Circle///PointingToDeclaration/">Circle</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when a circle is clicked. Using this to observe circle clicks events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnCircleClickListener/#com.google.android.gms.maps.GoogleMap.OnCircleClickListener?/PointingToDeclaration/">GoogleMap.setOnCircleClickListener</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1045641623%2FFunctions%2F-1013429845" anchor-label="clickEvents" id="-1045641623%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="click-events.html"><span>click</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1045641623%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama///PointingToDeclaration/">StreetViewPanorama</span><span class="token punctuation">.</span><a href="click-events.html"><span class="token function">clickEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/StreetViewPanoramaOrientation///PointingToDeclaration/">StreetViewPanoramaOrientation</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when the street view panorama is clicked. Using this to observe panorama click events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama/setOnStreetViewPanoramaClickListener/#com.google.android.gms.maps.StreetViewPanorama.OnStreetViewPanoramaClickListener?/PointingToDeclaration/">StreetViewPanorama.setOnStreetViewPanoramaClickListener</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1133669306%2FFunctions%2F-1013429845" anchor-label="groundOverlayClicks" id="-1133669306%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="ground-overlay-clicks.html"><span>ground</span><wbr></wbr><span>Overlay</span><wbr></wbr><span><span>Clicks</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1133669306%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="ground-overlay-clicks.html"><span class="token function">groundOverlayClicks</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/GroundOverlay///PointingToDeclaration/">GroundOverlay</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when a ground overlay is clicked. Using this to observe ground overlay clicks events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnGroundOverlayClickListener/#com.google.android.gms.maps.GoogleMap.OnGroundOverlayClickListener?/PointingToDeclaration/">GoogleMap.setOnGroundOverlayClickListener</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-759268999%2FFunctions%2F-1013429845" anchor-label="indoorStateChangeEvents" id="-759268999%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="indoor-state-change-events.html"><span>indoor</span><wbr></wbr><span>State</span><wbr></wbr><span>Change</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-759268999%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="indoor-state-change-events.html"><span class="token function">indoorStateChangeEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="-indoor-change-event/index.html">IndoorChangeEvent</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when the indoor state changes. Using this to observe indoor state change events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnIndoorStateChangeListener/#com.google.android.gms.maps.GoogleMap.OnIndoorStateChangeListener?/PointingToDeclaration/">GoogleMap.setOnIndoorStateChangeListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1913768491%2FFunctions%2F-1013429845" anchor-label="infoWindowClickEvents" id="-1913768491%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="info-window-click-events.html"><span>info</span><wbr></wbr><span>Window</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1913768491%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="info-window-click-events.html"><span class="token function">infoWindowClickEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/Marker///PointingToDeclaration/">Marker</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when a marker's info window is clicked. Using this to observe info info window clicks will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnInfoWindowClickListener/#com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener?/PointingToDeclaration/">GoogleMap.setOnInfoWindowClickListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-955181499%2FFunctions%2F-1013429845" anchor-label="infoWindowCloseEvents" id="-955181499%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="info-window-close-events.html"><span>info</span><wbr></wbr><span>Window</span><wbr></wbr><span>Close</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-955181499%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="info-window-close-events.html"><span class="token function">infoWindowCloseEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/Marker///PointingToDeclaration/">Marker</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when a marker's info window is closed. Using this to observe info window closes will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnInfoWindowCloseListener/#com.google.android.gms.maps.GoogleMap.OnInfoWindowCloseListener?/PointingToDeclaration/">GoogleMap.setOnInfoWindowCloseListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1029931577%2FFunctions%2F-1013429845" anchor-label="infoWindowLongClickEvents" id="1029931577%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="info-window-long-click-events.html"><span>info</span><wbr></wbr><span>Window</span><wbr></wbr><span>Long</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1029931577%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="info-window-long-click-events.html"><span class="token function">infoWindowLongClickEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/Marker///PointingToDeclaration/">Marker</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when a marker's info window is long pressed. Using this to observe info window long presses will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnInfoWindowLongClickListener/#com.google.android.gms.maps.GoogleMap.OnInfoWindowLongClickListener?/PointingToDeclaration/">GoogleMap.setOnInfoWindowLongClickListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1861932667%2FFunctions%2F-1013429845" anchor-label="longClickEvents" id="-1861932667%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="long-click-events.html"><span>long</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1861932667%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama///PointingToDeclaration/">StreetViewPanorama</span><span class="token punctuation">.</span><a href="long-click-events.html"><span class="token function">longClickEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/StreetViewPanoramaOrientation///PointingToDeclaration/">StreetViewPanoramaOrientation</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when the street view panorama is long clicked. Using this to observe panorama long click events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/StreetViewPanorama/setOnStreetViewPanoramaLongClickListener/#com.google.android.gms.maps.StreetViewPanorama.OnStreetViewPanoramaLongClickListener?/PointingToDeclaration/">StreetViewPanorama.setOnStreetViewPanoramaLongClickListener</span>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-362129959%2FFunctions%2F-1013429845" anchor-label="mapClickEvents" id="-362129959%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="map-click-events.html"><span>map</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-362129959%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="map-click-events.html"><span class="token function">mapClickEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/LatLng///PointingToDeclaration/">LatLng</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when the map is clicked. Using this to observe map click events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnMapClickListener/#com.google.android.gms.maps.GoogleMap.OnMapClickListener?/PointingToDeclaration/">GoogleMap.setOnMapClickListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1089994691%2FFunctions%2F-1013429845" anchor-label="mapLongClickEvents" id="-1089994691%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="map-long-click-events.html"><span>map</span><wbr></wbr><span>Long</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1089994691%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="map-long-click-events.html"><span class="token function">mapLongClickEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/LatLng///PointingToDeclaration/">LatLng</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when the map is long clicked. Using this to observe map click events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnMapLongClickListener/#com.google.android.gms.maps.GoogleMap.OnMapLongClickListener?/PointingToDeclaration/">GoogleMap.setOnMapLongClickListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1275930329%2FFunctions%2F-1013429845" anchor-label="markerClickEvents" id="1275930329%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="marker-click-events.html"><span>marker</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1275930329%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="marker-click-events.html"><span class="token function">markerClickEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/Marker///PointingToDeclaration/">Marker</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when a marker on the map is clicked. Using this to observe marker click events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnMarkerClickListener/#com.google.android.gms.maps.GoogleMap.OnMarkerClickListener?/PointingToDeclaration/">GoogleMap.setOnMarkerClickListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-723808357%2FFunctions%2F-1013429845" anchor-label="markerDragEvents" id="-723808357%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="marker-drag-events.html"><span>marker</span><wbr></wbr><span>Drag</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-723808357%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="marker-drag-events.html"><span class="token function">markerDragEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="-on-marker-drag-event/index.html">OnMarkerDragEvent</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when a marker is dragged. Using this to observer marker drag events will override existing listeners (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnMarkerDragListener/#com.google.android.gms.maps.GoogleMap.OnMarkerDragListener?/PointingToDeclaration/">GoogleMap.setOnMarkerDragListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1281831008%2FFunctions%2F-1013429845" anchor-label="myLocationButtonClickEvents" id="1281831008%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-location-button-click-events.html"><span>my</span><wbr></wbr><span>Location</span><wbr></wbr><span>Button</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1281831008%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="my-location-button-click-events.html"><span class="token function">myLocationButtonClickEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when the my location button is clicked. Using this to observe my location button click events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnMyLocationButtonClickListener/#com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener?/PointingToDeclaration/">GoogleMap.setOnMyLocationButtonClickListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1348244978%2FFunctions%2F-1013429845" anchor-label="myLocationClickEvents" id="1348244978%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="my-location-click-events.html"><span>my</span><wbr></wbr><span>Location</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1348244978%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="my-location-click-events.html"><span class="token function">myLocationClickEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><a href="https://developer.android.com/reference/kotlin/android/location/Location.html">Location</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when the my location blue dot is clicked. Using this to observe my location blue dot click events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnMyLocationClickListener/#com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener?/PointingToDeclaration/">GoogleMap.setOnMyLocationClickListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-887135061%2FFunctions%2F-1013429845" anchor-label="poiClickEvents" id="-887135061%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="poi-click-events.html"><span>poi</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-887135061%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="poi-click-events.html"><span class="token function">poiClickEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/PointOfInterest///PointingToDeclaration/">PointOfInterest</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when a PointOfInterest is clicked. Using this to observe PointOfInterest click events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnPoiClickListener/#com.google.android.gms.maps.GoogleMap.OnPoiClickListener?/PointingToDeclaration/">GoogleMap.setOnPoiClickListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1500583739%2FFunctions%2F-1013429845" anchor-label="polygonClickEvents" id="1500583739%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="polygon-click-events.html"><span>polygon</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1500583739%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="polygon-click-events.html"><span class="token function">polygonClickEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/Polygon///PointingToDeclaration/">Polygon</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when a Polygon is clicked. Using this to observe Polygon click events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnPolygonClickListener/#com.google.android.gms.maps.GoogleMap.OnPolygonClickListener?/PointingToDeclaration/">GoogleMap.setOnPolygonClickListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="630352979%2FFunctions%2F-1013429845" anchor-label="polylineClickEvents" id="630352979%2FFunctions%2F-1013429845" data-filterable-set=":maps-ktx:dokkaHtml/release"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":maps-ktx:dokkaHtml/release" data-filterable-set=":maps-ktx:dokkaHtml/release">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="polyline-click-events.html"><span>polyline</span><wbr></wbr><span>Click</span><wbr></wbr><span><span>Events</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="630352979%2FFunctions%2F-1013429845"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":maps-ktx:dokkaHtml/release"><div class="symbol monospace"><span class="token keyword">fun </span><span data-unresolved-link="com.google.android.gms.maps/GoogleMap///PointingToDeclaration/">GoogleMap</span><span class="token punctuation">.</span><a href="polyline-click-events.html"><span class="token function">polylineClickEvents</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines.flow/Flow///PointingToDeclaration/">Flow</span><span class="token operator">&lt;</span><span data-unresolved-link="com.google.android.gms.maps.model/Polyline///PointingToDeclaration/">Polyline</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Returns a flow that emits when a Polyline is clicked. Using this to observe Polyline click events will override an existing listener (if any) to <span data-unresolved-link="com.google.android.gms.maps/GoogleMap/setOnPolylineClickListener/#com.google.android.gms.maps.GoogleMap.OnPolylineClickListener?/PointingToDeclaration/">GoogleMap.setOnPolylineClickListener</span></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
