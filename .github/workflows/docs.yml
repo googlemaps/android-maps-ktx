@@ -43,8 +43,8 @@ jobs:
         ./gradlew dokkaHtml
 
         echo "Creating tar for generated docs"
-        cd $GITHUB_WORKSPACE/maps-utils-ktx/build/documentation && tar cvf ~/maps-utils-docs.tar .
-        cd $GITHUB_WORKSPACE/maps-ktx/build/documentation && tar cvf ~/maps-docs.tar .
+        cd $GITHUB_WORKSPACE/maps-utils-ktx/build/dokka && tar cvf ~/maps-utils-docs.tar .
+        cd $GITHUB_WORKSPACE/maps-ktx/build/dokka && tar cvf ~/maps-docs.tar .
 
         echo "Unpacking tar into gh-pages branch"
         git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
