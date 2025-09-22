@@ -16,7 +16,7 @@ material = "1.13.0"
 # --- Google Maps ---
 # Versions for Google Play Services libraries, which are essential for this sample.
 androidMapsSdk = "19.2.0"
-androidMapsUtils = "3.17.0"
+androidMapsUtils = "3.19.0"
 
 # --- Testing ---
 # Versions for testing libraries.
