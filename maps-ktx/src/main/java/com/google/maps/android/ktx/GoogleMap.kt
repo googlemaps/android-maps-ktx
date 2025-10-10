@@ -44,7 +44,7 @@ public sealed class CameraEvent
 public object CameraIdleEvent : CameraEvent()
 public object CameraMoveCanceledEvent : CameraEvent()
 public object CameraMoveEvent : CameraEvent()
-public data class CameraMoveStartedEvent(@MoveStartedReason val reason: Int) : CameraEvent()
+public data class CameraMoveStartedEvent(@param:MoveStartedReason val reason: Int) : CameraEvent()
 
 /**
  * Change event when a marker is dragged. See [GoogleMap.setOnMarkerDragListener]

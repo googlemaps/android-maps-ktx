@@ -9,3 +9,4 @@ project.properties
 secure.properties
 secrets.properties
 .DS_Store
+.kotlin/

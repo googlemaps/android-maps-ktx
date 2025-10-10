@@ -22,7 +22,7 @@ plugins {
 
 android {
     lint {
-        sarifOutput = file("$buildDir/reports/lint-results.sarif")
+        sarifOutput = file("${layout.buildDirectory.get()}/reports/lint-results.sarif")
     }
 
     compileSdk = libs.versions.androidCompileSdk.get().toInt()
@@ -51,8 +51,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8)
+        }
     }
 
     namespace = "com.google.maps.android.ktx.demo"
