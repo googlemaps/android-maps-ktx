@@ -19,7 +19,6 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.dokka) apply false
     alias(libs.plugins.gradle.maven.publish) apply false
-    alias(libs.plugins.jacoco.android) apply false
     alias(libs.plugins.secrets.gradle.plugin) apply false
 }
 

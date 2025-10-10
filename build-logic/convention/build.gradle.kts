@@ -13,8 +13,8 @@ dependencies {
     implementation(libs.kotlin.gradle.plugin)
     implementation(libs.android.gradle.plugin)
     implementation(libs.dokka.gradle.plugin)
-    implementation(libs.org.jacoco.core)
     implementation(libs.gradle.maven.publish.plugin)
+    implementation(libs.jacoco.android.gradle.plugin)
 }
 
 gradlePlugin {

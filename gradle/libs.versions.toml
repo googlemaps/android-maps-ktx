@@ -32,9 +32,8 @@ mockitoKotlin = "2.2.0"
 agp = "8.13.0"
 dokkaGradlePlugin = "2.0.0"
 gradleMavenPublishPlugin = "0.34.0"
-jacocoAndroid = "0.2.1"
+jacocoAndroidGradlePlugin = "0.2.1"
 secretsGradlePlugin = "2.0.1"
-org-jacoco-core = "0.8.13"
 
 
 [libraries]
@@ -46,10 +45,12 @@ androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", ve
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk7", version.ref = "kotlin" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 dokka-gradle-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokkaGradlePlugin" }
 gradle-maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "gradleMavenPublishPlugin" }
+jacoco-android-gradle-plugin = { module = "com.mxalbert.gradle:jacoco-android", version.ref = "jacocoAndroidGradlePlugin" }
 
 # --- Google Maps ---
 # These are the key libraries for this sample app, providing map and utility functionalities.
@@ -67,13 +68,11 @@ mockito-kotlin = { group = "com.nhaarman.mockitokotlin2", name = "mockito-kotlin
 
 # --- Gradle ---
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
-org-jacoco-core = { module = "org.jacoco:org.jacoco.core", version.ref = "org-jacoco-core" }
 
 
 [plugins]
 # --- Core Gradle Plugins ---
 android-application = { id = "com.android.application", version.ref = "agp" }
-android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
 # --- Utility Gradle Plugins ---
@@ -81,4 +80,3 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 secrets-gradle-plugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "secretsGradlePlugin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokkaGradlePlugin" }
 gradle-maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "gradleMavenPublishPlugin" }
-jacoco-android = { id = "com.mxalbert.gradle.jacoco-android", version.ref = "jacocoAndroid" }
