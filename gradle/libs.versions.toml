@@ -30,7 +30,7 @@ mockitoKotlin = "2.2.0"
 # --- Gradle Plugins ---
 # Versions for Gradle plugins used in the build process.
 agp = "8.13.0"
-dokkaGradlePlugin = "2.0.0"
+dokkaGradlePlugin = "2.1.0"
 gradleMavenPublishPlugin = "0.34.0"
 jacocoAndroidGradlePlugin = "0.2.1"
 secretsGradlePlugin = "2.0.1"
