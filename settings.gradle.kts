@@ -19,3 +19,4 @@ rootProject.name = "android-maps-ktx"
 include(":app")
 include(":maps-ktx")
 include(":maps-utils-ktx")
+include(":docs")
