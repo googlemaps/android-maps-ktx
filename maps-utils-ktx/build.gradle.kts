@@ -17,6 +17,7 @@
 plugins {
     alias(libs.plugins.kotlin.android)
     id("android.maps.ktx.PublishingConventionPlugin")
+    id("org.jetbrains.dokka")
 }
 
 android {

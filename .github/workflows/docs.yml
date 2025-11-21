@@ -40,15 +40,14 @@ jobs:
     # Run dokka and create tar
     - name: Generate documentation
       run: |
-        ./gradlew dokkaHtml
+        ./gradlew docs:dokkaGenerate
 
-        echo "Creating tar for generated docs"
-        cd $GITHUB_WORKSPACE/maps-utils-ktx/build/dokka && tar cvf ~/maps-utils-docs.tar .
-        cd $GITHUB_WORKSPACE/maps-ktx/build/dokka && tar cvf ~/maps-docs.tar .
+        echo "Creating tar for generated docs"      
+        cd $GITHUB_WORKSPACE/docs/build/dokka/html && tar cvf ~/maps-docs.tar .
 
         echo "Unpacking tar into gh-pages branch"
         git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
-        cd $GITHUB_WORKSPACE && git checkout gh-pages && tar xvf ~/maps-docs.tar && tar xvf ~/maps-utils-docs.tar
+        cd $GITHUB_WORKSPACE && git checkout gh-pages && tar xvf ~/maps-docs.tar
 
     # Commit changes and create a PR
     - name: PR Changes
@@ -63,5 +62,5 @@ jobs:
           automerge
         title: 'docs: Update docs'
         body: |
-            Updated GitHub pages with latest from `./gradlew dokka`.
+            Updated GitHub pages with latest from `./gradlew docs:dokkaGenerate`.
         branch: googlemaps-bot/update_gh_pages
