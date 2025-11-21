@@ -7,6 +7,7 @@ androidTargetSdk = "36"
 
 androidxAppcompat = "1.7.1"
 androidxCoreKtx = "1.17.0"
+# Increasing androidxActivityKtx or lifecycleRuntimeKtx will require us to upgrade the minSdk
 androidxActivityKtx = "1.11.0"
 lifecycleRuntimeKtx = "2.9.4"
 kotlin = "2.2.21"
