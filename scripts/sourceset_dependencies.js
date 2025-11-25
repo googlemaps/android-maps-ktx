@@ -1,1 +1,1 @@
-sourceset_dependencies='{":maps-utils-ktx:dokkaHtml/debug":[],":maps-utils-ktx:dokkaHtml/main":[],":maps-utils-ktx:dokkaHtml/release":[]}'
+sourceset_dependencies = '{":maps-utils-ktx/debug":[],":maps-utils-ktx/main":[],":maps-utils-ktx/release":[],":maps-ktx/debug":[],":maps-ktx/main":[],":maps-ktx/release":[]}'

@@ -1,0 +1,13 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+
+module:maps-ktx
+com.google.maps.android.ktx
+com.google.maps.android.ktx.model
+module:maps-utils-ktx
+com.google.maps.android.ktx.utils
+com.google.maps.android.ktx.utils.collection
+com.google.maps.android.ktx.utils.geojson
+com.google.maps.android.ktx.utils.geometry
+com.google.maps.android.ktx.utils.heatmaps
+com.google.maps.android.ktx.utils.kml
