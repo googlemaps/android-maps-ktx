@@ -17,7 +17,7 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false
-    alias(libs.plugins.dokka) apply false
+    id("org.jetbrains.dokka") version "2.1.0"
     alias(libs.plugins.gradle.maven.publish) apply false
     alias(libs.plugins.secrets.gradle.plugin) apply false
 }
@@ -38,8 +38,4 @@ allprojects {
     group = "com.google.maps.android"
     version = "5.2.1"
     val projectArtifactId by extra { project.name }
-}
-
-tasks.register<Delete>("clean") {
-    delete(rootProject.buildDir)
 }
