@@ -10,3 +10,7 @@ secure.properties
 secrets.properties
 .DS_Store
 .kotlin/
+
+# This covers new IDEs, like Antigravity
+.vscode/
+**/bin/
