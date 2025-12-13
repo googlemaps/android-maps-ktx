@@ -28,7 +28,7 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
     - name: Checkout
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with:
         token: ${{ secrets.SYNCED_GITHUB_TOKEN_REPO }}
     - uses: gradle/actions/wrapper-validation@v5
