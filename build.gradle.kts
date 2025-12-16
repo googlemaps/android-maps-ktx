@@ -36,6 +36,6 @@ val projectArtifactId: (Project) -> String? = { project ->
 
 allprojects {
     group = "com.google.maps.android"
-    version = "5.2.1"
+    version = providers.gradleProperty("version").get()
     val projectArtifactId by extra { project.name }
 }

@@ -1,0 +1,15 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "simple",
+      "package-name": "android-maps-ktx",
+      "version-file": "gradle.properties",
+      "extra-files": [
+        {
+          "type": "properties",
+          "path": "gradle.properties"
+        }
+      ]
+    }
+  }
+}
