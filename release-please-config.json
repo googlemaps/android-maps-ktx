@@ -2,12 +2,7 @@
   "packages": {
     ".": {
       "release-type": "simple",
-      "version-file": "gradle.properties",
       "extra-files": [
-        {
-          "type": "properties",
-          "path": "gradle.properties"
-        },
         "README.md"
       ]
     }
