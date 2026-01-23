@@ -80,5 +80,12 @@ secrets {
     // 2. Add this line, where YOUR_API_KEY is your API key:
     //        MAPS_API_KEY=YOUR_API_KEY
     propertiesFileName = "secrets.properties"
-    defaultPropertiesFileName = "secrets.defaults.properties"
+    defaultPropertiesFileName ="local.defaults.properties"
+}
+
+tasks.register<Exec>("installAndLaunch") {
+    description = "Installs and launches the demo app."
+    group = "install"
+    dependsOn("installDebug")
+    commandLine("adb", "shell", "am", "start", "-n", "com.google.maps.android.ktx.demo/.MainActivity")
 }

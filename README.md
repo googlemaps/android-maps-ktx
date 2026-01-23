@@ -22,7 +22,7 @@ It enables you to write more concise, idiomatic Kotlin. Each set of extensions c
 - [Sign up with Google Maps Platform]
 - A Google Maps Platform [project] with the **Maps SDK for Android** enabled
 - An [API key] associated with the project above
-- Android API level 21+
+- Android API level 23+
 - Kotlin-enabled project
 - Kotlin coroutines
 
@@ -38,6 +38,18 @@ dependencies {
     implementation 'com.google.maps.android:maps-utils-ktx:5.2.2' // {x-release-please-version}
 }
 ```
+## Internal usage attribution ID
+
+This library incorporates an internal usage attribution ID to help the Google Maps Platform team better understand library usage and guide future development. This ID is generated during the build process and is automatically registered using `androidx.startup`.
+
+If you wish to opt-out of this attribution, you can do so by removing the `InitializationProvider` from your app's manifest:
+
+```xml
+<provider
+    android:name="androidx.startup.InitializationProvider"
+    android:authorities="${applicationId}.androidx-startup"
+    tools:node="remove" />
+```
 
 ## Usage
 
@@ -47,7 +59,7 @@ With this KTX library, you should be able to take advantage of several Kotlin la
 
 <img src="https://developers.google.com/maps/documentation/android-sdk/images/utility-multilayer.png" width="150" align=right>
 
-This repository includes a [demo app](app) that illustrates the use of this KTX library.
+This repository includes a [demo app](app) that illustrates the use of this KTX library. See [MainActivity.kt](app/src/main/java/com/google/maps/android/ktx/demo/MainActivity.kt) for usage examples.
 
 To run the demo app, you'll have to:
 
@@ -58,6 +70,8 @@ To run the demo app, you'll have to:
 
 ### Maps SDK KTX
 
+See [GoogleMap.kt](maps-ktx/src/main/java/com/google/maps/android/ktx/GoogleMap.kt) for all available extensions.
+
 #### Extension functions
 
 Adding a `Marker`:
@@ -67,7 +81,7 @@ _Before_
 GoogleMap googleMap = // ...
 LatLng sydney = new LatLng(-33.852, 151.211);
 MarkerOptions markerOptions = new MarkerOptions()
-    .position(Sydney)
+    .position(sydney)
     .title("Marker in Sydney");
 Marker marker = googleMap.addMarker(markerOptions);
 ```
@@ -84,6 +98,8 @@ val marker = googleMap.addMarker {
 
 #### Coroutines
 
+See [SupportMapFragment.kt](maps-ktx/src/main/java/com/google/maps/android/ktx/SupportMapFragment.kt) for implementation and [MainActivity.kt](app/src/main/java/com/google/maps/android/ktx/demo/MainActivity.kt) for usage.
+
 Accessing a `GoogleMap` instance can be retrieved using coroutines vs. traditional the callback mechanism. The example here demonstrates how you can use this feature alongside with [Lifecycle-aware coroutine scopes][lifecycle] provided in Android’s Architecture Components. To use this, you'll need to add the following to your `build.gradle` dependencies:
 `implementation 'androidx.lifecycle:lifecycle-runtime-ktx:<latest-version>'`
 
@@ -94,7 +110,7 @@ public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     SupportMapFragment mapFragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
 
-    mapFragment.getMapAsync(new OnMapReadyCallback {
+    mapFragment.getMapAsync(new OnMapReadyCallback() {
         @Override
         public void onMapReady(GoogleMap googleMap) {
             // Access GoogleMap instance here
@@ -117,15 +133,17 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 #### Flow
 
+See [GoogleMap.kt](maps-ktx/src/main/java/com/google/maps/android/ktx/GoogleMap.kt) for implementation and [MainActivity.kt](app/src/main/java/com/google/maps/android/ktx/demo/MainActivity.kt) for usage.
+
 Listing to camera events can be collected via [Kotlin Flow][kotlin-flow].
 
 _Before_
 ```java
 val googleMap = //...
-googleMap.setOnCameraIdleListener = { //... }
-googleMap.setOnCameraMoveCanceledListener { //... }
-googleMap.setOnCameraMoveListener { //... }
-googleMap.setOnCameraMoveStartedListener { //... }
+googleMap.setOnCameraIdleListener(() -> { /* ... */ });
+googleMap.setOnCameraMoveCanceledListener(() -> { /* ... */ });
+googleMap.setOnCameraMoveListener(() -> { /* ... */ });
+googleMap.setOnCameraMoveStartedListener(reason -> { /* ... */ });
 ```
 
 _After_
@@ -141,23 +159,27 @@ googleMap.cameraMoveStartedEvents().collect { //... }
 
 #### Extension functions
 
+See [Polygon.kt](maps-utils-ktx/src/main/java/com/google/maps/android/ktx/utils/Polygon.kt) for implementation.
+
 Checking if a `LatLng` is contained within a `Polygon`:
 
 _Before_
 ```java
 Polygon polygon = // some polygon
-LatLng latlng = // some latlng
-boolean result = PolygonUtil.containsLocation(latlng, polygon.getPoints(), true);
+LatLng latLng = new LatLng(-6.1751, 106.8650);
+boolean contains = PolyUtil.containsLocation(latLng, polygon.getPoints(), true);
 ```
 
 _After_
 ```kotlin
 val polygon: Polygon = // some polygon
-val latlng: LatLng = // some latlng
-val result: Boolean = polygon.contains(latLng)
+val latLng = LatLng(60.030994, 29.317658)
+val contains = polygon.contains(latLng)
 ```
 
 #### Named parameters and default arguments
+
+See [GeoJson.kt](maps-utils-ktx/src/main/java/com/google/maps/android/ktx/utils/geojson/GeoJson.kt) for implementation and [MainActivity.kt](app/src/main/java/com/google/maps/android/ktx/demo/MainActivity.kt) for usage.
 
 Creating a `GeoJsonLayer` object:
 
@@ -185,6 +207,8 @@ val layer = geoJsonLayer(
 
 #### Destructuring Declarations
 
+See [Point.kt](maps-utils-ktx/src/main/java/com/google/maps/android/ktx/utils/geometry/Point.kt) for implementation.
+
 Destructuring properties of a `Point`:
 
 _Before_
@@ -207,6 +231,25 @@ You can learn more about all the extensions provided by this library by reading 
 ## Contributing
 
 Contributions are welcome and encouraged! If you'd like to contribute, send us a [pull request] and refer to our [code of conduct] and [contributing guide].
+
+
+## Internal usage attribution ID
+
+This library calls the `addInternalUsageAttributionId` method, which helps Google understand which libraries and samples are helpful to developers and is optional. Instructions for opting out of the identifier are provided below.
+
+If you wish to disable this, you can do so by removing the initializer in your `AndroidManifest.xml` using the `tools:node="remove"` attribute:
+
+```xml
+<provider
+    android:name="androidx.startup.InitializationProvider"
+    android:authorities="${applicationId}.androidx-startup"
+    android:exported="false"
+    tools:node="merge">
+    <meta-data
+        android:name="com.google.maps.android.ktx.utils.attribution.AttributionIdInitializer"
+        tools:node="remove" />
+</provider>
+```
 
 ## Terms of Service
 
