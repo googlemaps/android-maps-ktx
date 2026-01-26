@@ -39,6 +39,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    sourceSets["main"].java.srcDir("build/generated/source/artifactId")
+
     kotlin {
         compilerOptions {
             freeCompilerArgs.add("-Xexplicit-api=strict")
@@ -56,6 +58,7 @@ android {
 dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.startup)
     api(libs.play.services.maps)
 
     // Tests
@@ -67,3 +70,40 @@ dependencies {
     testImplementation(libs.mockito.inline)
     testImplementation(libs.kotlinx.coroutines.test)
 }
+
+// START: Attribution ID Generation Logic
+val attributionId = "gmp_git_androidmapsktx_v$version"
+
+val generateArtifactIdFile = tasks.register("generateArtifactIdFile") {
+    description = "Generates an AttributionId object from the project version."
+    group = "build"
+
+    val outputDir = layout.buildDirectory.dir("generated/source/artifactId")
+    val packageName = "com.google.maps.android.ktx.utils.meta"
+    val packagePath = packageName.replace('.', '/')
+    val outputFile = outputDir.get().file("$packagePath/ArtifactId.kt").asFile
+
+    outputs.file(outputFile)
+
+    doLast {
+        outputFile.parentFile.mkdirs()
+        outputFile.writeText(
+            """
+            package $packageName
+
+            /**
+             * Automatically generated object containing the library's attribution ID.
+             * This is used to track library usage for analytics.
+             */
+            public object AttributionId {
+                public const val VALUE: String = "$attributionId"
+            }
+            """.trimIndent()
+        )
+    }
+}
+
+tasks.named("preBuild") {
+    dependsOn(generateArtifactIdFile)
+}
+// END: Attribution ID Generation Logic

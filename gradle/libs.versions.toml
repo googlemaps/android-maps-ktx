@@ -2,37 +2,38 @@
 # --- Core Android & Kotlin ---
 # These are the fundamental versions for building the Android app.
 androidCompileSdk = "36"
-androidMinSdk = "21"
+androidMinSdk = "23"
 androidTargetSdk = "36"
 
 androidxAppcompat = "1.7.1"
 androidxCoreKtx = "1.17.0"
 # Increasing androidxActivityKtx or lifecycleRuntimeKtx will require us to upgrade the minSdk
-androidxActivityKtx = "1.11.0"
-lifecycleRuntimeKtx = "2.9.4"
-kotlin = "2.2.21"
+androidxActivityKtx = "1.12.2"
+lifecycleRuntimeKtx = "2.10.0"
+kotlin = "2.3.0"
 kotlinxCoroutines = "1.10.2"
 material = "1.13.0"
+androidxStartup = "1.2.0"
 
 # --- Google Maps ---
 # Versions for Google Play Services libraries, which are essential for this sample.
-androidMapsSdk = "19.2.0"
-androidMapsUtils = "3.19.1"
+androidMapsSdk = "20.0.0"
+androidMapsUtils = "4.0.0"
 
 # --- Testing ---
 # Versions for testing libraries.
 androidxJunit = "1.3.0"
 androidxTest = "1.7.0"
 junit = "4.13.2"
-mockito = "5.20.0"
+mockito = "5.21.0"
 mockitoInline = "5.2.0"
 mockitoKotlin = "2.2.0"
 
 # --- Gradle Plugins ---
 # Versions for Gradle plugins used in the build process.
-agp = "8.13.1"
+agp = "8.13.2"
 dokkaGradlePlugin = "2.1.0"
-gradleMavenPublishPlugin = "0.35.0"
+gradleMavenPublishPlugin = "0.36.0"
 jacocoAndroidGradlePlugin = "0.2.1"
 secretsGradlePlugin = "2.0.1"
 
@@ -52,6 +53,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 dokka-gradle-plugin = { module = "org.jetbrains.dokka:dokka-gradle-plugin", version.ref = "dokkaGradlePlugin" }
 gradle-maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "gradleMavenPublishPlugin" }
 jacoco-android-gradle-plugin = { module = "com.mxalbert.gradle:jacoco-android", version.ref = "jacocoAndroidGradlePlugin" }
+androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidxStartup" }
 
 # --- Google Maps ---
 # These are the key libraries for this sample app, providing map and utility functionalities.
