@@ -32,14 +32,14 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v5
 
-    - name: Gradle Wrapper Validation
-      uses: gradle/actions/wrapper-validation@v5
-
     - name: Set up JDK
       uses: actions/setup-java@v5.0.0
       with:
         java-version: '21'
         distribution: 'temurin'
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v5
 
     - name: Build modules
       run: ./gradlew build jacocoTestReport --stacktrace
