@@ -19,38 +19,37 @@ package com.google.maps.android.ktx.utils
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Polygon
+import com.google.common.truth.Truth.assertThat
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
 import org.junit.Test
 
 internal class PolygonTest {
     @Test
     fun testContainsTrue() {
         val polygon = mockPolygon(listOf(LatLng(1.0, 2.2), LatLng(0.0, 1.0)))
-        assertTrue(polygon.contains(LatLng(1.0, 2.2)))
+        assertThat(polygon.contains(LatLng(1.0, 2.2))).isTrue()
     }
 
     @Test
     fun testContainsFalse() {
         val polygon = mockPolygon(listOf(LatLng(1.0, 2.2), LatLng(0.0, 1.0)))
-        assertFalse(polygon.contains(LatLng(1.01, 2.2)))
+        assertThat(polygon.contains(LatLng(1.01, 2.2))).isFalse()
     }
 
     @Test
     fun testIsOnEdgeTrue() {
         val polygon = mockPolygon(listOf(LatLng(1.0, 2.2), LatLng(0.0, 1.0)))
-        assertTrue(polygon.isOnEdge(LatLng(1.0, 2.2)))
+        assertThat(polygon.isOnEdge(LatLng(1.0, 2.2))).isTrue()
 
         // Tolerance
-        assertTrue(polygon.isOnEdge(LatLng(1.0000005, 2.2)))
+        assertThat(polygon.isOnEdge(LatLng(1.0000005, 2.2))).isTrue()
     }
 
     @Test
     fun testIsOnEdgeFalse() {
         val polygon = mockPolygon(listOf(LatLng(1.0, 2.2), LatLng(0.0, 1.0)))
-        assertFalse(polygon.isOnEdge(LatLng(3.0, 2.2)))
+        assertThat(polygon.isOnEdge(LatLng(3.0, 2.2))).isFalse()
     }
 
     private fun mockPolygon(p: List<LatLng>, geodesic: Boolean = true) = mock<Polygon> {

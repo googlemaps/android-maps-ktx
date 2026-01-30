@@ -20,7 +20,7 @@ import org.mockito.Mock
 import org.mockito.Mockito.verify
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
-import org.junit.Assert.assertNotNull
+import com.google.common.truth.Truth.assertThat
 import org.junit.After
 import org.junit.Before
 import org.mockito.MockedStatic
@@ -65,7 +65,7 @@ public class GoogleMapTest {
     public fun testCameraIdleEvents(): Unit = runTest {
         val job = launch {
             val event = googleMap.cameraIdleEvents().first()
-            assertNotNull(event)
+            assertThat(event).isNotNull()
         }
         advanceUntilIdle()
         verify(googleMap).setOnCameraIdleListener(cameraIdleListener.capture())

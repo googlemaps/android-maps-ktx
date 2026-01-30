@@ -17,7 +17,7 @@
 
 package com.google.maps.android.ktx.model
 
-import org.junit.Assert.assertEquals
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
 internal class StreetViewPanoramaOrientationTest {
@@ -28,7 +28,7 @@ internal class StreetViewPanoramaOrientationTest {
             bearing(1f)
             tilt(20f)
         }
-        assertEquals(1f, orientation.bearing, 1e-6f)
-        assertEquals(20f, orientation.tilt, 1e-6f)
+        assertThat(orientation.bearing).isWithin(1e-6f).of(1f)
+        assertThat(orientation.tilt).isWithin(1e-6f).of(20f)
     }
 }

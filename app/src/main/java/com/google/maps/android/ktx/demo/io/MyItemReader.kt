@@ -21,7 +21,7 @@ import com.google.maps.android.ktx.demo.model.MyItem
 import org.json.JSONArray
 import org.json.JSONException
 import java.io.InputStream
-import java.util.*
+import java.util.Scanner
 
 /**
  * Helper class to read in cluster items from a resource

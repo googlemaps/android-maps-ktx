@@ -17,7 +17,7 @@
 
 package com.google.maps.android.ktx.model
 
-import org.junit.Assert.assertEquals
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
 internal class StreetViewPanoramaCameraTest {
@@ -29,8 +29,8 @@ internal class StreetViewPanoramaCameraTest {
             tilt(20f)
             zoom(2f)
         }
-        assertEquals(1f, camera.bearing, 1e-6f)
-        assertEquals(20f, camera.tilt, 1e-6f)
-        assertEquals(2f, camera.zoom, 1e-6f)
+        assertThat(camera.bearing).isWithin(1e-6f).of(1f)
+        assertThat(camera.tilt).isWithin(1e-6f).of(20f)
+        assertThat(camera.zoom).isWithin(1e-6f).of(2f)
     }
 }

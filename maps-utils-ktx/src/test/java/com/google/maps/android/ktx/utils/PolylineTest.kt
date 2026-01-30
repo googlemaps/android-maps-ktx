@@ -19,11 +19,9 @@ package com.google.maps.android.ktx.utils
 
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Polyline
-import com.google.maps.android.ktx.utils.contains
-import com.google.maps.android.ktx.utils.sphericalPathLength
+import com.google.common.truth.Truth.assertThat
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
-import org.junit.Assert.*
 import org.junit.Test
 
 internal class PolylineTest {
@@ -32,27 +30,27 @@ internal class PolylineTest {
     @Test
     fun `test that contains returns true`() {
         val line = mockPolyline(listOf(LatLng(1.0, 0.0), LatLng(3.0, 0.0)))
-        assertTrue(line.contains(LatLng(2.0, 0.0)))
+        assertThat(line.contains(LatLng(2.0, 0.0))).isTrue()
     }
 
     @Test
     fun `test that contains returns true with tolerance`() {
         val line = mockPolyline(listOf(LatLng(1.0, 0.0), LatLng(3.0, 0.0)))
-        assertTrue(line.contains(LatLng(1.0, 0.00000001)))
+        assertThat(line.contains(LatLng(1.0, 0.00000001))).isTrue()
     }
 
     @Test
     fun `test that contains returns false`() {
         val line = mockPolyline(listOf(LatLng(1.0, 0.0), LatLng(3.0, 0.0)))
-        assertFalse(line.contains(LatLng(4.0, 0.0)))
+        assertThat(line.contains(LatLng(4.0, 0.0))).isFalse()
     }
 
     @Test
     fun `validate spherical path length`() {
-        assertEquals(0.0, mockPolyline(emptyList()).sphericalPathLength, 1e-6)
+        assertThat(mockPolyline(emptyList()).sphericalPathLength).isWithin(1e-6).of(0.0)
         val polyline = mockPolyline(listOf(LatLng(0.0, 0.0), LatLng(0.1, 0.1)))
         val expectation = earthRadius * Math.sqrt(2.0) * Math.toRadians(0.1)
-        assertEquals(expectation, polyline.sphericalPathLength, 1e-1)
+        assertThat(polyline.sphericalPathLength).isWithin(1e-1).of(expectation)
     }
 
     private fun mockPolyline(p: List<LatLng>, geodesic: Boolean = true) = mock<Polyline> {

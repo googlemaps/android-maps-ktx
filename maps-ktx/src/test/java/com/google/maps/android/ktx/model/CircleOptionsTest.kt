@@ -18,8 +18,7 @@
 package com.google.maps.android.ktx.model
 
 import com.google.android.gms.maps.model.LatLng
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
 internal class CircleOptionsTest {
@@ -36,13 +35,13 @@ internal class CircleOptionsTest {
             visible(true)
             zIndex(1f)
         }
-        assertEquals(LatLng(0.0, 0.0), circleOptions.center)
-        assertTrue(circleOptions.isClickable)
-        assertEquals(0, circleOptions.fillColor)
-        assertEquals(1.23, circleOptions.radius, 1e-6)
-        assertEquals(1, circleOptions.strokeColor)
-        assertEquals(2f, circleOptions.strokeWidth)
-        assertTrue(circleOptions.isVisible)
-        assertEquals(1f, circleOptions.zIndex, 1e-6f)
+        assertThat(circleOptions.center).isEqualTo(LatLng(0.0, 0.0))
+        assertThat(circleOptions.isClickable).isTrue()
+        assertThat(circleOptions.fillColor).isEqualTo(0)
+        assertThat(circleOptions.radius).isWithin(1e-6).of(1.23)
+        assertThat(circleOptions.strokeColor).isEqualTo(1)
+        assertThat(circleOptions.strokeWidth).isEqualTo(2f)
+        assertThat(circleOptions.isVisible).isTrue()
+        assertThat(circleOptions.zIndex).isWithin(1e-6f).of(1f)
     }
 }

@@ -18,9 +18,8 @@
 package com.google.maps.android.ktx.model
 
 import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.common.truth.Truth.assertThat
 import com.nhaarman.mockitokotlin2.mock
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
 import org.junit.Test
 
 internal class GroundOverlayOptionsTest {
@@ -35,10 +34,10 @@ internal class GroundOverlayOptionsTest {
             transparency(0.5f)
             visible(true)
         }
-        assertEquals(descriptor, groundOverlayOptions.image)
-        assertEquals(1f, groundOverlayOptions.bearing, 1e-6f)
-        assertTrue(groundOverlayOptions.isClickable)
-        assertEquals(0.5f, groundOverlayOptions.transparency, 1e-6f)
-        assertTrue(groundOverlayOptions.isVisible)
+        assertThat(groundOverlayOptions.image).isEqualTo(descriptor)
+        assertThat(groundOverlayOptions.bearing).isWithin(1e-6f).of(1f)
+        assertThat(groundOverlayOptions.isClickable).isTrue()
+        assertThat(groundOverlayOptions.transparency).isWithin(1e-6f).of(0.5f)
+        assertThat(groundOverlayOptions.isVisible).isTrue()
     }
 }

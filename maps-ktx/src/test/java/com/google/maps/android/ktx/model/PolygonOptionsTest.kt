@@ -19,7 +19,7 @@ package com.google.maps.android.ktx.model
 
 import android.graphics.Color
 import com.google.android.gms.maps.model.LatLng
-import org.junit.Assert.assertEquals
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
 internal class PolygonOptionsTest {
@@ -31,8 +31,8 @@ internal class PolygonOptionsTest {
                 strokeColor(Color.BLACK)
                 add(LatLng(1.0, 2.0))
             }
-        assertEquals(1.0f, polygonOptions.strokeWidth, 1e-6f)
-        assertEquals(Color.BLACK, polygonOptions.strokeColor)
-        assertEquals(listOf(LatLng(1.0, 2.0)), polygonOptions.points)
+        assertThat(polygonOptions.strokeWidth).isWithin(1e-6f).of(1.0f)
+        assertThat(polygonOptions.strokeColor).isEqualTo(Color.BLACK)
+        assertThat(polygonOptions.points).containsExactly(LatLng(1.0, 2.0))
     }
 }
