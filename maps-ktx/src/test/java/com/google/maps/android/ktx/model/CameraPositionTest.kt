@@ -18,7 +18,7 @@
 package com.google.maps.android.ktx.model
 
 import com.google.android.gms.maps.model.LatLng
-import org.junit.Assert.assertEquals
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
 internal class CameraPositionTest {
@@ -31,9 +31,9 @@ internal class CameraPositionTest {
             tilt(1f)
             zoom(12f)
         }
-        assertEquals(1f, cameraPosition.bearing, 1e-6f)
-        assertEquals(LatLng(1.0, 2.0), cameraPosition.target)
-        assertEquals(1f, cameraPosition.tilt, 1e-6f)
-        assertEquals(12f, cameraPosition.zoom, 1e-6f)
+        assertThat(cameraPosition.bearing).isWithin(1e-6f).of(1f)
+        assertThat(cameraPosition.target).isEqualTo(LatLng(1.0, 2.0))
+        assertThat(cameraPosition.tilt).isWithin(1e-6f).of(1f)
+        assertThat(cameraPosition.zoom).isWithin(1e-6f).of(12f)
     }
 }

@@ -17,9 +17,7 @@
 
 package com.google.maps.android.ktx.model
 
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
 internal class TileOverlayOptionsTest {
@@ -32,9 +30,9 @@ internal class TileOverlayOptionsTest {
             visible(false)
             zIndex(1f)
         }
-        assertTrue(tileOverlayOptions.fadeIn)
-        assertFalse(tileOverlayOptions.isVisible)
-        assertEquals(0.5f, tileOverlayOptions.transparency, 1e-6f)
-        assertEquals(1f, tileOverlayOptions.zIndex, 1e-6f)
+        assertThat(tileOverlayOptions.fadeIn).isTrue()
+        assertThat(tileOverlayOptions.isVisible).isFalse()
+        assertThat(tileOverlayOptions.transparency).isWithin(1e-6f).of(0.5f)
+        assertThat(tileOverlayOptions.zIndex).isWithin(1e-6f).of(1f)
     }
 }

@@ -18,7 +18,7 @@
 package com.google.maps.android.ktx.utils.geometry
 
 import com.google.maps.android.geometry.Point
-import org.junit.Assert.assertEquals
+import com.google.common.truth.Truth.assertThat
 import org.junit.Before
 import org.junit.Test
 
@@ -34,12 +34,12 @@ internal class PointTest {
     @Test
     fun `destructure x`() {
         val (x, _) = point
-        assertEquals(1.0, x, 1e-6)
+        assertThat(x).isWithin(1e-6).of(1.0)
     }
 
     @Test
     fun `destructure y`() {
         val (_, y) = point
-        assertEquals(2.0, y, 1e-6)
+        assertThat(y).isWithin(1e-6).of(2.0)
     }
 }

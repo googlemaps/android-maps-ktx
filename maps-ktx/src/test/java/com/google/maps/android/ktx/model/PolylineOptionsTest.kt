@@ -18,8 +18,7 @@
 package com.google.maps.android.ktx.model
 
 import com.google.android.gms.maps.model.LatLng
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
 internal class PolylineOptionsTest {
@@ -33,10 +32,10 @@ internal class PolylineOptionsTest {
             geodesic(true)
             width(1f)
         }
-        assertEquals(listOf(LatLng(1.0, 2.0)), polylineOptions.points)
-        assertTrue(polylineOptions.isClickable)
-        assertEquals(0, polylineOptions.color)
-        assertTrue(polylineOptions.isGeodesic)
-        assertEquals(1f, polylineOptions.width, 1e-6f)
+        assertThat(polylineOptions.points).containsExactly(LatLng(1.0, 2.0))
+        assertThat(polylineOptions.isClickable).isTrue()
+        assertThat(polylineOptions.color).isEqualTo(0)
+        assertThat(polylineOptions.isGeodesic).isTrue()
+        assertThat(polylineOptions.width).isWithin(1e-6f).of(1f)
     }
 }

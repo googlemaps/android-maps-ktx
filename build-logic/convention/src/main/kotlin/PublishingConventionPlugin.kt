@@ -3,9 +3,11 @@ import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.*
 import org.gradle.testing.jacoco.plugins.JacocoPluginExtension
 import org.gradle.api.tasks.testing.Test
+import org.gradle.kotlin.dsl.apply
+import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.withType
 import org.gradle.testing.jacoco.plugins.JacocoTaskExtension
 
 class PublishingConventionPlugin : Plugin<Project> {

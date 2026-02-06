@@ -18,9 +18,9 @@
 package com.google.maps.android.ktx.utils.heatmap
 
 import com.google.android.gms.maps.model.LatLng
+import com.google.common.truth.Truth.assertThat
 import com.google.maps.android.heatmaps.WeightedLatLng
 import com.google.maps.android.ktx.utils.heatmaps.toWeightedLatLng
-import org.junit.Assert.*
 import org.junit.Test
 
 internal class HeatmapTest {
@@ -36,8 +36,8 @@ internal class HeatmapTest {
     }
 
     private fun weightedLatLngEquals(lhs: WeightedLatLng, rhs: WeightedLatLng) {
-        assertEquals(lhs.point.x, rhs.point.x, 1e-6)
-        assertEquals(lhs.point.y, rhs.point.y, 1e-6)
-        assertEquals(lhs.intensity, rhs.intensity, 1e-6)
+        assertThat(lhs.point.x).isWithin(1e-6).of(rhs.point.x)
+        assertThat(lhs.point.y).isWithin(1e-6).of(rhs.point.y)
+        assertThat(lhs.intensity).isWithin(1e-6).of(rhs.intensity)
     }
 }

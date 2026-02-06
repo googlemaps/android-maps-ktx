@@ -26,7 +26,6 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.graphics.Insets
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
@@ -44,10 +43,14 @@ import com.google.maps.android.collections.GroundOverlayManager
 import com.google.maps.android.collections.MarkerManager
 import com.google.maps.android.collections.PolygonManager
 import com.google.maps.android.collections.PolylineManager
-import com.google.maps.android.data.Renderer.ImagesCache
 import com.google.maps.android.data.geojson.GeoJsonLineStringStyle
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
-import com.google.maps.android.ktx.*
+import com.google.maps.android.ktx.awaitAnimateCamera
+import com.google.maps.android.ktx.awaitMap
+import com.google.maps.android.ktx.awaitMapLoad
+import com.google.maps.android.ktx.awaitSnapshot
+import com.google.maps.android.ktx.cameraIdleEvents
+import com.google.maps.android.ktx.cameraMoveStartedEvents
 import com.google.maps.android.ktx.demo.io.MyItemReader
 import com.google.maps.android.ktx.demo.model.CacheViewModel
 import com.google.maps.android.ktx.demo.model.MyItem

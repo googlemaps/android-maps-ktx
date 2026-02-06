@@ -28,6 +28,7 @@ junit = "4.13.2"
 mockito = "5.21.0"
 mockitoInline = "5.2.0"
 mockitoKotlin = "2.2.0"
+truth = "1.4.5"
 
 # --- Gradle Plugins ---
 # Versions for Gradle plugins used in the build process.
@@ -68,6 +69,7 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
 mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoInline" }
 mockito-kotlin = { group = "com.nhaarman.mockitokotlin2", name = "mockito-kotlin", version.ref = "mockitoKotlin" }
+truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
 
 # --- Gradle ---
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }

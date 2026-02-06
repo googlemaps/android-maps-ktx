@@ -18,9 +18,7 @@
 package com.google.maps.android.ktx.model
 
 import com.google.android.gms.maps.model.LatLng
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
 internal class MarkerOptionsTest {
@@ -36,12 +34,12 @@ internal class MarkerOptionsTest {
             snippet("Snippet")
             visible(true)
         }
-        assertEquals(LatLng(1.0, 2.0), markerOptions.position)
-        assertEquals(0.5f, markerOptions.alpha, 1e-6f)
-        assertFalse(markerOptions.isDraggable)
-        assertTrue(markerOptions.isFlat)
-        assertEquals("Test", markerOptions.title)
-        assertEquals("Snippet", markerOptions.snippet)
-        assertTrue(markerOptions.isVisible)
+        assertThat(markerOptions.position).isEqualTo(LatLng(1.0, 2.0))
+        assertThat(markerOptions.alpha).isWithin(1e-6f).of(0.5f)
+        assertThat(markerOptions.isDraggable).isFalse()
+        assertThat(markerOptions.isFlat).isTrue()
+        assertThat(markerOptions.title).isEqualTo("Test")
+        assertThat(markerOptions.snippet).isEqualTo("Snippet")
+        assertThat(markerOptions.isVisible).isTrue()
     }
 }
