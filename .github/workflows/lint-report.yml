@@ -40,19 +40,19 @@ jobs:
         run: ./gradlew lint
 
       - name: Upload SARIF for maps-ktx
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: maps-ktx/build/reports/lint-results.sarif
           category: maps-ktx
 
       - name: Upload SARIF for maps-utils-ktx
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: maps-utils-ktx/build/reports/lint-results.sarif
           category: maps-utils-ktx
 
       - name: Upload SARIF for app
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: app/build/reports/lint-results.sarif
           category: app
