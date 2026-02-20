@@ -7,7 +7,6 @@ androidTargetSdk = "36"
 
 androidxAppcompat = "1.7.1"
 androidxCoreKtx = "1.17.0"
-# Increasing androidxActivityKtx or lifecycleRuntimeKtx will require us to upgrade the minSdk
 androidxActivityKtx = "1.12.4"
 lifecycleRuntimeKtx = "2.10.0"
 kotlin = "2.3.10"
@@ -32,7 +31,7 @@ truth = "1.4.5"
 
 # --- Gradle Plugins ---
 # Versions for Gradle plugins used in the build process.
-agp = "8.13.2"
+agp = "9.0.1"
 dokkaGradlePlugin = "2.1.0"
 gradleMavenPublishPlugin = "0.36.0"
 jacocoAndroidGradlePlugin = "0.2.1"

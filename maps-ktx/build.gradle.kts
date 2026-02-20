@@ -16,9 +16,8 @@
  */
 
 plugins {
-    alias(libs.plugins.kotlin.android)
     id("android.maps.ktx.PublishingConventionPlugin")
-    id("org.jetbrains.dokka")
+    alias(libs.plugins.dokka)
 }
 
 android {
@@ -82,7 +81,7 @@ val generateArtifactIdFile = tasks.register("generateArtifactIdFile") {
     val outputDir = layout.buildDirectory.dir("generated/source/artifactId")
     val packageName = "com.google.maps.android.ktx.utils.meta"
     val packagePath = packageName.replace('.', '/')
-    val outputFile = outputDir.get().file("$packagePath/ArtifactId.kt").asFile
+    val outputFile = outputDir.get().file("$packagePath/AttributionId.java").asFile
 
     outputs.file(outputFile)
 
@@ -90,14 +89,15 @@ val generateArtifactIdFile = tasks.register("generateArtifactIdFile") {
         outputFile.parentFile.mkdirs()
         outputFile.writeText(
             """
-            package $packageName
+            package $packageName;
 
             /**
              * Automatically generated object containing the library's attribution ID.
              * This is used to track library usage for analytics.
              */
-            public object AttributionId {
-                public const val VALUE: String = "$attributionId"
+            public final class AttributionId {
+                public static final String VALUE = "$attributionId";
+                private AttributionId() {}
             }
             """.trimIndent()
         )

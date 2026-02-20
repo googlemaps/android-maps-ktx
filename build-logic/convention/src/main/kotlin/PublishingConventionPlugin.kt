@@ -43,9 +43,7 @@ class PublishingConventionPlugin : Plugin<Project> {
         extensions.configure<MavenPublishBaseExtension> {
             configure(
                 AndroidSingleVariantLibrary(
-                    variant = "release",
-                    sourcesJar = true,
-                    publishJavadocJar = true
+                    variant = "release"
                 )
             )
 
