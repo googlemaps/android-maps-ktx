@@ -8,9 +8,9 @@ androidTargetSdk = "36"
 androidxAppcompat = "1.7.1"
 androidxCoreKtx = "1.17.0"
 # Increasing androidxActivityKtx or lifecycleRuntimeKtx will require us to upgrade the minSdk
-androidxActivityKtx = "1.12.2"
+androidxActivityKtx = "1.12.4"
 lifecycleRuntimeKtx = "2.10.0"
-kotlin = "2.3.0"
+kotlin = "2.3.10"
 kotlinxCoroutines = "1.10.2"
 material = "1.13.0"
 androidxStartup = "1.2.0"
@@ -18,7 +18,7 @@ androidxStartup = "1.2.0"
 # --- Google Maps ---
 # Versions for Google Play Services libraries, which are essential for this sample.
 androidMapsSdk = "20.0.0"
-androidMapsUtils = "4.0.0"
+androidMapsUtils = "4.1.0"
 
 # --- Testing ---
 # Versions for testing libraries.
