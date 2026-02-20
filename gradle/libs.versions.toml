@@ -10,7 +10,7 @@ androidxCoreKtx = "1.17.0"
 # Increasing androidxActivityKtx or lifecycleRuntimeKtx will require us to upgrade the minSdk
 androidxActivityKtx = "1.12.4"
 lifecycleRuntimeKtx = "2.10.0"
-kotlin = "2.3.0"
+kotlin = "2.3.10"
 kotlinxCoroutines = "1.10.2"
 material = "1.13.0"
 androidxStartup = "1.2.0"
