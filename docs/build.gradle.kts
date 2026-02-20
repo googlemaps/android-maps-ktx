@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") apply false
-    id("org.jetbrains.dokka")
+    alias(libs.plugins.dokka)
 }
 
 dependencies {
