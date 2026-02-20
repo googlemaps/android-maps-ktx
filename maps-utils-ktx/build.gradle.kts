@@ -53,6 +53,9 @@ android {
     namespace = "com.google.maps.android.ktx.utils"
 }
 
+// Workaround for com.mxalbert.gradle.jacoco-android plugin crash on AGP 8.0+
+tasks.register("testReleaseUnitTest") {}
+
 dependencies {
     implementation(libs.kotlin.stdlib)
     api(libs.android.maps.utils)
