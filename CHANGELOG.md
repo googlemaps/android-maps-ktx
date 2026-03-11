@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.1](https://github.com/googlemaps/android-maps-ktx/compare/v6.0.0...v6.0.1) (2026-03-11)
+
+
+### Bug Fixes
+
+* annotate AttributionIdInitializer with @Keep ([#384](https://github.com/googlemaps/android-maps-ktx/issues/384)) ([b0339d1](https://github.com/googlemaps/android-maps-ktx/commit/b0339d126373c28981201ff96ee1ceca6c4bbde8))
+
 ## [6.0.0](https://github.com/googlemaps/android-maps-ktx/compare/v5.2.2...v6.0.0) (2026-01-26)
 
 
