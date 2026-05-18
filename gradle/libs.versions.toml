@@ -12,7 +12,7 @@ androidxActivityKtx = "1.13.0"
 lifecycleRuntimeKtx = "2.10.0"
 kotlin = "2.3.21"
 kotlinxCoroutines = "1.11.0"
-material = "1.13.0"
+material = "1.14.0"
 androidxStartup = "1.2.0"
 
 # --- Google Maps ---
