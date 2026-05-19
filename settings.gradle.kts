@@ -1,6 +1,9 @@
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        if (System.getenv("USE_MAVEN_LOCAL") == "true") {
+            mavenLocal()
+        }
         google()
         mavenCentral()
     }
@@ -8,6 +11,9 @@ dependencyResolutionManagement {
 pluginManagement {
     includeBuild("build-logic")
     repositories {
+        if (System.getenv("USE_MAVEN_LOCAL") == "true") {
+            mavenLocal()
+        }
         google()
         mavenCentral()
         gradlePluginPortal()
