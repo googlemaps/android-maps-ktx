@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Google Inc.
+ * Copyright 2026 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,16 +18,21 @@
 package com.google.maps.android.ktx.utils.collection
 
 import com.google.android.gms.maps.model.Polygon
-import com.google.android.gms.maps.model.PolygonOptions
 import com.google.maps.android.collections.PolygonManager
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 
 /**
- * Adds a new [Polygon] to the underlying map and to this [PolygonManager.Collection] with the
- * provided [optionsActions].
+ * Returns a flow that emits when a polygon in this collection is clicked. Using this to observe polygon clicks
+ * will override an existing listener (if any) to [PolygonManager.Collection.setOnPolygonClickListener].
  */
-public inline fun PolygonManager.Collection.addPolygon(
-    optionsActions: PolygonOptions.() -> Unit
-): Polygon =
-    this.addPolygon(
-        PolygonOptions().apply(optionsActions)
-    )
+public fun PolygonManager.Collection.clickEvents(): Flow<Polygon> =
+    callbackFlow {
+        setOnPolygonClickListener {
+            trySend(it).isSuccess
+        }
+        awaitClose {
+            setOnPolygonClickListener(null)
+        }
+    }

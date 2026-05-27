@@ -66,4 +66,5 @@ dependencies {
     testImplementation(libs.mockito.kotlin)
     testImplementation(libs.mockito.inline)
     testImplementation(libs.truth)
+    testImplementation(libs.kotlinx.coroutines.test)
 }

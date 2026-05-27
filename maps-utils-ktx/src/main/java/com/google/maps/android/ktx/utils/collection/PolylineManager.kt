@@ -1,5 +1,5 @@
 /*
- * Copyright 2020 Google Inc.
+ * Copyright 2026 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,16 +18,21 @@
 package com.google.maps.android.ktx.utils.collection
 
 import com.google.android.gms.maps.model.Polyline
-import com.google.android.gms.maps.model.PolylineOptions
 import com.google.maps.android.collections.PolylineManager
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 
 /**
- * Adds a new [Polyline] to the underlying map and to this [PolylineManager.Collection] with the
- * provided [optionsActions].
+ * Returns a flow that emits when a polyline in this collection is clicked. Using this to observe polyline clicks
+ * will override an existing listener (if any) to [PolylineManager.Collection.setOnPolylineClickListener].
  */
-public inline fun PolylineManager.Collection.addPolyline(
-    optionsActions: PolylineOptions.() -> Unit
-): Polyline =
-    this.addPolyline(
-        PolylineOptions().apply(optionsActions)
-    )
+public fun PolylineManager.Collection.clickEvents(): Flow<Polyline> =
+    callbackFlow {
+        setOnPolylineClickListener {
+            trySend(it).isSuccess
+        }
+        awaitClose {
+            setOnPolylineClickListener(null)
+        }
+    }

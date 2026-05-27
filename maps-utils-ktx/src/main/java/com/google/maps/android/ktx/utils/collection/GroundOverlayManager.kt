@@ -20,6 +20,9 @@ package com.google.maps.android.ktx.utils.collection
 import com.google.android.gms.maps.model.GroundOverlay
 import com.google.android.gms.maps.model.GroundOverlayOptions
 import com.google.maps.android.collections.GroundOverlayManager
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 
 /**
  * Adds a new [GroundOverlay] to the underlying map and to this [GroundOverlayManager.Collection]
@@ -31,3 +34,17 @@ public inline fun GroundOverlayManager.Collection.addGroundOverlay(
     this.addGroundOverlay(
         GroundOverlayOptions().apply(optionsActions)
     )
+
+/**
+ * Returns a flow that emits when a ground overlay in this collection is clicked. Using this to observe ground overlay clicks
+ * will override an existing listener (if any) to [GroundOverlayManager.Collection.setOnGroundOverlayClickListener].
+ */
+public fun GroundOverlayManager.Collection.clickEvents(): Flow<GroundOverlay> =
+    callbackFlow {
+        setOnGroundOverlayClickListener {
+            trySend(it).isSuccess
+        }
+        awaitClose {
+            setOnGroundOverlayClickListener(null)
+        }
+    }
