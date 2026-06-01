@@ -55,7 +55,10 @@ import com.google.maps.android.ktx.demo.io.MyItemReader
 import com.google.maps.android.ktx.demo.model.CacheViewModel
 import com.google.maps.android.ktx.demo.model.MyItem
 import com.google.maps.android.ktx.model.cameraPosition
+import com.google.maps.android.ktx.utils.clustering.clusterClickEvents
+import com.google.maps.android.ktx.utils.clustering.clusterItemClickEvents
 import com.google.maps.android.ktx.utils.collection.addMarker
+import com.google.maps.android.ktx.utils.collection.clickEvents
 import com.google.maps.android.ktx.utils.geojson.geoJsonLayer
 import com.google.maps.android.ktx.utils.kml.kmlLayer
 import kotlinx.coroutines.launch
@@ -177,6 +180,23 @@ class MainActivity : AppCompatActivity() {
     private fun addClusters(map: GoogleMap, markerManager: MarkerManager) {
         val clusterManager = ClusterManager<MyItem>(this, map, markerManager)
         map.setOnCameraIdleListener(clusterManager)
+
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    clusterManager.clusterClickEvents().collect { cluster ->
+                        Log.d(TAG, "Cluster clicked! Size: ${cluster.size}")
+                        Toast.makeText(this@MainActivity, "Cluster clicked! Size: ${cluster.size}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                launch {
+                    clusterManager.clusterItemClickEvents().collect { item ->
+                        Log.d(TAG, "Cluster item clicked: ${item.title}")
+                        Toast.makeText(this@MainActivity, "Cluster item clicked: ${item.title}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
 
         try {
             val items = MyItemReader().read(resources.openRawResource(R.raw.radar_search))
@@ -303,13 +323,17 @@ class MainActivity : AppCompatActivity() {
             icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
             title("Unclustered marker")
         }
-        markerCollection.setOnMarkerClickListener { marker ->
-            Toast.makeText(
-                this,
-                "Marker clicked: " + marker.title,
-                Toast.LENGTH_SHORT
-            ).show()
-            false
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                markerCollection.clickEvents().collect { marker ->
+                    Log.d(TAG, "Marker clicked via Flow: ${marker.title}")
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Marker clicked via Flow: " + marker.title,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
         }
     }
 
