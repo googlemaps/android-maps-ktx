@@ -59,7 +59,9 @@ With this KTX library, you should be able to take advantage of several Kotlin la
 
 <img src="https://developers.google.com/maps/documentation/android-sdk/images/utility-multilayer.png" width="150" align=right>
 
-This repository includes a [demo app](app) that illustrates the use of this KTX library. See [MainActivity.kt](app/src/main/java/com/google/maps/android/ktx/demo/MainActivity.kt) for usage examples.
+This repository includes a Material 3 [demo app](app) that illustrates the use of this KTX library. 
+
+For interactive examples, visual flows, and code region breakdowns, check out the immersive [KTX Flow Snippets Catalog](docs/CATALOG.md).
 
 To run the demo app, you'll have to:
 
@@ -98,7 +100,7 @@ val marker = googleMap.addMarker {
 
 #### Coroutines
 
-See [SupportMapFragment.kt](maps-ktx/src/main/java/com/google/maps/android/ktx/SupportMapFragment.kt) for implementation and [MainActivity.kt](app/src/main/java/com/google/maps/android/ktx/demo/MainActivity.kt) for usage.
+See [SupportMapFragment.kt](maps-ktx/src/main/java/com/google/maps/android/ktx/SupportMapFragment.kt) for implementation and the [KTX Flow Snippets Catalog](docs/CATALOG.md) for usage examples.
 
 Accessing a `GoogleMap` instance can be retrieved using coroutines vs. traditional the callback mechanism. The example here demonstrates how you can use this feature alongside with [Lifecycle-aware coroutine scopes][lifecycle] provided in Android’s Architecture Components. To use this, you'll need to add the following to your `build.gradle` dependencies:
 `implementation 'androidx.lifecycle:lifecycle-runtime-ktx:<latest-version>'`
@@ -133,7 +135,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 #### Flow
 
-See [GoogleMap.kt](maps-ktx/src/main/java/com/google/maps/android/ktx/GoogleMap.kt) for implementation and [MainActivity.kt](app/src/main/java/com/google/maps/android/ktx/demo/MainActivity.kt) for usage.
+See [GoogleMap.kt](maps-ktx/src/main/java/com/google/maps/android/ktx/GoogleMap.kt) for implementation and the [KTX Flow Snippets Catalog](docs/CATALOG.md) for usage examples.
 
 Listing to camera events can be collected via [Kotlin Flow][kotlin-flow].
 
@@ -179,7 +181,7 @@ val contains = polygon.contains(latLng)
 
 #### Named parameters and default arguments
 
-See [GeoJson.kt](maps-utils-ktx/src/main/java/com/google/maps/android/ktx/utils/geojson/GeoJson.kt) for implementation and [MainActivity.kt](app/src/main/java/com/google/maps/android/ktx/demo/MainActivity.kt) for usage.
+See [GeoJson.kt](maps-utils-ktx/src/main/java/com/google/maps/android/ktx/utils/geojson/GeoJson.kt) for implementation and the [KTX Flow Snippets Catalog](docs/CATALOG.md) for usage examples.
 
 Creating a `GeoJsonLayer` object:
 
@@ -223,6 +225,108 @@ _After_
 val point = Point(1.0, 2.0)
 val (x, y) = point
 ```
+
+#### Flow
+
+See [LocationManager.kt](maps-utils-ktx/src/main/java/com/google/maps/android/ktx/utils/location/LocationManager.kt) and [ClusterManager.kt](maps-utils-ktx/src/main/java/com/google/maps/android/ktx/utils/clustering/ClusterManager.kt) for implementations and the [KTX Flow Snippets Catalog](docs/CATALOG.md) for usage examples.
+
+> [!WARNING]
+> **Single-Subscriber Invariant (Cold Flows)**:
+> The underlying Google Maps SDK only supports a single listener slot (e.g., one `setOnMarkerClickListener` at a time). Because these are cold flows, if you have multiple active collectors subscribing to the same KTX flow concurrently, the latest subscriber will hijack the listener slot. Furthermore, cancelling any one collector will trigger its `awaitClose` block and completely unregister the listener on the SDK, silently breaking all remaining active collectors!
+> 
+> If you need multiple observers to collect from the same stream, **always** share the flow using `.shareIn()` to convert it into a hot `SharedFlow`:
+> ```kotlin
+> val sharedClicks = storeCollection.clickEvents()
+>     .shareIn(
+>         scope = lifecycleScope,
+>         started = SharingStarted.WhileSubscribed(5000),
+>         replay = 0
+>     )
+> ```
+
+##### Device Location Tracking
+
+You can listen to both **coarse** and **fine** device location changes reactively as cold Flows that start and stop location updates automatically based on active subscribers:
+
+*   **Fine Location Flow** (streams from `GPS_PROVIDER`, requires `ACCESS_FINE_LOCATION` permission):
+    `locationManager.fineLocationEvents(minTimeMs = 1000L, minDistanceM = 1f)`
+*   **Coarse Location Flow** (streams from `NETWORK_PROVIDER` with passive fallback, requires `ACCESS_COARSE_LOCATION` permission):
+    `locationManager.coarseLocationEvents(minTimeMs = 5000L, minDistanceM = 5f)`
+
+```kotlin
+val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+// Emits GPS location updates dynamically under ACCESS_FINE_LOCATION permission
+lifecycleScope.launch {
+    lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+        try {
+            locationManager.fineLocationEvents(minTimeMs = 2000L, minDistanceM = 1f)
+                .collect { location ->
+                    // React to new device coordinate updates
+                }
+        } catch (e: CancellationException) {
+            // Triggers if GPS was disabled in Android settings mid-stream
+        }
+    }
+}
+```
+
+##### Clustering Events
+
+Instead of overriding camera idle listeners and setting single click listener callbacks manually:
+
+```kotlin
+val clusterManager = ClusterManager<MyItem>(context, map, markerManager)
+
+lifecycleScope.launch {
+    lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+        launch {
+            clusterManager.clusterClickEvents().collect { cluster ->
+                // React to clicked clusters
+            }
+        }
+        launch {
+            clusterManager.clusterItemClickEvents().collect { myItem ->
+                // React to clicked cluster items
+            }
+        }
+    }
+}
+```
+
+##### Shape Collection Clicks
+
+Set separate KTX flow-based click listeners per styled collection:
+
+```kotlin
+val storeCollection = markerManager.newCollection()
+
+lifecycleScope.launch {
+    lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+        storeCollection.clickEvents().collect { marker ->
+            // React to clicked store markers
+        }
+    }
+}
+```
+
+## Gemini Code Assist Agentic Skill
+
+This repository includes a local **Gemini Agentic Skill** configured under the standard `.gemini/` directory to assist developers (and autonomous coding agents) inside their IDE and workspaces when modifying, testing, or using this KTX library.
+
+The skill provides progressive-disclosure reference guides, customized workspace config behaviors, and style enforcement rules protecting KTX reactive architecture.
+
+### Skill Structure
+*   **.gemini/config.yaml** / **styleguide.md**: Rules enforcing modern coroutine/Flow idioms, and multi-subscriber `SharedFlow` safety.
+*   📂 **.gemini/skills/android-maps-ktx/**: Core capability registration package.
+    *   [SKILL.md](file:///.gemini/skills/android-maps-ktx/SKILL.md): Capability scopes and trigger scenarios.
+    *   [references/gotchas.md](file:///.gemini/skills/android-maps-ktx/references/gotchas.md): Breakdown of the single-subscriber listener hijacking Gotcha, and clean Android 15+ tuner status bar configuration.
+    *   [references/location-flows.md](file:///.gemini/skills/android-maps-ktx/references/location-flows.md): Coarse and fine location flows setup, permissions, and London/Paris adb trajectory injections.
+    *   [references/clustering-flows.md](file:///.gemini/skills/android-maps-ktx/references/clustering-flows.md): Views-based KTX click flows, viewport zooms, and tap badge sweeps.
+    *   [references/collection-flows.md](file:///.gemini/skills/android-maps-ktx/references/collection-flows.md): Overlay collections click handling (Azure Marker popups, Circle color-swapping UI confirmation).
+
+### Usage
+The skill is automatically discovered and utilized by Gemini Code Assist in supported IDEs (such as Android Studio, VS Code, or internal Google workflows). For manual reference or when pairing with autonomous coding assistants, you can consult the progressive-disclosure markdown guides inside `.gemini/skills/android-maps-ktx/references/` directly.
 
 ## Documentation
 
