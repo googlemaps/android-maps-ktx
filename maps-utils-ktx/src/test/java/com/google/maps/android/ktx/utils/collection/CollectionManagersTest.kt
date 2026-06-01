@@ -34,12 +34,15 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.ArgumentCaptor
 import org.mockito.Captor
 import org.mockito.Mock
+import org.mockito.Mockito.any
 import org.mockito.Mockito.verify
+import org.mockito.Mockito.times
 import org.mockito.junit.MockitoJUnitRunner
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -97,6 +100,18 @@ public class CollectionManagersTest {
     @Captor
     private lateinit var groundOverlayClickListener: ArgumentCaptor<GoogleMap.OnGroundOverlayClickListener>
 
+    private var activeMarkerClickListener: GoogleMap.OnMarkerClickListener? = null
+
+    @Before
+    public fun setUp() {
+        activeMarkerClickListener = null
+        // Stub setOnMarkerClickListener to track the active listener on the collection manager
+        org.mockito.Mockito.`when`(markerCollection.setOnMarkerClickListener(any())).thenAnswer { invocation ->
+            activeMarkerClickListener = invocation.arguments[0] as? GoogleMap.OnMarkerClickListener
+            null
+        }
+    }
+
     @Test
     public fun testMarkerCollectionClickEvents(): Unit = runTest {
         val job = launch {
@@ -104,9 +119,60 @@ public class CollectionManagersTest {
             assertThat(event).isEqualTo(marker)
         }
         advanceUntilIdle()
-        verify(markerCollection).setOnMarkerClickListener(markerClickListener.capture())
-        markerClickListener.value.onMarkerClick(marker)
+        // Trigger the event via our tracked active listener slot!
+        assertThat(activeMarkerClickListener).isNotNull()
+        activeMarkerClickListener?.onMarkerClick(marker)
         job.cancel()
+    }
+
+    @Test
+    public fun testConcurrentCollectionMarkerClick(): Unit = runTest {
+        val flow = markerCollection.clickEvents()
+        val collector1Events = mutableListOf<Marker>()
+        val collector2Events = mutableListOf<Marker>()
+
+        // Start Collector 1
+        val job1 = launch {
+            flow.collect { collector1Events.add(it) }
+        }
+        advanceUntilIdle()
+        assertThat(activeMarkerClickListener).isNotNull()
+        val listener1 = activeMarkerClickListener
+
+        // Start Collector 2 - this will overwrite the listener on the mock
+        val job2 = launch {
+            flow.collect { collector2Events.add(it) }
+        }
+        advanceUntilIdle()
+        val listener2 = activeMarkerClickListener
+
+        // Verify they are different listener instances and listener2 hijacked the slot
+        assertThat(listener1).isNotEqualTo(listener2)
+        assertThat(activeMarkerClickListener).isEqualTo(listener2)
+
+        // Simulate click via the active listener
+        activeMarkerClickListener?.onMarkerClick(marker)
+        advanceUntilIdle()
+
+        // Only collector 2 should receive the event because it hijacked the single-listener slot
+        assertThat(collector1Events).isEmpty()
+        assertThat(collector2Events).containsExactly(marker)
+
+        // Cancel collector 1. This triggers awaitClose and clears the listener slot (sets to null)
+        job1.cancel()
+        advanceUntilIdle()
+
+        // Assert that the active listener slot is now null!
+        assertThat(activeMarkerClickListener).isNull()
+
+        // Try to trigger a click again via the active listener (which is now null)
+        activeMarkerClickListener?.onMarkerClick(marker)
+        advanceUntilIdle()
+
+        // Collector 2 is now BROKEN and receives no further events because Collector 1's cleanup cleared the shared slot!
+        assertThat(collector2Events).containsExactly(marker)
+
+        job2.cancel()
     }
 
     @Test
