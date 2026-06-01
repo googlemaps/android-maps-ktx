@@ -18,10 +18,22 @@
 package com.google.maps.android.ktx.utils.collection
 
 import com.google.android.gms.maps.model.Polygon
+import com.google.android.gms.maps.model.PolygonOptions
 import com.google.maps.android.collections.PolygonManager
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+
+/**
+ * Adds a new [Polygon] to the underlying map and to this [PolygonManager.Collection] with the
+ * provided [optionsActions].
+ */
+public inline fun PolygonManager.Collection.addPolygon(
+    optionsActions: PolygonOptions.() -> Unit
+): Polygon =
+    this.addPolygon(
+        PolygonOptions().apply(optionsActions)
+    )
 
 /**
  * Returns a flow that emits when a polygon in this collection is clicked. Using this to observe polygon clicks

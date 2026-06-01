@@ -18,10 +18,22 @@
 package com.google.maps.android.ktx.utils.collection
 
 import com.google.android.gms.maps.model.Polyline
+import com.google.android.gms.maps.model.PolylineOptions
 import com.google.maps.android.collections.PolylineManager
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
+
+/**
+ * Adds a new [Polyline] to the underlying map and to this [PolylineManager.Collection] with the
+ * provided [optionsActions].
+ */
+public inline fun PolylineManager.Collection.addPolyline(
+    optionsActions: PolylineOptions.() -> Unit
+): Polyline =
+    this.addPolyline(
+        PolylineOptions().apply(optionsActions)
+    )
 
 /**
  * Returns a flow that emits when a polyline in this collection is clicked. Using this to observe polyline clicks
