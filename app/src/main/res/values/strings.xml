@@ -2,4 +2,5 @@
     <string name="app_name">Android Maps KTX Demo</string>
     <string name="snapshot">Snapshot</string>
     <string name="animate_camera">Animate Camera</string>
+    <string name="btn_animate_camera">ANIMATE CAMERA</string>
 </resources>
