@@ -34,7 +34,7 @@ truth = "1.4.5"
 # Versions for Gradle plugins used in the build process.
 agp = "8.13.2"
 dokkaGradlePlugin = "2.2.0"
-gradleMavenPublishPlugin = "0.36.0"
+gradleMavenPublishPlugin = "0.37.0"
 jacocoAndroidGradlePlugin = "0.2.1"
 secretsGradlePlugin = "2.0.1"
 
