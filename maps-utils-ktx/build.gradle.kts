@@ -79,8 +79,8 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.kotlin)
-    testImplementation("net.bytebuddy:byte-buddy:1.17.1")
-    testImplementation("net.bytebuddy:byte-buddy-agent:1.17.1")
+    testImplementation(libs.bytebuddy)
+    testImplementation(libs.bytebuddy.agent)
     testImplementation(libs.truth)
     testImplementation(libs.kotlinx.coroutines.test)
 }

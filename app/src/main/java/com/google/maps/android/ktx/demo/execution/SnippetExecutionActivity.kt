@@ -111,8 +111,54 @@ class SnippetExecutionActivity : AppCompatActivity() {
         }
 
         val snippetTitle = intent.getStringExtra("EXTRA_SNIPPET_TITLE") ?: "Map Initialization"
+        val snippetDesc = intent.getStringExtra("EXTRA_SNIPPET_DESCRIPTION")
+            ?: "Demonstrates reactive Kotlin Coroutines and Flows in Android Maps KTX."
         supportActionBar?.title = snippetTitle
-        findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.execution_toolbar).title = snippetTitle
+        val toolbar = findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.execution_toolbar)
+        toolbar.title = snippetTitle
+
+        val showAbout = {
+            com.google.android.material.dialog.MaterialAlertDialogBuilder(this)
+                .setTitle(snippetTitle)
+                .setMessage(snippetDesc)
+                .setPositiveButton("OK", null)
+                .show()
+        }
+        toolbar.setOnClickListener { showAbout() }
+        findViewById<View>(R.id.execution_appbar).setOnClickListener { showAbout() }
+
+        val allSnippets = com.google.maps.android.ktx.demo.menu.SnippetRegistry.groups.flatMap { it.items }
+        val currentIndex = allSnippets.indexOfFirst { it.title == snippetTitle }
+        val btnPrev = findViewById<android.widget.ImageButton>(R.id.btn_previous_snippet)
+        val btnNext = findViewById<android.widget.ImageButton>(R.id.btn_next_snippet)
+
+        if (currentIndex > 0) {
+            btnPrev.setOnClickListener {
+                val prevItem = allSnippets[currentIndex - 1]
+                val prevIntent = android.content.Intent(this, SnippetExecutionActivity::class.java).apply {
+                    putExtra("EXTRA_SNIPPET_TITLE", prevItem.title)
+                    putExtra("EXTRA_SNIPPET_DESCRIPTION", prevItem.description)
+                }
+                finish()
+                startActivity(prevIntent)
+            }
+        } else {
+            btnPrev.visibility = View.GONE
+        }
+
+        if (currentIndex >= 0 && currentIndex < allSnippets.size - 1) {
+            btnNext.setOnClickListener {
+                val nextItem = allSnippets[currentIndex + 1]
+                val nextIntent = android.content.Intent(this, SnippetExecutionActivity::class.java).apply {
+                    putExtra("EXTRA_SNIPPET_TITLE", nextItem.title)
+                    putExtra("EXTRA_SNIPPET_DESCRIPTION", nextItem.description)
+                }
+                finish()
+                startActivity(nextIntent)
+            }
+        } else {
+            btnNext.visibility = View.GONE
+        }
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.execution_map) as SupportMapFragment
 

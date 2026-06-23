@@ -35,7 +35,33 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:title="Snippet Verification"
-            app:titleTextColor="#FFFFFF" />
+            app:titleTextColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_previous_snippet"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Previous sample"
+                    android:src="@drawable/ic_previous" />
+
+                <ImageButton
+                    android:id="@+id/btn_next_snippet"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Next sample"
+                    android:src="@drawable/ic_next" />
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -57,6 +57,7 @@ class SnippetMenuActivity : AppCompatActivity() {
         recyclerView.adapter = SnippetAdapter(allSnippets) { item ->
             val intent = Intent(this, SnippetExecutionActivity::class.java).apply {
                 putExtra("EXTRA_SNIPPET_TITLE", item.title)
+                putExtra("EXTRA_SNIPPET_DESCRIPTION", item.description)
             }
             startActivity(intent)
         }

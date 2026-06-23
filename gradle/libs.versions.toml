@@ -30,6 +30,7 @@ junit = "4.13.2"
 mockito = "5.23.0"
 mockitoInline = "5.2.0"
 mockitoKotlin = "2.2.0"
+byteBuddy = "1.17.1"
 truth = "1.4.5"
 
 # --- Gradle Plugins ---
@@ -79,6 +80,8 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
 mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoInline" }
 mockito-kotlin = { group = "com.nhaarman.mockitokotlin2", name = "mockito-kotlin", version.ref = "mockitoKotlin" }
+bytebuddy = { group = "net.bytebuddy", name = "byte-buddy", version.ref = "byteBuddy" }
+bytebuddy-agent = { group = "net.bytebuddy", name = "byte-buddy-agent", version.ref = "byteBuddy" }
 truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
 
 # --- Gradle ---
