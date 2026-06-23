@@ -20,8 +20,10 @@ package com.google.maps.android.ktx.demo.snippets
 import android.annotation.SuppressLint
 import android.location.Location
 import android.location.LocationManager
+import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.maps.android.ktx.utils.location.coarseLocationEvents
 import com.google.maps.android.ktx.utils.location.fineLocationEvents
+import com.google.maps.android.ktx.utils.location.fusedLocationEvents
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -82,5 +84,31 @@ public object LocationSnippets {
             }
         }
         // [END maps_android_ktx_flow_fine_location]
+    }
+
+    /**
+     * Demonstrates location tracking using Google Play Services FusedLocationProviderClient.
+     */
+    @SuppressLint("MissingPermission")
+    public fun fusedLocationFlowSnippet(
+        fusedLocationClient: FusedLocationProviderClient,
+        scope: CoroutineScope,
+        onLocationReceived: (Location) -> Unit,
+        onGPSDisabled: () -> Unit
+    ) {
+        // [START maps_android_ktx_flow_fused_location]
+        scope.launch {
+            try {
+                // Collect from the fusedLocationEvents cold flow
+                fusedLocationClient.fusedLocationEvents(intervalMs = 2000L, minUpdateDistanceM = 1f)
+                    .collect { location ->
+                        onLocationReceived(location)
+                    }
+            } catch (e: CancellationException) {
+                // Triggers if location services were disabled mid-collection
+                onGPSDisabled()
+            }
+        }
+        // [END maps_android_ktx_flow_fused_location]
     }
 }

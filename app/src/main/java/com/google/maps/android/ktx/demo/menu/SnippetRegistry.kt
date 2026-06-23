@@ -50,7 +50,7 @@ object SnippetRegistry {
             ),
             SnippetGroupInfo(
                 title = "Kotlin Flow Location Services",
-                description = "Hardware satellite location streams managing lifecycles automatically.",
+                description = "Hardware satellite and fused location streams managing lifecycles automatically.",
                 items = listOf(
                     SnippetItemInfo(
                         title = "Fine Location Flow",
@@ -59,6 +59,10 @@ object SnippetRegistry {
                     SnippetItemInfo(
                         title = "Coarse Location Flow",
                         description = "Wifi/Cell tower reactive coordinate updates from coarse/passive providers."
+                    ),
+                    SnippetItemInfo(
+                        title = "Fused Location Flow",
+                        description = "Google Play Services reactive location updates via FusedLocationProviderClient."
                     )
                 )
             ),

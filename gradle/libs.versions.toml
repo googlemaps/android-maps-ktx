@@ -15,10 +15,11 @@ kotlinxCoroutines = "1.11.0"
 material = "1.14.0"
 androidxStartup = "1.2.0"
 
-# --- Google Maps ---
+# --- Google Maps & Location ---
 # Versions for Google Play Services libraries, which are essential for this sample.
 androidMapsSdk = "20.0.0"
 androidMapsUtils = "4.4.0"
+playServicesLocation = "21.3.0"
 
 # --- Testing ---
 # Versions for testing libraries.
@@ -62,10 +63,11 @@ gradle-maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-pl
 jacoco-android-gradle-plugin = { module = "com.mxalbert.gradle:jacoco-android", version.ref = "jacocoAndroidGradlePlugin" }
 androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidxStartup" }
 
-# --- Google Maps ---
-# These are the key libraries for this sample app, providing map and utility functionalities.
+# --- Google Maps & Location ---
+# These are the key libraries for this sample app, providing map, location, and utility functionalities.
 android-maps-utils = { group = "com.google.maps.android", name = "android-maps-utils", version.ref = "androidMapsUtils" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "androidMapsSdk" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 
 # --- Testing ---
 # Libraries for running unit tests (on the JVM) and instrumented tests (on an Android device/emulator).

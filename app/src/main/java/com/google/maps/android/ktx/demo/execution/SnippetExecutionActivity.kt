@@ -16,18 +16,23 @@
 
 package com.google.maps.android.ktx.demo.execution
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.pm.PackageManager
 import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -60,6 +65,21 @@ class SnippetExecutionActivity : AppCompatActivity() {
     private var googleMap: GoogleMap? = null
     private var userLocationMarker: Marker? = null
     private val TAG = "SnippetExecution"
+    private var pendingLocationSnippet: String? = null
+
+    private val locationPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        if (permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true || permissions[Manifest.permission.ACCESS_COARSE_LOCATION] == true) {
+            when (pendingLocationSnippet) {
+                "Fine Location Flow" -> startFineLocationStream()
+                "Coarse Location Flow" -> startCoarseLocationStream()
+                "Fused Location Flow" -> startFusedLocationStream()
+            }
+        } else {
+            Toast.makeText(this, "Location permissions denied!", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -156,10 +176,13 @@ class SnippetExecutionActivity : AppCompatActivity() {
                         }
                     }
                     "Fine Location Flow" -> {
-                        startFineLocationStream()
+                        checkAndStartLocationSnippet("Fine Location Flow")
                     }
                     "Coarse Location Flow" -> {
-                        startCoarseLocationStream()
+                        checkAndStartLocationSnippet("Coarse Location Flow")
+                    }
+                    "Fused Location Flow" -> {
+                        checkAndStartLocationSnippet("Fused Location Flow")
                     }
                     "Marker Cluster Click Flow" -> {
                         setupClusteringDemo(map)
@@ -187,6 +210,15 @@ class SnippetExecutionActivity : AppCompatActivity() {
         logBuffer.append("[12:00:00] FineLocation Flow subbed.\n")
         logView.text = logBuffer.toString()
 
+        // Display immediate last known coarse/network location as baseline before GPS locks!
+        val lastLoc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+            ?: locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER)
+            ?: locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+        if (lastLoc != null) {
+            val pos = LatLng(lastLoc.latitude, lastLoc.longitude)
+            drawUserLocationMarker(pos, lastLoc.accuracy)
+        }
+
         LocationSnippets.fineLocationFlowSnippet(
             locationManager,
             scope = lifecycleScope,
@@ -199,11 +231,11 @@ class SnippetExecutionActivity : AppCompatActivity() {
                 logBuffer.append("[$time] LatLng: (${String.format("%.4f", location.latitude)}, ${String.format("%.4f", location.longitude)})\n")
                 logView.text = logBuffer.toString()
 
-                drawUserLocationMarker(pos)
+                drawUserLocationMarker(pos, location.accuracy)
                 plotRoutePath(pos)
             },
             onGPSDisabled = {
-                Toast.makeText(this, "GPS Disabled!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "GPS Deactivated!", Toast.LENGTH_SHORT).show()
             }
         )
     }
@@ -219,6 +251,14 @@ class SnippetExecutionActivity : AppCompatActivity() {
         logBuffer.append("[12:00:00] CoarseLocation Flow subbed.\n")
         logView.text = logBuffer.toString()
 
+        // Display immediate last known coarse/network location as baseline
+        val lastLoc = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+            ?: locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER)
+        if (lastLoc != null) {
+            val pos = LatLng(lastLoc.latitude, lastLoc.longitude)
+            drawUserLocationMarker(pos, lastLoc.accuracy)
+        }
+
         LocationSnippets.coarseLocationFlowSnippet(
             locationManager,
             scope = lifecycleScope,
@@ -230,25 +270,101 @@ class SnippetExecutionActivity : AppCompatActivity() {
                 logBuffer.append("[$time] Coarse: (${String.format("%.4f", location.latitude)}, ${String.format("%.4f", location.longitude)})\n")
                 logView.text = logBuffer.toString()
 
-                drawUserLocationMarker(pos)
+                drawUserLocationMarker(pos, location.accuracy)
                 plotRoutePath(pos)
             },
             onGPSDisabled = {
-                Toast.makeText(this, "Network Provider Disabled!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Network Provider Deactivated!", Toast.LENGTH_SHORT).show()
             }
         )
     }
 
-    private fun drawUserLocationMarker(position: LatLng) {
-        val map = googleMap ?: return
-        // We retain all sequence pins to visually convey consecutive coordinate changes!
-        map.addMarker(
-            MarkerOptions()
-                .position(position)
-                .title("User Location")
-                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+    private fun checkAndStartLocationSnippet(snippetName: String) {
+        pendingLocationSnippet = snippetName
+        val hasFine = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        val hasCoarse = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+        if (hasFine || hasCoarse) {
+            when (snippetName) {
+                "Fine Location Flow" -> startFineLocationStream()
+                "Coarse Location Flow" -> startCoarseLocationStream()
+                "Fused Location Flow" -> startFusedLocationStream()
+            }
+        } else {
+            locationPermissionLauncher.launch(
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
+            )
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun startFusedLocationStream() {
+        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        val panel: View = findViewById(R.id.panel_telemetry)
+        val logView: android.widget.TextView = findViewById(R.id.text_telemetry_log)
+        panel.visibility = View.VISIBLE
+        findViewById<android.widget.TextView>(R.id.text_telemetry_status).text = "STATUS: KTX FLOW ACTIVE STREAMING (FUSED)"
+
+        logBuffer.append("[12:00:00] FusedLocation Flow subbed.\n")
+        logView.text = logBuffer.toString()
+
+        fusedLocationClient.lastLocation.addOnSuccessListener { lastLoc ->
+            if (lastLoc != null) {
+                val pos = LatLng(lastLoc.latitude, lastLoc.longitude)
+                drawUserLocationMarker(pos, lastLoc.accuracy)
+            }
+        }
+
+        LocationSnippets.fusedLocationFlowSnippet(
+            fusedLocationClient,
+            scope = lifecycleScope,
+            onLocationReceived = { location ->
+                val pos = LatLng(location.latitude, location.longitude)
+                Log.d(TAG, "Fused Location streamed: ${location.latitude}, ${location.longitude}")
+                
+                val time = java.text.SimpleDateFormat("HH:mm:ss", java.util.Locale.getDefault()).format(java.util.Date(location.time))
+                logBuffer.append("[$time] Fused: (${String.format("%.4f", location.latitude)}, ${String.format("%.4f", location.longitude)})\n")
+                logView.text = logBuffer.toString()
+
+                drawUserLocationMarker(pos, location.accuracy)
+                plotRoutePath(pos)
+            },
+            onGPSDisabled = {
+                Toast.makeText(this, "Location Services Deactivated!", Toast.LENGTH_SHORT).show()
+            }
         )
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 12f))
+    }
+
+    private var userAccuracyCircle: com.google.android.gms.maps.model.Circle? = null
+
+    private fun drawUserLocationMarker(position: LatLng, accuracy: Float = 50f) {
+        val map = googleMap ?: return
+        if (userLocationMarker == null) {
+            userLocationMarker = map.addMarker(
+                MarkerOptions()
+                    .position(position)
+                    .title("User Location")
+                    .anchor(0.5f, 0.5f)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+            )
+        } else {
+            userLocationMarker?.position = position
+        }
+
+        if (userAccuracyCircle == null) {
+            userAccuracyCircle = map.addCircle(
+                com.google.android.gms.maps.model.CircleOptions()
+                    .center(position)
+                    .radius(accuracy.toDouble())
+                    .fillColor(android.graphics.Color.parseColor("#261A73E8"))
+                    .strokeColor(android.graphics.Color.parseColor("#801A73E8"))
+                    .strokeWidth(3f)
+            )
+        } else {
+            userAccuracyCircle?.center = position
+            userAccuracyCircle?.radius = accuracy.toDouble()
+        }
+
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 15f))
     }
 
     private fun plotRoutePath(position: LatLng) {
