@@ -18,7 +18,7 @@ androidxStartup = "1.2.0"
 # --- Google Maps ---
 # Versions for Google Play Services libraries, which are essential for this sample.
 androidMapsSdk = "20.0.0"
-androidMapsUtils = "4.4.0"
+androidMapsUtils = "5.0.0-rc01"
 
 # --- Testing ---
 # Versions for testing libraries.
