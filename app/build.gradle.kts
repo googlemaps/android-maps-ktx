@@ -18,6 +18,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.secrets.gradle.plugin)
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
@@ -27,12 +28,31 @@ android {
 
     compileSdk = libs.versions.androidCompileSdk.get().toInt()
 
+    testOptions {
+        unitTests.all {
+            it.jvmArgs(
+                "-XX:+EnableDynamicAgentLoading",
+                "-Xshare:off",
+                "--add-opens=java.base/java.lang=ALL-UNNAMED",
+                "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED",
+                "--add-opens=java.base/java.io=ALL-UNNAMED",
+                "--add-opens=java.base/java.util=ALL-UNNAMED",
+                "-Dnet.bytebuddy.experimental=true"
+            )
+        }
+    }
+
     defaultConfig {
         applicationId = "com.google.maps.android.ktx.demo"
         minSdk = libs.versions.androidMinSdk.get().toInt()
         targetSdk = libs.versions.androidTargetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    adbOptions {
+        installOptions("-g", "-r")
     }
 
     buildFeatures {
@@ -72,6 +92,29 @@ dependencies {
     // the README installation instructions
     implementation(project(":maps-ktx"))
     implementation(project(":maps-utils-ktx"))
+    implementation(libs.play.services.location)
+
+    // Tests
+    testImplementation(libs.androidx.test)
+    testImplementation(libs.androidx.junit)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.truth)
+    testImplementation(libs.kotlinx.coroutines.test)
+
+    // Android Visual/Screenshot Tests
+    androidTestImplementation(libs.uiautomator)
+    androidTestImplementation(libs.ktor.client.core)
+    androidTestImplementation(libs.ktor.client.cio)
+    androidTestImplementation(libs.ktor.client.content.negotiation)
+    androidTestImplementation(libs.ktor.serialization.kotlinx.json)
+    androidTestImplementation(libs.kotlinx.serialization.json)
+    androidTestImplementation(libs.androidx.test)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.test.rules)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.truth)
 }
 
 secrets {

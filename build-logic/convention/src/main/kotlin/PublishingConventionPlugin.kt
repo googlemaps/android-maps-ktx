@@ -32,9 +32,19 @@ class PublishingConventionPlugin : Plugin<Project> {
         }
 
         tasks.withType<Test>().configureEach {
+            // Support Mockito ByteBuddy dynamic agent loading, add-opens reflection, and prevent CDS bytecode sharing issues on JDK 26+
+            jvmArgs(
+                "-XX:+EnableDynamicAgentLoading",
+                "-Xshare:off",
+                "--add-opens", "java.base/java.lang=ALL-UNNAMED",
+                "--add-opens", "java.base/java.lang.reflect=ALL-UNNAMED",
+                "--add-opens", "java.base/java.io=ALL-UNNAMED",
+                "--add-opens", "java.base/java.util=ALL-UNNAMED",
+                "-Dnet.bytebuddy.experimental=true"
+            )
             extensions.configure(JacocoTaskExtension::class.java) {
                 isIncludeNoLocationClasses = true
-                excludes = listOf("jdk.internal.*")
+                excludes = listOf("jdk.internal.*", "sun.*", "java.*", "jdk.*")
             }
         }
     }

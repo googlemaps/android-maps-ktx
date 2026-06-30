@@ -27,9 +27,23 @@ android {
 
     compileSdk = libs.versions.androidCompileSdk.get().toInt()
 
+    testOptions {
+        targetSdk = libs.versions.androidTargetSdk.get().toInt()
+        unitTests.all {
+            it.jvmArgs(
+                "-XX:+EnableDynamicAgentLoading",
+                "-Xshare:off",
+                "--add-opens=java.base/java.lang=ALL-UNNAMED",
+                "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED",
+                "--add-opens=java.base/java.io=ALL-UNNAMED",
+                "--add-opens=java.base/java.util=ALL-UNNAMED",
+                "-Dnet.bytebuddy.experimental=true"
+            )
+        }
+    }
+
     defaultConfig {
         minSdk = libs.versions.androidMinSdk.get().toInt()
-        testOptions.targetSdk = libs.versions.androidTargetSdk.get().toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -57,6 +71,7 @@ android {
 dependencies {
     implementation(libs.kotlin.stdlib)
     api(libs.android.maps.utils)
+    api(libs.play.services.location)
 
     // Tests
     testImplementation(libs.androidx.test)
@@ -64,6 +79,8 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.kotlin)
-    testImplementation(libs.mockito.inline)
+    testImplementation(libs.bytebuddy)
+    testImplementation(libs.bytebuddy.agent)
     testImplementation(libs.truth)
+    testImplementation(libs.kotlinx.coroutines.test)
 }
