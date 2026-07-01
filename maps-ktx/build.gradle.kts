@@ -27,6 +27,20 @@ android {
 
     compileSdk = libs.versions.androidCompileSdk.get().toInt()
 
+    testOptions {
+        unitTests.all {
+            it.jvmArgs(
+                "-XX:+EnableDynamicAgentLoading",
+                "-Xshare:off",
+                "--add-opens=java.base/java.lang=ALL-UNNAMED",
+                "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED",
+                "--add-opens=java.base/java.io=ALL-UNNAMED",
+                "--add-opens=java.base/java.util=ALL-UNNAMED",
+                "-Dnet.bytebuddy.experimental=true"
+            )
+        }
+    }
+
     defaultConfig {
         minSdk = libs.versions.androidMinSdk.get().toInt()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -71,7 +85,6 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.kotlin)
-    testImplementation(libs.mockito.inline)
     testImplementation(libs.truth)
     testImplementation(libs.kotlinx.coroutines.test)
 }

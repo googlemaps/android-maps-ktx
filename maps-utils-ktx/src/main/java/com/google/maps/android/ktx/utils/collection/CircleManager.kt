@@ -20,6 +20,9 @@ package com.google.maps.android.ktx.utils.collection
 import com.google.android.gms.maps.model.Circle
 import com.google.android.gms.maps.model.CircleOptions
 import com.google.maps.android.collections.CircleManager
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 
 /**
  * Adds a new [Circle] to the underlying map and to this [CircleManager.Collection] with the
@@ -29,3 +32,22 @@ public inline fun CircleManager.Collection.addCircle(optionsActions: CircleOptio
     this.addCircle(
         CircleOptions().apply(optionsActions)
     )
+
+/**
+ * Returns a flow that emits when a circle in this collection is clicked. Using this to observe circle clicks
+ * will override an existing listener (if any) to [CircleManager.Collection.setOnCircleClickListener].
+ *
+ * **Warning**: This is a cold flow wrapping a single-listener SDK callback. Concurrently subscribing
+ * multiple collectors will result in listener hijacking, and cancelling any observer will unregister
+ * the active listener completely. Always share this flow (e.g. using [kotlinx.coroutines.flow.shareIn])
+ * for multi-observer configurations.
+ */
+public fun CircleManager.Collection.clickEvents(): Flow<Circle> =
+    callbackFlow {
+        setOnCircleClickListener {
+            trySend(it).isSuccess
+        }
+        awaitClose {
+            setOnCircleClickListener(null)
+        }
+    }

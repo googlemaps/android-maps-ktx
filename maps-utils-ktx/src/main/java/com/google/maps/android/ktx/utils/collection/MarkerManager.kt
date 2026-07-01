@@ -20,6 +20,9 @@ package com.google.maps.android.ktx.utils.collection
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.collections.MarkerManager
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 
 /**
  * Adds a new [Marker] to the underlying map and to this [MarkerManager.Collection] with the
@@ -29,3 +32,62 @@ public inline fun MarkerManager.Collection.addMarker(optionsActions: MarkerOptio
     this.addMarker(
         MarkerOptions().apply(optionsActions)
     )
+
+/**
+ * Returns a flow that emits when a marker in this collection is clicked. Using this to observe marker clicks
+ * will override an existing listener (if any) to [MarkerManager.Collection.setOnMarkerClickListener].
+ *
+ * **Warning**: This is a cold flow wrapping a single-listener SDK callback. Concurrently subscribing
+ * multiple collectors will result in listener hijacking, and cancelling any observer will unregister
+ * the active listener completely. Always share this flow (e.g. using [kotlinx.coroutines.flow.shareIn])
+ * for multi-observer configurations.
+ */
+public fun MarkerManager.Collection.clickEvents(): Flow<Marker> =
+    callbackFlow {
+        setOnMarkerClickListener {
+            trySend(it).isSuccess
+        }
+        awaitClose {
+            setOnMarkerClickListener(null)
+        }
+    }
+
+/**
+ * Returns a flow that emits when a marker's info window in this collection is clicked. Using this to observe info window clicks
+ * will override an existing listener (if any) to [MarkerManager.Collection.setOnInfoWindowClickListener].
+ *
+ * **Warning**: This is a cold flow wrapping a single-listener SDK callback. Concurrently subscribing
+ * multiple collectors will result in listener hijacking, and cancelling any observer will unregister
+ * the active listener completely. Always share this flow (e.g. using [kotlinx.coroutines.flow.shareIn])
+ * for multi-observer configurations.
+ */
+public fun MarkerManager.Collection.infoWindowClickEvents(): Flow<Marker> =
+    callbackFlow {
+        setOnInfoWindowClickListener {
+            trySend(it).isSuccess
+        }
+        awaitClose {
+            setOnInfoWindowClickListener(null)
+        }
+    }
+
+
+
+/**
+ * Returns a flow that emits when a marker's info window in this collection is long clicked. Using this to observe info window long clicks
+ * will override an existing listener (if any) to [MarkerManager.Collection.setOnInfoWindowLongClickListener].
+ *
+ * **Warning**: This is a cold flow wrapping a single-listener SDK callback. Concurrently subscribing
+ * multiple collectors will result in listener hijacking, and cancelling any observer will unregister
+ * the active listener completely. Always share this flow (e.g. using [kotlinx.coroutines.flow.shareIn])
+ * for multi-observer configurations.
+ */
+public fun MarkerManager.Collection.infoWindowLongClickEvents(): Flow<Marker> =
+    callbackFlow {
+        setOnInfoWindowLongClickListener {
+            trySend(it).isSuccess
+        }
+        awaitClose {
+            setOnInfoWindowLongClickListener(null)
+        }
+    }

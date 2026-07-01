@@ -15,19 +15,22 @@ kotlinxCoroutines = "1.11.0"
 material = "1.14.0"
 androidxStartup = "1.2.0"
 
-# --- Google Maps ---
+# --- Google Maps & Location ---
 # Versions for Google Play Services libraries, which are essential for this sample.
 androidMapsSdk = "20.0.0"
 androidMapsUtils = "4.5.0"
+playServicesLocation = "21.3.0"
 
 # --- Testing ---
 # Versions for testing libraries.
 androidxJunit = "1.3.0"
 androidxTest = "1.7.0"
+androidxTestRunner = "1.7.0"
 junit = "4.13.2"
 mockito = "5.23.0"
 mockitoInline = "5.2.0"
 mockitoKotlin = "2.2.0"
+byteBuddy = "1.17.1"
 truth = "1.4.5"
 
 # --- Gradle Plugins ---
@@ -37,6 +40,11 @@ dokkaGradlePlugin = "2.2.0"
 gradleMavenPublishPlugin = "0.36.0"
 jacocoAndroidGradlePlugin = "0.2.1"
 secretsGradlePlugin = "2.0.1"
+
+# --- Visual Testing (Gemini API) ---
+ktor = "3.5.0"
+uiautomator = "2.3.0"
+kotlinxSerialization = "1.11.0"
 
 
 [libraries]
@@ -56,28 +64,44 @@ gradle-maven-publish-plugin = { module = "com.vanniktech:gradle-maven-publish-pl
 jacoco-android-gradle-plugin = { module = "com.mxalbert.gradle:jacoco-android", version.ref = "jacocoAndroidGradlePlugin" }
 androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidxStartup" }
 
-# --- Google Maps ---
-# These are the key libraries for this sample app, providing map and utility functionalities.
+# --- Google Maps & Location ---
+# These are the key libraries for this sample app, providing map, location, and utility functionalities.
 android-maps-utils = { group = "com.google.maps.android", name = "android-maps-utils", version.ref = "androidMapsUtils" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "androidMapsSdk" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 
 # --- Testing ---
 # Libraries for running unit tests (on the JVM) and instrumented tests (on an Android device/emulator).
 androidx-test = { group = "androidx.test", name = "core", version.ref = "androidxTest" }
+androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidxTestRunner" }
+androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "androidxTest" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
 mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoInline" }
 mockito-kotlin = { group = "com.nhaarman.mockitokotlin2", name = "mockito-kotlin", version.ref = "mockitoKotlin" }
+bytebuddy = { group = "net.bytebuddy", name = "byte-buddy", version.ref = "byteBuddy" }
+bytebuddy-agent = { group = "net.bytebuddy", name = "byte-buddy-agent", version.ref = "byteBuddy" }
 truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
 
 # --- Gradle ---
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 
+# --- Visual Testing (Gemini API) ---
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
+uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
+
 
 [plugins]
 # --- Core Gradle Plugins ---
 android-application = { id = "com.android.application", version.ref = "agp" }
+
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 # --- Utility Gradle Plugins ---
 # The secrets plugin is used to securely handle the Maps API key, preventing it from being checked into source control.
