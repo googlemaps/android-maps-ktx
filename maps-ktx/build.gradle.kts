@@ -16,7 +16,6 @@
  */
 
 plugins {
-    alias(libs.plugins.kotlin.android)
     id("android.maps.ktx.PublishingConventionPlugin")
     id("org.jetbrains.dokka")
 }
@@ -53,7 +52,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
-    sourceSets["main"].java.srcDir("build/generated/source/artifactId")
 
     kotlin {
         compilerOptions {
@@ -68,6 +66,15 @@ android {
 
     namespace = "com.google.maps.android.ktx"
 }
+
+androidComponents {
+    onVariants { variant ->
+        variant.sources.kotlin?.addStaticSourceDirectory("build/generated/source/artifactId")
+    }
+}
+
+// Workaround for com.mxalbert.gradle.jacoco-android plugin crash on AGP 9.0+
+tasks.register("testReleaseUnitTest") {}
 
 dependencies {
     implementation(libs.kotlin.stdlib)

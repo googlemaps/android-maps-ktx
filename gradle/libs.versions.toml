@@ -1,16 +1,16 @@
 [versions]
 # --- Core Android & Kotlin ---
 # These are the fundamental versions for building the Android app.
-androidCompileSdk = "36"
+androidCompileSdk = "37"
 androidMinSdk = "23"
 androidTargetSdk = "36"
 
 androidxAppcompat = "1.7.1"
-androidxCoreKtx = "1.18.0"
+androidxCoreKtx = "1.19.0"
 # Increasing androidxActivityKtx or lifecycleRuntimeKtx will require us to upgrade the minSdk
 androidxActivityKtx = "1.13.0"
 lifecycleRuntimeKtx = "2.10.0"
-kotlin = "2.3.21"
+kotlin = "2.4.0"
 kotlinxCoroutines = "1.11.0"
 material = "1.14.0"
 androidxStartup = "1.2.0"
@@ -18,7 +18,7 @@ androidxStartup = "1.2.0"
 # --- Google Maps & Location ---
 # Versions for Google Play Services libraries, which are essential for this sample.
 androidMapsSdk = "20.0.0"
-androidMapsUtils = "4.4.0"
+androidMapsUtils = "4.5.0"
 playServicesLocation = "21.3.0"
 
 # --- Testing ---
@@ -35,7 +35,7 @@ truth = "1.4.5"
 
 # --- Gradle Plugins ---
 # Versions for Gradle plugins used in the build process.
-agp = "8.13.2"
+agp = "9.2.1"
 dokkaGradlePlugin = "2.2.0"
 gradleMavenPublishPlugin = "0.36.0"
 jacocoAndroidGradlePlugin = "0.2.1"
@@ -99,6 +99,7 @@ uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", versi
 [plugins]
 # --- Core Gradle Plugins ---
 android-application = { id = "com.android.application", version.ref = "agp" }
+
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 

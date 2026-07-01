@@ -14,9 +14,14 @@
  * limitations under the License.
  */
 
+buildscript {
+    dependencies {
+        classpath(libs.kotlin.gradle.plugin)
+    }
+}
+
 plugins {
     alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.dokka)
     alias(libs.plugins.gradle.maven.publish) apply false
     alias(libs.plugins.secrets.gradle.plugin) apply false

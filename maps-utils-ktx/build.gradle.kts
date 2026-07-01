@@ -15,7 +15,6 @@
  */
 
 plugins {
-    alias(libs.plugins.kotlin.android)
     id("android.maps.ktx.PublishingConventionPlugin")
     id("org.jetbrains.dokka")
 }
@@ -67,6 +66,9 @@ android {
 
     namespace = "com.google.maps.android.ktx.utils"
 }
+
+// Workaround for com.mxalbert.gradle.jacoco-android plugin crash on AGP 9.0+
+tasks.register("testReleaseUnitTest") {}
 
 dependencies {
     implementation(libs.kotlin.stdlib)
