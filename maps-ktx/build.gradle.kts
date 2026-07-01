@@ -73,6 +73,9 @@ androidComponents {
     }
 }
 
+// Workaround for com.mxalbert.gradle.jacoco-android plugin crash on AGP 9.0+
+tasks.register("testReleaseUnitTest") {}
+
 dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlinx.coroutines.android)
