@@ -50,10 +50,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    adbOptions {
-        installOptions("-g", "-r")
-    }
-
     buildFeatures {
         buildConfig = true
     }
