@@ -42,7 +42,7 @@ jacocoAndroidGradlePlugin = "0.2.1"
 secretsGradlePlugin = "2.0.1"
 
 # --- Visual Testing (Gemini API) ---
-ktor = "3.5.0"
+ktor = "3.5.1"
 uiautomator = "2.3.0"
 kotlinxSerialization = "1.11.0"
 
