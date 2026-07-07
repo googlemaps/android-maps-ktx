@@ -1,5 +1,17 @@
 # Changelog
 
+## [6.1.0](https://github.com/googlemaps/android-maps-ktx/compare/v6.0.1...v6.1.0) (2026-07-01)
+
+
+### Features
+
+* **flow:** add Kotlin Flow extensions for LocationManager and shape managers ([#391](https://github.com/googlemaps/android-maps-ktx/issues/391)) ([f943e6c](https://github.com/googlemaps/android-maps-ktx/commit/f943e6ca2704b64ec615614506d30a664e2cf276))
+
+
+### Bug Fixes
+
+* **deps:** update dependencies and migrate to AGP 9 ([#402](https://github.com/googlemaps/android-maps-ktx/issues/402)) ([0efe967](https://github.com/googlemaps/android-maps-ktx/commit/0efe967c572cab02b188e74d7bed73c4dfa491ff))
+
 ## [6.0.1](https://github.com/googlemaps/android-maps-ktx/compare/v6.0.0...v6.0.1) (2026-03-11)
 
 
