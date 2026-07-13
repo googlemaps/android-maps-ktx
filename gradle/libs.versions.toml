@@ -9,7 +9,7 @@ androidxAppcompat = "1.7.1"
 androidxCoreKtx = "1.19.0"
 # Increasing androidxActivityKtx or lifecycleRuntimeKtx will require us to upgrade the minSdk
 androidxActivityKtx = "1.13.0"
-lifecycleRuntimeKtx = "2.10.0"
+lifecycleRuntimeKtx = "2.11.0"
 kotlin = "2.4.0"
 kotlinxCoroutines = "1.11.0"
 material = "1.14.0"
@@ -19,7 +19,7 @@ androidxStartup = "1.2.0"
 # Versions for Google Play Services libraries, which are essential for this sample.
 androidMapsSdk = "20.0.0"
 androidMapsUtils = "5.0.0"
-playServicesLocation = "21.3.0"
+playServicesLocation = "21.4.0"
 
 # --- Testing ---
 # Versions for testing libraries.
@@ -30,7 +30,7 @@ junit = "4.13.2"
 mockito = "5.23.0"
 mockitoInline = "5.2.0"
 mockitoKotlin = "2.2.0"
-byteBuddy = "1.17.1"
+byteBuddy = "1.18.11"
 truth = "1.4.5"
 
 # --- Gradle Plugins ---
@@ -42,8 +42,8 @@ jacocoAndroidGradlePlugin = "0.2.1"
 secretsGradlePlugin = "2.0.1"
 
 # --- Visual Testing (Gemini API) ---
-ktor = "3.5.0"
-uiautomator = "2.3.0"
+ktor = "3.5.1"
+uiautomator = "2.4.0"
 kotlinxSerialization = "1.9.0"
 
 
