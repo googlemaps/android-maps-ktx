@@ -26,9 +26,9 @@ import com.google.maps.android.clustering.ClusterItem
  *  (https://youtrack.jetbrains.com/issue/KT-6653?_ga=2.30406975.1494223917.1585591891-1137021041.1573759593)
  *  so we must name our fields differently and then pass them to the ClusterItem methods.
  */
-data class MyItem(val latLng: LatLng, val myTitle: String?, val mySnippet: String?, val myZIndex: Float?) : ClusterItem {
-    override fun getPosition() = latLng
-    override fun getTitle() = myTitle
-    override fun getSnippet() = mySnippet
-    override fun getZIndex() = myZIndex
-}
+data class MyItem(
+    override val position: LatLng,
+    override val title: String?,
+    override val snippet: String?,
+    override val zIndex: Float?
+) : ClusterItem
