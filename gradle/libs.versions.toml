@@ -44,7 +44,7 @@ secretsGradlePlugin = "2.0.1"
 # --- Visual Testing (Gemini API) ---
 ktor = "3.5.0"
 uiautomator = "2.3.0"
-kotlinxSerialization = "1.11.0"
+kotlinxSerialization = "1.9.0"
 
 
 [libraries]
