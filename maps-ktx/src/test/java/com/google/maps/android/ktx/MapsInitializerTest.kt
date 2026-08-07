@@ -90,4 +90,44 @@ public class MapsInitializerTest {
         assertThat((exception as GooglePlayServicesNotAvailableException).errorCode)
             .isEqualTo(ConnectionResult.SERVICE_MISSING)
     }
+
+    @Suppress("DEPRECATION")
+    @Test
+    public fun testAwaitMapsSdkInitializedWithNullPreferredRenderer(): Unit = runTest {
+        mapsInitializerMock.`when`<Int> {
+            MapsInitializer.initialize(
+                eq(context),
+                eq(null),
+                any(OnMapsSdkInitializedCallback::class.java)
+            )
+        }.thenAnswer { invocation ->
+            invocation.getArgument<OnMapsSdkInitializedCallback>(2)
+                .onMapsSdkInitialized(MapsInitializer.Renderer.LATEST)
+            ConnectionResult.SUCCESS
+        }
+
+        val renderer = context.awaitMapsSdkInitialized(null)
+
+        assertThat(renderer).isEqualTo(MapsInitializer.Renderer.LATEST)
+    }
+
+    @Suppress("DEPRECATION")
+    @Test
+    public fun testAwaitMapsSdkInitializedWithDefaultNullRenderer(): Unit = runTest {
+        mapsInitializerMock.`when`<Int> {
+            MapsInitializer.initialize(
+                eq(context),
+                eq(null),
+                any(OnMapsSdkInitializedCallback::class.java)
+            )
+        }.thenAnswer { invocation ->
+            invocation.getArgument<OnMapsSdkInitializedCallback>(2)
+                .onMapsSdkInitialized(MapsInitializer.Renderer.LATEST)
+            ConnectionResult.SUCCESS
+        }
+
+        val renderer = context.awaitMapsSdkInitialized()
+
+        assertThat(renderer).isEqualTo(MapsInitializer.Renderer.LATEST)
+    }
 }
