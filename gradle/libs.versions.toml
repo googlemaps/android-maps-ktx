@@ -18,7 +18,7 @@ androidxStartup = "1.2.0"
 # --- Google Maps & Location ---
 # Versions for Google Play Services libraries, which are essential for this sample.
 androidMapsSdk = "20.0.0"
-androidMapsUtils = "5.0.0"
+androidMapsUtils = "5.1.0"
 playServicesLocation = "21.4.0"
 
 # --- Testing ---
@@ -37,14 +37,14 @@ truth = "1.4.5"
 # Versions for Gradle plugins used in the build process.
 agp = "9.2.1"
 dokkaGradlePlugin = "2.2.0"
-gradleMavenPublishPlugin = "0.36.0"
+gradleMavenPublishPlugin = "0.37.0"
 jacocoAndroidGradlePlugin = "0.2.1"
 secretsGradlePlugin = "2.0.1"
 
 # --- Visual Testing (Gemini API) ---
-ktor = "3.5.1"
+ktor = "3.5.2"
 uiautomator = "2.4.0"
-kotlinxSerialization = "1.9.0"
+kotlinxSerialization = "1.11.0"
 
 
 [libraries]
