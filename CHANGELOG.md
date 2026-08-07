@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.3.0](https://github.com/googlemaps/android-maps-ktx/compare/v6.2.0...v6.3.0) (2026-08-07)
+
+
+### Features
+
+* add coroutine Maps SDK initialization ([#423](https://github.com/googlemaps/android-maps-ktx/issues/423)) ([d001eb0](https://github.com/googlemaps/android-maps-ktx/commit/d001eb088919ea44caa13d6e3530110d5373a4a5))
+
 ## [6.2.0](https://github.com/googlemaps/android-maps-ktx/compare/v6.1.0...v6.2.0) (2026-07-15)
 
 
