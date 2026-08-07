@@ -127,8 +127,10 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
 
-    lifecycle.coroutineScope.launchWhenCreated {
-        val googleMap = mapFragment?.awaitMap()
+    lifecycleScope.launch {
+        lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
+            val googleMap = mapFragment?.awaitMap()
+        }
     }
 }
 ```
