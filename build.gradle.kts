@@ -25,7 +25,7 @@ plugins {
     alias(libs.plugins.dokka)
     alias(libs.plugins.gradle.maven.publish) apply false
     alias(libs.plugins.secrets.gradle.plugin) apply false
-    id("com.github.ben-manes.versions") version "0.54.0"
+    id("com.github.ben-manes.versions") version "0.60.0"
 }
 
 val projectArtifactId: (Project) -> String? = { project ->
