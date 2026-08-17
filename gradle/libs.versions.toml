@@ -5,7 +5,7 @@ androidCompileSdk = "37"
 androidMinSdk = "23"
 androidTargetSdk = "37"
 
-androidxAppcompat = "1.7.1"
+androidxAppcompat = "1.8.0"
 androidxCoreKtx = "1.19.0"
 # Increasing androidxActivityKtx or lifecycleRuntimeKtx will require us to upgrade the minSdk
 androidxActivityKtx = "1.13.0"
