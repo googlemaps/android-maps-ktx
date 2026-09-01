@@ -56,12 +56,13 @@ jobs:
       - name: Commit and push
         env:
           VERSION: ${{ inputs.version }}
+          BRANCH: ${{ inputs.branch }}
         run: |
           git add \
             .release-please-manifest.json \
             build.gradle.kts
           git commit -m "chore: release v${VERSION}"
-          git push origin "${{ inputs.branch }}"
+          git push origin "$BRANCH"
 
       - name: Tag and create pre-release
         env:
