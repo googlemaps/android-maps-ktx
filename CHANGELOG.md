@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.4.1](https://github.com/googlemaps/android-maps-ktx/compare/v6.4.0...v6.4.1) (2026-09-02)
+
+
+### Bug Fixes
+
+* retain JVM bytecode target at Java 11 ([#440](https://github.com/googlemaps/android-maps-ktx/issues/440)) ([23b39b7](https://github.com/googlemaps/android-maps-ktx/commit/23b39b744b6f1043876f742075f77b2e72503d33))
+
 ## [6.4.0](https://github.com/googlemaps/android-maps-ktx/compare/v6.3.0...v6.4.0) (2026-09-02)
 
 
