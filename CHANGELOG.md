@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.4.0](https://github.com/googlemaps/android-maps-ktx/compare/v6.3.0...v6.4.0) (2026-09-02)
+
+
+### Features
+
+* update dependencies for minor release ([#435](https://github.com/googlemaps/android-maps-ktx/issues/435)) ([a3f2c67](https://github.com/googlemaps/android-maps-ktx/commit/a3f2c67074864ac7e0f9387aec0c1eb53ce209c9))
+
 ## [6.3.0](https://github.com/googlemaps/android-maps-ktx/compare/v6.2.0...v6.3.0) (2026-08-07)
 
 
