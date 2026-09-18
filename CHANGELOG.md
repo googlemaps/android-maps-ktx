@@ -1,5 +1,13 @@
 # Changelog
 
+## [6.5.0](https://github.com/googlemaps/android-maps-ktx/compare/v6.4.1...v6.5.0) (2026-09-18)
+
+
+### Features
+
+* bump actions/setup-java from 5.7.0 to 6.0.1 ([#445](https://github.com/googlemaps/android-maps-ktx/issues/445)) ([dfc3aaa](https://github.com/googlemaps/android-maps-ktx/commit/dfc3aaafb63a2cee58888f26a71643c0637b0a27))
+* bump github/codeql-action/upload-sarif from 4.37.6 to 4.38.0 ([#446](https://github.com/googlemaps/android-maps-ktx/issues/446)) ([b240a38](https://github.com/googlemaps/android-maps-ktx/commit/b240a38ec542be6b25833615f08b0873f8f47819))
+
 ## [6.4.1](https://github.com/googlemaps/android-maps-ktx/compare/v6.4.0...v6.4.1) (2026-09-02)
 
 
