@@ -1,3 +1,6 @@
+> [!WARNING]
+> **This repository is archived and no longer maintained.** All functionality has moved to [android-maps-utils](https://github.com/googlemaps/android-maps-utils) (`v6.0.0+`).
+
 [![Maven Central](https://img.shields.io/maven-central/v/com.google.maps.android/maps-ktx)](https://maven-badges.herokuapp.com/maven-central/com.google.maps.android/maps-ktx)
 ![Archived](https://img.shields.io/badge/stability-archived-red)
 
@@ -8,11 +11,7 @@
 
 # Maps Android KTX
 
-# ⚠️ PROJECT ARCHIVED & DEPRECATED ⚠️
-
-**This repository is now officially archived and will no longer be updated.**
-
-### Migration & Successor
+## Migration & Successor
 
 All functionality previously provided by this repository (Kotlin extensions, DSL builders, and Coroutines support for the Maps SDK for Android and Maps SDK for Android Utility Library) has moved into **[android-maps-utils](https://github.com/googlemaps/android-maps-utils)**.
 
