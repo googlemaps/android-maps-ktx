@@ -57,6 +57,8 @@ class GeminiVisualTestHelper {
             }
         }
 
+    private val modelName = System.getenv("GEMINI_MODEL") ?: "gemini-3.8-flash"
+
     /**
      * Executes a UI action based on a natural language prompt by analyzing UI XML hierarchies.
      */
@@ -89,7 +91,6 @@ class GeminiVisualTestHelper {
             """.trimIndent()
 
         val fullPrompt = "$systemPrompt\n\nCommand: \"$prompt\"\n\nUI Hierarchy:\n$hierarchyXml"
-        val modelName = "gemini-2.5-flash"
         val request = GeminiRequest(contents = listOf(Content(parts = listOf(Part(text = fullPrompt)))))
 
         val response: HttpResponse =
@@ -179,7 +180,7 @@ class GeminiVisualTestHelper {
 
         // Using gemini-2.5-flash for fast, efficient multimodal image analysis
         val response: HttpResponse =
-            client.post("https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=$apiKey") {
+            client.post("https://generativelanguage.googleapis.com/v1/models/$modelName:generateContent?key=$apiKey") {
                 contentType(ContentType.Application.Json)
                 setBody(request)
             }
@@ -291,7 +292,7 @@ class GeminiVisualTestHelper {
             )
 
         val response: HttpResponse =
-            client.post("https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=$apiKey") {
+            client.post("https://generativelanguage.googleapis.com/v1/models/$modelName:generateContent?key=$apiKey") {
                 contentType(ContentType.Application.Json)
                 setBody(request)
             }
