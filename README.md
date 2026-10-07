@@ -1,7 +1,8 @@
+> [!WARNING]
+> **This repository is archived and no longer maintained.** All functionality has moved to [android-maps-utils](https://github.com/googlemaps/android-maps-utils) (`v6.0.0+`).
+
 [![Maven Central](https://img.shields.io/maven-central/v/com.google.maps.android/maps-ktx)](https://maven-badges.herokuapp.com/maven-central/com.google.maps.android/maps-ktx)
-![Release](https://github.com/googlemaps/android-maps-ktx/workflows/Release/badge.svg)
-![Stable](https://img.shields.io/badge/stability-stable-green)
-[![Tests/Build](https://github.com/googlemaps/android-maps-ktx/actions/workflows/test.yml/badge.svg)](https://github.com/googlemaps/android-maps-ktx/actions/workflows/test.yml)
+![Archived](https://img.shields.io/badge/stability-archived-red)
 
 ![Contributors](https://img.shields.io/github/contributors/googlemaps/android-maps-ktx?color=green)
 [![License](https://img.shields.io/github/license/googlemaps/android-maps-ktx?color=blue)][license]
@@ -9,6 +10,17 @@
 [![Discord](https://img.shields.io/discord/676948200904589322?color=6A7EC2&logo=discord&logoColor=ffffff)][Discord server]
 
 # Maps Android KTX
+
+## Migration & Successor
+
+All functionality previously provided by this repository (Kotlin extensions, DSL builders, and Coroutines support for the Maps SDK for Android and Maps SDK for Android Utility Library) has moved into **[android-maps-utils](https://github.com/googlemaps/android-maps-utils)**.
+
+- **Kotlin Extensions & Coroutines:** Migrate to [android-maps-utils](https://github.com/googlemaps/android-maps-utils) (`v6.0.0+`), where all extensions (`maps-ktx` and `maps-utils-ktx`) are natively consolidated under the canonical `com.google.maps.android.*` packages.
+- **Jetpack Compose:** For Jetpack Compose applications, use [android-maps-compose](https://github.com/googlemaps/android-maps-compose).
+
+Legacy releases remain available on Maven Central and source code remains available here for reference, but no further releases, security updates, or dependency bumps will be published in this repository.
+
+---
 
 ## Description
 This repository contains Kotlin extensions (KTX) for:
